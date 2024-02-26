@@ -1,14 +1,12 @@
 /* eslint-disable */
-
 import HotList from "components/HotList/HotList";
-import RecentCount from "components/RecentCount/RecentCount";
-import RecentMessage from "components/RecentMessage/RecentMessage";
+import MessageSummary from "components/MessageSummary/MessageSummary";
 
 function App() {
   return (
     <>
       <HotList />
-      <RecentMessage />
+      <MessageSummary />
     </>
   );
 }

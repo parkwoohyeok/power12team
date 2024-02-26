@@ -1,11 +1,11 @@
 import data from "../../mock/mock.json";
 import RecentCount from "../RecentCount/RecentCount";
 
-import styles from "./RecentMessage.module.css";
+import styles from "./MessageSummary.module.css";
 
 const { messageCount, recentMessages } = data[0];
 
-function RecentMessage() {
+function MessageSummary() {
   return (
     <div className={styles.recentMessages}>
       <div className={styles["profile-image-wrapper"]}>
@@ -41,4 +41,4 @@ function RecentMessage() {
   );
 }
 
-export default RecentMessage;
+export default MessageSummary;
