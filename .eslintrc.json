@@ -11,7 +11,7 @@
   ],
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": "off",
     "import/order": [
       "error",
       {
