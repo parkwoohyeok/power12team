@@ -1,13 +1,15 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "import"],
+  "plugins": ["@typescript-eslint", "import", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/warnings",
     "plugin:prettier/recommended",
-    "airbnb-base" , "prettier"
+    "airbnb-base",
+    "prettier",
+    "react-app"
   ],
   "rules": {
     "import/order": [
@@ -40,6 +42,7 @@
           "order": "asc"
         }
       }
-    ]
+    ],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }
