@@ -27,7 +27,23 @@ function MessageFrom() {
               <div className={style.SelectExplain}>
                 프로필 이미지를 선택해주세요!
               </div>
-              <div className={style.SelectImg}></div>
+              <div className={style.SelectImgs}>
+                <img
+                  src={Frame}
+                  alt="이미지선택"
+                  className={style.SelectImg}
+                ></img>
+                <img
+                  src={Frame}
+                  alt="이미지선택"
+                  className={style.SelectImg}
+                ></img>
+                <img
+                  src={Frame}
+                  alt="이미지선택"
+                  className={style.SelectImg}
+                ></img>
+              </div>
             </div>
           </div>
         </div>
