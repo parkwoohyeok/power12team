@@ -1,4 +1,5 @@
 import mockData from "../../assets/mock.json";
+import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
 import RelationshipTag from "../RelationshipTag/RelationshipTag";
 
 import styles from "./MessageCard.module.css";
@@ -10,7 +11,7 @@ const MessageCard = ({ message }) => {
   const CREATED_DATE = CREATED_AT.getDate();
 
   return (
-    <div className={styles.CardContainer}>
+    <MessageCardContainer>
       <div className={styles.SenderInfo}>
         <img className={styles.SenderProfile} src={message.profileImageURL} />
         <div className={styles.SenderText}>
@@ -26,7 +27,7 @@ const MessageCard = ({ message }) => {
       <p
         className={styles.CreatedAt}
       >{`${CREATED_YEAR}.${CREATED_MONTH}.${CREATED_DATE}`}</p>
-    </div>
+    </MessageCardContainer>
   );
 };
 
