@@ -13,8 +13,13 @@ const PostPageCard = () => {
       <div className={styles.SenderInfo}>
         <img className={styles.SenderProfile} src={mockData.profileImageURL} />
         <div className={styles.SenderText}>
-          <div className="CardSender">From. {mockData.sender}</div>
-          <div className="Relationship">{mockData.relationship}</div>
+          <div className={styles.CardSender}>
+            From.{" "}
+            <span className={styles.CardSenderName}>{mockData.sender}</span>
+          </div>
+          <div className={styles.RelationshipFamilly}>
+            {mockData.relationship}
+          </div>
         </div>
       </div>
       <div className={styles.DividingLine}></div>

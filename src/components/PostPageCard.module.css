@@ -12,12 +12,13 @@
 
 .SenderInfo {
   display: flex;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .SenderText {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .SenderProfile {
@@ -26,9 +27,25 @@
   border-radius: 9999px;
 }
 
+.CardSender {
+}
+
+.CardSenderName {
+  font-weight: 700;
+}
+
+.RelationshipFamilly {
+  background-color: var(--Green-10);
+  color: var(--Green-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
 .DividingLine {
   width: 100%;
-  border: 1px solid var(--Gray-20);
+  border-top: 1px solid var(--Gray-20);
   margin: 1.6rem 0;
 }
 
