@@ -1,4 +1,8 @@
 {
+        "env": {
+        "browser": true,
+        "node": true
+    },
   "root": true,
   "plugins": ["import", "prettier"],
   "extends": [
@@ -9,10 +13,11 @@
     "airbnb-base" , "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" , "useTabs": false }],
     "import/order": [
       "error",
       {
+        
         "groups": [
           "builtin",
           "external",
