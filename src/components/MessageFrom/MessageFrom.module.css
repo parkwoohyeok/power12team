@@ -110,3 +110,22 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.Bottom {
+  margin: 120px auto 10px auto;
+  width: 768px;
+  height: 104px;
+  display: flex;
+  justify-content: center;
+}
+
+.Button {
+  width: 720px;
+  height: 56px;
+  border-radius: 12px;
+  color: var(--Surface);
+  background-color: var(--Purple-60);
+  padding: 14px 24px;
+  font-size: 18px;
+  border: none;
+}

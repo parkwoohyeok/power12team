@@ -90,7 +90,9 @@ function MessageFrom() {
             ></Select>
           </div>
         </div>
-        <button className={style.Button}></button>
+        <div className={style.Bottom}>
+          <button className={style.Button}>생성하기</button>
+        </div>
       </div>
     </>
   );
