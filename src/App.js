@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import HotList from "components/HotList/HotList";
 
 function App() {

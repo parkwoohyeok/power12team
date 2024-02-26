@@ -6,9 +6,9 @@ import styles from "./TopReaction.module.css";
 
 const TopReactions = () => {
   return (
-    <div>
+    <div className={styles.ReactionContainer}>
       {data[0].topReactions.map((reaction) => (
-        <div key={reaction.id} className={styles.ReactionContainer}>
+        <div key={reaction.id} className={styles.Reaction}>
           {reaction.emoji} {reaction.count}
         </div>
       ))}
