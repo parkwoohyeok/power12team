@@ -1,9 +1,9 @@
 import mockData from "../../assets/mock.json";
 import RelationshipTag from "../RelationshipTag/RelationshipTag";
 
-import styles from "./PostPageCard.module.css";
+import styles from "./MessageCard.module.css";
 
-const PostPageCard = ({ message }) => {
+const MessageCard = ({ message }) => {
   const CREATED_AT = new Date(mockData.createdAt);
   const CREATED_YEAR = CREATED_AT.getFullYear();
   const CREATED_MONTH = CREATED_AT.getMonth();
@@ -30,4 +30,4 @@ const PostPageCard = ({ message }) => {
   );
 };
 
-export default PostPageCard;
+export default MessageCard;
