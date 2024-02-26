@@ -1,0 +1,42 @@
+* {
+  font-size: 1.6rem;
+}
+
+.CardContainer {
+  width: 38.4rem;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  padding: 3rem;
+  margin: 2.4rem;
+  border-radius: 1.6rem;
+}
+
+.SenderInfo {
+  display: flex;
+  gap: 1rem;
+}
+
+.SenderText {
+  display: flex;
+  flex-direction: column;
+}
+
+.SenderProfile {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+}
+
+.DividingLine {
+  width: 100%;
+  border: 1px solid var(--Gray-20);
+  margin: 1.6rem 0;
+}
+
+.CardContent {
+  height: 10.6rem;
+}
+
+.CreatedAt {
+  font-size: 1.2rem;
+  color: var(--Gray-40);
+}

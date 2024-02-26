@@ -7,10 +7,11 @@
     "plugin:import/warnings",
     "plugin:prettier/recommended",
     "airbnb-base",
-    "prettier",
-    "react-app"
+    "prettier"
   ],
   "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "arrow-body-style": ["error", "always"],
     "import/order": [
       "error",
       {
@@ -41,7 +42,6 @@
           "order": "asc"
         }
       }
-    ],
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    ]
   }
 }
