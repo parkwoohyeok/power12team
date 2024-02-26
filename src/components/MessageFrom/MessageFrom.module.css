@@ -30,9 +30,14 @@
   border-radius: 8px;
   border: 1px solid var(--Gray-30);
   padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--Gray-50);
 }
 
 .ProfileContainer {
+  width: 717px;
+  height: 142px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -70,5 +75,24 @@
 .SelectImg {
   width: 56px;
   height: 56px;
-  border: 1px solid --Gray-20;
+  border: 1px solid var(--Gray-20);
+  border-radius: 100%;
+}
+
+.RelationContainer {
+  width: 320px;
+  height: 98px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.SelectBox {
+  width: 320px;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.SelectBox:focus {
+  border-color: var(--Gray-20);
 }
