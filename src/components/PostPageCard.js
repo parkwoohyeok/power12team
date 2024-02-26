@@ -2,7 +2,7 @@ import mockData from "../assets/mock.json";
 
 import styles from "./PostPageCard.module.css";
 
-const PostPageCard = () => {
+const PostPageCard = ({ message }) => {
   const CREATED_AT = new Date(mockData.createdAt);
   const CREATED_YEAR = CREATED_AT.getFullYear();
   const CREATED_MONTH = CREATED_AT.getMonth();
@@ -11,19 +11,19 @@ const PostPageCard = () => {
   return (
     <div className={styles.CardContainer}>
       <div className={styles.SenderInfo}>
-        <img className={styles.SenderProfile} src={mockData.profileImageURL} />
+        <img className={styles.SenderProfile} src={message.profileImageURL} />
         <div className={styles.SenderText}>
           <div className={styles.CardSender}>
             From.{" "}
-            <span className={styles.CardSenderName}>{mockData.sender}</span>
+            <span className={styles.CardSenderName}>{message.sender}</span>
           </div>
           <div className={styles.RelationshipFamilly}>
-            {mockData.relationship}
+            {message.relationship}
           </div>
         </div>
       </div>
       <div className={styles.DividingLine}></div>
-      <div className={styles.CardContent}>{mockData.content}</div>
+      <div className={styles.CardContent}>{message.content}</div>
       <p
         className={styles.CreatedAt}
       >{`${CREATED_YEAR}.${CREATED_MONTH}.${CREATED_DATE}`}</p>

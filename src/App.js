@@ -1,9 +1,9 @@
-import PostPageCard from "./components/PostPageCard";
+import PostPageCardList from "./components/PostPageCardList";
 
 function App() {
   return (
     <div className="App">
-      <PostPageCard />
+      <PostPageCardList />
     </div>
   );
 }

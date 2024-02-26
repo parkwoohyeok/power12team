@@ -1,0 +1,37 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 4899,
+      "recipientId": 2697,
+      "sender": "놀란",
+      "profileImageURL": "https://picsum.photos/id/522/100/100",
+      "relationship": "동료",
+      "content": "이것은 동료다.이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.",
+      "font": "Noto Sans",
+      "createdAt": "2024-02-26T08:29:26.520416Z"
+    },
+    {
+      "id": 4898,
+      "recipientId": 2697,
+      "sender": "test1",
+      "profileImageURL": "https://picsum.photos/id/522/100/100",
+      "relationship": "지인",
+      "content": "이것은 배고파.이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.",
+      "font": "Noto Sans",
+      "createdAt": "2024-02-26T08:29:11.606971Z"
+    },
+    {
+      "id": 4897,
+      "recipientId": 2697,
+      "sender": "곰돌이푸",
+      "profileImageURL": "https://picsum.photos/id/522/100/100",
+      "relationship": "친구",
+      "content": "이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.이것은 테스트입니다.",
+      "font": "Noto Sans",
+      "createdAt": "2024-02-26T08:28:43.150557Z"
+    }
+  ]
+}
