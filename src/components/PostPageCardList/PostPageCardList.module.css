@@ -1,5 +1,6 @@
 .CardListBackground {
   background-color: var(--Orange-20);
+  padding: 0 2.4rem;
 }
 
 .CardListContainer {
