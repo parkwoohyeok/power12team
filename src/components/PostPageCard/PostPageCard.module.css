@@ -3,10 +3,10 @@
 }
 
 .CardContainer {
+  background-color: white;
   width: 38.4rem;
   box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
-  padding: 3rem;
-  margin: 2.4rem;
+  padding: 2.4rem;
   border-radius: 1.6rem;
 }
 
@@ -31,9 +31,36 @@
   font-weight: 700;
 }
 
-.RelationshipFamilly {
+.RelationshipFamily {
   background-color: var(--Green-10);
   color: var(--Green-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
+.RelationshipColleague {
+  background-color: var(--Purple-10);
+  color: var(--Purple-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
+.RelationshipFriend {
+  background-color: var(--Blue-10);
+  color: var(--Blue-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
+.RelationshipAcquaintance {
+  background-color: var(--Orange-10);
+  color: var(--Orange-50);
   height: 2rem;
   border-radius: 0.4rem;
   font-size: 1.4rem;
@@ -48,6 +75,7 @@
 
 .CardContent {
   height: 10.6rem;
+  overflow: hidden;
 }
 
 .CreatedAt {

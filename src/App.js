@@ -1,4 +1,4 @@
-import PostPageCardList from "./components/PostPageCardList";
+import PostPageCardList from "./components/PostPageCardList/PostPageCardList";
 
 function App() {
   return (

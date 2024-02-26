@@ -1,0 +1,12 @@
+.CardListBackground {
+  background-color: var(--Orange-20);
+}
+
+.CardListContainer {
+  padding-top: 10rem;
+  width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.8rem 2.4rem;
+}

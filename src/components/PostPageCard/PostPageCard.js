@@ -1,4 +1,4 @@
-import mockData from "../assets/mock.json";
+import mockData from "../../assets/mock.json";
 
 import styles from "./PostPageCard.module.css";
 
@@ -17,7 +17,7 @@ const PostPageCard = ({ message }) => {
             From.{" "}
             <span className={styles.CardSenderName}>{message.sender}</span>
           </div>
-          <div className={styles.RelationshipFamilly}>
+          <div className={styles.RelationshipFamily}>
             {message.relationship}
           </div>
         </div>
