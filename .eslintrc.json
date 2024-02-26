@@ -1,7 +1,6 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "import"],
+  "plugins": ["import", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -10,6 +9,7 @@
     "airbnb-base" , "prettier"
   ],
   "rules": {
+    "prettier/prettier": "error",
     "import/order": [
       "error",
       {
