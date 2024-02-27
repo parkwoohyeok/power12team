@@ -46,3 +46,6 @@
   line-height: 2.6rem; /* 162.5% */
   letter-spacing: -0.016rem;
 }
+
+@media (min-width: 35.7rem) and (max-width: 76.7rem) {
+}
