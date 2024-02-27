@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: flex-start;
 
-  color: var(--gray-900, #181818);
+  color: var(--Gray-90);
   font-family: Pretendard;
   font-size: 2.4rem;
   font-style: normal;
@@ -39,10 +39,10 @@
   align-items: center;
 
   border-radius: 0.8rem;
-  border: 0.1rem solid var(--gray-300, #ccc);
-  background: var(--white, #fff);
+  border: 0.1rem solid var(--Gray-30);
+  background: var(--white);
 
-  color: var(--gray-500, #555);
+  color: var(--Gray-50);
 
   /* Font/16 Regular */
   font-family: Pretendard;
@@ -61,7 +61,7 @@
 }
 
 .ChooseView {
-  color: var(--gray-900, #181818);
+  color: var(--Gray-90);
   /* Font/24 Bold */
   font-family: Pretendard;
   font-size: 2.4rem;
@@ -81,7 +81,7 @@
 }
 
 .ChooseColorImage {
-  color: var(--gray-500, #555);
+  color: var(--Gray-50);
 
   /* Font/16 Regular */
   font-family: Pretendard;
@@ -111,7 +111,7 @@
   align-items: center;
   gap: 1rem;
 
-  color: var(--gray-900, #181818);
+  color: var(--Gray-90);
   text-align: center;
 
   /* Font/16 Regular */
@@ -135,7 +135,7 @@
   height: 16.8rem;
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  background: var(--Orange-200, #ffe2ad);
+  background: var(--Orange-20);
 }
 
 .CreateButton {
@@ -148,9 +148,9 @@
   gap: 1rem;
 
   border-radius: 1.2rem;
-  background: var(--Purple-600, #9935ff);
+  background: var(--Purple-60);
 
-  color: var(--white, #fff);
+  color: var(--white);
   text-align: center;
 
   /* Font/18 Bold */
