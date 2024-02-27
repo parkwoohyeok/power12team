@@ -1,0 +1,131 @@
+@import url("../../styles/color.css");
+
+.BigContainer {
+  width: 720px;
+  height: 977px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 0 auto;
+}
+
+.NameContainer {
+  width: 720px;
+  height: 98px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Title {
+  height: 36px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Pretendard;
+}
+
+.NameInput {
+  width: 720px;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid var(--Gray-30);
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--Gray-50);
+}
+
+.ProfileContainer {
+  width: 717px;
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Content {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.DefaultProfile {
+  width: 80px;
+  height: 80px;
+}
+
+.SelectProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.SelectExplain {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Pretendard;
+  color: var(--Gray-50);
+}
+
+.SelectImgs {
+  display: flex;
+  gap: 4px;
+}
+
+.SelectImg {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--Gray-20);
+  border-radius: 100%;
+}
+
+.RelationContainer {
+  width: 320px;
+  height: 98px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.SelectBox {
+  width: 320px;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.SelectBox:focus {
+  border-color: var(--Gray-20);
+}
+
+.ContentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.FontContainer {
+  width: 320px;
+  height: 98px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Bottom {
+  margin: 120px auto 10px auto;
+  width: 768px;
+  height: 104px;
+  display: flex;
+  justify-content: center;
+}
+
+.Button {
+  width: 720px;
+  height: 56px;
+  border-radius: 12px;
+  color: var(--Surface);
+  background-color: var(--Purple-60);
+  padding: 14px 24px;
+  font-size: 18px;
+  border: none;
+}

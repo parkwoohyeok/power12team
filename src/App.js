@@ -4,11 +4,9 @@ import HotList from "components/HotList/HotList";
 import ListPage from "pages/ListPage/ListPage";
 
 function App() {
-  return (
-    <>
-      <ListPage />
-    </>
-  );
+  return;
+
+
 }
 
 export default App;
