@@ -1,0 +1,76 @@
+.Wrapper {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+}
+
+.CardTitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.CardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.CardInfo > h2 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.CardContainer {
+  width: 20rem;
+  border: 0.1rem solid black; /*배경색 프롭스로 설정 할 것*/
+  padding: 2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.CardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.HorizonLine {
+  height: 0.1rem;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.SlideBtn_R {
+  background-color: transparent;
+  position: absolute;
+  right: -4%;
+  top: 40%;
+}
+
+.SlideBtn_L {
+  background-color: transparent;
+  position: absolute;
+  transform: rotate(180deg);
+  left: -4%;
+  top: 40%;
+}
+
+.beige {
+  border: 0.1rem solid var(--Beige-30);
+  background-color: var(--Beige-20);
+}
+.purple {
+  border: 0.1rem solid var(--Purple-30);
+  background-color: var(--Purple-20);
+}
+.blue {
+  border: 0.1rem solid var(--Blue-30);
+  background-color: var(--Blue-20);
+}
+.green {
+  background-color: var(--Green-20);
+  border: 0.1rem solid var(--Green-30);
+}

@@ -1,14 +1,9 @@
 /* eslint-disable */
 import HotList from "components/HotList/HotList";
-import MessageSummary from "components/MessageSummary/MessageSummary";
+import ListPage from "pages/ListPage/ListPage";
 
 function App() {
-  return (
-    <>
-      <HotList />
-      <MessageSummary />
-    </>
-  );
+  return;
 }
 
 export default App;
