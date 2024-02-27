@@ -1,15 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import PostPage from "./components/PostPage/PostPage";
+/* eslint-disable */
+import HotList from "components/HotList/HotList";
+import ListPage from "pages/ListPage/ListPage";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PostPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return;
 }
 
 export default App;

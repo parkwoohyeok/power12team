@@ -1,0 +1,17 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 4rem;
+}
+
+.Wrapper .LinkBtn {
+  width: 28rem;
+  height: 5.6rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--Purple-60);
+  color: white;
+  align-items: center;
+}
