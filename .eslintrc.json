@@ -10,7 +10,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/warnings",
     "plugin:prettier/recommended",
-    "airbnb-base" , "prettier"
+    "airbnb-base",
+    "prettier"
   ],
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" , "useTabs": false }],

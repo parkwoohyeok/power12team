@@ -1,0 +1,161 @@
+.PostPageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.InputPost {
+  width: 72rem;
+  height: 10.4rem;
+  margin-top: 5.7rem;
+  margin-bottom: 5rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.InputPostText {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  color: var(--gray-900, #181818);
+  font-family: Pretendard;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 4.2rem; /* 175% */
+  letter-spacing: -0.024rem;
+}
+
+.InputPost input {
+  display: flex;
+  width: 72rem;
+  height: 5rem;
+  padding: 1.2rem 1.6rem;
+  align-items: center;
+
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--gray-300, #ccc);
+  background: var(--white, #fff);
+
+  color: var(--gray-500, #555);
+
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.016rem;
+}
+
+.Center {
+  width: 72rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ChooseView {
+  color: var(--gray-900, #181818);
+  /* Font/24 Bold */
+  font-family: Pretendard;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.6rem; /* 150% */
+  letter-spacing: -0.024rem;
+}
+
+.ChooseText {
+  width: 30.1rem;
+  height: 6.6rem;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ChooseColorImage {
+  color: var(--gray-500, #555);
+
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.016rem;
+}
+
+.ChooseOptionButton {
+  display: flex;
+  align-items: flex-start;
+  width: 24.4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  margin-top: 2.4rem;
+  margin-bottom: 4.5rem;
+}
+
+.ChooseButton {
+  display: flex;
+  width: 12.2rem;
+  height: 4rem;
+  padding: 0.7rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--gray-900, #181818);
+  text-align: center;
+
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.016rem;
+}
+
+.Colors {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-bottom: 4.5rem;
+}
+
+.Color {
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--Orange-200, #ffe2ad);
+}
+
+.CreateButton {
+  display: flex;
+  width: 72rem;
+  padding: 1.4rem 2.4rem;
+  margin: 2.4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  border-radius: 1.2rem;
+  background: var(--Purple-600, #9935ff);
+
+  color: var(--white, #fff);
+  text-align: center;
+
+  /* Font/18 Bold */
+  font-family: Pretendard;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.8rem; /* 155.556% */
+  letter-spacing: -0.018rem;
+}
