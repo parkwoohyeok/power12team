@@ -1,5 +1,15 @@
 @import url("../../../styles/color.css");
 
+.ChooseOptionButton {
+  display: flex;
+  align-items: flex-start;
+  width: 24.4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  margin-top: 2.4rem;
+  margin-bottom: 4.5rem;
+}
+
 .ChooseButton {
   display: flex;
   width: 12.2rem;
@@ -19,4 +29,19 @@
   font-weight: 400;
   line-height: 2.6rem; /* 162.5% */
   letter-spacing: -0.016rem;
+}
+
+.Colors {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-bottom: 4.5rem;
+}
+
+.Color {
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--Orange-20);
 }

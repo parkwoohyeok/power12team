@@ -6,53 +6,6 @@
   align-items: center;
 }
 
-.InputPost {
-  width: 72rem;
-  height: 10.4rem;
-  margin-top: 5.7rem;
-  margin-bottom: 5rem;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.2rem;
-}
-
-.InputPostText {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  color: var(--Gray-90);
-  font-family: Pretendard;
-  font-size: 2.4rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 4.2rem; /* 175% */
-  letter-spacing: -0.024rem;
-}
-
-.InputPost input {
-  display: flex;
-  width: 72rem;
-  height: 5rem;
-  padding: 1.2rem 1.6rem;
-  align-items: center;
-
-  border-radius: 0.8rem;
-  border: 0.1rem solid var(--Gray-30);
-  background: var(--white);
-
-  color: var(--Gray-50);
-
-  /* Font/16 Regular */
-  font-family: Pretendard;
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2.6rem; /* 162.5% */
-  letter-spacing: -0.016rem;
-}
-
 .Center {
   width: 72rem;
   display: flex;
@@ -90,31 +43,6 @@
   font-weight: 400;
   line-height: 2.6rem; /* 162.5% */
   letter-spacing: -0.016rem;
-}
-
-.ChooseOptionButton {
-  display: flex;
-  align-items: flex-start;
-  width: 24.4rem;
-  height: 4rem;
-  flex-shrink: 0;
-  margin-top: 2.4rem;
-  margin-bottom: 4.5rem;
-}
-
-.Colors {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 1.6rem;
-  margin-bottom: 4.5rem;
-}
-
-.Color {
-  width: 16.8rem;
-  height: 16.8rem;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: var(--Orange-20);
 }
 
 .CreateButton {
