@@ -1,19 +1,12 @@
-/* eslint-disabled */
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+/* eslint-disable */
 
-import MessageFrom from "./components/MessageFrom/MessageFrom";
+import HotList from "components/HotList/HotList";
+import ListPage from "pages/ListPage/ListPage";
 
 function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/post" element={<MessageFrom />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  return;
+
+
 }
 
 export default App;
