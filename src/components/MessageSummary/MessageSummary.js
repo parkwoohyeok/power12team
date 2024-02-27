@@ -1,7 +1,6 @@
-import data from "../../mock/mock.json";
-import RecentCount from "../RecentCount/RecentCount";
-
 import styles from "./MessageSummary.module.css";
+import RecentCount from "../RecentCount/RecentCount";
+import data from "../../mock/mock.json";
 
 const { messageCount, recentMessages } = data[0];
 

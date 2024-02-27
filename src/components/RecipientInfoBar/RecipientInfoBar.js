@@ -1,13 +1,13 @@
 /* eslint-disable */
-import MessageSummary from "components/MessageSummary/MessageSummary";
-import messageData from "mock/mock.json";
-import emojiData from "mock/emoji_mock.json";
 import styles from "./RecipientInfoBar.module.css";
-import { useState, useRef, useEffect } from "react";
-import TopReactions from "components/TopReactions/TopReactions";
 import CopyToClipboard from "react-copy-to-clipboard";
-import emojiListData from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
+import emojiListData from "@emoji-mart/data";
+import MessageSummary from "components/MessageSummary/MessageSummary";
+import TopReactions from "components/TopReactions/TopReactions";
+import emojiData from "mock/emoji_mock.json";
+import messageData from "mock/mock.json";
+import { useState, useRef, useEffect } from "react";
 
 const { name } = messageData[0];
 
