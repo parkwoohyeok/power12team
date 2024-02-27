@@ -5,8 +5,6 @@ import ListPage from "pages/ListPage/ListPage";
 
 function App() {
   return;
-
-
 }
 
 export default App;

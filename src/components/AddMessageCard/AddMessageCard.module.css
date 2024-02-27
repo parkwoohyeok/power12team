@@ -1,0 +1,16 @@
+.PlusButton {
+  width: 5.6rem;
+  border-radius: 9999px;
+  background-color: var(--Gray-50);
+}
+
+.AlignButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  img {
+    padding: 1.6rem;
+  }
+}
