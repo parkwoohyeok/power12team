@@ -14,7 +14,9 @@ const ListPage = () => {
         <RecentList />
       </div>
       <div>
-        <button className={styles.LinkBtn}>나도 만들어보기</button>
+        <button className={styles.LinkBtn}>
+          <h2>나도 만들어보기</h2>
+        </button>
       </div>
     </div>
   );

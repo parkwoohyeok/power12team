@@ -26,3 +26,5 @@ yarn-error.log*
 
 
 README.md
+/src/App.js
+.eslintrc.json
