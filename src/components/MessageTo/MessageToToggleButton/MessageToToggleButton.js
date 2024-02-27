@@ -3,22 +3,20 @@ import { useState } from "react";
 import styles from "./MessageToToggleButton.module.css";
 
 const MessageToToggleButton = () => {
-  const [color, setColor] = useState();
-  const [image, setImage] = useState();
+  const [toggle, setToggle] = useState(false);
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   return (
     <>
-      <div className={styles.ChooseOptionButton}>
+      <div className={styles.ToggleButton} onClick={handleToggle}>
         <button
-          className={styles.ChooseButton}
-          value={color}
-          setColor={setColor}
+          className={`${styles.ChooseButton} ${toggle ? styles.ToggleChecked : ""}`}
         >
           컬러
         </button>
         <button
-          className={styles.ChooseButton}
-          value={image}
-          setImage={setImage}
+          className={`${styles.ChooseButton} ${toggle ? "" : styles.ToggleChecked}`}
         >
           이미지
         </button>

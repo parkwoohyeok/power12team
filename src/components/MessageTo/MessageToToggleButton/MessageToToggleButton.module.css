@@ -1,6 +1,6 @@
 @import url("../../../styles/color.css");
 
-.ChooseOptionButton {
+.ToggleButton {
   display: flex;
   align-items: flex-start;
   width: 24.4rem;
@@ -8,6 +8,10 @@
   flex-shrink: 0;
   margin-top: 2.4rem;
   margin-bottom: 4.5rem;
+  border-radius: 6px;
+
+  color: var(--Gray-90);
+  text-align: center;
 }
 
 .ChooseButton {
@@ -18,9 +22,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
-  color: var(--Gray-90);
-  text-align: center;
+  border-radius: 6px;
 
   /* Font/16 Regular */
   font-family: Pretendard;
@@ -29,6 +31,29 @@
   font-weight: 400;
   line-height: 2.6rem; /* 162.5% */
   letter-spacing: -0.016rem;
+}
+
+.ToggleChecked {
+  display: flex;
+  padding: 7px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 6px;
+  border: 2px solid var(--Purple-60);
+  background: var(--white);
+
+  color: var(--Purple-70);
+  text-align: center;
+
+  /* Font/16 Bold */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px; /* 162.5% */
+  letter-spacing: -0.16px;
 }
 
 .Colors {
