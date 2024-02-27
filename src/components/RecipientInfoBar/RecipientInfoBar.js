@@ -6,24 +6,32 @@ import styles from "./RecipientInfoBar.module.css";
 import { useState, useRef, useEffect } from "react";
 import TopReactions from "components/TopReactions/TopReactions";
 import CopyToClipboard from "react-copy-to-clipboard";
+import emojiListData from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 const { name } = messageData[0];
 
 function RecipientInfoBar() {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
+  const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
 
   const shareRef = useRef();
   const emojiListRef = useRef();
+  const emojiAddRef = useRef();
   const currentUrl = window.location.href;
   const { results, count } = emojiData;
-
+  /**
+   * 카카오톡 공유하기 실행 함수
+   */
   const handleKakaoClick = () => {
     window.Kakao.Share.sendScrap({
       requestUrl: currentUrl,
     });
   };
-
+  /**
+   * 모달 외부 클릭 시 모달 창 닫힘
+   */
   useEffect(() => {
     const closeModal = (e) => {
       if (
@@ -40,13 +48,22 @@ function RecipientInfoBar() {
       ) {
         setIsEmojiListOpen(false);
       }
+      if (
+        isEmojiAddOpen &&
+        emojiAddRef.current &&
+        !emojiAddRef.current.contains(e.target)
+      ) {
+        setIsEmojiAddOpen(false);
+      }
     };
     document.addEventListener("mousedown", closeModal);
     return () => {
       document.removeEventListener("mousedown", closeModal);
     };
-  }, [isShareModalOpen, isEmojiListOpen]);
-
+  }, [isShareModalOpen, isEmojiListOpen, isEmojiAddOpen]);
+  /**
+   * 모달 열림 여부에 따른 버튼 스타일 조정
+   */
   const Button = isShareModalOpen
     ? `${styles.Button} ${styles.ModalOpen}`
     : styles.Button;
@@ -79,7 +96,10 @@ function RecipientInfoBar() {
                 )}
               </>
             )}
-            <button className={styles.Button}>
+            <button
+              className={styles.Button}
+              onClick={() => setIsEmojiAddOpen(true)}
+            >
               <img
                 src="/src/assets/add-emoji.svg"
                 alt="add reaction"
@@ -87,6 +107,17 @@ function RecipientInfoBar() {
               />
               추가
             </button>
+            {isEmojiAddOpen && (
+              <div className={styles.EmojiPicker} ref={emojiAddRef}>
+                <Picker
+                  data={emojiListData}
+                  onEmojiSelect={(e) => {
+                    alert(e.native);
+                    setIsEmojiAddOpen(false);
+                  }}
+                />
+              </div>
+            )}
             <button
               className={Button}
               onClick={() => {
