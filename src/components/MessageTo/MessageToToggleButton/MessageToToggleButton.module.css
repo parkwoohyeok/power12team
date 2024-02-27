@@ -68,5 +68,34 @@
   height: 16.8rem;
   border-radius: 16px;
   border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.Orange {
   background: var(--Orange-20);
+}
+
+.Purple {
+  background: var(--Purple-20);
+}
+
+.Blue {
+  background: var(--Blue-20);
+}
+
+.Green {
+  background: var(--Green-20);
+}
+
+.Photos {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-bottom: 4.5rem;
+}
+
+.Photo {
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }

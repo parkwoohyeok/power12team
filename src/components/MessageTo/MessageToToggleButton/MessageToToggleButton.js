@@ -1,9 +1,13 @@
 import { useState } from "react";
 
+/* eslint-disable */
+import car from "assets/car.png";
+import cliff from "assets/cliff.png";
+
 import styles from "./MessageToToggleButton.module.css";
 
 const MessageToToggleButton = () => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -21,12 +25,21 @@ const MessageToToggleButton = () => {
           이미지
         </button>
       </div>
-      <div className={styles.Colors}>
-        <div className={styles.Color}></div>
-        <div className={styles.Color}></div>
-        <div className={styles.Color}></div>
-        <div className={styles.Color}></div>
-      </div>
+      {toggle === true ? (
+        <div className={styles.Colors}>
+          <div className={`${styles.Color} ${styles.Orange}`}></div>
+          <div className={`${styles.Color} ${styles.Purple}`}></div>
+          <div className={`${styles.Color} ${styles.Blue}`}></div>
+          <div className={`${styles.Color} ${styles.Green}`}></div>
+        </div>
+      ) : (
+        <div className={styles.Photos}>
+          <img className={styles.Photo} src={cliff} />
+          <img className={styles.Photo} src={car} />
+          <img className={styles.Photo} src={cliff} />
+          <img className={styles.Photo} src={car} />
+        </div>
+      )}
     </>
   );
 };
