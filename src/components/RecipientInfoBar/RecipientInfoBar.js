@@ -8,29 +8,29 @@ const { name } = data[0];
 
 function RecipientInfoBar() {
   return (
-    <div className={styles["RecipientInfoBar-wrapper"]}>
+    <div className={styles.RecipientInfoBarWrapper}>
       <div className={styles.RecipientInfoBar}>
-        <div className={styles.name}>To. {name}</div>
-        <div className={styles["Info-wrapper"]}>
+        <div className={styles.Name}>To. {name}</div>
+        <div className={styles.InfoWrapper}>
           <MessageSummary />
-          <div className={styles["rest-wrapper"]}>
+          <div className={styles.RestWrapper}>
             <HotList />
             <button>
               <img src="/src/assets/arrow_down.svg" alt="more emoji" />
             </button>
-            <button className={styles.button}>
+            <button className={styles.Button}>
               <img
                 src="/src/assets/add-emoji.svg"
                 alt="add reaction"
-                className={styles["button-icon"]}
+                className={styles.ButtonIcon}
               />
               추가
             </button>
-            <button className={styles.button}>
+            <button className={styles.Button}>
               <img
                 src="/src/assets/share.svg"
                 alt="share icon"
-                className={styles["button-icon"]}
+                className={styles.ButtonIcon}
               />
             </button>
           </div>

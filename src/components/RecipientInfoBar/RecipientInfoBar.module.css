@@ -1,4 +1,4 @@
-.RecipientInfoBar-wrapper {
+.RecipientInfoBarWrapper {
   padding: 1.3rem 2.4rem;
 }
 
@@ -11,32 +11,32 @@
   margin: auto;
 }
 
-.Info-wrapper {
+.InfoWrapper {
   display: flex;
   gap: 2.8rem;
 }
 
-.name {
+.Name {
   font-size: 2.8rem;
 }
 
-.rest-wrapper {
+.RestWrapper {
   display: flex;
   gap: 0.5rem;
 }
 
-.button {
+.Button {
   border: 1px solid var(--Gray-20);
   border-radius: 6px;
   padding: 0.6rem 1.6rem;
   background-color: var(--surface);
 }
 
-.button-icon {
+.ButtonIcon {
   width: 2.4rem;
   height: 2.4rem;
 }
 
-.button:hover {
+.Button:hover {
   background-color: var(--Gray-30);
 }
