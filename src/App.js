@@ -1,11 +1,10 @@
-import MessageCardList from "./components/MessageCardList/MessageCardList";
+/* eslint-disable */
+
+import HotList from "components/HotList/HotList";
+import ListPage from "pages/ListPage/ListPage";
 
 function App() {
-  return (
-    <div className="App">
-      <MessageCardList />
-    </div>
-  );
+  return;
 }
 
 export default App;
