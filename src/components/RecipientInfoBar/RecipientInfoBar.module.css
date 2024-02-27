@@ -1,9 +1,14 @@
+.RecipientInfoBar-wrapper {
+  padding: 1.3rem 2.4rem;
+}
+
 .RecipientInfoBar {
   width: 100%;
   max-width: 120rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: auto;
 }
 
 .Info-wrapper {
@@ -13,6 +18,11 @@
 
 .name {
   font-size: 2.8rem;
+}
+
+.rest-wrapper {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .button {
@@ -25,4 +35,8 @@
 .button-icon {
   width: 2.4rem;
   height: 2.4rem;
+}
+
+.button:hover {
+  background-color: var(--Gray-30);
 }

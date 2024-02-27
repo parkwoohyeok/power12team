@@ -1,12 +1,10 @@
 /* eslint-disable */
-import HotList from "components/HotList/HotList";
-import MessageSummary from "components/MessageSummary/MessageSummary";
+import RecipientInfoBar from "components/RecipientInfoBar/RecipientInfoBar";
 
 function App() {
   return (
     <>
-      <HotList />
-      <MessageSummary />
+      <RecipientInfoBar />
     </>
   );
 }
