@@ -23,6 +23,7 @@
 .RestWrapper {
   display: flex;
   gap: 0.5rem;
+  position: relative;
 }
 
 .Button {
@@ -38,5 +39,26 @@
 }
 
 .Button:hover {
-  background-color: var(--Gray-30);
+  background-color: var(--Gray-20);
+}
+
+.ShareModal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-radius: 8px;
+  border: 0.1rem solid var(--Gray-20);
+  right: 0;
+  top: 5rem;
+  background-color: white;
+}
+
+.ShareButton {
+  padding: 1.2rem 1.6rem;
+  background-color: white;
+}
+
+.ShareButton:hover {
+  background-color: var(--Gray-20);
 }

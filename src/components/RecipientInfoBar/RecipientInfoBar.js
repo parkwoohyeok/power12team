@@ -1,12 +1,19 @@
 /* eslint-disable */
-import HotList from "components/HotList/HotList";
 import MessageSummary from "components/MessageSummary/MessageSummary";
 import data from "mock/mock.json";
 import styles from "./RecipientInfoBar.module.css";
+import { useState } from "react";
+import TopReactions from "components/TopReactions/TopReactions";
 
 const { name } = data[0];
 
 function RecipientInfoBar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className={styles.RecipientInfoBarWrapper}>
       <div className={styles.RecipientInfoBar}>
@@ -14,7 +21,7 @@ function RecipientInfoBar() {
         <div className={styles.InfoWrapper}>
           <MessageSummary />
           <div className={styles.RestWrapper}>
-            <HotList />
+            <TopReactions />
             <button>
               <img src="/src/assets/arrow_down.svg" alt="more emoji" />
             </button>
@@ -26,13 +33,19 @@ function RecipientInfoBar() {
               />
               추가
             </button>
-            <button className={styles.Button}>
+            <button className={styles.Button} onClick={handleModalClick}>
               <img
                 src="/src/assets/share.svg"
                 alt="share icon"
                 className={styles.ButtonIcon}
               />
             </button>
+            {isModalOpen && (
+              <div className={styles.ShareModal}>
+                <button className={styles.ShareButton}>카카오톡 공유</button>
+                <button className={styles.ShareButton}>URL 공유</button>
+              </div>
+            )}
           </div>
         </div>
       </div>
