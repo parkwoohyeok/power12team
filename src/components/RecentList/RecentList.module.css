@@ -5,8 +5,8 @@
 }
 
 .CardTitle {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 2rem;
   font-weight: bold;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .CardInfo > h2 {
-  font-size: 17px;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 
@@ -29,6 +29,10 @@
   display: flex;
   flex-direction: column;
   gap: 4rem;
+}
+
+.CardContainer > p {
+  font-size: 1rem;
 }
 
 .CardFooter {
@@ -58,9 +62,13 @@
   top: 40%;
 }
 
+.EndOfPage {
+  display: none;
+}
+
 .beige {
-  border: 0.1rem solid var(--Beige-30);
-  background-color: var(--Beige-20);
+  border: 0.1rem solid var(--Orange-30);
+  background-color: var(--Orange-20);
 }
 .purple {
   border: 0.1rem solid var(--Purple-30);
@@ -73,4 +81,36 @@
 .green {
   background-color: var(--Green-20);
   border: 0.1rem solid var(--Green-30);
+}
+
+@keyframes slide-R {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-80%);
+  }
+}
+
+@keyframes slide-L {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(80%);
+  }
+}
+
+.CardContainer {
+  transition: transform 0.2s ease;
+}
+
+.slide-out-R {
+  animation: slide-R 0.2s ease forwards;
+  opacity: 0.4;
+}
+
+.slide-out-L {
+  animation: slide-L 0.2s ease forwards;
+  opacity: 0.4;
 }

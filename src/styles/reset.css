@@ -1,4 +1,6 @@
 /* reset */
+@import url("https://fonts.googleapis.com/css2?family=Dongle&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&family=Sunflower:wght@300&display=swap");
+
 * {
   margin: initial;
   padding: initial;
@@ -7,6 +9,7 @@
 
 html {
   font-size: 62.5%;
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
 a {
