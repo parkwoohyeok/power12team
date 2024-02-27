@@ -109,6 +109,15 @@
       "content": "항상 응원합니다",
       "font": "Noto Sans",
       "createdAt": "2023-11-01T08:04:12.852691Z"
+    },{
+      "id": 31,
+      "recipientId": 2,
+      "sender": "이영준",
+      "profileImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
+      "relationship": "지인",
+      "content": "항상 응원합니다",
+      "font": "Noto Sans",
+      "createdAt": "2023-11-01T08:04:12.852691Z"
     }
   ],
   "reactionCount": 48,
@@ -127,8 +136,8 @@
 },{
   "id": 2,
   "name": "강영훈",
-  "backgroundColor": "purple",
-  "backgroundImageURL": null,
+  "backgroundColor": "null",
+  "backgroundImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
   "createdAt": "2023-10-29T13:19:31.401765Z",
   "messageCount": 3,
   "recentMessages": [
@@ -170,8 +179,8 @@
 {
   "id": 2,
   "name": "강영훈",
-  "backgroundColor": "green",
-  "backgroundImageURL": null,
+  "backgroundColor": "null",
+  "backgroundImageURL": "https://fastly.picsum.photos/id/311/200/200.jpg?hmac=CHiYGYQ3Xpesshw5eYWH7U0Kyl9zMTZLQuRDU4OtyH8",
   "createdAt": "2023-10-26T13:19:31.401765Z",
   "messageCount": 3,
   "recentMessages": [

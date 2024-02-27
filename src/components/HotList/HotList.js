@@ -8,7 +8,8 @@ import data from "mock/mock.json";
 
 import arrow from "assets/arrow.png";
 
-import MessageSummary from "components/MessageSummary/MessageSummary";
+import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
+
 import { useState } from "react";
 
 function HotList() {
@@ -44,9 +45,20 @@ function HotList() {
       <div layout className={styles.Wrapper}>
         {HotCards.map((info) => (
           <div
+            style={
+              info.backgroundImageURL
+                ? {
+                    backgroundImage: `url(${info.backgroundImageURL})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    color: "white",
+                  }
+                : {}
+            }
             key={info.id}
-            className={`${styles["CardContainer"]} ${styles[info.backgroundColor]} ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
+            className={`${styles["CardContainer"]} ${info.backgroundColor ? styles[info.backgroundColor] : ""}  ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
           >
+            {console.log(info.backgroundImageURL)}
             <div className={styles["CardInfo"]}>
               <h2>{`To.${info.name}`}</h2>
               <MessageSummary />
