@@ -12,19 +12,43 @@ function MessageFrom() {
   const [text, setText] = useState("");
   const [name, setName] = useState(""); // 사용자가 입력한 이름 값 저장
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
+  const [profileImage, setProfileImage] = useState(null); // 사용자가 선택한 프로필 이미지 저장
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-    if (e.target.value !== "") {
-      setInputError("");
-    } else {
-      setInputError("값을 입력해 주세요.");
+    setInputError(e.target.value ? "" : "값을 입력해 주세요.");
+  };
+
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setProfileImage(URL.createObjectURL(e.target.files[0]));
     }
   };
 
+  const customStyles = {
+    control: (base) => ({
+      ...base,
+      height: "50px", // 컨트롤의 높이 설정
+      minHeight: "50px", // 최소 높이 설정
+      fontSize: "16px",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      fontSize: "16px", // 폰트 사이즈 설정
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      fontSize: "16px", // 플레이스홀더의 폰트 사이즈 설정
+    }),
+    option: (provided) => ({
+      ...provided,
+      fontSize: "16px", // 드롭다운 옵션의 폰트 사이즈 설정
+    }),
+  };
+
   const options = [
-    { value: "친구", label: "친구" },
     { value: "지인", label: "지인" },
+    { value: "친구", label: "친구" },
     { value: "동료", label: "동료" },
     { value: "가족", label: "가족" },
   ];
@@ -34,6 +58,10 @@ function MessageFrom() {
     { value: "Pretendard", label: "Pretendard" },
   ];
 
+  const defaultFontValue = fonts.find((font) => font.value === "Noto Sans");
+  const defaultRelationValue = options.find(
+    (option) => option.value === "지인",
+  );
   return (
     <>
       <div className={styles.ParentContainer}>
@@ -55,8 +83,11 @@ function MessageFrom() {
             <div className={styles.Content}>
               <img
                 className={styles.DefaultProfile}
-                src={Frame}
+                src={profileImage || Frame}
                 alt="기본프로필"
+                type="file"
+                onChange={handleImageChange}
+                accept="image/*"
               ></img>
               <div className={styles.SelectProfile}>
                 <div className={styles.SelectExplain}>
@@ -88,6 +119,8 @@ function MessageFrom() {
               placeholder="상대와의 관계를 선택해주세요."
               options={options}
               className={styles.SelectBox}
+              styles={customStyles}
+              defaultValue={defaultRelationValue}
             ></Select>
           </div>
           <div className={styles.ContentContainer}>
@@ -104,6 +137,8 @@ function MessageFrom() {
               options={fonts}
               className={styles.FontSelectBox}
               placeholder="사용할 폰트를 선택해주세요."
+              styles={customStyles}
+              defaultValue={defaultFontValue}
             ></Select>
           </div>
         </div>
