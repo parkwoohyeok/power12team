@@ -34,17 +34,14 @@ function RecipientInfoBar() {
     const result = await postEmoji(emojiData);
     if (result) alert(`${emoji} 전송 성공!`);
   };
-
+  /**
+   * 이모지 정보 로딩함수
+   */
   const emojiGet = async () => {
     const response = await getEmoji();
     setEmojiData(response);
     console.log(response);
   };
-
-  useEffect(() => {
-    emojiGet();
-  }, []);
-
   /**
    * 카카오톡 공유하기 실행 함수
    */
@@ -53,6 +50,12 @@ function RecipientInfoBar() {
       requestUrl: currentUrl,
     });
   };
+  /**
+   * 이모지 정보 로딩
+   */
+  useEffect(() => {
+    emojiGet();
+  }, []);
   /**
    * 모달 외부 클릭 시 모달 창 닫힘
    */
@@ -85,7 +88,10 @@ function RecipientInfoBar() {
       document.removeEventListener("mousedown", closeModal);
     };
   }, [isShareModalOpen, isEmojiListOpen, isEmojiAddOpen]);
-
+  /**
+   * 이모지 등록 핸들 함수
+   * @param {*} e
+   */
   const handleEmojiClick = async (e) => {
     setIsEmojiAddOpen(false);
     await emojiPost(e.native);
