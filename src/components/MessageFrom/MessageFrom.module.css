@@ -113,10 +113,11 @@
 
 .Bottom {
   margin: 0 auto;
-  width: 768px;
+  width: 100%;
   height: 104px;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 100px auto;
 }
 
@@ -135,4 +136,29 @@
   font-size: 14px;
   color: var(--Error);
   margin-left: 16px;
+}
+
+@media (max-width: 1199px) {
+  .BigContainer {
+    width: 720px;
+  }
+  .Button {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .BigContainer {
+    width: 320px;
+  }
+  .Button {
+    width: 320px;
+    margin: auto;
+  }
+  .NameInput {
+    width: 320px;
+  }
+  .SelectExplain {
+    font-size: 15px;
+  }
 }
