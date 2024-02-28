@@ -4,33 +4,81 @@ import Select from "react-select";
 import { Editor } from "primereact/editor";
 
 import Frame from "../../assets/Frame.png";
+import sendMessageData from "../Api/MessageFromPageApi";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
 import styles from "./MessageFrom.module.css";
 
 function MessageFrom() {
-  const [text, setText] = useState(""); // 사용자가 입력한 메시지 값 저장
-  const [name, setName] = useState(""); // 사용자가 입력한 이름 값 저장
+  const [content, setContent] = useState(""); // 사용자가 입력한 메시지 값 저장
+  const [sender, setSender] = useState(""); // 사용자가 입력한 이름 값 저장
+  const [relationship, setRelationship] = useState("지인");
+  const [font, setFont] = useState(); // 사용자가 선택한 프로필 이미지 저장
+  const [profileImageURL, setProfileImageURL] = useState(Frame);
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
-  const [profileImage, setProfileImage] = useState(null); // 사용자가 선택한 프로필 이미지 저장
 
   // 생성하기 버튼 활성화 조건 검사 함수
-  const isButtonEnabled = name?.trim() !== "" && text?.trim() !== "";
+  const isButtonEnabled = sender.trim() !== "" && content.trim() !== "";
+  const recipientPath = window.location.pathname.split("/post")[1];
+  const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
+  const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
+  console.log(recipientId);
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    setSender(e.target.value);
     setInputError(e.target.value ? "" : "값을 입력해 주세요.");
   };
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      setProfileImage(URL.createObjectURL(e.target.files[0]));
+      const imageURL = URL.createObjectURL(e.target.files[0]);
+      setProfileImageURL(imageURL);
+    }
+  };
+
+  const handleRelationshipChange = (selectedOption) => {
+    setRelationship(selectedOption.value);
+  };
+
+  const handleFontChange = (selectedOption) => {
+    setFont(selectedOption);
+  };
+
+  const handleTextChange = (e) => {
+    const textWithoutHtml = e.htmlValue.replace(/<[^>]*>?/gm, "");
+    setContent(textWithoutHtml);
+  };
+
+  const fonts = [
+    { value: "Noto Sans", label: "Noto Sans" },
+    { value: "Pretendard", label: "Pretendard" },
+  ];
+
+  const fontValue = font ? font.value : "Noto Sans"; // font가 undefined일 경우 기본값으로 "Noto Sans" 사용
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // 폼 제출 시 리로드 방지
+
+    const messageData = {
+      team: "4-12",
+      sender,
+      relationship: relationship || "지인",
+      content,
+      font: fontValue || "Noto Sans",
+      profileImageURL,
+    };
+
+    try {
+      const responseData = await sendMessageData(recipientId, messageData);
+      console.log("Server response:", responseData);
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
   useEffect(() => {
     console.log(`버튼 활성화 상태: ${isButtonEnabled}`);
-  }, [name, text]);
+  }, [sender, content]);
 
   const customStyles = {
     control: (base) => ({
@@ -60,26 +108,21 @@ function MessageFrom() {
     { value: "가족", label: "가족" },
   ];
 
-  const fonts = [
-    { value: "Noto Sans", label: "Noto Sans" },
-    { value: "Pretendard", label: "Pretendard" },
-  ];
-
-  const defaultFontValue = fonts.find((font) => font.value === "Noto Sans");
+  const defaultFontValue = fonts.find((fnt) => fnt.value === "Noto Sans");
   const defaultRelationValue = options.find(
     (option) => option.value === "지인",
   );
 
   return (
     <>
-      <div className={styles.ParentContainer}>
+      <form onSubmit={handleSubmit} className={styles.ParentContainer}>
         <div className={styles.BigContainer}>
           <div className={styles.NameContainer}>
             <div className={styles.Title}>From.</div>
             <input
               className={styles.NameInput}
               placeholder="이름을 입력해 주세요."
-              value={name}
+              value={sender}
               onChange={handleNameChange}
             />
             {inputError && (
@@ -91,7 +134,7 @@ function MessageFrom() {
             <div className={styles.Content}>
               <img
                 className={styles.DefaultProfile}
-                src={profileImage || Frame}
+                src={profileImageURL || Frame}
                 alt="기본프로필"
                 type="file"
                 onChange={handleImageChange}
@@ -129,13 +172,14 @@ function MessageFrom() {
               className={styles.SelectBox}
               styles={customStyles}
               defaultValue={defaultRelationValue}
+              onChange={handleRelationshipChange}
             ></Select>
           </div>
           <div className={styles.ContentContainer}>
             <div className={styles.Title}>내용을 입력해 주세요</div>
             <Editor
-              value={text}
-              onTextChange={(e) => setText(e.value)}
+              value={content}
+              onTextChange={handleTextChange}
               style={{ height: "320px", overflow: "auto" }}
             />
           </div>
@@ -147,15 +191,20 @@ function MessageFrom() {
               placeholder="사용할 폰트를 선택해주세요."
               styles={customStyles}
               defaultValue={defaultFontValue}
+              onChange={handleFontChange}
             ></Select>
           </div>
         </div>
         <div className={styles.Bottom}>
-          <button className={styles.Button} disabled={!isButtonEnabled}>
+          <button
+            type="submit"
+            className={styles.Button}
+            disabled={!isButtonEnabled}
+          >
             생성하기
           </button>
         </div>
-      </div>
+      </form>
     </>
   );
 }
