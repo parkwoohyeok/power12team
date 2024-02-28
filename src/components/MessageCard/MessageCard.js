@@ -11,7 +11,9 @@ const MessageCard = ({ message, isEditing }) => {
   const [messageCardModalOpen, setMessageCardModalOpen] = useState(false);
 
   const handleClick = () => {
-    setMessageCardModalOpen(true);
+    if (!isEditing) {
+      setMessageCardModalOpen(true);
+    }
   };
 
   return (

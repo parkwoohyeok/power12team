@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   cursor: auto;
+  z-index: 1;
 }
 
 .MessageModalBox {
