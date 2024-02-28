@@ -17,7 +17,13 @@ const MessageCardList = () => {
   const mock = mockData.results;
   const [offset, setOffset] = useState(11);
   const [list, setList] = useState(mock.slice(0, offset));
+  const [isEditing, setIsEditing] = useState(false);
+
   const SENTINEL = useRef();
+
+  const handleClickOnEdit = () => {
+    setIsEditing(true);
+  };
 
   useEffect(() => {
     const handleIntersection = (entries) => {
@@ -46,12 +52,21 @@ const MessageCardList = () => {
   return (
     <div className={styles.CardListBackground}>
       <div className={styles.CardListPadding}>
-        <button className={styles.CardListEditButton}>편집하기</button>
+        <button
+          className={styles.CardListEditButton}
+          onClick={handleClickOnEdit}
+        >
+          편집하기
+        </button>
       </div>
       <div className={styles.CardListContainer}>
-        <AddMessageCard />
+        {isEditing || <AddMessageCard />}
         {list.map((message) => (
-          <MessageCard key={message.id} message={message} />
+          <MessageCard
+            key={message.id}
+            message={message}
+            isEditing={isEditing}
+          />
         ))}
       </div>
       <div ref={SENTINEL} className={styles.LoadMore}></div>
