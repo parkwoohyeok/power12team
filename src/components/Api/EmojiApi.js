@@ -3,13 +3,13 @@ export const postEmoji = async (data) => {
     const response = await fetch(
       `https://rolling-api.vercel.app/4-12/recipients/2821/reactions/`,
       {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        credentials: "same-origin", // include, *same-origin, omit
+        method: "POST",
+        credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
         },
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
       },
     );
     if (!response.ok) {
@@ -29,17 +29,17 @@ export const getEmoji = async () => {
     const response = await fetch(
       `https://rolling-api.vercel.app/4-12/recipients/2821/reactions/?limit=8`,
       {
-        method: "GET", // *GET, POST, PUT, DELETE, etc.
-        credentials: "same-origin", // include, *same-origin, omit
+        method: "GET",
+        credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
         },
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(), // body data type must match "Content-Type" header
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(),
       },
     );
     if (!response.ok) {
-      throw new Error(`불러오는데 실패했습니다`);
+      throw new Error(`이모지 정보를 불러오는데 실패했습니다`);
     }
 
     const result = await response.json();

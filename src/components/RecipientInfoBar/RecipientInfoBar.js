@@ -30,24 +30,15 @@ function RecipientInfoBar() {
    * @param {string} 입력 이모지
    */
   const emojiPost = async (emoji) => {
-    try {
-      const emojiData = { emoji: `${emoji}`, type: "increase" };
-      const result = await postEmoji(emojiData);
-      if (result) alert(`${emoji} 전송 성공!`);
-    } catch (error) {
-      console.error("이모지 전송 실패:", error.message);
-      throw new error();
-    }
+    const emojiData = { emoji: `${emoji}`, type: "increase" };
+    const result = await postEmoji(emojiData);
+    if (result) alert(`${emoji} 전송 성공!`);
   };
 
   const emojiGet = async () => {
-    try {
-      const response = await getEmoji();
-      setEmojiData(response);
-      console.log(response);
-    } catch (error) {
-      alert(error);
-    }
+    const response = await getEmoji();
+    setEmojiData(response);
+    console.log(response);
   };
 
   useEffect(() => {
