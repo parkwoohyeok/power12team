@@ -8,10 +8,11 @@ import data from "mock/mock.json";
 
 import arrow from "assets/arrow.png";
 import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const RecentList = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(4);
   const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
   const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
 
@@ -21,11 +22,18 @@ const RecentList = () => {
     return timeB - timeA;
   });
 
-  const CARDS_PER_PAGE = 4;
-  const totalPages = Math.ceil(data.length / CARDS_PER_PAGE);
-  const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
-  const endIndex = Math.min(startIndex + CARDS_PER_PAGE, data.length);
+  const totalPages = Math.ceil(data.length / cardsPerPage);
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = Math.min(startIndex + cardsPerPage, data.length);
   const currentCards = sortedData.slice(startIndex, endIndex);
+
+  const updateCardsPerPage = () => {
+    if (window.innerWidth <= 949) {
+      setCardsPerPage(sortedData.length);
+    } else {
+      setCardsPerPage(4);
+    }
+  };
 
   const nextPage = () => {
     setCardSlidingToRight(true);
@@ -42,6 +50,15 @@ const RecentList = () => {
       setCardSlidingToLeft(false);
     }, 200);
   };
+
+  useEffect(() => {
+    updateCardsPerPage();
+
+    window.addEventListener("resize", updateCardsPerPage);
+    return () => {
+      window.removeEventListener("resize", updateCardsPerPage);
+    };
+  }, []);
 
   return (
     <>

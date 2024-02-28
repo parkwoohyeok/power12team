@@ -126,3 +126,29 @@
   animation: slide-L 0.2s ease forwards;
   opacity: 0.4;
 }
+
+@media (max-width: 949px) {
+  .Wrapper {
+    gap: 1rem;
+    max-width: 80rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
+  .SlideBtn_R {
+    display: none;
+  }
+  .SlideBtn_L {
+    display: none;
+  }
+
+  .CardContainer {
+    gap: 3rem;
+    flex-shrink: 0;
+  }
+}
+
+.Wrapper::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
