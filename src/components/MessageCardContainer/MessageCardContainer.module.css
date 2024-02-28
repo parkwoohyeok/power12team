@@ -1,9 +1,9 @@
 .CardContainer {
   background-color: white;
-  width: 31%;
+  width: 31.9%;
 
   @media (max-width: 1199px) {
-    width: 48%;
+    width: 48.3%;
   }
   @media (max-width: 767px) {
     width: 100%;
