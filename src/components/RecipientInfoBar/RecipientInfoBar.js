@@ -4,13 +4,13 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
 import MessageSummary from "components/MessageSummary/MessageSummary";
-import TopReactions from "components/TopReactions/TopReactions";
 import messageData from "mock/mock.json";
 import { useState, useRef, useEffect } from "react";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import { postEmoji, getEmoji } from "components/Api/EmojiApi";
+import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
 
 const { name } = messageData[0];
 
@@ -106,6 +106,8 @@ function RecipientInfoBar() {
   const EmojiButton = isEmojiAddOpen
     ? `${styles.Button} ${styles.ModalOpen}`
     : styles.Button;
+  const emojiListTop3 = results?.slice(0, 3);
+  const emojiListRest = results?.slice(3);
 
   return (
     <div className={styles.RecipientInfoBarWrapper}>
@@ -114,12 +116,12 @@ function RecipientInfoBar() {
         <div className={styles.InfoWrapper}>
           <MessageSummary />
           <div className={styles.RestWrapper}>
-            <TopReactions />
+            <TopReactionsModified mapData={emojiListTop3} />
             {count - 3 && (
               <>
                 <button
                   onClick={() => {
-                    setIsEmojiListOpen(true);
+                    setIsEmojiListOpen(!isEmojiListOpen);
                   }}
                   className={styles.MoreEmojiButton}
                 >
@@ -127,7 +129,7 @@ function RecipientInfoBar() {
                 </button>
                 {isEmojiListOpen && (
                   <div className={styles.EmojiListModal} ref={emojiListRef}>
-                    {results?.map((reaction) => (
+                    {emojiListRest?.map((reaction) => (
                       <div key={reaction.id} className={styles.Reaction}>
                         {reaction.emoji} {reaction.count}
                       </div>
