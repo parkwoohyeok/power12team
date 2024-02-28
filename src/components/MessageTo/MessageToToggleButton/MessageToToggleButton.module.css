@@ -1,0 +1,146 @@
+@import url("../../../styles/color.css");
+
+.ToggleButton {
+  display: flex;
+  align-items: flex-start;
+  width: 24.4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  margin-top: 2.4rem;
+  margin-bottom: 4.5rem;
+  border-radius: 0.6rem;
+
+  color: var(--Gray-90);
+  text-align: center;
+}
+
+.ChooseButton {
+  display: flex;
+  width: 12.2rem;
+  height: 4rem;
+  padding: 0.7rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.6rem;
+
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.016rem;
+}
+
+.ToggleChecked {
+  display: flex;
+  padding: 0.7rem 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  border-radius: 0.6rem;
+  border: 0.2rem solid var(--Purple-60);
+  background: var(--white);
+
+  color: var(--Purple-70);
+  text-align: center;
+
+  /* Font/16 Bold */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.016rem;
+}
+
+.Colors {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-bottom: 4.5rem;
+}
+
+.Color {
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.08);
+}
+
+.Orange {
+  background: var(--Orange-20);
+}
+
+.Purple {
+  background: var(--Purple-20);
+}
+
+.Blue {
+  background: var(--Blue-20);
+}
+
+.Green {
+  background: var(--Green-20);
+}
+
+.Photos {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-bottom: 4.5rem;
+}
+
+.Photo {
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 1.6rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 357px) and (max-width: 767px) {
+  .ToggleButton {
+    display: flex;
+    align-items: flex-start;
+    width: 23.6rem;
+  }
+
+  .ChooseButton {
+    display: flex;
+    width: 11.8rem;
+    height: 4rem;
+  }
+  .Colors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 4.5rem;
+    width: 30rem;
+  }
+
+  .Color {
+    width: 15.4rem;
+    height: 15.4rem;
+    border-radius: 1.6rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.08);
+  }
+
+  .Photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 4.5rem;
+    width: 30rem;
+  }
+
+  .Photo {
+    width: 15.4rem;
+    height: 15.4rem;
+    border-radius: 1.6rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.08);
+  }
+}

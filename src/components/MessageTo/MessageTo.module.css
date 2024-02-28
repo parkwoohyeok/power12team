@@ -1,0 +1,72 @@
+@import url("../../styles/color.css");
+
+.PostPageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5.7rem;
+  width: 100%;
+}
+
+.Center {
+  width: 72rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ChooseView {
+  color: var(--Gray-90);
+  /* Font/24 Bold */
+  font-family: Pretendard;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.6rem; /* 150% */
+  letter-spacing: -0.024rem;
+}
+
+.ChooseText {
+  width: 30.1rem;
+  height: 6.6rem;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ChooseColorImage {
+  color: var(--Gray-50);
+
+  /* Font/16 Regular */
+  font-family: Pretendard;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6rem; /* 162.5% */
+  letter-spacing: -0.016rem;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .PostPageBody {
+    margin-top: 4.9rem;
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+    align-items: center;
+  }
+}
+
+@media (min-width: 357px) and (max-width: 767px) {
+  .PostPageBody {
+    align-items: center;
+    width: auto;
+    margin: 5rem 2rem 2.4rem;
+  }
+
+  .Center {
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}

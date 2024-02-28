@@ -1,0 +1,42 @@
+.RecentMessages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ProfileImageWrapper {
+  display: block;
+}
+
+.ProfileImage {
+  position: relative;
+  border: 1px solid var(--Gray-20);
+  border-radius: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.ProfileImage.Second {
+  z-index: 2;
+  left: -1.3rem;
+}
+
+.ProfileImage.Third {
+  z-index: 3;
+  left: -2.6rem;
+}
+
+.ProfileImage.Last {
+  display: inline-block;
+  background-color: var(--surface);
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.6rem;
+  z-index: 4;
+  left: -2.6rem;
+}
+@media (max-width: 1248px) {
+  .RecentMessages {
+    display: none;
+  }
+}

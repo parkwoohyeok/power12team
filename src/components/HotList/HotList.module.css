@@ -3,6 +3,7 @@
   gap: 3rem;
   max-width: 89rem;
   position: relative;
+  flex-shrink: 1;
 }
 
 .CardTitle {
@@ -22,14 +23,22 @@
   font-weight: bold;
 }
 
+.CardInfo > p {
+  font-size: 1rem;
+}
+
 .CardContainer {
   width: 20rem;
-  border: 0.1rem solid black; /*배경색 프롭스로 설정 할 것*/
+  border: none; /*배경색 프롭스로 설정 할 것*/
   padding: 2rem;
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
+}
+
+.RecentCount {
+  font-size: 1rem;
 }
 
 .CardFooter {
@@ -59,19 +68,97 @@
   top: 40%;
 }
 
+.EndOfPage {
+  display: none;
+}
+
 .beige {
-  border: 0.1rem solid var(--Beige-30);
-  background-color: var(--Beige-20);
+  border: 0.1rem solid var(--Orange-30);
+  background-color: var(--Orange-20);
+  background-image: url(../../assets/pattern_beige.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
 }
 .purple {
   border: 0.1rem solid var(--Purple-30);
   background-color: var(--Purple-20);
+  background-image: url(../../assets/pattern_purple.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
 }
 .blue {
   border: 0.1rem solid var(--Blue-30);
   background-color: var(--Blue-20);
+  background-image: url(../../assets/pattern_blue.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
 }
 .green {
   background-color: var(--Green-20);
   border: 0.1rem solid var(--Green-30);
+  background-image: url(../../assets/pattern_green.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
+}
+
+@keyframes slide-R {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-80%);
+  }
+}
+
+@keyframes slide-L {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(80%);
+  }
+}
+
+.CardContainer {
+  transition: transform 0.2s ease;
+}
+
+.slide-out-R {
+  animation: slide-R 0.2s ease forwards;
+  opacity: 0.4;
+}
+
+.slide-out-L {
+  animation: slide-L 0.2s ease forwards;
+  opacity: 0.4;
+}
+
+@media (max-width: 1199px) {
+}
+
+@media (max-width: 949px) {
+  .Wrapper {
+    gap: 1rem;
+    max-width: 80rem;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
+  .SlideBtn_R {
+    display: none;
+  }
+  .SlideBtn_L {
+    display: none;
+  }
+
+  .CardContainer {
+    gap: 3rem;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
+.Wrapper::-webkit-scrollbar {
+  width: 0; /* 스크롤바 너비를 0으로 설정 */
+  background-color: transparent; /* 배경색을 투명하게 설정 */
 }
