@@ -5,12 +5,12 @@ import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
 import MessageSummary from "components/MessageSummary/MessageSummary";
 import TopReactions from "components/TopReactions/TopReactions";
-import emojiData from "mock/emoji_mock.json";
 import messageData from "mock/mock.json";
 import { useState, useRef, useEffect } from "react";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
+import { postEmoji, getEmoji } from "components/Api/EmojiApi";
 
 const { name } = messageData[0];
 
@@ -18,12 +18,30 @@ function RecipientInfoBar() {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
+  const [emojiData, setEmojiData] = useState({});
 
   const shareRef = useRef();
   const emojiListRef = useRef();
   const emojiAddRef = useRef();
   const currentUrl = window.location.href;
   const { results, count } = emojiData;
+  /**
+   * 이모지 입력 시 post 함수
+   * @param {string} 입력 이모지
+   */
+  const emojiPost = async (emoji) => {
+    const emojiData = { emoji: `${emoji}`, type: "increase" };
+    const result = await postEmoji(emojiData);
+    if (result) alert(`${emoji} 전송 성공!`);
+  };
+  /**
+   * 이모지 정보 로딩함수
+   */
+  const emojiGet = async () => {
+    const response = await getEmoji();
+    setEmojiData(response);
+    console.log(response);
+  };
   /**
    * 카카오톡 공유하기 실행 함수
    */
@@ -32,6 +50,12 @@ function RecipientInfoBar() {
       requestUrl: currentUrl,
     });
   };
+  /**
+   * 이모지 정보 로딩
+   */
+  useEffect(() => {
+    emojiGet();
+  }, []);
   /**
    * 모달 외부 클릭 시 모달 창 닫힘
    */
@@ -64,6 +88,15 @@ function RecipientInfoBar() {
       document.removeEventListener("mousedown", closeModal);
     };
   }, [isShareModalOpen, isEmojiListOpen, isEmojiAddOpen]);
+  /**
+   * 이모지 등록 핸들 함수
+   * @param {*} e
+   */
+  const handleEmojiClick = async (e) => {
+    setIsEmojiAddOpen(false);
+    await emojiPost(e.native);
+    await emojiGet();
+  };
   /**
    * 모달 열림 여부에 따른 버튼 스타일 조정
    */
@@ -116,13 +149,7 @@ function RecipientInfoBar() {
             </button>
             {isEmojiAddOpen && (
               <div className={styles.EmojiPicker} ref={emojiAddRef}>
-                <Picker
-                  data={emojiListData}
-                  onEmojiSelect={(e) => {
-                    alert(e.native);
-                    setIsEmojiAddOpen(false);
-                  }}
-                />
+                <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
             <button
