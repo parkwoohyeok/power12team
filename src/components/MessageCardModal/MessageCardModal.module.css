@@ -12,6 +12,7 @@
   background-color: white;
   margin: 0 auto;
   padding: 4rem;
+  cursor: auto;
 }
 
 .MessageModalSender {
@@ -22,4 +23,29 @@
   p {
     font-size: 1.4rem;
   }
+}
+
+.DividingLine {
+  width: 100%;
+  border-top: 1px solid var(--Gray-20);
+  margin: 1.6rem 0;
+}
+
+.CardContent {
+  height: 24rem;
+  overflow: auto;
+}
+
+.AlignButton {
+  display: flex;
+  justify-content: center;
+}
+
+.ModalCloseButton {
+  padding: 0.7rem 1.6rem;
+  border-radius: 0.6rem;
+  width: 12rem;
+  background-color: var(--Purple-60);
+  color: white;
+  margin-top: 3rem;
 }

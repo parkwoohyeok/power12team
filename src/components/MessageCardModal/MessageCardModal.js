@@ -11,6 +11,11 @@ const MessageCardModal = ({ message }) => {
           <SenderInfo message={message} />
           <CreatedAt createdAt={message.createdAt} />
         </div>
+        <div className={styles.DividingLine}></div>
+        <div className={styles.CardContent}>{message.content}</div>
+        <div className={styles.AlignButton}>
+          <button className={styles.ModalCloseButton}>확인</button>
+        </div>
       </div>
     </div>
   );
