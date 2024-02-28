@@ -25,6 +25,11 @@ const MessageCardList = () => {
     setIsEditing(true);
   };
 
+  const handleDelete = (id) => {
+    const newList = list.filter((message) => message.id !== id);
+    setList(newList);
+  };
+
   const handleClickOnSave = () => {
     setIsEditing(false);
   };
@@ -80,6 +85,7 @@ const MessageCardList = () => {
             key={message.id}
             message={message}
             isEditing={isEditing}
+            onDelete={handleDelete}
           />
         ))}
       </div>

@@ -7,7 +7,7 @@ import CreatedAt from "./CreatedAt/CreatedAt";
 import styles from "./MessageCard.module.css";
 import SenderInfo from "./SenderInfo/SenderInfo";
 
-const MessageCard = ({ message, isEditing }) => {
+const MessageCard = ({ message, isEditing, onDelete }) => {
   const [messageCardModalOpen, setMessageCardModalOpen] = useState(false);
 
   const handleClick = () => {
@@ -18,7 +18,7 @@ const MessageCard = ({ message, isEditing }) => {
 
   return (
     <MessageCardContainer onClick={handleClick}>
-      <SenderInfo message={message} isEditing={isEditing} />
+      <SenderInfo message={message} isEditing={isEditing} onDelete={onDelete} />
       <div className={styles.DividingLine}></div>
       <div className={styles.CardContent}>{message.content}</div>
       <CreatedAt createdAt={message.createdAt} />

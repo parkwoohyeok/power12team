@@ -3,7 +3,7 @@ import DeleteIcon from "../DeleteIcon/DeleteIcon";
 
 import styles from "./SenderInfo.module.css";
 
-const SenderInfo = ({ message, isEditing }) => {
+const SenderInfo = ({ message, isEditing, onDelete }) => {
   return (
     <div className={styles.SenderInfo}>
       <img className={styles.SenderProfile} src={message.profileImageURL} />
@@ -13,7 +13,7 @@ const SenderInfo = ({ message, isEditing }) => {
         </div>
         <RelationshipTag relationship={message.relationship} />
       </div>
-      {isEditing && <DeleteIcon />}
+      {isEditing && <DeleteIcon id={message.id} onDelete={onDelete} />}
     </div>
   );
 };
