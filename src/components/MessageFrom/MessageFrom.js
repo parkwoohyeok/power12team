@@ -136,7 +136,7 @@ function MessageFrom() {
             <Editor
               value={text}
               onTextChange={(e) => setText(e.value)}
-              styles={{ height: "320px" }}
+              style={{ height: "320px", overflow: "auto" }}
             />
           </div>
           <div className={styles.FontContainer}>

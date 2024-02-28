@@ -117,6 +117,7 @@
   height: 104px;
   display: flex;
   justify-content: center;
+  margin: 100px auto;
 }
 
 .Button {
