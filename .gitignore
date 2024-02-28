@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/App.js
+.eslintrc.json
 
 # testing
 /coverage
@@ -18,13 +20,10 @@
 .env.test.local
 .env.production.local
 
-/src/App.js
-.eslintrc.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 
 README.md
-/src/App.js
-.eslintrc.json
+
