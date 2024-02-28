@@ -1,0 +1,25 @@
+.ModalBackground {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.MessageModalBox {
+  width: 60rem;
+  border-radius: 1.6rem;
+  background-color: white;
+  margin: 0 auto;
+  padding: 4rem;
+}
+
+.MessageModalSender {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    font-size: 1.4rem;
+  }
+}

@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/App.js
+.eslintrc.json
 
 # testing
 /coverage
@@ -24,5 +26,4 @@ yarn-error.log*
 
 
 README.md
-/src/App.js
-.eslintrc.json
+

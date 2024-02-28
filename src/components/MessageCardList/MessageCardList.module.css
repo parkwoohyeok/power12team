@@ -11,3 +11,8 @@
   flex-wrap: wrap;
   gap: 2.8rem 2.4rem;
 }
+
+.LoadMore {
+  height: 10rem;
+  background-color: var(--Orange-20);
+}
