@@ -25,6 +25,10 @@ const MessageCardList = () => {
     setIsEditing(true);
   };
 
+  const handleClickOnSave = () => {
+    setIsEditing(false);
+  };
+
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
@@ -52,12 +56,22 @@ const MessageCardList = () => {
   return (
     <div className={styles.CardListBackground}>
       <div className={styles.CardListPadding}>
-        <button
-          className={styles.CardListEditButton}
-          onClick={handleClickOnEdit}
-        >
-          편집하기
-        </button>
+        {!isEditing && (
+          <button
+            className={styles.CardListEditButton}
+            onClick={handleClickOnEdit}
+          >
+            편집하기
+          </button>
+        )}
+        {isEditing && (
+          <button
+            className={styles.CardListEditButton}
+            onClick={handleClickOnSave}
+          >
+            저장하기
+          </button>
+        )}
       </div>
       <div className={styles.CardListContainer}>
         {isEditing || <AddMessageCard />}
