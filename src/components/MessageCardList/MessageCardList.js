@@ -45,6 +45,9 @@ const MessageCardList = () => {
 
   return (
     <div className={styles.CardListBackground}>
+      <div className={styles.CardListPadding}>
+        <button className={styles.CardListEditButton}>편집하기</button>
+      </div>
       <div className={styles.CardListContainer}>
         <AddMessageCard />
         {list.map((message) => (
