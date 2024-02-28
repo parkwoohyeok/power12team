@@ -1,0 +1,14 @@
+.ModalBackground {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.MessageModalBox {
+  width: 60rem;
+  border-radius: 1.6rem;
+  background-color: white;
+  margin: 0 auto;
+}
