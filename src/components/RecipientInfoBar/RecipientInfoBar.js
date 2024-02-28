@@ -9,6 +9,7 @@ import { useState, useRef, useEffect } from "react";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
+import divider from "assets/divider.svg";
 import { postEmoji, getEmoji } from "components/Api/EmojiApi";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
 
@@ -115,6 +116,11 @@ function RecipientInfoBar() {
         <div className={styles.Name}>To. {name}</div>
         <div className={styles.InfoWrapper}>
           <MessageSummary />
+          <img
+            src={divider}
+            alt="divider"
+            className={styles.MessageSummaryDivider}
+          />
           <div className={styles.RestWrapper}>
             <TopReactionsModified mapData={emojiListTop3} />
             {count - 3 && (
@@ -154,6 +160,7 @@ function RecipientInfoBar() {
                 <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
+            <img src={divider} alt="divider" />
             <button
               className={ShareButton}
               onClick={() => {

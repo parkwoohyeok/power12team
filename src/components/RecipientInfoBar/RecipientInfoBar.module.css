@@ -23,7 +23,7 @@
 
 .RestWrapper {
   display: flex;
-  gap: 0.5rem;
+  gap: 1.3rem;
   position: relative;
 }
 
@@ -110,8 +110,10 @@
     flex-direction: column;
     align-items: first baseline;
   }
+}
 
-  .RestWrapper {
-    justify-content: space-between;
+@media (max-width: 1248px) {
+  .MessageSummaryDivider {
+    display: none;
   }
 }
