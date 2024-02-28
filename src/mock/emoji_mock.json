@@ -1,0 +1,32 @@
+{
+  "count": 5,
+  "next": null,
+  "previous": "https://rolling-api.vercel.app/0-3/recipients/2/reactions/?limit=2&offset=1",
+  "results": [
+    {
+      "id": 34,
+      "emoji": "🥰",
+      "count": 8
+    },
+    {
+      "id": 28,
+      "emoji": "😄",
+      "count": 7
+    },
+    {
+      "id": 14,
+      "emoji": "😉",
+      "count": 3
+    },
+    {
+      "id": 13,
+      "emoji": "🥲",
+      "count": 4
+    },
+    {
+      "id": 3,
+      "emoji": "🥲",
+      "count": 8
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+.SenderInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  position: relative;
+}
+
+.SenderText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.SenderProfile {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+}
+
+.CardSenderName {
+  font-weight: 700;
+}

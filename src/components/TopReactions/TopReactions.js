@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import data from "mock/mock.json";
 
 import styles from "./TopReaction.module.css";
