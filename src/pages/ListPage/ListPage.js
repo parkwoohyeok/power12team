@@ -7,17 +7,17 @@ import styles from "pages/ListPage/ListPage.module.css";
 const ListPage = () => {
   return (
     <div className={styles.Wrapper}>
-      <div>
-        <HotList />
+      <div className={styles.CardList}>
+        <div>
+          <HotList />
+        </div>
+        <div>
+          <RecentList />
+        </div>
       </div>
-      <div>
-        <RecentList />
-      </div>
-      <div>
-        <button className={styles.LinkBtn}>
-          <h2>나도 만들어보기</h2>
-        </button>
-      </div>
+      <button className={styles.LinkBtn}>
+        <h2>나도 만들어보기</h2>
+      </button>
     </div>
   );
 };

@@ -10,18 +10,26 @@ import arrow from "assets/arrow.png";
 
 import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function HotList() {
+  const [cardsPerPage, setCardsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
   const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
   const ArrayData = [...data];
-  const CARDS_PER_PAGE = 4;
-  const totalPages = Math.ceil(ArrayData.length / CARDS_PER_PAGE);
-  const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
-  const endIndex = Math.min(startIndex + CARDS_PER_PAGE, ArrayData.length);
+  const totalPages = Math.ceil(ArrayData.length / cardsPerPage);
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = Math.min(startIndex + cardsPerPage, ArrayData.length);
   const HotCards = ArrayData.slice(startIndex, endIndex);
+
+  const updateCardsPerPage = () => {
+    if (window.innerWidth <= 949) {
+      setCardsPerPage(ArrayData.length);
+    } else {
+      setCardsPerPage(4);
+    }
+  };
 
   const nextPage = () => {
     setCardSlidingToRight(true);
@@ -38,6 +46,16 @@ function HotList() {
       setCardSlidingToLeft(false);
     }, 200);
   };
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때와 화면 크기가 변경될 때마다 실행
+    updateCardsPerPage();
+
+    window.addEventListener("resize", updateCardsPerPage); // 화면 크기 변경 감지
+    return () => {
+      window.removeEventListener("resize", updateCardsPerPage); // 컴포넌트가 언마운트될 때 리스너 제거
+    };
+  }, []);
 
   return (
     <>

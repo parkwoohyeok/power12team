@@ -3,15 +3,36 @@
   flex-direction: column;
   align-items: center;
   gap: 5rem;
-  margin-top: 4rem;
 }
 
-.Wrapper .LinkBtn {
-  width: 28rem;
+.CardList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 4rem;
+  flex-shrink: 0;
+}
+
+.LinkBtn {
+  width: 30rem;
   height: 5.6rem;
   border-radius: 1rem;
   border: none;
   background-color: var(--Purple-60);
   color: white;
   align-items: center;
+}
+
+@media (max-width: 949px) {
+  .Wrapper {
+    align-items: flex-start;
+    padding: 0 3rem;
+  }
+  .CardList {
+  }
+  .LinkBtn {
+    margin-left: 0;
+    width: 100%;
+  }
 }
