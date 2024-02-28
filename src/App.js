@@ -1,10 +1,7 @@
-/* eslint-disable */
-import HotList from "components/HotList/HotList";
-import MessageCardList from "components/MessageCardList/MessageCardList";
-import ListPage from "pages/ListPage/ListPage";
+import RecipientInfoBar from "components/RecipientInfoBar/RecipientInfoBar";
 
 function App() {
-  return <MessageCardList />;
+  return;
 }
 
 export default App;

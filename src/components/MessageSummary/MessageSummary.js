@@ -1,38 +1,38 @@
-import data from "../../mock/mock.json";
-import RecentCount from "../RecentCount/RecentCount";
-
+/* eslint-disable */
 import styles from "./MessageSummary.module.css";
+import RecentCount from "../RecentCount/RecentCount";
+import data from "../../mock/mock.json";
 
 const { messageCount, recentMessages } = data[0];
 
 function MessageSummary() {
   return (
-    <div className={styles.recentMessages}>
-      <div className={styles["profile-image-wrapper"]}>
+    <div className={styles.RecentMessages}>
+      <div className={styles.ProfileImageWrapper}>
         {recentMessages[0] && (
           <img
-            className={styles["profile-image"]}
+            className={styles.ProfileImage}
             src={recentMessages[0]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
         {recentMessages[1] && (
           <img
-            className={`${styles["profile-image"]} ${styles.second}`}
+            className={`${styles.ProfileImage} ${styles.Second}`}
             src={recentMessages[1]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
         {recentMessages[2] && (
           <img
-            className={`${styles["profile-image"]} ${styles.third}`}
+            className={`${styles.ProfileImage} ${styles.Third}`}
             src={recentMessages[2]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
         {messageCount - 3 > 0 && (
           <div
-            className={`${styles["profile-image"]} ${styles["profile-image-last"]}`}
+            className={`${styles.ProfileImage} ${styles.Last}`}
           >{`+${messageCount}`}</div>
         )}
       </div>
