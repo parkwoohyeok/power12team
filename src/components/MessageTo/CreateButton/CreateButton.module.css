@@ -26,6 +26,7 @@
 
 .CreateButton:disabled {
   background: var(--Gray-30);
+  cursor: default;
 }
 
 @media (min-width: 357px) and (max-width: 767px) {
