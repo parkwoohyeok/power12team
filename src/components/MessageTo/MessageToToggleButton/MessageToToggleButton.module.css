@@ -101,6 +101,17 @@
 }
 
 @media (min-width: 357px) and (max-width: 767px) {
+  .ToggleButton {
+    display: flex;
+    align-items: flex-start;
+    width: 23.6rem;
+  }
+
+  .ChooseButton {
+    display: flex;
+    width: 11.8rem;
+    height: 4rem;
+  }
   .Colors {
     display: grid;
     grid-template-columns: 1fr 1fr;
