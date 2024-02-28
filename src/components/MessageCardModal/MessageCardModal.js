@@ -1,9 +1,13 @@
+import SenderInfo from "../MessageCard/SenderInfo/SenderInfo";
+
 import styles from "./MessageCardModal.module.css";
 
-const MessageCardModal = () => {
+const MessageCardModal = ({ message }) => {
   return (
     <div className={styles.ModalBackground}>
-      <div className={styles.MessageModalBox}>hello</div>
+      <div className={styles.MessageModalBox}>
+        <SenderInfo message={message} />
+      </div>
     </div>
   );
 };

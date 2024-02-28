@@ -6,6 +6,7 @@ import MessageCardModal from "../MessageCardModal/MessageCardModal";
 import RelationshipTag from "../RelationshipTag/RelationshipTag";
 
 import styles from "./MessageCard.module.css";
+import SenderInfo from "./SenderInfo/SenderInfo";
 
 const MessageCard = ({ message }) => {
   const [messageCardModalOpen, setMessageCardModalOpen] = useState(false);
@@ -21,16 +22,7 @@ const MessageCard = ({ message }) => {
 
   return (
     <MessageCardContainer onClick={handleClick}>
-      <div className={styles.SenderInfo}>
-        <img className={styles.SenderProfile} src={message.profileImageURL} />
-        <div className={styles.SenderText}>
-          <div className={styles.CardSender}>
-            From.{" "}
-            <span className={styles.CardSenderName}>{message.sender}</span>
-          </div>
-          <RelationshipTag relationship={message.relationship} />
-        </div>
-      </div>
+      <SenderInfo message={message} />
       <div className={styles.DividingLine}></div>
       <div className={styles.CardContent}>{message.content}</div>
       <p
