@@ -14,9 +14,7 @@ const MessageTo = () => (
       </div>
       <MessageToToggleButton />
     </div>
-    <div className={styles.ButtonSpace}>
-      <button className={styles.CreateButton}>생성하기</button>
-    </div>
+    <button className={styles.CreateButton}>생성하기</button>
   </div>
 );
 

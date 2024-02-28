@@ -100,5 +100,36 @@
   border: 0.1rem solid rgba(0, 0, 0, 0.08);
 }
 
-@media (min-width: 35.7rem) and (max-width: 76.7rem) {
+@media (min-width: 357px) and (max-width: 767px) {
+  .Colors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 4.5rem;
+    width: 30rem;
+  }
+
+  .Color {
+    width: 15.4rem;
+    height: 15.4rem;
+    border-radius: 1.6rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.08);
+  }
+
+  .Photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 4.5rem;
+    width: 30rem;
+  }
+
+  .Photo {
+    width: 15.4rem;
+    height: 15.4rem;
+    border-radius: 1.6rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.08);
+  }
 }

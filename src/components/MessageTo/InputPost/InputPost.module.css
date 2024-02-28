@@ -3,7 +3,6 @@
 .InputPost {
   width: 72rem;
   height: 10.4rem;
-  margin-top: 5.7rem;
   margin-bottom: 5rem;
   display: inline-flex;
   flex-direction: column;
@@ -47,5 +46,23 @@
   letter-spacing: -0.016rem;
 }
 
-@media (min-width: 35.7rem) and (max-width: 76.7rem) {
+@media (min-width: 768px) and (max-width: 1199px) {
+  .InputPost {
+    margin-left: 2.4rem;
+    margin-right: 2.4rem;
+  }
+}
+
+@media (min-width: 357px) and (max-width: 767px) {
+  .InputPost {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .InputPost input {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 }
