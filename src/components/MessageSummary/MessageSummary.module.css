@@ -1,14 +1,14 @@
-.recentMessages {
+.RecentMessages {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.profile-image-wrapper {
+.ProfileImageWrapper {
   display: block;
 }
 
-.profile-image {
+.ProfileImage {
   position: relative;
   border: 1px solid var(--Gray-20);
   border-radius: 50%;
@@ -16,17 +16,17 @@
   height: 2.8rem;
 }
 
-.profile-image.second {
+.ProfileImage.Second {
   z-index: 2;
   left: -1.3rem;
 }
 
-.profile-image.third {
+.ProfileImage.Third {
   z-index: 3;
   left: -2.6rem;
 }
 
-.profile-image-last {
+.ProfileImage.Last {
   display: inline-block;
   background-color: var(--surface);
   font-size: 1.2rem;
