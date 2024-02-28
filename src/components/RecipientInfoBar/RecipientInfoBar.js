@@ -8,6 +8,9 @@ import TopReactions from "components/TopReactions/TopReactions";
 import emojiData from "mock/emoji_mock.json";
 import messageData from "mock/mock.json";
 import { useState, useRef, useEffect } from "react";
+import arrowDown from "assets/arrow_down.png";
+import addEmoji from "assets/add-emoji.svg";
+import shareIcon from "assets/share.svg";
 
 const { name } = messageData[0];
 
@@ -64,7 +67,10 @@ function RecipientInfoBar() {
   /**
    * 모달 열림 여부에 따른 버튼 스타일 조정
    */
-  const Button = isShareModalOpen
+  const ShareButton = isShareModalOpen
+    ? `${styles.Button} ${styles.ModalOpen}`
+    : styles.Button;
+  const EmojiButton = isEmojiAddOpen
     ? `${styles.Button} ${styles.ModalOpen}`
     : styles.Button;
 
@@ -82,8 +88,9 @@ function RecipientInfoBar() {
                   onClick={() => {
                     setIsEmojiListOpen(true);
                   }}
+                  className={styles.MoreEmojiButton}
                 >
-                  <img src="/src/assets/arrow_down.svg" alt="more emoji" />
+                  <img src={arrowDown} alt="more emoji" />
                 </button>
                 {isEmojiListOpen && (
                   <div className={styles.EmojiListModal} ref={emojiListRef}>
@@ -97,11 +104,11 @@ function RecipientInfoBar() {
               </>
             )}
             <button
-              className={styles.Button}
+              className={EmojiButton}
               onClick={() => setIsEmojiAddOpen(true)}
             >
               <img
-                src="/src/assets/add-emoji.svg"
+                src={addEmoji}
                 alt="add reaction"
                 className={styles.ButtonIcon}
               />
@@ -119,13 +126,13 @@ function RecipientInfoBar() {
               </div>
             )}
             <button
-              className={Button}
+              className={ShareButton}
               onClick={() => {
                 setIsShareModalOpen(true);
               }}
             >
               <img
-                src="/src/assets/share.svg"
+                src={shareIcon}
                 alt="share icon"
                 className={styles.ButtonIcon}
               />

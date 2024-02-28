@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styles from "./MessageSummary.module.css";
 import RecentCount from "../RecentCount/RecentCount";
 import data from "../../mock/mock.json";
