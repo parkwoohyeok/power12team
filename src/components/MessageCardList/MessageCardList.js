@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-import mockData from "../../assets/recipientMessagesMock.json";
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
 import { getMessages } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
@@ -8,35 +7,35 @@ import MessageCard from "../MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 
 const LIMIT = 6;
-const TEAM = "4-12";
-const ID = 2697;
+const id = 2697;
 
-const OPTIONS = {
+const IO_OPTIONS = {
   root: null,
   rootMargin: "0px 0px 0px 0px",
   threshold: 1.0,
 };
 
 const MessageCardList = () => {
-  const mock = mockData.results;
   const [offset, setOffset] = useState(0);
+  const [hasNext, setHasNext] = useState(false);
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    const getData = async (team, id, limit, initOffset) => {
-      try {
-        const MESSAGES = await getMessages(team, id, limit, initOffset);
-        console.log(MESSAGES);
-        setList(MESSAGES);
-        setOffset(offset + LIMIT);
-      } catch (error) {
-        alert(error);
+  const getData = async (options) => {
+    try {
+      const RESPONSE = await getMessages(options);
+      if (options.offset === 0) {
+        setList(RESPONSE.results);
+      } else {
+        setList((prevList) => [...prevList, ...RESPONSE.results]);
       }
-    };
 
-    getData(TEAM, ID, LIMIT, offset);
-  }, []);
+      setHasNext(RESPONSE.next);
+      setOffset(offset + RESPONSE.results.length);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const SENTINEL = useRef();
 
@@ -44,8 +43,8 @@ const MessageCardList = () => {
     setIsEditing(true);
   };
 
-  const handleDelete = (id) => {
-    const newList = list.filter((message) => message.id !== id);
+  const handleDelete = (messageId) => {
+    const newList = list.filter((message) => message.id !== messageId);
     setList(newList);
   };
 
@@ -53,29 +52,29 @@ const MessageCardList = () => {
     setIsEditing(false);
   };
 
-  // useEffect(() => {
-  //   const handleIntersection = (entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         setList((prevList) => [
-  //           ...prevList,
-  //           ...mock.slice(offset, offset + LIMIT),
-  //         ]);
-  //         if (offset < mock.length) {
-  //           setOffset((prevOffset) => prevOffset + LIMIT);
-  //         }
-  //       }
-  //     });
-  //   };
+  // 처음 렌더링 시 받아올 데이터
+  useEffect(() => {
+    getData({ id, offset, limit: LIMIT });
+  }, []);
 
-  //   const observer = new IntersectionObserver(handleIntersection, OPTIONS);
+  // 무한 스크롤
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && hasNext) {
+          getData({ id, offset, limit: LIMIT });
+        }
+      });
+    };
 
-  //   observer.observe(SENTINEL.current);
+    const observer = new IntersectionObserver(handleIntersection, IO_OPTIONS);
 
-  //   return () => {
-  //     observer.unobserve(SENTINEL.current);
-  //   };
-  // }, [offset]);
+    observer.observe(SENTINEL.current);
+
+    return () => {
+      observer.unobserve(SENTINEL.current);
+    };
+  }, [offset]);
 
   return (
     <div className={styles.CardListBackground}>

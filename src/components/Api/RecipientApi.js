@@ -1,8 +1,8 @@
 const BASE_URL = "https://rolling-api.vercel.app";
 
-export const getMessages = async (team, id, limit, offset) => {
+export const getMessages = async ({ id, limit, offset }) => {
   const RESPONSE = await fetch(
-    `${BASE_URL}/${team}/recipients/${id}/messages/?limit=${limit}&offset=${offset}`,
+    `${BASE_URL}/4-12/recipients/${id}/messages/?limit=${limit}&offset=${offset}`,
   );
 
   if (!RESPONSE.ok) {
@@ -11,5 +11,5 @@ export const getMessages = async (team, id, limit, offset) => {
 
   const MESSAGES = await RESPONSE.json();
 
-  return MESSAGES.results;
+  return MESSAGES;
 };
