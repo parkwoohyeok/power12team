@@ -50,10 +50,8 @@ const MessageToToggleButton = () => {
   };
 
   const handleSelect = (selectedOption) => {
-    console.log("Clicked:", selectedOption);
-    selectedOption
-      ? setSelectedColor(selectedOption)
-      : setSelectedPhoto(selectedOption);
+    setSelectedColor(selectedOption);
+    setSelectedPhoto(selectedOption);
   };
 
   return (
@@ -78,7 +76,7 @@ const MessageToToggleButton = () => {
             <div
               key={index}
               style={{ backgroundColor: color }}
-              className={`${styles.Color} `}
+              className={styles.Color}
               onClick={() => handleSelect(color)}
             >
               {selectedColor === color ? <CheckImage /> : null}
@@ -94,7 +92,9 @@ const MessageToToggleButton = () => {
               className={styles.Photo}
               onClick={() => handleSelect(photo)}
             >
-              {selectedPhoto === photo ? <CheckImage /> : null}
+              {selectedPhoto === photo ? (
+                <CheckImage select={select} photo={photo} />
+              ) : null}
             </div>
           ))}
         </div>
