@@ -4,6 +4,7 @@ const DeleteIcon = ({ id, onDelete }) => {
   const handleDelete = () => {
     onDelete(id);
   };
+
   return <button className={styles.DeleteIcon} onClick={handleDelete}></button>;
 };
 

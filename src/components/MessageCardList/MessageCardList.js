@@ -1,7 +1,8 @@
+/* eslint-disable consistent-return */
 import { useEffect, useRef, useState } from "react";
 
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
-import { getMessages } from "../Api/RecipientApi";
+import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
 
 import styles from "./MessageCardList.module.css";
@@ -37,6 +38,15 @@ const MessageCardList = () => {
     }
   };
 
+  const deleteData = async (messageId) => {
+    try {
+      const RESULT = await deleteMessage(messageId);
+      return RESULT.ok;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const SENTINEL = useRef();
 
   const handleClickOnEdit = () => {
@@ -44,8 +54,11 @@ const MessageCardList = () => {
   };
 
   const handleDelete = (messageId) => {
-    const newList = list.filter((message) => message.id !== messageId);
-    setList(newList);
+    const result = deleteData(messageId);
+    if (result) {
+      const newList = list.filter((message) => message.id !== messageId);
+      setList(newList);
+    }
   };
 
   const handleClickOnSave = () => {
@@ -54,7 +67,7 @@ const MessageCardList = () => {
 
   // 처음 렌더링 시 받아올 데이터
   useEffect(() => {
-    getData({ id, offset, limit: LIMIT });
+    getData({ id, offset, limit: 5 });
   }, []);
 
   // 무한 스크롤
