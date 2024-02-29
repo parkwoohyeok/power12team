@@ -7,12 +7,11 @@ import MessageCard from "../MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 
 const LIMIT = 6;
-const id = 2697;
 
 const IO_OPTIONS = {
   root: null,
   rootMargin: "0px 0px 0px 0px",
-  threshold: 1.0,
+  threshold: 0.9,
 };
 
 const MessageCardList = () => {
@@ -33,9 +32,9 @@ const MessageCardList = () => {
       } else {
         setList((prevList) => [...prevList, ...RESPONSE.results]);
       }
-
+      const NEXT = RESPONSE.next;
+      setOffset(NEXT.split("offset=")[1]);
       setHasNext(RESPONSE.next);
-      setOffset(offset + RESPONSE.results.length);
     } catch (error) {
       console.error(error);
     }
