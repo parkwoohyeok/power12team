@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { useEffect, useRef, useState } from "react";
 
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
@@ -41,9 +40,9 @@ const MessageCardList = () => {
   const deleteData = async (messageId) => {
     try {
       const RESULT = await deleteMessage(messageId);
-      return RESULT.ok;
+      return RESULT;
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 

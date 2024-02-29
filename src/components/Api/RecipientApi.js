@@ -1,3 +1,4 @@
+/* eslint-disable */
 const BASE_URL = "https://rolling-api.vercel.app";
 
 export const getMessages = async ({ id, limit, offset }) => {
@@ -23,8 +24,5 @@ export const deleteMessage = async (id) => {
     throw new Error("메세지가 존재하지 않거나 지워지지 않았어요.");
   }
 
-  const RESULT = await RESPONSE.json();
-  console.log(RESULT);
-
-  return RESULT;
+  return RESPONSE.ok;
 };
