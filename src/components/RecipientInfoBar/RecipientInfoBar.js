@@ -6,11 +6,12 @@ import emojiListData from "@emoji-mart/data";
 import MessageSummary from "components/MessageSummary/MessageSummary";
 import messageData from "mock/mock.json";
 import { useState, useRef, useEffect } from "react";
+import useGetEmoji from "components/Api/useGetEmoji";
+import usePostEmoji from "components/Api/usePostEmoji";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
-import { postEmoji, getEmoji } from "components/Api/EmojiApi";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
 import useAsync from "hooks/useAsync";
 
@@ -29,8 +30,8 @@ function RecipientInfoBar() {
   const { results, count } = emojiData;
 
   const [postEmojiPending, postEmojiError, postEmojiAsync] =
-    useAsync(postEmoji);
-  const [getEmojiPending, getEmojiError, getEmojiAsync] = useAsync(getEmoji);
+    useAsync(usePostEmoji);
+  const [getEmojiPending, getEmojiError, getEmojiAsync] = useAsync(useGetEmoji);
   /**
    * 이모지 입력 시 post 함수
    * @param {string} 입력 이모지
@@ -45,7 +46,7 @@ function RecipientInfoBar() {
    */
   const emojiGet = async () => {
     const response = await getEmojiAsync();
-    setEmojiData(response);
+    setEmojiData(response.data);
   };
   /**
    * 카카오톡 공유하기 실행 함수
