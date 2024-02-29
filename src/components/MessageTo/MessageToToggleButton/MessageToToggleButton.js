@@ -8,31 +8,32 @@ import "../../../styles/color.css";
 import styles from "./MessageToToggleButton.module.css";
 import CheckImage from "../CheckImage/CheckImage";
 
+/* eslint-disable */
+const backgroundColor = {
+  beige: "var(--Orange-20)",
+  purple: "var(--Purple-20)",
+  blue: "var(--Blue-20)",
+  green: "var(--Green-20)",
+};
+
+const backgroundImageURL = {
+  photo1: car,
+  photo2: cliff,
+  photo3: car,
+  photo4: cliff,
+};
+
+const Colors = [
+  backgroundColor.beige,
+  backgroundColor.purple,
+  backgroundColor.blue,
+  backgroundColor.green,
+];
+
 const MessageToToggleButton = () => {
   const [toggle, setToggle] = useState(true);
   const [select, setSelect] = useState("Color");
 
-  /* eslint-disable */
-  const backgroundColor = {
-    beige: "var(--Orange-20)",
-    purple: "var(--Purple-20)",
-    blue: "var(--Blue-20)",
-    green: "var(--Green-20)",
-  };
-
-  const backgroundImageURL = {
-    photo1: car,
-    photo2: cliff,
-    photo3: car,
-    photo4: cliff,
-  };
-
-  const Colors = [
-    backgroundColor.beige,
-    backgroundColor.purple,
-    backgroundColor.blue,
-    backgroundColor.green,
-  ];
   const Photos = ["photo1", "photo2", "photo3", "photo4"];
 
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
@@ -49,8 +50,11 @@ const MessageToToggleButton = () => {
     setSelect(option);
   };
 
-  const handleSelect = (selectedOption) => {
+  const handleSelectColor = (selectedOption) => {
     setSelectedColor(selectedOption);
+  };
+
+  const handleSelectPhoto = (selectedOption) => {
     setSelectedPhoto(selectedOption);
   };
 
@@ -77,7 +81,7 @@ const MessageToToggleButton = () => {
               key={index}
               style={{ backgroundColor: color }}
               className={styles.Color}
-              onClick={() => handleSelect(color)}
+              onClick={() => handleSelectColor(color)}
             >
               {selectedColor === color ? <CheckImage /> : null}
             </div>
@@ -90,7 +94,7 @@ const MessageToToggleButton = () => {
               key={index}
               style={{ backgroundImage: `url(${backgroundImageURL[photo]})` }}
               className={styles.Photo}
-              onClick={() => handleSelect(photo)}
+              onClick={() => handleSelectPhoto(photo)}
             >
               {selectedPhoto === photo ? (
                 <CheckImage select={select} photo={photo} />
