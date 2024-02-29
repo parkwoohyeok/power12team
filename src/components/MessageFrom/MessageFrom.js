@@ -65,7 +65,9 @@ function MessageFrom() {
   };
 
   const handleTextChange = (e) => {
-    const textWithoutHtml = e.htmlValue.replace(/<[^>]*>?/gm, "");
+    const textWithoutHtml = e.htmlValue
+      ? e.htmlValue.replace(/<[^>]*>?/gm, "")
+      : "";
     setContent(textWithoutHtml);
   };
 
@@ -229,7 +231,7 @@ function MessageFrom() {
         <div className={styles.Bottom}>
           <button
             type="submit"
-            className={styles.Button}
+            className={`${styles.Button} ${!isButtonEnabled ? styles.ButtonDisabled : ""}`}
             disabled={!isButtonEnabled}
           >
             생성하기
