@@ -6,6 +6,7 @@ import cliff from "assets/cliff.png";
 
 import "../../../styles/color.css";
 import styles from "./MessageToToggleButton.module.css";
+import CheckImage from "../CheckImage/CheckImage";
 
 const MessageToToggleButton = () => {
   const [toggle, setToggle] = useState(true);
@@ -34,8 +35,8 @@ const MessageToToggleButton = () => {
   ];
   const Photos = ["photo1", "photo2", "photo3", "photo4"];
 
-  const [color, setColor] = useState(Colors[0]);
-  const [photo, setPhoto] = useState(Photos[0]);
+  const [selectedColor, setSelectedColor] = useState(Colors[0]);
+  const [selectedPhoto, setSelectedPhoto] = useState(Photos[0]);
 
   const options = toggle ? Colors : Photos;
 
@@ -49,7 +50,10 @@ const MessageToToggleButton = () => {
   };
 
   const handleSelect = (selectedOption) => {
-    selectedOption ? setColor(selectedOption) : setPhoto(selectedOption);
+    console.log("Clicked:", selectedOption);
+    selectedOption
+      ? setSelectedColor(selectedOption)
+      : setSelectedPhoto(selectedOption);
   };
 
   return (
@@ -74,9 +78,11 @@ const MessageToToggleButton = () => {
             <div
               key={index}
               style={{ backgroundColor: color }}
-              className={`${styles.Color}`}
+              className={`${styles.Color} `}
               onClick={() => handleSelect(color)}
-            ></div>
+            >
+              {selectedColor === color ? <CheckImage /> : null}
+            </div>
           ))}
         </div>
       ) : (
@@ -85,9 +91,11 @@ const MessageToToggleButton = () => {
             <div
               key={index}
               style={{ backgroundImage: `url(${backgroundImageURL[photo]})` }}
-              className={`${styles.Photo}`}
+              className={styles.Photo}
               onClick={() => handleSelect(photo)}
-            ></div>
+            >
+              {selectedPhoto === photo ? <CheckImage /> : null}
+            </div>
           ))}
         </div>
       )}
