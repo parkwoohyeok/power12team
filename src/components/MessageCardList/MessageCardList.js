@@ -32,9 +32,14 @@ const MessageCardList = () => {
       } else {
         setList((prevList) => [...prevList, ...RESPONSE.results]);
       }
+
       const NEXT = RESPONSE.next;
-      setOffset(NEXT.split("offset=")[1]);
-      setHasNext(RESPONSE.next);
+      if (NEXT) {
+        setOffset(NEXT.split("offset=")[1]);
+        setHasNext(true);
+      } else {
+        setHasNext(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -89,7 +94,7 @@ const MessageCardList = () => {
     return () => {
       observer.unobserve(SENTINEL.current);
     };
-  }, [offset]);
+  }, [offset, hasNext]);
 
   return (
     <div className={styles.CardListBackground}>
