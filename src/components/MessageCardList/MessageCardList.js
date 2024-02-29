@@ -21,6 +21,10 @@ const MessageCardList = () => {
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
+  const recipientPath = window.location.pathname.split("/post")[1];
+  const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
+  const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
+
   const getData = async (options) => {
     try {
       const RESPONSE = await getMessages(options);
@@ -66,7 +70,7 @@ const MessageCardList = () => {
 
   // 처음 렌더링 시 받아올 데이터
   useEffect(() => {
-    getData({ id, offset, limit: 5 });
+    getData({ recipientId, offset, limit: 5 });
   }, []);
 
   // 무한 스크롤
@@ -74,7 +78,7 @@ const MessageCardList = () => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && hasNext) {
-          getData({ id, offset, limit: LIMIT });
+          getData({ recipientId, offset, limit: LIMIT });
         }
       });
     };
