@@ -107,6 +107,9 @@ function MessageFrom() {
       try {
         const urls = await fetchImageUrls();
         setImageUrls(urls);
+        if (urls.length > 0) {
+          setProfileImageURL(urls[0]);
+        }
       } catch (error) {
         console.log("Failed to load image:", error);
       }
@@ -177,7 +180,7 @@ function MessageFrom() {
                 type="file"
                 onChange={handleImageChange}
                 accept="image/*"
-              ></img>
+              />
               <div className={styles.SelectProfile}>
                 <div className={styles.SelectExplain}>
                   프로필 이미지를 선택해주세요!
