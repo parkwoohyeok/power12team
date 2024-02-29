@@ -4,7 +4,7 @@ import Select from "react-select";
 import { Editor } from "primereact/editor";
 
 import Frame from "../../assets/Frame.png";
-import sendMessageData from "../Api/MessageFromPageApi";
+import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
 import styles from "./MessageFrom.module.css";
@@ -16,23 +16,43 @@ function MessageFrom() {
   const [font, setFont] = useState(); // 사용자가 선택한 프로필 이미지 저장
   const [profileImageURL, setProfileImageURL] = useState(Frame);
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
+  const [imageUrls, setImageUrls] = useState([]);
 
   // 생성하기 버튼 활성화 조건 검사 함수
   const isButtonEnabled = sender.trim() !== "" && content.trim() !== "";
   const recipientPath = window.location.pathname.split("/post")[1];
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
-  console.log(recipientId);
 
   const handleNameChange = (e) => {
     setSender(e.target.value);
     setInputError(e.target.value ? "" : "값을 입력해 주세요.");
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
+    // async 키워드를 추가
     if (e.target.files && e.target.files[0]) {
-      const imageURL = URL.createObjectURL(e.target.files[0]);
-      setProfileImageURL(imageURL);
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("profileImageURL", file); // 'image'는 서버에서 요구하는 필드 이름에 맞춰야 합니다.
+
+      try {
+        const response = await fetch("서버의 이미지 업로드 API URL", {
+          method: "POST",
+          body: formData,
+          // 필요한 경우 추가적인 헤더 설정
+        });
+
+        if (!response.ok) {
+          throw new Error("이미지 업로드 실패");
+        }
+
+        const responseData = await response.json();
+        const uploadedImageUrl = responseData.profileImageURL; // 'imageUrl'은 서버에서 반환하는 필드 이름에 맞춰야 합니다.
+        setProfileImageURL(uploadedImageUrl); // 업로드된 이미지 URL을 상태에 저장
+      } catch (error) {
+        console.error("이미지 업로드 중 오류 발생:", error);
+      }
     }
   };
 
@@ -80,6 +100,18 @@ function MessageFrom() {
     console.log(`버튼 활성화 상태: ${isButtonEnabled}`);
   }, [sender, content]);
 
+  useEffect(() => {
+    const loadImageUrls = async () => {
+      try {
+        const urls = await fetchImageUrls();
+        setImageUrls(urls);
+      } catch (error) {
+        console.log("Failed to load image:", error);
+      }
+    };
+    loadImageUrls();
+  }, []);
+
   const customStyles = {
     control: (base) => ({
       ...base,
@@ -113,6 +145,10 @@ function MessageFrom() {
     (option) => option.value === "지인",
   );
 
+  const handleImageSelect = (imageUrl) => {
+    setProfileImageURL(imageUrl);
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.ParentContainer}>
@@ -145,21 +181,16 @@ function MessageFrom() {
                   프로필 이미지를 선택해주세요!
                 </div>
                 <div className={styles.SelectImgs}>
-                  <img
-                    src={Frame}
-                    alt="이미지선택"
-                    className={styles.SelectImg}
-                  ></img>
-                  <img
-                    src={Frame}
-                    alt="이미지선택"
-                    className={styles.SelectImg}
-                  ></img>
-                  <img
-                    src={Frame}
-                    alt="이미지선택"
-                    className={styles.SelectImg}
-                  ></img>
+                  {imageUrls.map((imageUrl, index) => (
+                    <input
+                      key={index}
+                      type="image"
+                      src={imageUrl}
+                      alt="프로필 선택"
+                      className={styles.SelectImg}
+                      onClick={() => handleImageSelect(imageUrl)}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

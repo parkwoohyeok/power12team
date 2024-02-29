@@ -1,9 +1,27 @@
-const API_BASE_URL = "https://rolling-api.vercel.app/4-12";
+const API_BASE_URL = "https://rolling-api.vercel.app";
 
-const sendMessageData = async (recipientId, messageData) => {
+// 이미지 url 불러오는 api (GET)
+export const fetchImageUrls = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/profile-images/`);
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok. Status: ${response.status}`,
+      );
+    }
+    const data = await response.json();
+    return data.imageUrls;
+  } catch (error) {
+    console.error("Error fetching image urls:", error);
+    throw error;
+  }
+};
+
+// 폼 데이터 전송 api (POST)
+export const sendMessageData = async (recipientId, messageData) => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/recipients/${recipientId}/messages/`,
+      `${API_BASE_URL}/4-12/recipients/${recipientId}/messages/`,
       {
         method: "POST",
         headers: {
@@ -26,5 +44,3 @@ const sendMessageData = async (recipientId, messageData) => {
     throw error;
   }
 };
-
-export default sendMessageData;

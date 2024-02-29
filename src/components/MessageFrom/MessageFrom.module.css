@@ -52,6 +52,7 @@
 .DefaultProfile {
   width: 80px;
   height: 80px;
+  border-radius: 100%;
 }
 
 .SelectProfile {
@@ -153,12 +154,23 @@
   }
   .Button {
     width: 320px;
-    margin: auto;
+    margin: 50px auto 0;
   }
   .NameInput {
     width: 320px;
   }
   .SelectExplain {
     font-size: 15px;
+  }
+  .SelectImgs {
+    width: 20.8rem;
+    height: 8.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  .SelectImg {
+    width: 4rem;
+    height: 4rem;
   }
 }
