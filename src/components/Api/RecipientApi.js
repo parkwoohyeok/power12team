@@ -1,4 +1,3 @@
-/* eslint-disable */
 const BASE_URL = "https://rolling-api.vercel.app";
 
 export const getMessages = async ({ recipientId, limit, offset }) => {
