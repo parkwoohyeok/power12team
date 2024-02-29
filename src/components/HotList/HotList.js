@@ -25,22 +25,28 @@ function HotList() {
 
   const recipientGet = async () => {
     const response = await getRecipientsAsync();
-    setrecipientData(response.data.results);
+    setrecipientData(response?.data.results);
+    updateCardsPerPage(response?.data.count);
   };
 
-  const ArrayData = recipientData;
+  const HotData = recipientData.sort((a, b) => {
+    const CardA = a.reactionCount;
+    const CardB = b.reactionCount;
+    return CardB - CardA;
+  });
 
-  const totalPages = Math.ceil(ArrayData.length / cardsPerPage);
+  const totalPages = Math.ceil(HotData.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, ArrayData.length);
-  const HotCards = ArrayData.slice(startIndex, endIndex);
+  const endIndex = Math.min(startIndex + cardsPerPage, HotData.length);
+  const HotCards = HotData.slice(startIndex, endIndex);
 
   const updateCardsPerPage = () => {
-    if (window.innerWidth <= 949) {
-      setCardsPerPage(ArrayData.length);
-    } else {
-      setCardsPerPage(4);
-    }
+    if (recipientData && recipientData.length > 0)
+      if (window.innerWidth <= 949) {
+        setCardsPerPage(HotData?.length);
+      } else {
+        setCardsPerPage(4);
+      }
   };
 
   const nextPage = () => {
@@ -60,13 +66,13 @@ function HotList() {
   };
 
   useEffect(() => {
-    updateCardsPerPage();
     recipientGet();
+    updateCardsPerPage();
     window.addEventListener("resize", updateCardsPerPage);
     return () => {
       window.removeEventListener("resize", updateCardsPerPage);
     };
-  }, []);
+  }, [recipientData]);
 
   return (
     <>
@@ -89,11 +95,11 @@ function HotList() {
           >
             <div className={styles["CardInfo"]}>
               <h2>{`To.${info.name}`}</h2>
-              <MessageSummary />
+              <MessageSummary data={info} />
             </div>
             <div className={styles.CardFooter}>
               <div className={styles.HorizonLine}></div>
-              <TopReactions datas={recipientData} />
+              <TopReactions datas={info} />
             </div>
           </div>
         ))}
