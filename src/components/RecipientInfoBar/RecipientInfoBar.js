@@ -12,6 +12,7 @@ import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
 import { postEmoji, getEmoji } from "components/Api/EmojiApi";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
+import useAsync from "hooks/useAsync";
 
 const { name } = messageData[0];
 
@@ -26,22 +27,25 @@ function RecipientInfoBar() {
   const emojiAddRef = useRef();
   const currentUrl = window.location.href;
   const { results, count } = emojiData;
+
+  const [postEmojiPending, postEmojiError, postEmojiAsync] =
+    useAsync(postEmoji);
+  const [getEmojiPending, getEmojiError, getEmojiAsync] = useAsync(getEmoji);
   /**
    * 이모지 입력 시 post 함수
    * @param {string} 입력 이모지
    */
   const emojiPost = async (emoji) => {
     const emojiData = { emoji: `${emoji}`, type: "increase" };
-    const result = await postEmoji(emojiData);
+    const result = await postEmojiAsync(emojiData);
     if (result) alert(`${emoji} 전송 성공!`);
   };
   /**
    * 이모지 정보 로딩함수
    */
   const emojiGet = async () => {
-    const response = await getEmoji();
+    const response = await getEmojiAsync();
     setEmojiData(response);
-    console.log(response);
   };
   /**
    * 카카오톡 공유하기 실행 함수
