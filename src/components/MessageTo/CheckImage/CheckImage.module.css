@@ -26,7 +26,20 @@
 }
 
 @media (min-width: 357px) and (max-width: 767px) {
-  .Selected {
+  .ColorSelected {
     margin: 5.5rem;
+  }
+
+  .PhotoSelected {
+    margin: 5.5rem;
+    bottom: 15.4rem;
+  }
+
+  .Blur {
+    background: var(--Gray-20);
+    opacity: 0.5;
+    width: 15.4rem;
+    height: 15.4rem;
+    border-radius: 1.6rem;
   }
 }
