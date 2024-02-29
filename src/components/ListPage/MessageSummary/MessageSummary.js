@@ -1,31 +1,29 @@
 /* eslint-disable */
 
-import data from "mock/mock.json";
 import RecentCount from "components/ListPage/RecentCount/RecentCount";
 
 import styles from "./MessageSummary.module.css";
 
-const { messageCount, recentMessages } = data[0];
-
-function MessageSummary() {
+function MessageSummary({ data }) {
+  const { messageCount, recentMessages } = data || {};
   return (
     <div className={styles.recentMessages}>
       <div className={styles["profile-image-wrapper"]}>
-        {recentMessages[0] && (
+        {recentMessages?.[0] && (
           <img
             className={styles["profile-image"]}
             src={recentMessages[0]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
-        {recentMessages[1] && (
+        {recentMessages?.[1] && (
           <img
             className={`${styles["profile-image"]} ${styles.second}`}
             src={recentMessages[1]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
-        {recentMessages[2] && (
+        {recentMessages?.[2] && (
           <img
             className={`${styles["profile-image"]} ${styles.third}`}
             src={recentMessages[2]?.profileImageURL}
