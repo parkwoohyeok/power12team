@@ -4,20 +4,32 @@ import TopReactions from "components/TopReactions/TopReactions";
 
 import styles from "./HotList.module.css";
 
-import data from "mock/mock.json";
-
 import arrow from "assets/arrow.png";
 
 import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
 
 import { useEffect, useState } from "react";
 
+import useAsync from "hooks/useAsync";
+
+import useGetRecipients from "components/Api/useGetRecipients";
+
 function HotList() {
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
   const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
-  const ArrayData = [...data];
+  const [recipientData, setrecipientData] = useState([]);
+  const [getRecipientPending, getRecipientError, getRecipientsAsync] =
+    useAsync(useGetRecipients);
+
+  const recipientGet = async () => {
+    const response = await getRecipientsAsync();
+    setrecipientData(response.data.results);
+  };
+
+  const ArrayData = recipientData;
+
   const totalPages = Math.ceil(ArrayData.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = Math.min(startIndex + cardsPerPage, ArrayData.length);
@@ -48,12 +60,11 @@ function HotList() {
   };
 
   useEffect(() => {
-    // 컴포넌트가 마운트될 때와 화면 크기가 변경될 때마다 실행
     updateCardsPerPage();
-
-    window.addEventListener("resize", updateCardsPerPage); // 화면 크기 변경 감지
+    recipientGet();
+    window.addEventListener("resize", updateCardsPerPage);
     return () => {
-      window.removeEventListener("resize", updateCardsPerPage); // 컴포넌트가 언마운트될 때 리스너 제거
+      window.removeEventListener("resize", updateCardsPerPage);
     };
   }, []);
 
@@ -76,14 +87,13 @@ function HotList() {
             key={info.id}
             className={`${styles["CardContainer"]} ${info.backgroundColor ? styles[info.backgroundColor] : ""}  ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
           >
-            {console.log(info.backgroundImageURL)}
             <div className={styles["CardInfo"]}>
               <h2>{`To.${info.name}`}</h2>
               <MessageSummary />
             </div>
             <div className={styles.CardFooter}>
               <div className={styles.HorizonLine}></div>
-              <TopReactions />
+              <TopReactions datas={recipientData} />
             </div>
           </div>
         ))}

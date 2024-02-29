@@ -85,7 +85,7 @@ const RecentList = () => {
             </div>
             <div className={styles.CardFooter}>
               <div className={styles.HorizonLine}></div>
-              <TopReactions />
+              {/* <TopReactions /> */}
             </div>
           </div>
         ))}
