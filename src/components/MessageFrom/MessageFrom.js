@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 
 import { Editor } from "primereact/editor";
@@ -10,11 +11,12 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import styles from "./MessageFrom.module.css";
 
 function MessageFrom() {
+  const navigate = useNavigate();
   const [content, setContent] = useState(""); // 사용자가 입력한 메시지 값 저장
   const [sender, setSender] = useState(""); // 사용자가 입력한 이름 값 저장
   const [relationship, setRelationship] = useState("지인");
   const [font, setFont] = useState(); // 사용자가 선택한 프로필 이미지 저장
-  const [profileImageURL, setProfileImageURL] = useState(Frame);
+  const [profileImageURL, setProfileImageURL] = useState();
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
   const [imageUrls, setImageUrls] = useState([]);
 
@@ -23,6 +25,7 @@ function MessageFrom() {
   const recipientPath = window.location.pathname.split("/post")[1];
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
+  console.log(recipientId);
 
   const handleNameChange = (e) => {
     setSender(e.target.value);
@@ -93,6 +96,7 @@ function MessageFrom() {
     try {
       const responseData = await sendMessageData(recipientId, messageData);
       console.log("Server response:", responseData);
+      navigate(`/post/${recipientId}`);
     } catch (error) {
       console.error("Error:", error);
     }
