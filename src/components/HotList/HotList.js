@@ -35,19 +35,10 @@ function HotList() {
     return CardB - CardA;
   });
 
-  const totalPages = Math.ceil(HotData.length / cardsPerPage);
+  const totalPages = Math.ceil(HotData.length / 4);
   const startIndex = (currentPage - 1) * cardsPerPage;
   const endIndex = Math.min(startIndex + cardsPerPage, HotData.length);
   const HotCards = HotData.slice(startIndex, endIndex);
-
-  const updateCardsPerPage = () => {
-    if (recipientData && recipientData.length > 0)
-      if (window.innerWidth <= 949) {
-        setCardsPerPage(HotData?.length);
-      } else {
-        setCardsPerPage(4);
-      }
-  };
 
   const nextPage = () => {
     setCardSlidingToRight(true);
@@ -63,6 +54,16 @@ function HotList() {
     setTimeout(() => {
       setCardSlidingToLeft(false);
     }, 200);
+  };
+
+  const updateCardsPerPage = () => {
+    if (recipientData && recipientData.length > 0)
+      if (window.innerWidth <= 949) {
+        setCardsPerPage(HotData?.length);
+        setCurrentPage(1);
+      } else {
+        setCardsPerPage(4);
+      }
   };
 
   useEffect(() => {

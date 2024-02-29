@@ -41,6 +41,7 @@ const RecentList = () => {
     if (recipientData && recipientData.length > 0)
       if (window.innerWidth <= 949) {
         setCardsPerPage(sortedData?.length);
+        setCurrentPage(1);
       } else {
         setCardsPerPage(4);
       }
