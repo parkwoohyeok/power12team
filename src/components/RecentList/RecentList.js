@@ -70,7 +70,7 @@ const RecentList = () => {
     return () => {
       window.removeEventListener("resize", updateCardsPerPage);
     };
-  }, [recipientData]);
+  }, []);
 
   return (
     <>
