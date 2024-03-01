@@ -73,7 +73,7 @@ function HotList() {
     return () => {
       window.removeEventListener("resize", updateCardsPerPage);
     };
-  }, [recipientData]);
+  }, []);
 
   return (
     <>
