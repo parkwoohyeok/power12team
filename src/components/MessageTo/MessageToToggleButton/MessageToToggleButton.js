@@ -8,29 +8,7 @@ import "../../../styles/color.css";
 import styles from "./MessageToToggleButton.module.css";
 import CheckImage from "../CheckImage/CheckImage";
 
-/* eslint-disable */
-const backgroundColor = {
-  beige: "var(--Orange-20)",
-  purple: "var(--Purple-20)",
-  blue: "var(--Blue-20)",
-  green: "var(--Green-20)",
-};
-
-const backgroundImageURL = {
-  photo1: car,
-  photo2: cliff,
-  photo3: car,
-  photo4: cliff,
-};
-
-const Colors = [
-  backgroundColor.beige,
-  backgroundColor.purple,
-  backgroundColor.blue,
-  backgroundColor.green,
-];
-
-const MessageToToggleButton = () => {
+const MessageToToggleButton = ({ backgroundImageURL, Colors }) => {
   const [toggle, setToggle] = useState(true);
   const [select, setSelect] = useState("Color");
 
