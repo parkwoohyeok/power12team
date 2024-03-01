@@ -1,0 +1,45 @@
+@import url("../../../styles/color.css");
+
+.Blur {
+  background: var(--Gray-20);
+  opacity: 0.5;
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 1.6rem;
+}
+
+.ColorSelected {
+  position: relative;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 10rem;
+  margin: 6.2rem;
+}
+
+.PhotoSelected {
+  position: relative;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 10rem;
+  margin: 6.2rem;
+  bottom: 16.8rem;
+}
+
+@media (min-width: 357px) and (max-width: 767px) {
+  .ColorSelected {
+    margin: 5.5rem;
+  }
+
+  .PhotoSelected {
+    margin: 5.5rem;
+    bottom: 15.4rem;
+  }
+
+  .Blur {
+    background: var(--Gray-20);
+    opacity: 0.5;
+    width: 15.4rem;
+    height: 15.4rem;
+    border-radius: 1.6rem;
+  }
+}

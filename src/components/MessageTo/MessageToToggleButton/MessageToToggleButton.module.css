@@ -70,22 +70,6 @@
   border: 0.1rem solid rgba(0, 0, 0, 0.08);
 }
 
-.Orange {
-  background: var(--Orange-20);
-}
-
-.Purple {
-  background: var(--Purple-20);
-}
-
-.Blue {
-  background: var(--Blue-20);
-}
-
-.Green {
-  background: var(--Green-20);
-}
-
 .Photos {
   display: inline-flex;
   align-items: flex-start;
@@ -130,6 +114,7 @@
 
   .Photos {
     display: grid;
+    position: relative;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 1.2rem;
