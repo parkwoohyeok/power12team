@@ -1,5 +1,17 @@
 const BASE_URL = "https://rolling-api.vercel.app";
 
+export const getRecipient = async (recipientId) => {
+  const RESPONSE = await fetch(`${BASE_URL}/4-12/recipients/${recipientId}/`);
+
+  if (!RESPONSE.ok) {
+    throw new Error("사용자 정보를 받아오는데 실패했어요.");
+  }
+
+  const RECIPIENT = await RESPONSE.json();
+
+  return RECIPIENT;
+};
+
 export const getMessages = async ({ recipientId, limit, offset }) => {
   const RESPONSE = await fetch(
     `${BASE_URL}/4-12/recipients/${recipientId}/messages/?limit=${limit}&offset=${offset}`,

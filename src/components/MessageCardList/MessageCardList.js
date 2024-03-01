@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
-import { deleteMessage, getMessages } from "../Api/RecipientApi";
+import { deleteMessage, getMessages, getRecipient } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
 
+import CardListBackground from "./CardListBackground/CardListBackground";
 import styles from "./MessageCardList.module.css";
 
 const LIMIT = 6;
@@ -19,16 +20,26 @@ const MessageCardList = () => {
   const [offset, setOffset] = useState(0);
   const [hasNext, setHasNext] = useState(false);
   const [list, setList] = useState([]);
+  const [recipient, setRecipient] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const SENTINEL = useRef();
 
   const recipientPath = window.location.pathname.split("/post")[1];
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
+  const { backgroundColor, backgroundImageURL } = recipient;
 
   const [getMessagesPending, getMessagesError, getMessagesAsync] =
     useAsync(getMessages);
+  const [getRecipientPending, getRecipientError, getRecipientAsync] =
+    useAsync(getRecipient);
 
-  const getData = async (options) => {
+  const loadRecipient = async (id) => {
+    const RESPONSE = await getRecipientAsync(id);
+    setRecipient(RESPONSE);
+  };
+
+  const loadMessages = async (options) => {
     const RESPONSE = await getMessagesAsync(options);
     if (options.offset === 0) {
       setList(RESPONSE.results);
@@ -54,8 +65,6 @@ const MessageCardList = () => {
     }
   };
 
-  const SENTINEL = useRef();
-
   const handleClickOnEdit = () => {
     setIsEditing(true);
   };
@@ -74,7 +83,8 @@ const MessageCardList = () => {
 
   // 처음 렌더링 시 받아올 데이터
   useEffect(() => {
-    getData({ recipientId, offset, limit: 5 });
+    loadRecipient(recipientId);
+    loadMessages({ recipientId, offset, limit: 5 });
   }, []);
 
   // 무한 스크롤
@@ -82,7 +92,7 @@ const MessageCardList = () => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && hasNext) {
-          getData({ recipientId, offset, limit: LIMIT });
+          loadMessages({ recipientId, offset, limit: LIMIT });
         }
       });
     };
@@ -97,7 +107,7 @@ const MessageCardList = () => {
   }, [offset, hasNext]);
 
   return (
-    <div className={styles.CardListBackground}>
+    <CardListBackground backgroundType={backgroundImageURL || backgroundColor}>
       <div className={styles.CardListPadding}>
         {!isEditing && (
           <button
@@ -127,8 +137,11 @@ const MessageCardList = () => {
           />
         ))}
       </div>
-      <div ref={SENTINEL} className={styles.LoadMore}></div>
-    </div>
+      <div
+        ref={SENTINEL}
+        className={`${styles.LoadMore} ${styles[backgroundColor]}`}
+      ></div>
+    </CardListBackground>
   );
 };
 
