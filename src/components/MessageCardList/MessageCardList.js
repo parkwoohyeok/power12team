@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
+import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
 import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
@@ -24,24 +25,23 @@ const MessageCardList = () => {
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
 
-  const getData = async (options) => {
-    try {
-      const RESPONSE = await getMessages(options);
-      if (options.offset === 0) {
-        setList(RESPONSE.results);
-      } else {
-        setList((prevList) => [...prevList, ...RESPONSE.results]);
-      }
+  const [getMessagesPending, getMessagesError, getMessagesAsync] =
+    useAsync(getMessages);
 
-      const NEXT = RESPONSE.next;
-      if (NEXT) {
-        setOffset(NEXT.split("offset=")[1]);
-        setHasNext(true);
-      } else {
-        setHasNext(false);
-      }
-    } catch (error) {
-      console.error(error);
+  const getData = async (options) => {
+    const RESPONSE = await getMessagesAsync(options);
+    if (options.offset === 0) {
+      setList(RESPONSE.results);
+    } else {
+      setList((prevList) => [...prevList, ...RESPONSE.results]);
+    }
+
+    const NEXT = RESPONSE.next;
+    if (NEXT) {
+      setOffset(NEXT.split("offset=")[1]);
+      setHasNext(true);
+    } else {
+      setHasNext(false);
     }
   };
 
