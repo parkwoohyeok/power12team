@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
@@ -102,7 +103,10 @@ const MessageCardList = () => {
     observer.observe(SENTINEL.current);
 
     return () => {
-      observer.unobserve(SENTINEL.current);
+      /* 페이지 전환 시 element 사라짐 대비 */
+      if (SENTINEL.current) {
+        observer.unobserve(SENTINEL.current);
+      }
     };
   }, [offset, hasNext]);
 
