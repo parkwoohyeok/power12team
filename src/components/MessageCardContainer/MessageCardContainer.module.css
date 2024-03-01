@@ -1,6 +1,7 @@
 .CardContainer {
   background-color: white;
   width: 31.9%;
+  font-size: 1.6rem;
 
   @media (max-width: 1199px) {
     width: 48.3%;

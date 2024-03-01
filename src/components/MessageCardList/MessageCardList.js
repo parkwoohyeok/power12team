@@ -1,18 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
-import { getMessages } from "../Api/RecipientApi";
+import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
 
 import styles from "./MessageCardList.module.css";
 
 const LIMIT = 6;
-const id = 2697;
 
 const IO_OPTIONS = {
   root: null,
   rootMargin: "0px 0px 0px 0px",
-  threshold: 1.0,
+  threshold: 0.9,
 };
 
 const MessageCardList = () => {
@@ -20,6 +19,10 @@ const MessageCardList = () => {
   const [hasNext, setHasNext] = useState(false);
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+
+  const recipientPath = window.location.pathname.split("/post")[1];
+  const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
+  const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
 
   const getData = async (options) => {
     try {
@@ -30,10 +33,24 @@ const MessageCardList = () => {
         setList((prevList) => [...prevList, ...RESPONSE.results]);
       }
 
-      setHasNext(RESPONSE.next);
-      setOffset(offset + RESPONSE.results.length);
+      const NEXT = RESPONSE.next;
+      if (NEXT) {
+        setOffset(NEXT.split("offset=")[1]);
+        setHasNext(true);
+      } else {
+        setHasNext(false);
+      }
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const deleteData = async (messageId) => {
+    try {
+      const RESULT = await deleteMessage(messageId);
+      return RESULT;
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -44,8 +61,11 @@ const MessageCardList = () => {
   };
 
   const handleDelete = (messageId) => {
-    const newList = list.filter((message) => message.id !== messageId);
-    setList(newList);
+    const result = deleteData(messageId);
+    if (result) {
+      const newList = list.filter((message) => message.id !== messageId);
+      setList(newList);
+    }
   };
 
   const handleClickOnSave = () => {
@@ -54,7 +74,7 @@ const MessageCardList = () => {
 
   // 처음 렌더링 시 받아올 데이터
   useEffect(() => {
-    getData({ id, offset, limit: LIMIT });
+    getData({ recipientId, offset, limit: 5 });
   }, []);
 
   // 무한 스크롤
@@ -62,7 +82,7 @@ const MessageCardList = () => {
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && hasNext) {
-          getData({ id, offset, limit: LIMIT });
+          getData({ recipientId, offset, limit: LIMIT });
         }
       });
     };
@@ -74,7 +94,7 @@ const MessageCardList = () => {
     return () => {
       observer.unobserve(SENTINEL.current);
     };
-  }, [offset]);
+  }, [offset, hasNext]);
 
   return (
     <div className={styles.CardListBackground}>
