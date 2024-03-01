@@ -139,7 +139,7 @@ const MessageCardList = () => {
       </div>
       <div
         ref={SENTINEL}
-        className={`${styles.LoadMore} ${styles[backgroundColor]}`}
+        className={`${styles.LoadMore} ${styles[backgroundImageURL || backgroundColor]}`}
       ></div>
     </CardListBackground>
   );
