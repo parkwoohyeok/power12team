@@ -1,11 +1,3 @@
-.Layout {
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-  padding: 2.4rem;
-  background-color: white;
-}
-
 .LandingImage {
   width: 100%;
   max-width: 120rem;
@@ -27,6 +19,7 @@
   background-color: var(--Surface);
   border-radius: 1.6rem;
   border: none;
+  overflow: hidden;
 }
 .Description {
   width: 27rem;
