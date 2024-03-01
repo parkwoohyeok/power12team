@@ -46,7 +46,7 @@ function RecipientInfoBar() {
    */
   const emojiGet = async () => {
     const response = await getEmojiAsync();
-    setEmojiData(response.data);
+    setEmojiData(response);
   };
   /**
    * 카카오톡 공유하기 실행 함수
