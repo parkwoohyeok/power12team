@@ -4,6 +4,7 @@ import HotList from "components/HotList/HotList";
 import Nav from "components/Nav/Nav";
 import RecentList from "components/RecentList/RecentList";
 import styles from "pages/ListPage/ListPage.module.css";
+import { Link } from "react-router-dom";
 
 const ListPage = () => {
   return (
@@ -18,9 +19,11 @@ const ListPage = () => {
             <RecentList />
           </div>
         </div>
-        <button className={styles.LinkBtn}>
-          <h2>나도 만들어보기</h2>
-        </button>
+        <Link to="/post">
+          <button className={styles.LinkBtn}>
+            <h2>나도 만들어보기</h2>
+          </button>
+        </Link>
       </div>
     </>
   );

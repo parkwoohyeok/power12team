@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import MessageFrom from "./components/MessageFrom/MessageFrom";
-import PostPage from "./components/PostPage/PostPage";
 import LandingPage from "./pages/LandingPage";
 import ListPage from "./pages/ListPage/ListPage";
+import MessagePage from "./pages/MessagePage";
+import PostPage from "./pages/PostPage";
 import RecipientPage from "./pages/RecipientPage";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route index element={<PostPage />} />
           <Route path=":recipientId">
             <Route index element={<RecipientPage />} />
-            <Route path="message" element={<MessageFrom />} />
+            <Route path="message" element={<MessagePage />} />
           </Route>
         </Route>
       </Routes>
