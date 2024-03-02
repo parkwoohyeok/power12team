@@ -9,13 +9,14 @@ import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
 import styles from "./MessageFrom.module.css";
+import NameInput from "./NameInput/NameInput";
 
 function MessageFrom() {
   const navigate = useNavigate();
   const [content, setContent] = useState(""); // 사용자가 입력한 메시지 값 저장
   const [sender, setSender] = useState(""); // 사용자가 입력한 이름 값 저장
   const [relationship, setRelationship] = useState("지인");
-  const [font, setFont] = useState(); // 사용자가 선택한 프로필 이미지 저장
+  const [font, setFont] = useState(); // 사용자가 선택한 폰트 저장
   const [profileImageURL, setProfileImageURL] = useState();
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
   const [imageUrls, setImageUrls] = useState([]);
@@ -26,11 +27,6 @@ function MessageFrom() {
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
   console.log(recipientId);
-
-  const handleNameChange = (e) => {
-    setSender(e.target.value);
-    setInputError(e.target.value ? "" : "값을 입력해 주세요.");
-  };
 
   const handleImageChange = async (e) => {
     // async 키워드를 추가
@@ -162,18 +158,12 @@ function MessageFrom() {
     <>
       <form onSubmit={handleSubmit} className={styles.ParentContainer}>
         <div className={styles.BigContainer}>
-          <div className={styles.NameContainer}>
-            <div className={styles.Title}>From.</div>
-            <input
-              className={styles.NameInput}
-              placeholder="이름을 입력해 주세요."
-              value={sender}
-              onChange={handleNameChange}
-            />
-            {inputError && (
-              <div className={styles.InputError}>{inputError}</div>
-            )}
-          </div>
+          <NameInput
+            sender={sender}
+            setSender={setSender}
+            inputError={inputError}
+            setInputError={setInputError}
+          />
           <div className={styles.ProfileContainer}>
             <div className={styles.Title}>프로필 이미지</div>
             <div className={styles.Content}>
