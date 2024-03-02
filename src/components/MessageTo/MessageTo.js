@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 /* eslint-disable */
 import CreateButton from "./CreateButton/CreateButton";
@@ -75,7 +76,10 @@ const MessageTo = () => {
         </div>
         <MessageToToggleButton Colors={Colors} photos={photos} />
       </div>
-      <CreateButton name={name} />
+      {/* 수정예정 */}
+      <Link to="./2697">
+        <CreateButton name={name} />
+      </Link>
     </div>
   );
 };
