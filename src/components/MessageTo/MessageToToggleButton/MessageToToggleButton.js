@@ -5,15 +5,13 @@ import CheckImage from "../CheckImage/CheckImage";
 import styles from "./MessageToToggleButton.module.css";
 
 const MessageToToggleButton = ({ Colors, photos }) => {
-  const [toggle, setToggle] = useState(true);
   const [select, setSelect] = useState("Color");
 
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
 
   const handleToggle = () => {
-    setToggle(!toggle);
-    setSelect(toggle ? "Color" : "Photo");
+    setSelect(select === "Photo" ? "Color" : "Photo");
   };
 
   const handleClick = (option) => {
@@ -44,7 +42,7 @@ const MessageToToggleButton = ({ Colors, photos }) => {
           이미지
         </button>
       </div>
-      {toggle ? (
+      {select === "Color" ? (
         <div className={styles.Colors}>
           {Colors.map((color, index) => (
             <div
