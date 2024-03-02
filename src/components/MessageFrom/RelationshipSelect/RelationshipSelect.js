@@ -41,9 +41,6 @@ function RelationshipSelect({ relationship, handleRelationshipChange }) {
           className={styles.SelectBox}
           styles={customStyles}
           value={relationship}
-          // onChange={(selectedOption) =>
-          //   handleRelationshipChange(selectedOption)
-          // }
           onChange={handleRelationshipChange}
         ></Select>
       </div>

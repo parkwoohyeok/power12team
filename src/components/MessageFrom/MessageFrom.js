@@ -72,7 +72,7 @@ function MessageFrom() {
   };
 
   const handleRelationshipChange = (selectedOption) => {
-    setRelationship(selectedOption.value);
+    setRelationship(selectedOption);
   };
 
   const handleFontChange = (selectedOption) => {
@@ -178,9 +178,6 @@ function MessageFrom() {
             </div>
           </div>
           <RelationshipSelect
-            // handleRelationshipChange={(selectedOption) =>
-            //   setRelationship(selectedOption.value)
-            // }
             handleRelationshipChange={handleRelationshipChange}
             defaultValue={defaultRelationValue}
             relationship={relationship}
