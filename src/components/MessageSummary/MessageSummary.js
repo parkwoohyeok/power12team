@@ -1,11 +1,8 @@
 /* eslint-disable */
 import styles from "./MessageSummary.module.css";
 import RecentCount from "../RecentCount/RecentCount";
-import data from "../../mock/mock.json";
 
-const { messageCount, recentMessages } = data[0];
-
-function MessageSummary() {
+function MessageSummary({ messageCount, recentMessages }) {
   return (
     <div className={styles.RecentMessages}>
       <div className={styles.ProfileImageWrapper}>
