@@ -4,7 +4,6 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
 import MessageSummary from "components/MessageSummary/MessageSummary";
-import messageData from "mock/mock.json";
 import { useState, useRef, useEffect } from "react";
 import useGetEmoji from "components/Api/useGetEmoji";
 import usePostEmoji from "components/Api/usePostEmoji";
@@ -15,9 +14,7 @@ import divider from "assets/divider.svg";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
 import useAsync from "hooks/useAsync";
 
-const { name } = messageData[0];
-
-function RecipientInfoBar() {
+function RecipientInfoBar({ recipientData }) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
@@ -28,6 +25,7 @@ function RecipientInfoBar() {
   const emojiAddRef = useRef();
   const currentUrl = window.location.href;
   const { results, count } = emojiData;
+  const { id, name } = recipientData;
 
   const [postEmojiPending, postEmojiError, postEmojiAsync] =
     useAsync(usePostEmoji);
@@ -38,15 +36,17 @@ function RecipientInfoBar() {
    */
   const emojiPost = async (emoji) => {
     const emojiData = { emoji: `${emoji}`, type: "increase" };
-    const result = await postEmojiAsync(emojiData);
+    const result = await postEmojiAsync(id, emojiData);
     if (result) alert(`${emoji} 전송 성공!`);
   };
   /**
    * 이모지 정보 로딩함수
    */
   const emojiGet = async () => {
-    const response = await getEmojiAsync();
-    setEmojiData(response);
+    if (id) {
+      const response = await getEmojiAsync(id);
+      setEmojiData(response);
+    }
   };
   /**
    * 카카오톡 공유하기 실행 함수
@@ -61,7 +61,7 @@ function RecipientInfoBar() {
    */
   useEffect(() => {
     emojiGet();
-  }, []);
+  }, [id]);
   /**
    * 모달 외부 클릭 시 모달 창 닫힘
    */
