@@ -1,9 +1,9 @@
 /* eslint-disable */
 import axiosInstance from "utils/axiosInstance";
 
-const usePostEmoji = async (postData) => {
+const usePostEmoji = async (id, postData) => {
   const postEmoji = () =>
-    axiosInstance.post("recipients/2821/reactions/", postData);
+    axiosInstance.post(`recipients/${id}/reactions/`, postData);
   const response = await postEmoji();
   return { response };
 };
