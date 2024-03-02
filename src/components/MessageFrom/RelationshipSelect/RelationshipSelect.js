@@ -3,10 +3,7 @@ import Select from "react-select";
 
 import styles from "./RelationshipSelect.module.css";
 
-function RelationshipSelect({
-  defaultRelationValue,
-  handleRelationshipChange,
-}) {
+function RelationshipSelect({ relationship, handleRelationshipChange }) {
   const options = [
     { value: "지인", label: "지인" },
     { value: "친구", label: "친구" },
@@ -40,14 +37,14 @@ function RelationshipSelect({
       <div className={styles.RelationContainer}>
         <div className={styles.Title}>상대와의 관계</div>
         <Select
-          placeholder="상대와의 관계를 선택해주세요."
           options={options}
           className={styles.SelectBox}
           styles={customStyles}
-          defaultValue={defaultRelationValue}
-          onChange={(selectedOption) =>
-            handleRelationshipChange(selectedOption)
-          }
+          value={relationship}
+          // onChange={(selectedOption) =>
+          //   handleRelationshipChange(selectedOption)
+          // }
+          onChange={handleRelationshipChange}
         ></Select>
       </div>
     </>

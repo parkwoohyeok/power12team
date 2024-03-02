@@ -12,16 +12,26 @@ import styles from "./MessageFrom.module.css";
 import NameInput from "./NameInput/NameInput";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
 
-function MessageFrom({ options }) {
+function MessageFrom() {
   const fonts = [
     { value: "Noto Sans", label: "Noto Sans" },
     { value: "Pretendard", label: "Pretendard" },
   ];
 
+  const options = [
+    { value: "지인", label: "지인" },
+    { value: "친구", label: "친구" },
+    { value: "동료", label: "동료" },
+    { value: "가족", label: "가족" },
+  ];
+
   const navigate = useNavigate();
   const [content, setContent] = useState(""); // 사용자가 입력한 메시지 값 저장
   const [sender, setSender] = useState(""); // 사용자가 입력한 이름 값 저장
-  const [relationship, setRelationship] = useState("지인");
+  const [relationship, setRelationship] = useState({
+    value: "지인",
+    label: "지인",
+  });
   const [font, setFont] = useState(fonts[0]); // 사용자가 선택한 폰트 저장
   const [profileImageURL, setProfileImageURL] = useState();
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
@@ -84,7 +94,7 @@ function MessageFrom({ options }) {
     const messageData = {
       team: "4-12",
       sender,
-      relationship: relationship || "지인",
+      relationship: relationship.value || "지인",
       content,
       font: fontValue || "Noto Sans",
       profileImageURL,
@@ -168,10 +178,12 @@ function MessageFrom({ options }) {
             </div>
           </div>
           <RelationshipSelect
-            handleRelationshipChange={(selectedOption) =>
-              setRelationship(selectedOption.value)
-            }
+            // handleRelationshipChange={(selectedOption) =>
+            //   setRelationship(selectedOption.value)
+            // }
+            handleRelationshipChange={handleRelationshipChange}
             defaultValue={defaultRelationValue}
+            relationship={relationship}
           />
           <div className={styles.ContentContainer}>
             <div className={styles.Title}>내용을 입력해 주세요</div>
