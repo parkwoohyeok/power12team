@@ -10,8 +10,9 @@ import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import styles from "./MessageFrom.module.css";
 import NameInput from "./NameInput/NameInput";
+import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
 
-function MessageFrom() {
+function MessageFrom({ options, customStyles }) {
   const navigate = useNavigate();
   const [content, setContent] = useState(""); // 사용자가 입력한 메시지 값 저장
   const [sender, setSender] = useState(""); // 사용자가 입력한 이름 값 저장
@@ -117,36 +118,8 @@ function MessageFrom() {
     loadImageUrls();
   }, []);
 
-  const customStyles = {
-    control: (base) => ({
-      ...base,
-      height: "50px", // 컨트롤의 높이 설정
-      minHeight: "50px", // 최소 높이 설정
-      fontSize: "16px",
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      fontSize: "16px", // 폰트 사이즈 설정
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      fontSize: "16px", // 플레이스홀더의 폰트 사이즈 설정
-    }),
-    option: (provided) => ({
-      ...provided,
-      fontSize: "16px", // 드롭다운 옵션의 폰트 사이즈 설정
-    }),
-  };
-
-  const options = [
-    { value: "지인", label: "지인" },
-    { value: "친구", label: "친구" },
-    { value: "동료", label: "동료" },
-    { value: "가족", label: "가족" },
-  ];
-
   const defaultFontValue = fonts.find((fnt) => fnt.value === "Noto Sans");
-  const defaultRelationValue = options.find(
+  const defaultRelationValue = options?.find(
     (option) => option.value === "지인",
   );
 
@@ -194,17 +167,12 @@ function MessageFrom() {
               </div>
             </div>
           </div>
-          <div className={styles.RelationContainer}>
-            <div className={styles.Title}>상대와의 관계</div>
-            <Select
-              placeholder="상대와의 관계를 선택해주세요."
-              options={options}
-              className={styles.SelectBox}
-              styles={customStyles}
-              defaultValue={defaultRelationValue}
-              onChange={handleRelationshipChange}
-            ></Select>
-          </div>
+          <RelationshipSelect
+            handleRelationshipChange={(selectedOption) =>
+              setRelationship(selectedOption.value)
+            }
+            defaultValue={defaultRelationValue}
+          />
           <div className={styles.ContentContainer}>
             <div className={styles.Title}>내용을 입력해 주세요</div>
             <Editor
