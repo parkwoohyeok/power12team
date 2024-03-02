@@ -2,6 +2,7 @@
 import styles from "./LandingPageContent.module.css";
 import landingImage01 from "assets/landingImage_01.svg";
 import landingImage02 from "assets/landingImage_02.png";
+import { Link } from "react-router-dom";
 
 const LandingPageContent = () => {
   return (
@@ -26,7 +27,9 @@ const LandingPageContent = () => {
         </div>
         <img src={landingImage02} className={styles.ImageSource} />
       </div>
-      <div className={styles.LookButton}>구경해보기</div>
+      <Link to="/list">
+        <div className={styles.LookButton}>구경해보기</div>
+      </Link>
     </>
   );
 };

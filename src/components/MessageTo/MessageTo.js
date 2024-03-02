@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import CreateButton from "./CreateButton/CreateButton";
 import InputPost from "./InputPost/InputPost";
@@ -36,7 +37,10 @@ const MessageTo = () => {
         </div>
         <MessageToToggleButton />
       </div>
-      <CreateButton name={name} />
+      {/* 수정예정 */}
+      <Link to="./2697">
+        <CreateButton name={name} />
+      </Link>
     </div>
   );
 };
