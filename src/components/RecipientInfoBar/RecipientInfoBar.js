@@ -26,6 +26,7 @@ function RecipientInfoBar({ recipientData }) {
   const currentUrl = window.location.href;
   const { results, count } = emojiData;
   const { id, name, messageCount, recentMessages } = recipientData;
+  const isPostPage = true;
 
   const [postEmojiPending, postEmojiError, postEmojiAsync] =
     useAsync(usePostEmoji);
@@ -121,8 +122,8 @@ function RecipientInfoBar({ recipientData }) {
         <div className={styles.Name}>To. {name}</div>
         <div className={styles.InfoWrapper}>
           <MessageSummary
-            messageCount={messageCount || 0}
-            recentMessages={recentMessages || []}
+            data={{ messageCount, recentMessages }}
+            isPostPage={isPostPage}
           />
           <img
             src={divider}
