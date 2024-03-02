@@ -8,7 +8,7 @@ const MessageToToggleButton = ({ Colors, photos }) => {
   const [select, setSelect] = useState("Color");
 
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
-  const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
+  const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   const handleToggle = () => {
     setSelect(select === "Photo" ? "Color" : "Photo");
@@ -44,9 +44,9 @@ const MessageToToggleButton = ({ Colors, photos }) => {
       </div>
       {select === "Color" ? (
         <div className={styles.Colors}>
-          {Colors.map((color, index) => (
+          {Colors.map((color) => (
             <div
-              key={index}
+              key={color}
               style={{ backgroundColor: color }}
               className={styles.Color}
               onClick={() => handleSelectColor(color)}
@@ -59,12 +59,12 @@ const MessageToToggleButton = ({ Colors, photos }) => {
         <div className={styles.Photos}>
           {photos.map((photo, index) => (
             <div
-              key={index}
+              key={photo}
               style={{ backgroundImage: `url('${photo}')` }}
               className={styles.Photo}
-              onClick={() => handleSelectPhoto(photo)}
+              onClick={() => handleSelectPhoto(index)}
             >
-              {selectedPhoto === photo && (
+              {selectedPhoto === index && (
                 <CheckImage select={select} photo={photo} />
               )}
             </div>
