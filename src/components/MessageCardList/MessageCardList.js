@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,7 @@ import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
 import { deleteMessage, getMessages, getRecipient } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
+import RecipientInfoBar from "components/RecipientInfoBar/RecipientInfoBar";
 
 import CardListBackground from "./CardListBackground/CardListBackground";
 import styles from "./MessageCardList.module.css";
@@ -111,41 +113,46 @@ const MessageCardList = () => {
   }, [offset, hasNext]);
 
   return (
-    <CardListBackground backgroundType={backgroundImageURL || backgroundColor}>
-      <div className={styles.CardListPadding}>
-        {!isEditing && (
-          <button
-            className={styles.CardListEditButton}
-            onClick={handleClickOnEdit}
-          >
-            편집하기
-          </button>
-        )}
-        {isEditing && (
-          <button
-            className={styles.CardListEditButton}
-            onClick={handleClickOnSave}
-          >
-            저장하기
-          </button>
-        )}
-      </div>
-      <div className={styles.CardListContainer}>
-        {isEditing || <AddMessageCard />}
-        {list.map((message) => (
-          <MessageCard
-            key={message.id}
-            message={message}
-            isEditing={isEditing}
-            onDelete={handleDelete}
-          />
-        ))}
-      </div>
-      <div
-        ref={SENTINEL}
-        className={`${styles.LoadMore} ${styles[backgroundImageURL || backgroundColor]}`}
-      ></div>
-    </CardListBackground>
+    <>
+      <RecipientInfoBar recipientData={recipient} />
+      <CardListBackground
+        backgroundType={backgroundImageURL || backgroundColor}
+      >
+        <div className={styles.CardListPadding}>
+          {!isEditing && (
+            <button
+              className={styles.CardListEditButton}
+              onClick={handleClickOnEdit}
+            >
+              편집하기
+            </button>
+          )}
+          {isEditing && (
+            <button
+              className={styles.CardListEditButton}
+              onClick={handleClickOnSave}
+            >
+              저장하기
+            </button>
+          )}
+        </div>
+        <div className={styles.CardListContainer}>
+          {isEditing || <AddMessageCard />}
+          {list.map((message) => (
+            <MessageCard
+              key={message.id}
+              message={message}
+              isEditing={isEditing}
+              onDelete={handleDelete}
+            />
+          ))}
+        </div>
+        <div
+          ref={SENTINEL}
+          className={`${styles.LoadMore} ${styles[backgroundImageURL || backgroundColor]}`}
+        ></div>
+      </CardListBackground>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import styles from "./HotList.module.css";
 
 import arrow from "assets/arrow.png";
 
-import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
+import MessageSummary from "components/MessageSummary/MessageSummary";
 
 import { useEffect, useState } from "react";
 
