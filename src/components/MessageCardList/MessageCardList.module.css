@@ -1,8 +1,3 @@
-.CardListBackground {
-  background-color: var(--Orange-20);
-  padding: 0 2.4rem;
-}
-
 .CardListPadding {
   max-width: 120rem;
   height: 11rem;
@@ -54,6 +49,19 @@
 }
 
 .LoadMore {
+  background-color: transparent;
   height: 10rem;
+}
+
+.blue {
+  background-color: var(--Blue-20);
+}
+.purple {
+  background-color: var(--Purple-20);
+}
+.green {
+  background-color: var(--Green-20);
+}
+.beige {
   background-color: var(--Orange-20);
 }
