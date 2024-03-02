@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 
-/* eslint-disable */
-import car from "assets/car.png";
-import cliff from "assets/cliff.png";
-
-import "../../../styles/color.css";
-import styles from "./MessageToToggleButton.module.css";
 import CheckImage from "../CheckImage/CheckImage";
 
-const MessageToToggleButton = ({ backgroundImageURL, Colors }) => {
+import styles from "./MessageToToggleButton.module.css";
+
+const MessageToToggleButton = ({ fetchBackgroundImageUrls, Colors }) => {
   const [toggle, setToggle] = useState(true);
   const [select, setSelect] = useState("Color");
-
-  const Photos = ["photo1", "photo2", "photo3", "photo4"];
 
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(Photos[0]);
 
-  const options = toggle ? Colors : Photos;
+  const options = toggle ? Colors : fetchBackgroundImageUrls;
 
   const handleToggle = () => {
     setToggle(!toggle);

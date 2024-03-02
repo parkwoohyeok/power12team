@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 
+/* eslint-disable */
 import CreateButton from "./CreateButton/CreateButton";
+
 import InputPost from "./InputPost/InputPost";
+
 import styles from "./MessageTo.module.css";
+
 import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton";
+
+import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
+
+import "../../styles/color.css";
 
 /* eslint-disable */
 const backgroundColor = {
@@ -11,13 +19,6 @@ const backgroundColor = {
   purple: "var(--Purple-20)",
   blue: "var(--Blue-20)",
   green: "var(--Green-20)",
-};
-
-const backgroundImageURL = {
-  photo1: car,
-  photo2: cliff,
-  photo3: car,
-  photo4: cliff,
 };
 
 const Colors = [
@@ -30,6 +31,9 @@ const Colors = [
 const MessageTo = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
+
+  const [backgroundUrl] = fetchBackgroundImageUrls();
+  console.log(backgroundUrl);
 
   const onChange = (e) => {
     setName(e.target.value);
@@ -45,7 +49,7 @@ const MessageTo = () => {
   const recipientData = {
     name: name || "",
     backgroundColor: Colors || beige,
-    backgroundImageURL,
+    backgroundUrl,
   };
 
   return (
@@ -65,7 +69,7 @@ const MessageTo = () => {
         </div>
         <MessageToToggleButton
           backgroundColor={backgroundColor}
-          backgroundImageURL={backgroundImageURL}
+          fetchBackgroundImageUrls={backgroundUrl}
           Colors={Colors}
         />
       </div>
