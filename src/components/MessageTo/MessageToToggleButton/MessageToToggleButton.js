@@ -4,18 +4,16 @@ import CheckImage from "../CheckImage/CheckImage";
 
 import styles from "./MessageToToggleButton.module.css";
 
-const MessageToToggleButton = ({ fetchBackgroundImageUrls, Colors }) => {
+const MessageToToggleButton = ({ Colors, photos }) => {
   const [toggle, setToggle] = useState(true);
   const [select, setSelect] = useState("Color");
 
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
-  const [selectedPhoto, setSelectedPhoto] = useState(Photos[0]);
-
-  const options = toggle ? Colors : fetchBackgroundImageUrls;
+  const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
 
   const handleToggle = () => {
     setToggle(!toggle);
-    setSelect(toggle ? "Photo" : "Color");
+    setSelect(toggle ? "Color" : "Photo");
   };
 
   const handleClick = (option) => {
@@ -48,29 +46,29 @@ const MessageToToggleButton = ({ fetchBackgroundImageUrls, Colors }) => {
       </div>
       {toggle ? (
         <div className={styles.Colors}>
-          {options.map((color, index) => (
+          {Colors.map((color, index) => (
             <div
               key={index}
               style={{ backgroundColor: color }}
               className={styles.Color}
               onClick={() => handleSelectColor(color)}
             >
-              {selectedColor === color ? <CheckImage /> : null}
+              {selectedColor === color && <CheckImage />}
             </div>
           ))}
         </div>
       ) : (
         <div className={styles.Photos}>
-          {options.map((photo, index) => (
+          {photos.map((photo, index) => (
             <div
               key={index}
-              style={{ backgroundImage: `url(${backgroundImageURL[photo]})` }}
+              style={{ backgroundImage: `url('${photo}')` }}
               className={styles.Photo}
               onClick={() => handleSelectPhoto(photo)}
             >
-              {selectedPhoto === photo ? (
+              {selectedPhoto === photo && (
                 <CheckImage select={select} photo={photo} />
-              ) : null}
+              )}
             </div>
           ))}
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 /* eslint-disable */
 import CreateButton from "./CreateButton/CreateButton";
@@ -31,9 +31,15 @@ const Colors = [
 const MessageTo = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
+  const [photos, setPhotos] = useState([]);
 
-  const [backgroundUrl] = fetchBackgroundImageUrls();
-  console.log(backgroundUrl);
+  useEffect(() => {
+    fetchBackgroundImageUrls().then((v) => {
+      setPhotos(v);
+    });
+  }, []);
+
+  console.log(photos);
 
   const onChange = (e) => {
     setName(e.target.value);
@@ -49,7 +55,7 @@ const MessageTo = () => {
   const recipientData = {
     name: name || "",
     backgroundColor: Colors || beige,
-    backgroundUrl,
+    backgroundImageURL: photos || photos[0],
   };
 
   return (
@@ -67,11 +73,7 @@ const MessageTo = () => {
             컬러를 선택하거나, 이미지를 선택할 수 있습니다.
           </div>
         </div>
-        <MessageToToggleButton
-          backgroundColor={backgroundColor}
-          fetchBackgroundImageUrls={backgroundUrl}
-          Colors={Colors}
-        />
+        <MessageToToggleButton Colors={Colors} photos={photos} />
       </div>
       <CreateButton name={name} />
     </div>
