@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Select from "react-select";
 
 import { Editor } from "primereact/editor";
 
@@ -8,16 +7,22 @@ import Frame from "../../assets/Frame.png";
 import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 
 import "@toast-ui/editor/dist/toastui-editor.css";
+import FontSelect from "./FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
 import NameInput from "./NameInput/NameInput";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
 
-function MessageFrom({ options, customStyles }) {
+function MessageFrom({ options }) {
+  const fonts = [
+    { value: "Noto Sans", label: "Noto Sans" },
+    { value: "Pretendard", label: "Pretendard" },
+  ];
+
   const navigate = useNavigate();
   const [content, setContent] = useState(""); // 사용자가 입력한 메시지 값 저장
   const [sender, setSender] = useState(""); // 사용자가 입력한 이름 값 저장
   const [relationship, setRelationship] = useState("지인");
-  const [font, setFont] = useState(); // 사용자가 선택한 폰트 저장
+  const [font, setFont] = useState(fonts[0]); // 사용자가 선택한 폰트 저장
   const [profileImageURL, setProfileImageURL] = useState();
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
   const [imageUrls, setImageUrls] = useState([]);
@@ -71,11 +76,6 @@ function MessageFrom({ options, customStyles }) {
     setContent(textWithoutHtml);
   };
 
-  const fonts = [
-    { value: "Noto Sans", label: "Noto Sans" },
-    { value: "Pretendard", label: "Pretendard" },
-  ];
-
   const fontValue = font ? font.value : "Noto Sans"; // font가 undefined일 경우 기본값으로 "Noto Sans" 사용
 
   const handleSubmit = async (e) => {
@@ -118,7 +118,7 @@ function MessageFrom({ options, customStyles }) {
     loadImageUrls();
   }, []);
 
-  const defaultFontValue = fonts.find((fnt) => fnt.value === "Noto Sans");
+  const defaultFontValue = fonts?.find((fnt) => fnt.value === "Noto Sans");
   const defaultRelationValue = options?.find(
     (option) => option.value === "지인",
   );
@@ -181,17 +181,11 @@ function MessageFrom({ options, customStyles }) {
               style={{ height: "320px", overflow: "auto" }}
             />
           </div>
-          <div className={styles.FontContainer}>
-            <div className={styles.Title}>폰트 선택</div>
-            <Select
-              options={fonts}
-              className={styles.FontSelectBox}
-              placeholder="사용할 폰트를 선택해주세요."
-              styles={customStyles}
-              defaultValue={defaultFontValue}
-              onChange={handleFontChange}
-            ></Select>
-          </div>
+          <FontSelect
+            defaultValue={defaultFontValue}
+            handleFontChange={handleFontChange}
+            value={font}
+          />
         </div>
         <div className={styles.Bottom}>
           <button
