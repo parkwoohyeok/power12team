@@ -46,7 +46,7 @@ const MessageToToggleButton = ({
         </button>
       </div>
       {select === "Color" ? (
-        <div className={styles.COLORS}>
+        <div className={styles.Colors}>
           {COLORS.map((color) => (
             <div
               key={color}
