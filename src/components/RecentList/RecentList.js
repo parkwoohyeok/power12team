@@ -5,7 +5,7 @@ import TopReactions from "components/TopReactions/TopReactions";
 import styles from "components/RecentList/RecentList.module.css";
 
 import arrow from "assets/arrow.png";
-import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
+import MessageSummary from "components/MessageSummary/MessageSummary";
 import { useEffect, useState } from "react";
 import useAsync from "hooks/useAsync";
 import useGetRecipients from "components/Api/useGetRecipients";

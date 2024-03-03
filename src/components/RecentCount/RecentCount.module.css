@@ -1,13 +1,13 @@
-.RecentCount {
+.recentCount {
   display: block;
 }
 
-.Text {
-  font-size: 1.8rem;
+.text {
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
-.Number {
-  font-size: 1.8rem;
+.number {
+  font-size: 1.6rem;
   font-weight: 700;
 }

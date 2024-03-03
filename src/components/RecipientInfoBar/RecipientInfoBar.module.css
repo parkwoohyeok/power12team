@@ -112,7 +112,7 @@
   }
 }
 
-@media (max-width: 1248px) {
+@media (max-width: 1199px) {
   .MessageSummaryDivider {
     display: none;
   }
