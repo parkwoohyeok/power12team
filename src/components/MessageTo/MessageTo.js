@@ -15,15 +15,16 @@ import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
 import "../../styles/color.css";
 import usePostPaper from "components/Api/usePostPaper";
 
-const Colors = ["beige", "purple", "blue", "green"];
+const COLORS = ["beige", "purple", "blue", "green"];
 
 const MessageTo = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [photos, setPhotos] = useState([]);
-  const [selectedColor, setSelectedColor] = useState(Colors[0]);
+  const [selectedColor, setSelectedColor] = useState(COLORS[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [select, setSelect] = useState("Color");
+
   const navigate = useNavigate();
 
   const handleClickCreateButton = () => {
@@ -81,7 +82,7 @@ const MessageTo = () => {
           </div>
         </div>
         <MessageToToggleButton
-          Colors={Colors}
+          COLORS={COLORS}
           photos={photos}
           selectedColor={selectedColor}
           selectedPhoto={selectedPhoto}

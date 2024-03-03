@@ -13,7 +13,6 @@
   color: var(--Gray-90);
   text-align: center;
 }
-
 .ChooseButton {
   display: flex;
   width: 12.2rem;
@@ -69,7 +68,6 @@
   border-radius: 1.6rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.08);
 }
-
 .beige {
   background: var(--Orange-20);
 }
