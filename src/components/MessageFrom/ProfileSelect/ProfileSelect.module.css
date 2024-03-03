@@ -50,6 +50,7 @@
   height: 56px;
   border: 1px solid var(--Gray-20);
   border-radius: 100%;
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {

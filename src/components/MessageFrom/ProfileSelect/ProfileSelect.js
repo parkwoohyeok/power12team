@@ -29,9 +29,8 @@ function ProfileSelect({
             </div>
             <div className={styles.SelectImgs}>
               {imageUrls.map((imageUrl, index) => (
-                <input
+                <img
                   key={index}
-                  type="image"
                   src={imageUrl}
                   alt="프로필 선택"
                   className={styles.SelectImg}

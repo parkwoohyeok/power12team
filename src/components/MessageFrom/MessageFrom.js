@@ -42,29 +42,10 @@ function MessageFrom() {
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
 
   const handleImageChange = async (e) => {
-    // async 키워드를 추가
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       const formData = new FormData();
-      formData.append("profileImageURL", file); // 'image'는 서버에서 요구하는 필드 이름에 맞춰야 합니다.
-
-      try {
-        const response = await fetch("서버의 이미지 업로드 API URL", {
-          method: "POST",
-          body: formData,
-          // 필요한 경우 추가적인 헤더 설정
-        });
-
-        if (!response.ok) {
-          throw new Error("이미지 업로드 실패");
-        }
-
-        const responseData = await response.json();
-        const uploadedImageUrl = responseData.profileImageURL; // 'imageUrl'은 서버에서 반환하는 필드 이름에 맞춰야 합니다.
-        setProfileImageURL(uploadedImageUrl); // 업로드된 이미지 URL을 상태에 저장
-      } catch (error) {
-        console.error("이미지 업로드 중 오류 발생:", error);
-      }
+      formData.append("profileImageURL", file);
     }
   };
 
@@ -100,7 +81,6 @@ function MessageFrom() {
       font: fontValue || "Noto Sans",
       profileImageURL,
     };
-
     try {
       const responseData = await sendMessageData(recipientId, messageData);
       console.log("Server response:", responseData);
