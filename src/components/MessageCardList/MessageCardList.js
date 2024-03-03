@@ -60,7 +60,6 @@ const MessageCardList = () => {
   const deleteData = async (messageId) => {
     try {
       const RESULT = await deleteMessage(messageId);
-      return RESULT;
     } catch (error) {
       console.log(error);
     }
