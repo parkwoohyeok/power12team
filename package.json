@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@toast-ui/editor": "^3.2.2",
     "@toast-ui/react-editor": "^3.2.3",
+    "axios": "^1.6.7",
+    "axois": "^0.0.1-security",
     "emoji-mart": "^5.5.2",
     "framer-motion": "^11.0.6",
     "primeicons": "^6.0.1",
