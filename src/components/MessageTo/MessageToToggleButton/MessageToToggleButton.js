@@ -4,11 +4,15 @@ import CheckImage from "../CheckImage/CheckImage";
 
 import styles from "./MessageToToggleButton.module.css";
 
-const MessageToToggleButton = ({ Colors, photos }) => {
+const MessageToToggleButton = ({
+  Colors,
+  photos,
+  selectedColor,
+  selectedPhoto,
+  setSelectedColor,
+  setSelectedPhoto,
+}) => {
   const [select, setSelect] = useState("Color");
-
-  const [selectedColor, setSelectedColor] = useState(Colors[0]);
-  const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   const handleToggle = () => {
     setSelect(select === "Photo" ? "Color" : "Photo");
@@ -47,8 +51,7 @@ const MessageToToggleButton = ({ Colors, photos }) => {
           {Colors.map((color) => (
             <div
               key={color}
-              style={{ backgroundColor: color }}
-              className={styles.Color}
+              className={`${styles.Color} ${styles[color]}`}
               onClick={() => handleSelectColor(color)}
             >
               {selectedColor === color && <CheckImage />}

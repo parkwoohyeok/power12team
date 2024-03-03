@@ -13,34 +13,46 @@ import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton
 import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
 
 import "../../styles/color.css";
+import usePostPaper from "components/Api/usePostPaper";
+import useAsync from "hooks/useAsync";
 
 /* eslint-disable */
-const backgroundColor = {
-  beige: "var(--Orange-20)",
-  purple: "var(--Purple-20)",
-  blue: "var(--Blue-20)",
-  green: "var(--Green-20)",
-};
-
-const Colors = [
-  backgroundColor.beige,
-  backgroundColor.purple,
-  backgroundColor.blue,
-  backgroundColor.green,
-];
+const Colors = ["beige", "purple", "blue", "green"];
 
 const MessageTo = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [post, setPost] = useState("");
+  const [selectedColor, setSelectedColor] = useState(Colors[0]);
+  const [selectedPhoto, setSelectedPhoto] = useState(0);
+
+  const recipientData = {
+    name: name,
+    backgroundColor: selectedColor || "beige",
+    //backgroundImageURL: photos[selectedPhoto],
+  };
+  console.log(recipientData);
+
+  const [postPaperPending, postPaperError, postPaperAsync] =
+    useAsync(usePostPaper);
+
+  const paperPost = async () => {
+    const result = await postPaperAsync(recipientData);
+    if (result) alert(`롤링 페이퍼 생성 완료!`);
+  };
+
+  useEffect(() => {
+    usePostPaper(recipientData).then((v) => {
+      setPost();
+    });
+  });
 
   useEffect(() => {
     fetchBackgroundImageUrls().then((v) => {
       setPhotos(v);
     });
   }, []);
-
-  console.log(photos);
 
   const onChange = (e) => {
     setName(e.target.value);
@@ -51,12 +63,6 @@ const MessageTo = () => {
     if (!name) {
       setError(true);
     }
-  };
-
-  const recipientData = {
-    name: name || "",
-    backgroundColor: Colors || beige,
-    backgroundImageURL: photos || photos[0],
   };
 
   return (
@@ -74,11 +80,18 @@ const MessageTo = () => {
             컬러를 선택하거나, 이미지를 선택할 수 있습니다.
           </div>
         </div>
-        <MessageToToggleButton Colors={Colors} photos={photos} />
+        <MessageToToggleButton
+          Colors={Colors}
+          photos={photos}
+          selectedColor={selectedColor}
+          selectedPhoto={selectedPhoto}
+          setSelectedColor={setSelectedColor}
+          setSelectedPhoto={setSelectedPhoto}
+        />
       </div>
       {/* 수정예정 */}
       <Link to="./2697">
-        <CreateButton name={name} />
+        <CreateButton name={name} onClick={paperPost} />
       </Link>
     </div>
   );
