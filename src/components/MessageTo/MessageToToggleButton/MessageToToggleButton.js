@@ -11,9 +11,9 @@ const MessageToToggleButton = ({
   selectedPhoto,
   setSelectedColor,
   setSelectedPhoto,
+  select,
+  setSelect,
 }) => {
-  const [select, setSelect] = useState("Color");
-
   const handleToggle = () => {
     setSelect(select === "Photo" ? "Color" : "Photo");
   };
@@ -51,7 +51,7 @@ const MessageToToggleButton = ({
           {Colors.map((color) => (
             <div
               key={color}
-              className={`${styles.Color} ${styles.color}`}
+              className={`${styles.Color} ${styles[color]}`}
               onClick={() => handleSelectColor(color)}
             >
               {selectedColor === color && <CheckImage />}

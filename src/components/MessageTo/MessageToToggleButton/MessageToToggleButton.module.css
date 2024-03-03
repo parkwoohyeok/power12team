@@ -70,6 +70,22 @@
   border: 0.1rem solid rgba(0, 0, 0, 0.08);
 }
 
+.beige {
+  background: var(--Orange-20);
+}
+
+.purple {
+  background: var(--Purple-20);
+}
+
+.blue {
+  background: var(--Blue-20);
+}
+
+.green {
+  background: var(--Green-20);
+}
+
 .Photos {
   display: inline-flex;
   align-items: flex-start;
@@ -110,22 +126,6 @@
     height: 15.4rem;
     border-radius: 1.6rem;
     border: 0.1rem solid rgba(0, 0, 0, 0.08);
-  }
-
-  .beige {
-    background: var(--Orange-20);
-  }
-
-  .purple {
-    background: var(--Purple-20);
-  }
-
-  .blue {
-    background: var(--Blue-20);
-  }
-
-  .green {
-    background: var(--Green-20);
   }
 
   .Photos {

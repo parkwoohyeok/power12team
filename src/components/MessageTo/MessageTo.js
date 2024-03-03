@@ -23,16 +23,23 @@ const MessageTo = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
+  const [select, setSelect] = useState("Color");
   const navigate = useNavigate();
-
-  const recipientData = {
-    name: name,
-    backgroundColor: selectedColor || "beige",
-    //backgroundImageURL: photos[selectedPhoto],
-  };
 
   const handleClickCreateButton = () => {
     try {
+      const recipientData =
+        select === "Color"
+          ? {
+              name: name,
+              backgroundColor: selectedColor || "beige",
+            }
+          : {
+              name: name,
+              backgroundColor: selectedColor || "beige",
+              backgroundImageURL: photos[selectedPhoto],
+            };
+
       usePostPaper(recipientData).then((v) => {
         navigate(`${v.id}`);
       });
@@ -80,6 +87,8 @@ const MessageTo = () => {
           selectedPhoto={selectedPhoto}
           setSelectedColor={setSelectedColor}
           setSelectedPhoto={setSelectedPhoto}
+          select={select}
+          setSelect={setSelect}
         />
       </div>
       <CreateButton name={name} onClick={handleClickCreateButton} />
