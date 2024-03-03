@@ -1,135 +1,50 @@
 @import url("../../styles/color.css");
 
 .BigContainer {
-  width: 720px;
-  height: 977px;
+  width: 72rem;
+  height: 97.7rem;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 5rem;
   margin: 0 auto;
 }
 
-.NameContainer {
-  width: 720px;
-  height: 98px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.Title {
-  height: 36px;
-  font-size: 24px;
-  font-weight: 700;
-  font-family: Pretendard;
-}
-
-.NameInput {
-  width: 720px;
-  height: 50px;
-  border-radius: 8px;
-  border: 1px solid var(--Gray-30);
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--Gray-50);
-}
-
-.ProfileContainer {
-  width: 717px;
-  height: 142px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.Content {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-
-.DefaultProfile {
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
-}
-
-.SelectProfile {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.SelectExplain {
-  font-size: 16px;
-  font-weight: 400;
-  font-family: Pretendard;
-  color: var(--Gray-50);
-}
-
-.SelectImgs {
-  display: flex;
-  gap: 4px;
-}
-
-.SelectImg {
-  width: 56px;
-  height: 56px;
-  border: 1px solid var(--Gray-20);
-  border-radius: 100%;
-}
-
-.RelationContainer {
-  width: 320px;
-  height: 98px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .SelectBox {
-  width: 320px;
-  height: 50px;
-  border-radius: 8px;
+  width: 32rem;
+  height: 5rem;
+  border-radius: 0.8rem;
 }
 
 .SelectBox:focus {
   border-color: var(--Gray-20);
 }
 
-.ContentContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .FontContainer {
-  width: 320px;
-  height: 98px;
+  width: 32rem;
+  height: 9.8rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .Bottom {
   margin: 0 auto;
   width: 100%;
-  height: 104px;
+  height: 10.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px auto;
+  margin: 10rem auto;
 }
 
 .Button {
-  width: 720px;
-  height: 56px;
-  border-radius: 12px;
+  width: 72rem;
+  height: 5.6rem;
+  border-radius: 1.2rem;
   color: var(--Surface);
   background-color: var(--Purple-60);
-  padding: 14px 24px;
-  font-size: 18px;
+  padding: 1.4rem 2.4rem;
+  font-size: 1.8rem;
   border: none;
   cursor: pointer;
 }
@@ -139,43 +54,26 @@
 }
 
 .InputError {
-  font-size: 14px;
+  font-size: 1.4rem;
   color: var(--Error);
-  margin-left: 16px;
+  margin-left: 1.6rem;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 74.9375rem) {
   .BigContainer {
-    width: 720px;
+    width: 72rem;
   }
   .Button {
     margin: 0 auto;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .BigContainer {
-    width: 320px;
+    width: 32rem;
   }
   .Button {
-    width: 320px;
-    margin: 50px auto 0;
-  }
-  .NameInput {
-    width: 320px;
-  }
-  .SelectExplain {
-    font-size: 15px;
-  }
-  .SelectImgs {
-    width: 20.8rem;
-    height: 8.4rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
-  }
-  .SelectImg {
-    width: 4rem;
-    height: 4rem;
+    width: 32rem;
+    margin: 5rem auto 0;
   }
 }
