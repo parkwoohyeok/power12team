@@ -4,35 +4,47 @@ import TopReactions from "components/TopReactions/TopReactions";
 
 import styles from "components/RecentList/RecentList.module.css";
 
-import data from "mock/mock.json";
-
 import arrow from "assets/arrow.png";
-import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
+import MessageSummary from "components/MessageSummary/MessageSummary";
 import { useEffect, useState } from "react";
+import useAsync from "hooks/useAsync";
+import useGetRecipients from "components/Api/useGetRecipients";
 
 const RecentList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
   const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
+  const [recipientData, setrecipientData] = useState([]);
 
-  const sortedData = [...data].sort((a, b) => {
+  const [getRecipientPending, getRecipientError, getRecipientsAsync] =
+    useAsync(useGetRecipients);
+
+  const recipientGet = async () => {
+    const response = await getRecipientsAsync();
+    setrecipientData(response.data?.results);
+    updateCardsPerPage(response.data?.count);
+  };
+
+  const sortedData = recipientData.sort((a, b) => {
     const timeA = new Date(a.createdAt).getTime();
     const timeB = new Date(b.createdAt).getTime();
     return timeB - timeA;
   });
 
-  const totalPages = Math.ceil(data.length / cardsPerPage);
+  const totalPages = Math.ceil(sortedData.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, data.length);
+  const endIndex = Math.min(startIndex + cardsPerPage, sortedData.length);
   const currentCards = sortedData.slice(startIndex, endIndex);
 
   const updateCardsPerPage = () => {
-    if (window.innerWidth <= 949) {
-      setCardsPerPage(sortedData.length);
-    } else {
-      setCardsPerPage(4);
-    }
+    if (recipientData && recipientData.length > 0)
+      if (window.innerWidth <= 949) {
+        setCardsPerPage(sortedData?.length);
+        setCurrentPage(1);
+      } else {
+        setCardsPerPage(4);
+      }
   };
 
   const nextPage = () => {
@@ -52,8 +64,8 @@ const RecentList = () => {
   };
 
   useEffect(() => {
+    recipientGet();
     updateCardsPerPage();
-
     window.addEventListener("resize", updateCardsPerPage);
     return () => {
       window.removeEventListener("resize", updateCardsPerPage);
@@ -81,11 +93,11 @@ const RecentList = () => {
           >
             <div className={styles["CardInfo"]}>
               <h2>{`To.${info.name}`}</h2>
-              <MessageSummary />
+              <MessageSummary data={info} />
             </div>
             <div className={styles.CardFooter}>
               <div className={styles.HorizonLine}></div>
-              <TopReactions />
+              <TopReactions datas={info} />
             </div>
           </div>
         ))}

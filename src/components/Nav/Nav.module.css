@@ -1,0 +1,27 @@
+.NavBar {
+  padding: 1.1rem 2.4rem;
+  border-bottom: 1px solid var(--Gray-20);
+}
+
+.Container {
+  max-width: 120rem;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  padding: 1rem 2.4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LogoBtn {
+  background-color: transparent;
+}
+
+.GoToPostPage {
+  background-color: transparent;
+  border: 1px solid var(--Gray-30);
+  border-radius: 5px;
+  padding: 0.51rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}

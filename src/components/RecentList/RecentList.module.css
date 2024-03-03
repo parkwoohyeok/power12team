@@ -130,9 +130,10 @@
 @media (max-width: 949px) {
   .Wrapper {
     gap: 1rem;
-    max-width: 80rem;
+    max-width: 100vw;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
+    padding-right: 2rem;
   }
 
   .SlideBtn_R {
@@ -145,6 +146,42 @@
   .CardContainer {
     gap: 3rem;
     flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .Wrapper {
+    gap: 0.8rem;
+  }
+
+  .CardTitle {
+    font-size: 1.7rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .CardInfo {
+    gap: 0.7rem;
+  }
+
+  .CardInfo > h2 {
+    font-size: 1.4rem;
+  }
+
+  .CardInfo > p {
+    font-size: 0.7rem;
+  }
+
+  .CardContainer {
+    gap: 3rem;
+    width: 18rem;
+  }
+
+  .RecentCount {
+    font-size: 0.7rem;
+  }
+
+  .CardFooter {
+    gap: 0.7rem;
   }
 }
 

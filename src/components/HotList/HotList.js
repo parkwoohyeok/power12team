@@ -4,32 +4,41 @@ import TopReactions from "components/TopReactions/TopReactions";
 
 import styles from "./HotList.module.css";
 
-import data from "mock/mock.json";
-
 import arrow from "assets/arrow.png";
 
-import MessageSummary from "components/ListPage/MessageSummary/MessageSummary";
+import MessageSummary from "components/MessageSummary/MessageSummary";
 
 import { useEffect, useState } from "react";
+
+import useAsync from "hooks/useAsync";
+
+import useGetRecipients from "components/Api/useGetRecipients";
 
 function HotList() {
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
   const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
-  const ArrayData = [...data];
-  const totalPages = Math.ceil(ArrayData.length / cardsPerPage);
-  const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, ArrayData.length);
-  const HotCards = ArrayData.slice(startIndex, endIndex);
+  const [recipientData, setrecipientData] = useState([]);
+  const [getRecipientPending, getRecipientError, getRecipientsAsync] =
+    useAsync(useGetRecipients);
 
-  const updateCardsPerPage = () => {
-    if (window.innerWidth <= 949) {
-      setCardsPerPage(ArrayData.length);
-    } else {
-      setCardsPerPage(4);
-    }
+  const recipientGet = async () => {
+    const response = await getRecipientsAsync();
+    setrecipientData(response?.data.results);
+    updateCardsPerPage(response?.data.count);
   };
+
+  const HotData = recipientData.sort((a, b) => {
+    const CardA = a.reactionCount;
+    const CardB = b.reactionCount;
+    return CardB - CardA;
+  });
+
+  const totalPages = Math.ceil(HotData.length / 4);
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = Math.min(startIndex + cardsPerPage, HotData.length);
+  const HotCards = HotData.slice(startIndex, endIndex);
 
   const nextPage = () => {
     setCardSlidingToRight(true);
@@ -47,13 +56,22 @@ function HotList() {
     }, 200);
   };
 
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때와 화면 크기가 변경될 때마다 실행
-    updateCardsPerPage();
+  const updateCardsPerPage = () => {
+    if (recipientData && recipientData.length > 0)
+      if (window.innerWidth <= 949) {
+        setCardsPerPage(HotData?.length);
+        setCurrentPage(1);
+      } else {
+        setCardsPerPage(4);
+      }
+  };
 
-    window.addEventListener("resize", updateCardsPerPage); // 화면 크기 변경 감지
+  useEffect(() => {
+    recipientGet();
+    updateCardsPerPage();
+    window.addEventListener("resize", updateCardsPerPage);
     return () => {
-      window.removeEventListener("resize", updateCardsPerPage); // 컴포넌트가 언마운트될 때 리스너 제거
+      window.removeEventListener("resize", updateCardsPerPage);
     };
   }, []);
 
@@ -76,14 +94,13 @@ function HotList() {
             key={info.id}
             className={`${styles["CardContainer"]} ${info.backgroundColor ? styles[info.backgroundColor] : ""}  ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
           >
-            {console.log(info.backgroundImageURL)}
             <div className={styles["CardInfo"]}>
               <h2>{`To.${info.name}`}</h2>
-              <MessageSummary />
+              <MessageSummary data={info} />
             </div>
             <div className={styles.CardFooter}>
               <div className={styles.HorizonLine}></div>
-              <TopReactions />
+              <TopReactions datas={info} />
             </div>
           </div>
         ))}
