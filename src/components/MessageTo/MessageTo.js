@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable */
 import CreateButton from "./CreateButton/CreateButton";
@@ -14,39 +14,32 @@ import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
 
 import "../../styles/color.css";
 import usePostPaper from "components/Api/usePostPaper";
-import useAsync from "hooks/useAsync";
 
-/* eslint-disable */
 const Colors = ["beige", "purple", "blue", "green"];
 
 const MessageTo = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [photos, setPhotos] = useState([]);
-  const [post, setPost] = useState("");
   const [selectedColor, setSelectedColor] = useState(Colors[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
+  const navigate = useNavigate();
 
   const recipientData = {
     name: name,
     backgroundColor: selectedColor || "beige",
     //backgroundImageURL: photos[selectedPhoto],
   };
-  console.log(recipientData);
 
-  const [postPaperPending, postPaperError, postPaperAsync] =
-    useAsync(usePostPaper);
-
-  const paperPost = async () => {
-    const result = await postPaperAsync(recipientData);
-    if (result) alert(`롤링 페이퍼 생성 완료!`);
+  const handleClickCreateButton = () => {
+    try {
+      usePostPaper(recipientData).then((v) => {
+        navigate(`${v.id}`);
+      });
+    } catch (error) {
+      throw new Error("Error in useEffect:", error);
+    }
   };
-
-  useEffect(() => {
-    usePostPaper(recipientData).then((v) => {
-      setPost();
-    });
-  });
 
   useEffect(() => {
     fetchBackgroundImageUrls().then((v) => {
@@ -89,10 +82,7 @@ const MessageTo = () => {
           setSelectedPhoto={setSelectedPhoto}
         />
       </div>
-      {/* 수정예정 */}
-      <Link to="./2697">
-        <CreateButton name={name} onClick={paperPost} />
-      </Link>
+      <CreateButton name={name} onClick={handleClickCreateButton} />
     </div>
   );
 };

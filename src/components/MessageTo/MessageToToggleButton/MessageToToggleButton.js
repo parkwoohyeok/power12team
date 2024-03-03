@@ -51,7 +51,7 @@ const MessageToToggleButton = ({
           {Colors.map((color) => (
             <div
               key={color}
-              className={`${styles.Color} ${styles[color]}`}
+              className={`${styles.Color} ${styles.color}`}
               onClick={() => handleSelectColor(color)}
             >
               {selectedColor === color && <CheckImage />}
