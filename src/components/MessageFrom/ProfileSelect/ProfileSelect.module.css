@@ -1,0 +1,70 @@
+@import url("../../../styles/color.css");
+
+.ProfileContainer {
+  width: 717px;
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Title {
+  height: 36px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Pretendard;
+}
+
+.Content {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.DefaultProfile {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.SelectProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.SelectExplain {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Pretendard;
+  color: var(--Gray-50);
+}
+
+.SelectImgs {
+  display: flex;
+  gap: 4px;
+}
+
+.SelectImg {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--Gray-20);
+  border-radius: 100%;
+}
+
+@media (max-width: 767px) {
+  .SelectExplain {
+    font-size: 15px;
+  }
+  .SelectImgs {
+    width: 20.8rem;
+    height: 8.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  .SelectImg {
+    width: 4rem;
+    height: 4rem;
+  }
+}

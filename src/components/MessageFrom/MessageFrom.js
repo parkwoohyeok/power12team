@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Editor } from "primereact/editor";
-
-import Frame from "../../assets/Frame.png";
 import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 
-import "@toast-ui/editor/dist/toastui-editor.css";
 import FontSelect from "./FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
 import NameInput from "./NameInput/NameInput";
+import ProfileSelect from "./ProfileSelect/ProfileSelect";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
+import TextEditor from "./TextEditor/TextEditor";
 
 function MessageFrom() {
   const fonts = [
@@ -42,7 +40,6 @@ function MessageFrom() {
   const recipientPath = window.location.pathname.split("/post")[1];
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
-  console.log(recipientId);
 
   const handleImageChange = async (e) => {
     // async 키워드를 추가
@@ -86,6 +83,10 @@ function MessageFrom() {
     setContent(textWithoutHtml);
   };
 
+  const handleImageSelect = (imageUrl) => {
+    setProfileImageURL(imageUrl);
+  };
+
   const fontValue = font ? font.value : "Noto Sans"; // font가 undefined일 경우 기본값으로 "Noto Sans" 사용
 
   const handleSubmit = async (e) => {
@@ -110,10 +111,6 @@ function MessageFrom() {
   };
 
   useEffect(() => {
-    console.log(`버튼 활성화 상태: ${isButtonEnabled}`);
-  }, [sender, content]);
-
-  useEffect(() => {
     const loadImageUrls = async () => {
       try {
         const urls = await fetchImageUrls();
@@ -133,10 +130,6 @@ function MessageFrom() {
     (option) => option.value === "지인",
   );
 
-  const handleImageSelect = (imageUrl) => {
-    setProfileImageURL(imageUrl);
-  };
-
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.ParentContainer}>
@@ -147,49 +140,18 @@ function MessageFrom() {
             inputError={inputError}
             setInputError={setInputError}
           />
-          <div className={styles.ProfileContainer}>
-            <div className={styles.Title}>프로필 이미지</div>
-            <div className={styles.Content}>
-              <img
-                className={styles.DefaultProfile}
-                src={profileImageURL || Frame}
-                alt="기본프로필"
-                type="file"
-                onChange={handleImageChange}
-                accept="image/*"
-              />
-              <div className={styles.SelectProfile}>
-                <div className={styles.SelectExplain}>
-                  프로필 이미지를 선택해주세요!
-                </div>
-                <div className={styles.SelectImgs}>
-                  {imageUrls.map((imageUrl, index) => (
-                    <input
-                      key={index}
-                      type="image"
-                      src={imageUrl}
-                      alt="프로필 선택"
-                      className={styles.SelectImg}
-                      onClick={() => handleImageSelect(imageUrl)}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <ProfileSelect
+            profileImageURL={profileImageURL}
+            imageUrls={imageUrls}
+            handleImageChange={handleImageChange}
+            handleImageSelect={handleImageSelect}
+          />
           <RelationshipSelect
             handleRelationshipChange={handleRelationshipChange}
             defaultValue={defaultRelationValue}
             relationship={relationship}
           />
-          <div className={styles.ContentContainer}>
-            <div className={styles.Title}>내용을 입력해 주세요</div>
-            <Editor
-              value={content}
-              onTextChange={handleTextChange}
-              style={{ height: "320px", overflow: "auto" }}
-            />
-          </div>
+          <TextEditor content={content} handleTextChange={handleTextChange} />
           <FontSelect
             defaultValue={defaultFontValue}
             handleFontChange={handleFontChange}
