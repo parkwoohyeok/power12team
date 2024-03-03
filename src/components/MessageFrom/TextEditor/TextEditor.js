@@ -13,6 +13,7 @@ function TextEditor({ content, handleTextChange }) {
           value={content}
           onTextChange={handleTextChange}
           style={{ height: "320px", overflow: "auto" }}
+          className={styles.TextEditorContent}
         />
       </div>
     </>
