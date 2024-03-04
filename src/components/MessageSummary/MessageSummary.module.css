@@ -16,7 +16,7 @@
 
 .ProfileImage {
   position: relative;
-  border: 1px solid var(--Gray-20);
+  border: 0.1rem solid var(--Gray-20);
   border-radius: 50%;
   width: 2.8rem;
   height: 2.8rem;

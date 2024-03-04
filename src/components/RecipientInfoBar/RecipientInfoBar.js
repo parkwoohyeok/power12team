@@ -131,25 +131,29 @@ function RecipientInfoBar({ recipientData }) {
             className={styles.MessageSummaryDivider}
           />
           <div className={styles.RestWrapper}>
-            <TopReactionsModified mapData={emojiListTop3} />
-            {count - 3 && (
+            {!!count && (
               <>
-                <button
-                  onClick={() => {
-                    setIsEmojiListOpen(!isEmojiListOpen);
-                  }}
-                  className={styles.MoreEmojiButton}
-                >
-                  <img src={arrowDown} alt="more emoji" />
-                </button>
-                {isEmojiListOpen && (
-                  <div className={styles.EmojiListModal} ref={emojiListRef}>
-                    {emojiListRest?.map((reaction) => (
-                      <div key={reaction.id} className={styles.Reaction}>
-                        {reaction.emoji} {reaction.count}
+                <TopReactionsModified mapData={emojiListTop3} />
+                {!!(count - 3) && (
+                  <>
+                    <button
+                      onClick={() => {
+                        setIsEmojiListOpen(!isEmojiListOpen);
+                      }}
+                      className={styles.MoreEmojiButton}
+                    >
+                      <img src={arrowDown} alt="more emoji" />
+                    </button>
+                    {isEmojiListOpen && (
+                      <div className={styles.EmojiListModal} ref={emojiListRef}>
+                        {emojiListRest?.map((reaction) => (
+                          <div key={reaction.id} className={styles.Reaction}>
+                            {reaction.emoji} {reaction.count}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    )}
+                  </>
                 )}
               </>
             )}
