@@ -62,10 +62,10 @@ const MessageToToggleButton = ({
           {photos.map((photo, index) => (
             <div
               key={photo}
-              style={{ backgroundImage: `url('${photo}')` }}
               className={styles.Photo}
               onClick={() => handleSelectPhoto(index)}
             >
+              <img className={styles.Photo} src={photo} />
               {selectedPhoto === index && (
                 <CheckImage select={select} photo={photo} />
               )}
