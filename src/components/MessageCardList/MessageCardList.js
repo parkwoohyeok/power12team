@@ -19,28 +19,20 @@ const IO_OPTIONS = {
   threshold: 0.9,
 };
 
-const MessageCardList = () => {
+const MessageCardList = ({
+  recipient,
+  recipientId,
+  backgroundImageURL,
+  backgroundColor,
+}) => {
   const [offset, setOffset] = useState(0);
   const [hasNext, setHasNext] = useState(false);
   const [list, setList] = useState([]);
-  const [recipient, setRecipient] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const SENTINEL = useRef();
 
-  const recipientPath = window.location.pathname.split("/post")[1];
-  const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
-  const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
-  const { backgroundColor, backgroundImageURL } = recipient;
-
   const [getMessagesPending, getMessagesError, getMessagesAsync] =
     useAsync(getMessages);
-  const [getRecipientPending, getRecipientError, getRecipientAsync] =
-    useAsync(getRecipient);
-
-  const loadRecipient = async (id) => {
-    const RESPONSE = await getRecipientAsync(id);
-    setRecipient(RESPONSE);
-  };
 
   const loadMessages = async (options) => {
     const RESPONSE = await getMessagesAsync(options);
@@ -86,7 +78,6 @@ const MessageCardList = () => {
 
   // 처음 렌더링 시 받아올 데이터
   useEffect(() => {
-    loadRecipient(recipientId);
     loadMessages({ recipientId, offset, limit: 5 });
   }, []);
 
@@ -113,46 +104,41 @@ const MessageCardList = () => {
   }, [offset, hasNext]);
 
   return (
-    <>
-      <RecipientInfoBar recipientData={recipient} />
-      <CardListBackground
-        backgroundType={backgroundImageURL || backgroundColor}
-      >
-        <div className={styles.CardListPadding}>
-          {!isEditing && (
-            <button
-              className={styles.CardListEditButton}
-              onClick={handleClickOnEdit}
-            >
-              편집하기
-            </button>
-          )}
-          {isEditing && (
-            <button
-              className={styles.CardListEditButton}
-              onClick={handleClickOnSave}
-            >
-              저장하기
-            </button>
-          )}
-        </div>
-        <div className={styles.CardListContainer}>
-          {isEditing || <AddMessageCard />}
-          {list.map((message) => (
-            <MessageCard
-              key={message.id}
-              message={message}
-              isEditing={isEditing}
-              onDelete={handleDelete}
-            />
-          ))}
-        </div>
-        <div
-          ref={SENTINEL}
-          className={`${styles.LoadMore} ${styles[backgroundImageURL || backgroundColor]}`}
-        ></div>
-      </CardListBackground>
-    </>
+    <div className={styles.CardListPosition}>
+      <div className={styles.CardListPadding}>
+        {!isEditing && (
+          <button
+            className={styles.CardListEditButton}
+            onClick={handleClickOnEdit}
+          >
+            편집하기
+          </button>
+        )}
+        {isEditing && (
+          <button
+            className={styles.CardListEditButton}
+            onClick={handleClickOnSave}
+          >
+            저장하기
+          </button>
+        )}
+      </div>
+      <div className={styles.CardListContainer}>
+        {isEditing || <AddMessageCard />}
+        {list.map((message) => (
+          <MessageCard
+            key={message.id}
+            message={message}
+            isEditing={isEditing}
+            onDelete={handleDelete}
+          />
+        ))}
+      </div>
+      <div
+        ref={SENTINEL}
+        className={`${styles.LoadMore} ${styles[backgroundImageURL || backgroundColor]}`}
+      ></div>
+    </div>
   );
 };
 
