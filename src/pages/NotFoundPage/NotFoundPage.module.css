@@ -1,0 +1,56 @@
+.NotFoungPage {
+  padding-top: 10rem;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  width: 100%;
+  max-width: 75rem;
+  margin: auto;
+}
+
+.Title {
+  font-size: 6rem;
+}
+
+.Text {
+  font-size: 3rem;
+}
+
+.LinkTo {
+  font-size: 2rem;
+}
+
+.LookButton {
+  margin: auto;
+  margin-top: 2.4rem;
+  padding: 1.4rem 2.4rem;
+  background-color: var(--Purple-60);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.8rem;
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+@media (max-width: 1248px) {
+  .LookButton {
+    max-width: none;
+  }
+}
+@media (max-width: 767px) {
+  .Content {
+    text-align: center;
+  }
+  .ErrorCode {
+    font-size: 7rem;
+  }
+  .ErrorText {
+    display: none;
+  }
+}

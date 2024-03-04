@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ListPage from "./pages/ListPage/ListPage";
 import MessagePage from "./pages/MessagePage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PostPage from "./pages/PostPage";
 import RecipientPage from "./pages/RecipientPage";
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="message" element={<MessagePage />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
