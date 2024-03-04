@@ -91,7 +91,7 @@ const MessageCardList = ({
     observer.observe(SENTINEL.current);
 
     return () => {
-      /* 페이지 전환 시 element 사라짐 대비 */
+      /* 페이지 전환 시 element 사라짐 대응 조건식 */
       if (SENTINEL.current) {
         observer.unobserve(SENTINEL.current);
       }
