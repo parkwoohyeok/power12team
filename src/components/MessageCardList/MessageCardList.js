@@ -1,14 +1,10 @@
 /* eslint-disable */
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "../AddMessageCard/AddMessageCard";
-import { deleteMessage, getMessages, getRecipient } from "../Api/RecipientApi";
+import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "../MessageCard/MessageCard";
-import RecipientInfoBar from "components/RecipientInfoBar/RecipientInfoBar";
-
-import CardListBackground from "./CardListBackground/CardListBackground";
 import styles from "./MessageCardList.module.css";
 
 const LIMIT = 6;
@@ -20,7 +16,6 @@ const IO_OPTIONS = {
 };
 
 const MessageCardList = ({
-  recipient,
   recipientId,
   backgroundImageURL,
   backgroundColor,
@@ -104,7 +99,7 @@ const MessageCardList = ({
   }, [offset, hasNext]);
 
   return (
-    <div className={styles.CardListPosition}>
+    <>
       <div className={styles.CardListPadding}>
         {!isEditing && (
           <button
@@ -138,7 +133,7 @@ const MessageCardList = ({
         ref={SENTINEL}
         className={`${styles.LoadMore} ${styles[backgroundImageURL || backgroundColor]}`}
       ></div>
-    </div>
+    </>
   );
 };
 
