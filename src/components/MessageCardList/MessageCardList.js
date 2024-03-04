@@ -58,7 +58,7 @@ const MessageCardList = () => {
       setHasNext(false);
     }
   };
-
+  /* eslint-disable */
   const deleteData = async (messageId) => {
     try {
       const RESULT = await deleteMessage(messageId);

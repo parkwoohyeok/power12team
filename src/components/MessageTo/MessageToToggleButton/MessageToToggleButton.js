@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CheckImage from "../CheckImage/CheckImage";
 
 import styles from "./MessageToToggleButton.module.css";
 
-const MessageToToggleButton = ({ Colors, photos }) => {
-  const [select, setSelect] = useState("Color");
-
-  const [selectedColor, setSelectedColor] = useState(Colors[0]);
-  const [selectedPhoto, setSelectedPhoto] = useState(0);
-
+const MessageToToggleButton = ({
+  COLORS,
+  photos,
+  selectedColor,
+  selectedPhoto,
+  setSelectedColor,
+  setSelectedPhoto,
+  select,
+  setSelect,
+}) => {
   const handleToggle = () => {
     setSelect(select === "Photo" ? "Color" : "Photo");
   };
@@ -25,7 +29,6 @@ const MessageToToggleButton = ({ Colors, photos }) => {
   const handleSelectPhoto = (selectedOption) => {
     setSelectedPhoto(selectedOption);
   };
-
   return (
     <>
       <div className={styles.ToggleButton} onClick={handleToggle}>
@@ -44,11 +47,10 @@ const MessageToToggleButton = ({ Colors, photos }) => {
       </div>
       {select === "Color" ? (
         <div className={styles.Colors}>
-          {Colors.map((color) => (
+          {COLORS.map((color) => (
             <div
               key={color}
-              style={{ backgroundColor: color }}
-              className={styles.Color}
+              className={`${styles.Color} ${styles[color]}`}
               onClick={() => handleSelectColor(color)}
             >
               {selectedColor === color && <CheckImage />}
