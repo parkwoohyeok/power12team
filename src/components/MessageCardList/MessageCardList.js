@@ -101,20 +101,19 @@ const MessageCardList = ({
   return (
     <>
       <div className={styles.CardListPadding}>
-        {!isEditing && (
-          <button
-            className={styles.CardListEditButton}
-            onClick={handleClickOnEdit}
-          >
-            편집하기
-          </button>
-        )}
-        {isEditing && (
+        {isEditing ? (
           <button
             className={styles.CardListEditButton}
             onClick={handleClickOnSave}
           >
             저장하기
+          </button>
+        ) : (
+          <button
+            className={styles.CardListEditButton}
+            onClick={handleClickOnEdit}
+          >
+            편집하기
           </button>
         )}
       </div>
