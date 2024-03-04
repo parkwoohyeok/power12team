@@ -8,6 +8,7 @@ const CardListBackground = ({ children, backgroundType }) => {
   const APPLY_IMAGE = {
     backgroundImage: `url('${backgroundType}')`,
     backgroundSize: "cover",
+    backgroundAttachment: "fixed",
   };
 
   return (

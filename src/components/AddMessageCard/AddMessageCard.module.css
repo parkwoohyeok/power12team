@@ -12,5 +12,11 @@
 
   img {
     padding: 1.6rem;
+    &:hover {
+      background-color: var(--Gray-60);
+    }
+    &:active {
+      background-color: var(--Gray-70);
+    }
   }
 }
