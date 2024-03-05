@@ -12,7 +12,6 @@ import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
-import RecipientInfoBarSkeleton from "./RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
 import useAsync from "hooks/useAsync";
 
 function RecipientInfoBar({ recipientData }) {
@@ -116,9 +115,7 @@ function RecipientInfoBar({ recipientData }) {
     : styles.Button;
   const emojiListTop3 = results?.slice(0, 3);
   const emojiListRest = results?.slice(3);
-  return getEmojiPending ? (
-    <RecipientInfoBarSkeleton />
-  ) : (
+  return (
     <div className={styles.RecipientInfoBarWrapper}>
       <div className={styles.RecipientInfoBar}>
         <div className={styles.Name}>To. {name}</div>
@@ -133,19 +130,20 @@ function RecipientInfoBar({ recipientData }) {
             className={styles.MessageSummaryDivider}
           />
           <div className={styles.RestWrapper}>
-            {getEmojiPending && (
-              <div className={styles.ReactionContainer}>
-                <div className={styles.ReactionLoading}></div>
-                <div className={styles.ReactionLoading}></div>
-                <div className={styles.ReactionLoading}></div>
-              </div>
-            )}
             {!!count && (
               <>
-                <TopReactionsModified
-                  mapData={emojiListTop3}
-                  emojiLoading={getEmojiPending}
-                />
+                {getEmojiPending ? (
+                  <div className={styles.ReactionContainer}>
+                    <div className={styles.ReactionLoading}></div>
+                    <div className={styles.ReactionLoading}></div>
+                    <div className={styles.ReactionLoading}></div>
+                  </div>
+                ) : (
+                  <TopReactionsModified
+                    mapData={emojiListTop3}
+                    emojiLoading={getEmojiPending}
+                  />
+                )}
                 {!!(count - 3) && (
                   <>
                     <button

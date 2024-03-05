@@ -2,7 +2,7 @@
 import styles from "./RecipientInfoBarSkeleton.module.css";
 import divider from "assets/divider.svg";
 
-function RecipientInfoBar() {
+function RecipientInfoBarSkeleton() {
   return (
     <div className={styles.RecipientInfoBarWrapper}>
       <div className={styles.RecipientInfoBar}>
@@ -30,4 +30,4 @@ function RecipientInfoBar() {
   );
 }
 
-export default RecipientInfoBar;
+export default RecipientInfoBarSkeleton;
