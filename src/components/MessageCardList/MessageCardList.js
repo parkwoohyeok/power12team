@@ -128,7 +128,10 @@ const MessageCardList = ({
             onDelete={handleDelete}
           />
         ))}
-        {getMessagesPending && <MessageCardSkeleton />}
+        {getMessagesPending &&
+          Array(6)
+            .fill(0)
+            .map(() => <MessageCardSkeleton />)}
       </div>
       <div
         ref={SENTINEL}

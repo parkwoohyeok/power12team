@@ -3,9 +3,6 @@ import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
 import styles from "./MessageCardSkeleton.module.css";
 
 const MessageCardSkeleton = () => {
-  const generateSkeletons = () => {
-    for (let i = 0; i < 6; i++) {}
-  };
   return (
     <MessageCardContainer>
       <div className={styles.LoadingAnimation}>
