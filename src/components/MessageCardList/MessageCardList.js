@@ -6,6 +6,7 @@ import AddMessageCard from "./AddMessageCard/AddMessageCard";
 import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
+import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
 
 const LIMIT = 6;
 
@@ -127,6 +128,7 @@ const MessageCardList = ({
             onDelete={handleDelete}
           />
         ))}
+        {getMessagesPending && <MessageCardSkeleton />}
       </div>
       <div
         ref={SENTINEL}
