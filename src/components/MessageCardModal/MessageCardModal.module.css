@@ -1,22 +1,3 @@
-.ModalBackground {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  cursor: auto;
-  z-index: 1;
-}
-
-.MessageModalBox {
-  width: 60rem;
-  border-radius: 1.6rem;
-  background-color: white;
-  margin: 0 auto;
-  padding: 4rem;
-  cursor: auto;
-}
-
 .MessageModalSender {
   display: flex;
   align-items: center;
@@ -34,6 +15,7 @@
 }
 
 .CardContent {
+  max-width: 52rem;
   height: 24rem;
   overflow: auto;
 }
@@ -44,10 +26,11 @@
 }
 
 .ModalCloseButton {
-  padding: 0.7rem 1.6rem;
+  padding: 0.8rem 1.6rem;
   border-radius: 0.6rem;
   width: 12rem;
   background-color: var(--Purple-60);
   color: white;
   margin-top: 3rem;
+  font-family: inherit;
 }

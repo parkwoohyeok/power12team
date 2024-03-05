@@ -18,26 +18,15 @@
   position: absolute;
   bottom: 1rem;
   right: 0.3rem;
-  background-color: var(--Purple-60);
-  color: white;
-  padding: 0.8rem 1.8rem;
-  border-radius: 0.6rem;
-  font-family: inherit;
-  font-size: 1.6rem;
+}
 
+button.CardListEditButtonResponsive {
   @media (max-width: 1199px) {
     padding: 1.4rem;
     position: fixed;
     inset: auto 2.4rem 2.4rem 2.4rem;
     z-index: 1;
     font-weight: 700;
-  }
-
-  &:hover {
-    background-color: var(--Purple-70);
-  }
-  &:active {
-    background-color: var(--Purple-80);
   }
 }
 

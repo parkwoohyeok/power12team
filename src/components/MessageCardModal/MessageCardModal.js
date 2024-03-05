@@ -1,6 +1,6 @@
 import CreatedAt from "../MessageCardList/MessageCard/CreatedAt/CreatedAt";
 import SenderInfo from "../MessageCardList/MessageCard/SenderInfo/SenderInfo";
-import ModalBase from "../ModalBase/ModalBase";
+import ModalBase from "../common/ModalBase/ModalBase";
 
 import styles from "./MessageCardModal.module.css";
 

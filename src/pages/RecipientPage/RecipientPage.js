@@ -7,6 +7,7 @@ import CardListBackground from "../../components/MessageCardList/CardListBackgro
 import MessageCardList from "../../components/MessageCardList/MessageCardList";
 import Nav from "../../components/Nav/Nav";
 import RecipientInfoBar from "../../components/RecipientInfoBar/RecipientInfoBar";
+import RecipientInfoBarSkeleton from "components/RecipientInfoBar/RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
 import useAsync from "../../hooks/useAsync";
 
 import styles from "./RecipientPage.module.css";
@@ -38,24 +39,24 @@ const RecipientPage = () => {
 
   return (
     <>
-      {!getRecipientPending && (
-        <>
-          <div className={styles.FixPosition}>
-            <Nav />
-            <RecipientInfoBar recipientData={recipient} />
-          </div>
-          <CardListBackground
-            backgroundType={backgroundImageURL || backgroundColor}
-          >
-            <MessageCardList
-              recipient={recipient}
-              recipientId={recipientId}
-              backgroundColor={backgroundColor}
-              backgroundImageURL={backgroundImageURL}
-            />
-          </CardListBackground>
-        </>
-      )}
+      <div className={styles.FixPosition}>
+        <Nav />
+        {getRecipientPending ? (
+          <RecipientInfoBarSkeleton />
+        ) : (
+          <RecipientInfoBar recipientData={recipient} />
+        )}
+      </div>
+      <CardListBackground
+        backgroundType={backgroundImageURL || backgroundColor}
+      >
+        <MessageCardList
+          recipient={recipient}
+          recipientId={recipientId}
+          backgroundColor={backgroundColor}
+          backgroundImageURL={backgroundImageURL}
+        />
+      </CardListBackground>
     </>
   );
 };
