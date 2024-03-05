@@ -48,6 +48,33 @@
   margin-top: 20rem;
 }
 
+@keyframes loading {
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+}
+
+.SkeletonImage {
+  position: relative;
+  width: 20rem;
+  border: none; /*배경색 프롭스로 설정 할 것*/
+  padding: 2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  background-color: var(--Gray-30);
+  animation: loading 1.5s infinite;
+}
+
 @media (max-width: 949px) {
   .Wrapper {
     gap: 1rem;
