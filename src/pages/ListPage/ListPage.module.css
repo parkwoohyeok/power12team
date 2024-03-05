@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: 4rem;
   margin: 0;
   max-width: 100vw;
   max-height: 100vh;
@@ -17,7 +17,7 @@
   flex-shrink: 0;
 }
 
-.LinkBtn {
+.LinkDiv {
   width: 30rem;
   height: 5.6rem;
   border-radius: 1rem;
@@ -25,6 +25,14 @@
   background-color: var(--Purple-60);
   color: white;
   align-items: center;
+  margin-top: 20rem;
+}
+
+.LinkBtn {
+  width: 30rem;
+  height: 5.6rem;
+  background-color: transparent;
+  color: white;
 }
 
 @media (max-width: 949px) {
@@ -33,6 +41,9 @@
     padding: 0 2rem;
   }
 
+  .LinkDiv {
+    width: 100%;
+  }
   .LinkBtn {
     width: 100%;
   }
