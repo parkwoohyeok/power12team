@@ -1,120 +1,103 @@
 /* eslint-disable */
 
-import TopReactions from "components/TopReactions/TopReactions";
-
 import styles from "components/RecentList/RecentList.module.css";
 
 import arrow from "assets/arrow.png";
-import MessageSummary from "components/MessageSummary/MessageSummary";
-import { useEffect, useState } from "react";
-import useAsync from "hooks/useAsync";
-import useGetRecipients from "components/Api/useGetRecipients";
 
-const RecentList = () => {
+import { useState } from "react";
+
+import ListCards from "components/ListCardsTest/ListCards";
+
+import { AnimatePresence, motion } from "framer-motion";
+
+const RecentList = ({ data, hasNextPage, fetchData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
   const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
-  const [recipientData, setrecipientData] = useState([]);
+  const [visible, setVisible] = useState(0);
+  const [back, setBack] = useState(false);
 
-  const [getRecipientPending, getRecipientError, getRecipientsAsync] =
-    useAsync(useGetRecipients);
-
-  const recipientGet = async () => {
-    const response = await getRecipientsAsync();
-    setrecipientData(response.data?.results);
-    updateCardsPerPage(response.data?.count);
-  };
-
-  const sortedData = recipientData.sort((a, b) => {
-    const timeA = new Date(a.createdAt).getTime();
-    const timeB = new Date(b.createdAt).getTime();
-    return timeB - timeA;
-  });
-
-  const totalPages = Math.ceil(sortedData.length / cardsPerPage);
+  const totalPages = Math.ceil(data?.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, sortedData.length);
-  const currentCards = sortedData.slice(startIndex, endIndex);
+  const endIndex = Math.min(startIndex + cardsPerPage, data?.length);
 
-  const updateCardsPerPage = () => {
-    if (recipientData && recipientData.length > 0)
-      if (window.innerWidth <= 949) {
-        setCardsPerPage(sortedData?.length);
-        setCurrentPage(1);
-      } else {
-        setCardsPerPage(4);
-      }
+  const currentCards = data?.slice(startIndex, endIndex);
+
+      const boxVariants = {
+  entry: (back: boolean) => ({
+    x: back ? -500 : 500,
+    opacity: 0,
+    scale: 0
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 0.5 }
+  },
+  exit: (back: boolean) => ({
+    x: back ? 500 : -500,
+    opacity: 0,
+    scale: 0,
+    transition: { duration: 0.5 }
+  })
   };
 
-  const nextPage = () => {
-    setCardSlidingToRight(true);
+  const nextPlease = () => {
+    if (hasNextPage !== false) {
+      fetchData();
+    }
+    setBack(false);
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    setTimeout(() => {
-      setCardSlidingToRight(false);
-    }, 200);
+        setVisible((prevPage) => Math.min(prevPage + 1, totalPages)
+    );
   };
-
-  const prevPage = () => {
-    setCardSlidingToLeft(true);
+  const prevPlease = () => {
+    setBack(true);
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    setTimeout(() => {
-      setCardSlidingToLeft(false);
-    }, 200);
+    setVisible((prevPage) => Math.max(prevPage - 1, 1))
   };
-
-  useEffect(() => {
-    recipientGet();
-    updateCardsPerPage();
-    window.addEventListener("resize", updateCardsPerPage);
-    return () => {
-      window.removeEventListener("resize", updateCardsPerPage);
-    };
-  }, []);
 
   return (
     <>
+      <div className={styles.listcontainer}>
       <h2 className={styles.CardTitle}>최근에 만든 롤링 페이퍼⭐</h2>
+      <motion.div className={styles.SlideWrap}>
+          <AnimatePresence custom={back}>
+            <motion.div className={styles.box}
+            custom={back}
+            variants={boxVariants}
+            initial="entry"
+            animate="center"
+            exit="exit"
+            key={visible}>
+            <div className={styles.Wrapper}></div>
       <div className={styles.Wrapper}>
-        {currentCards.map((info) => (
-          <div
-            style={
-              info.backgroundImageURL
-                ? {
-                    backgroundImage: `url(${info.backgroundImageURL})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    color: "white",
-                  }
-                : {}
-            }
-            key={info.id}
-            className={`${styles["CardContainer"]} ${styles[info.backgroundColor]} ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""} `}
-          >
-            <div className={styles["CardInfo"]}>
-              <h2>{`To.${info.name}`}</h2>
-              <MessageSummary data={info} />
-            </div>
-            <div className={styles.CardFooter}>
-              <div className={styles.HorizonLine}></div>
-              <TopReactions datas={info} />
-            </div>
-          </div>
+        {currentCards?.map((info) => (
+          <ListCards
+            info={info}
+            cardSlidingToLeft={cardSlidingToLeft}
+            cardSlidingToRight={cardSlidingToRight}
+          />
         ))}
         <button
-          className={`${styles.SlideBtn_R} ${currentPage === totalPages ? styles.EndOfPage : ""}
-        `}
-          onClick={nextPage}
+          className={`${styles.SlideBtn_R} ${currentPage !== 1 && currentPage === totalPages ? styles.EndOfPage : ""}`}
+          onClick={nextPlease}
         >
           <img src={arrow} alt="슬라이드 버튼" />
         </button>
         <button
           className={`${styles.SlideBtn_L} ${currentPage === 1 ? styles.EndOfPage : ""}`}
-          onClick={prevPage}
+          onClick={prevPlease}
         >
           <img src={arrow} alt="슬라이드 버튼" />
         </button>
       </div>
+                        </motion.div>
+                        </AnimatePresence>
+        </motion.div>
+        </div>
     </>
   );
 };
