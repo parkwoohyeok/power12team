@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
-import AddMessageCard from "../AddMessageCard/AddMessageCard";
+import AddMessageCard from "./AddMessageCard/AddMessageCard";
 import { deleteMessage, getMessages } from "../Api/RecipientApi";
-import MessageCard from "../MessageCard/MessageCard";
+import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
+import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
 
 const LIMIT = 6;
 
@@ -102,20 +103,19 @@ const MessageCardList = ({
   return (
     <>
       <div className={styles.CardListPadding}>
-        {!isEditing && (
-          <button
-            className={styles.CardListEditButton}
-            onClick={handleClickOnEdit}
-          >
-            편집하기
-          </button>
-        )}
-        {isEditing && (
+        {isEditing ? (
           <button
             className={styles.CardListEditButton}
             onClick={handleClickOnSave}
           >
             저장하기
+          </button>
+        ) : (
+          <button
+            className={styles.CardListEditButton}
+            onClick={handleClickOnEdit}
+          >
+            편집하기
           </button>
         )}
       </div>
@@ -129,6 +129,10 @@ const MessageCardList = ({
             onDelete={handleDelete}
           />
         ))}
+        {getMessagesPending &&
+          Array(6)
+            .fill(0)
+            .map(() => <MessageCardSkeleton />)}
       </div>
       <div
         ref={SENTINEL}

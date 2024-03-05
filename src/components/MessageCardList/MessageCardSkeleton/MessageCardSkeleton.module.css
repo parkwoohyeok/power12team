@@ -1,0 +1,51 @@
+@keyframes LoadingGlow {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.LoadingAnimation {
+  animation: LoadingGlow 2s ease-in-out infinite;
+}
+
+.SenderInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  position: relative;
+}
+
+.SenderText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.CardSender {
+  width: 16rem;
+  height: 1.6rem;
+  background-color: var(--Gray-30);
+  margin-top: 0.4rem;
+  border-radius: 0.4rem;
+}
+
+.SenderProfile {
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 9999px;
+  background-color: var(--Gray-30);
+}
+
+.DividingLine {
+  width: 100%;
+  border-top: 1px solid var(--Gray-20);
+  margin: 1.6rem 0;
+}
+
+.CardContent {
+  width: 32rem;
+  height: 1.6rem;
+  background-color: var(--Gray-30);
+  margin-top: 0.4rem;
+  border-radius: 0.4rem;
+}
