@@ -12,6 +12,7 @@ import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
+import RecipientInfoBarSkeleton from "./RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
 import useAsync from "hooks/useAsync";
 
 function RecipientInfoBar({ recipientData }) {
@@ -115,8 +116,9 @@ function RecipientInfoBar({ recipientData }) {
     : styles.Button;
   const emojiListTop3 = results?.slice(0, 3);
   const emojiListRest = results?.slice(3);
-
-  return (
+  return getEmojiPending ? (
+    <RecipientInfoBarSkeleton />
+  ) : (
     <div className={styles.RecipientInfoBarWrapper}>
       <div className={styles.RecipientInfoBar}>
         <div className={styles.Name}>To. {name}</div>
