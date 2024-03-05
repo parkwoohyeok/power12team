@@ -21,7 +21,7 @@ const ListCards = ({ info }) => {
             : {}
         }
         key={info?.id}
-        className={`${styles["CardContainer"]} ${info?.backgroundColor ? styles[info?.backgroundColor] : ""}`}
+        className={`${info.backgroundImageURL ? styles.SkeletonImage : `${styles["CardContainer"]} ${styles[info.backgroundColor]}`}`}
       >
         <div className={styles["Cardinfo"]}>
           <h2 className={styles.Receiver}>{`To.${info?.name}`}</h2>
