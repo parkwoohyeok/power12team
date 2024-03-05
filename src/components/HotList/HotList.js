@@ -145,7 +145,8 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
                       key={info?.id}
                       index={index}
                       isMobile={isMobile}
-                    />)
+                      />
+                      )
                 })}
                 <div
                   className={`${styles.moreData} ${!isLoading && isMobile ? styles["isMobile"] : ""}`}
