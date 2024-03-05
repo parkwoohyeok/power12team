@@ -4,17 +4,23 @@ import styles from "components/RecentList/RecentList.module.css";
 
 import arrow from "assets/arrow.png";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ListCards from "components/ListCards/ListCards";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-const RecentList = ({ data, hasNextPage, fetchData }) => {
+import { debounce } from "lodash";
+
+import { useInView } from "react-intersection-observer";
+
+const RecentList = ({ data, hasNextPage, fetchData, isLoading }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [visible, setVisible] = useState(0);
   const [back, setBack] = useState(false);
+   const [isMobile, setIsMobile] = useState(false)
+  const [ref, inView] = useInView({ initialInView: false });
 
   const totalPages = Math.ceil(data?.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
@@ -57,6 +63,45 @@ const RecentList = ({ data, hasNextPage, fetchData }) => {
     setVisible((prevPage) => Math.max(prevPage - 1, 1))
   };
 
+  const bringData = () => {
+    if (hasNextPage !== false) {
+      fetchData();
+    }
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  }
+
+
+
+
+
+  const handleResize = debounce(() => {
+    if (window.innerWidth <= 949) {
+      setIsMobile(true);
+      setCardsPerPage(100)
+    } else {
+      setIsMobile(false);
+      setCardsPerPage(4)
+    }
+  }, 200);
+
+
+
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+      useEffect(() => {
+        if (!isLoading && inView) {
+      bringData();
+    }
+      }, [inView])
+
+
   return (
     <>
       <div className={styles.listcontainer}>
@@ -77,6 +122,11 @@ const RecentList = ({ data, hasNextPage, fetchData }) => {
             info={info}
           />
         ))}
+                 <div
+                  className={`${styles.moreData} ${!isLoading && isMobile ? styles["isMobile"] : ""}`}
+                  ref={ref}>
+                  더보기
+          </div>
         <button
           className={`${styles.SlideBtn_R} ${currentPage !== 1 && currentPage === totalPages ? styles.EndOfPage : ""}`}
           onClick={nextPlease}

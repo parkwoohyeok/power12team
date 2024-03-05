@@ -49,6 +49,16 @@
   margin-top: 20rem;
 }
 
+.moreData {
+  margin-left: 5rem;
+  display: none;
+  color: white;
+}
+
+.isMobile {
+  display: block;
+}
+
 @media (max-width: 949px) {
   .Wrapper {
     gap: 1rem;

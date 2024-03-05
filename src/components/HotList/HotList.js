@@ -94,11 +94,12 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
 
 
   const handleResize = debounce(() => {
-    if (recipientData?.length > 0 && window.innerWidth <= 949) {
+    if (window.innerWidth <= 949) {
       setIsMobile(true);
-      
+      setCardsPerPage(100)
     } else {
       setIsMobile(false);
+      setCardsPerPage(4)
     }
   }, 200);
 
@@ -119,9 +120,6 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
     }
       }, [inView])
   
-  console.log(inView)
-  console.log(cardsPerPage)
-  console.log(isLoading)
   
   
 
@@ -150,9 +148,8 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
                     />)
                 })}
                 <div
-                  className={`${styles.moreData} ${isMobile ? styles["isMobile"] : ""}`}
+                  className={`${styles.moreData} ${!isLoading && isMobile ? styles["isMobile"] : ""}`}
                   ref={ref}>
-                  더보기
           </div>
         <button
           className={`${styles.SlideBtn_R} ${currentPage !== 1 && currentPage === totalPages ? styles.EndOfPage : ""}`}

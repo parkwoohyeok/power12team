@@ -8,19 +8,20 @@ const useGetRecipients = () => {
   const [isRecentLoading, setIsRecentLoading] = useState();
   const [hotData, setHotData] = useState([]);
   const [recentData, setRecentData] = useState([]);
-  const [offset, setOffset] = useState(0);
+  const [Hotoffset, setHotOffset] = useState(0);
+  const [Recentoffset, setRecentOffset] = useState(0);
   const [hasNextHotPage, setHasNextHotPage] = useState(true);
   const [hasNextRecentPage, setHasNextRecentPage] = useState(true);
 
   const fetchHotData = async () => {
     setIsHotLoading(true);
     try {
-      const url = `recipients/?limit=4&offset=${offset}&sort=like`;
+      const url = `recipients/?limit=4&offset=${Hotoffset}&sort=like`;
       const response = await axiosInstance.get(url);
       const newData = response?.data.results;
       setHotData((prevData) => [...prevData, ...newData]);
       if (response?.data.next !== null) {
-        setOffset((prevOffset) => prevOffset + 4);
+        setHotOffset((prevOffset) => prevOffset + 4);
       } else {
         setHasNextHotPage(false);
       }
@@ -33,19 +34,19 @@ const useGetRecipients = () => {
   const fetchRecentData = async () => {
     setIsRecentLoading(true);
     try {
-      const url = `recipients/?limit=4&offset=${offset}`;
+      const url = `recipients/?limit=4&offset=${Recentoffset}`;
       const response = await axiosInstance.get(url);
       const newData = response?.data.results;
       setRecentData((prevData) => [...prevData, ...newData]);
       if (response?.data.next !== null) {
-        setOffset((prevOffset) => prevOffset + 4);
+        setRecentOffset((prevOffset) => prevOffset + 4);
       } else {
         setHasNextRecentPage(false);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-    setIsHotLoading(false);
+    setIsRecentLoading(false);
   };
 
   return {
@@ -57,6 +58,7 @@ const useGetRecipients = () => {
     fetchRecentData,
     hasNextHotPage,
     hasNextRecentPage,
+    setHotOffset,
   };
 };
 
