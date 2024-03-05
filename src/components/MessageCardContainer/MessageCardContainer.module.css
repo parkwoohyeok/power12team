@@ -14,4 +14,10 @@
   padding: 2.4rem;
   border-radius: 1.6rem;
   cursor: pointer;
+
+  /* transition: transform 0.2s ease; */
+  /* &:hover {
+    box-shadow: 0 0.4rem 1rem 0 rgba(51, 50, 54, 0.06);
+    transform: translateY(-0.4rem);
+  } */
 }
