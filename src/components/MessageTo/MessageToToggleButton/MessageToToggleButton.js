@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React from "react";
 
 import CheckImage from "../CheckImage/CheckImage";
+import SkeletonImage from "components/common/SkeletonImage";
 
 import styles from "./MessageToToggleButton.module.css";
 
@@ -13,6 +15,8 @@ const MessageToToggleButton = ({
   setSelectedPhoto,
   select,
   setSelect,
+  isLoading,
+  setIsLoading,
 }) => {
   const handleToggle = () => {
     setSelect(select === "Photo" ? "Color" : "Photo");
@@ -29,6 +33,7 @@ const MessageToToggleButton = ({
   const handleSelectPhoto = (selectedOption) => {
     setSelectedPhoto(selectedOption);
   };
+
   return (
     <>
       <div className={styles.ToggleButton} onClick={handleToggle}>
@@ -62,13 +67,16 @@ const MessageToToggleButton = ({
           {photos.map((photo, index) => (
             <div
               key={photo}
-              style={{ backgroundImage: `url('${photo}')` }}
               className={styles.Photo}
               onClick={() => handleSelectPhoto(index)}
             >
-              {selectedPhoto === index && (
-                <CheckImage select={select} photo={photo} />
-              )}
+              <div className={`${styles.Photo} ${styles.SkeletonImage}`}></div>
+              <>
+                <img className={styles.Photo} src={photo} />
+                {selectedPhoto === index && (
+                  <CheckImage select={select} photo={photo} />
+                )}
+              </>
             </div>
           ))}
         </div>

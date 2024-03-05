@@ -92,10 +92,33 @@
 }
 
 .Photo {
+  position: relative;
   width: 16.8rem;
   height: 16.8rem;
   border-radius: 1.6rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.08);
+}
+
+@keyframes loading {
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+}
+
+.SkeletonImage {
+  position: absolute;
+  background-color: var(--Gray-30);
+  width: 100%;
+  height: 100%;
+  animation: loading 1.5s infinite;
 }
 
 @media (min-width: 357px) and (max-width: 767px) {
