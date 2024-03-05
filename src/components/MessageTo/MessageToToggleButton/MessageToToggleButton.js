@@ -1,49 +1,25 @@
-import React, { useState } from "react";
-
 /* eslint-disable */
-import car from "assets/car.png";
-import cliff from "assets/cliff.png";
+import React from "react";
 
-import "../../../styles/color.css";
-import styles from "./MessageToToggleButton.module.css";
 import CheckImage from "../CheckImage/CheckImage";
+import SkeletonImage from "components/common/SkeletonImage";
 
-/* eslint-disable */
-const backgroundColor = {
-  beige: "var(--Orange-20)",
-  purple: "var(--Purple-20)",
-  blue: "var(--Blue-20)",
-  green: "var(--Green-20)",
-};
+import styles from "./MessageToToggleButton.module.css";
 
-const backgroundImageURL = {
-  photo1: car,
-  photo2: cliff,
-  photo3: car,
-  photo4: cliff,
-};
-
-const Colors = [
-  backgroundColor.beige,
-  backgroundColor.purple,
-  backgroundColor.blue,
-  backgroundColor.green,
-];
-
-const MessageToToggleButton = () => {
-  const [toggle, setToggle] = useState(true);
-  const [select, setSelect] = useState("Color");
-
-  const Photos = ["photo1", "photo2", "photo3", "photo4"];
-
-  const [selectedColor, setSelectedColor] = useState(Colors[0]);
-  const [selectedPhoto, setSelectedPhoto] = useState(Photos[0]);
-
-  const options = toggle ? Colors : Photos;
-
+const MessageToToggleButton = ({
+  COLORS,
+  photos,
+  selectedColor,
+  selectedPhoto,
+  setSelectedColor,
+  setSelectedPhoto,
+  select,
+  setSelect,
+  isLoading,
+  setIsLoading,
+}) => {
   const handleToggle = () => {
-    setToggle(!toggle);
-    setSelect(toggle ? "Photo" : "Color");
+    setSelect(select === "Photo" ? "Color" : "Photo");
   };
 
   const handleClick = (option) => {
@@ -74,31 +50,33 @@ const MessageToToggleButton = () => {
           이미지
         </button>
       </div>
-      {toggle ? (
+      {select === "Color" ? (
         <div className={styles.Colors}>
-          {options.map((color, index) => (
+          {COLORS.map((color) => (
             <div
-              key={index}
-              style={{ backgroundColor: color }}
-              className={styles.Color}
+              key={color}
+              className={`${styles.Color} ${styles[color]}`}
               onClick={() => handleSelectColor(color)}
             >
-              {selectedColor === color ? <CheckImage /> : null}
+              {selectedColor === color && <CheckImage />}
             </div>
           ))}
         </div>
       ) : (
         <div className={styles.Photos}>
-          {options.map((photo, index) => (
+          {photos.map((photo, index) => (
             <div
-              key={index}
-              style={{ backgroundImage: `url(${backgroundImageURL[photo]})` }}
+              key={photo}
               className={styles.Photo}
-              onClick={() => handleSelectPhoto(photo)}
+              onClick={() => handleSelectPhoto(index)}
             >
-              {selectedPhoto === photo ? (
-                <CheckImage select={select} photo={photo} />
-              ) : null}
+              <div className={`${styles.Photo} ${styles.SkeletonImage}`}></div>
+              <>
+                <img className={styles.Photo} src={photo} />
+                {selectedPhoto === index && (
+                  <CheckImage select={select} photo={photo} />
+                )}
+              </>
             </div>
           ))}
         </div>

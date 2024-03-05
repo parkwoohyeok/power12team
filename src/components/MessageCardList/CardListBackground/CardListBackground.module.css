@@ -1,5 +1,6 @@
 .CardListBackground {
   padding: 0 2.4rem;
+  min-height: 100vh;
 }
 
 .blue {
