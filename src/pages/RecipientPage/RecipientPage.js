@@ -39,28 +39,24 @@ const RecipientPage = () => {
 
   return (
     <>
-      {!getRecipientPending && (
-        <>
-          <div className={styles.FixPosition}>
-            <Nav />
-            {getRecipientPending ? (
-              <RecipientInfoBarSkeleton />
-            ) : (
-              <RecipientInfoBar recipientData={recipient} />
-            )}
-          </div>
-          <CardListBackground
-            backgroundType={backgroundImageURL || backgroundColor}
-          >
-            <MessageCardList
-              recipient={recipient}
-              recipientId={recipientId}
-              backgroundColor={backgroundColor}
-              backgroundImageURL={backgroundImageURL}
-            />
-          </CardListBackground>
-        </>
-      )}
+      <div className={styles.FixPosition}>
+        <Nav />
+        {getRecipientPending ? (
+          <RecipientInfoBarSkeleton />
+        ) : (
+          <RecipientInfoBar recipientData={recipient} />
+        )}
+      </div>
+      <CardListBackground
+        backgroundType={backgroundImageURL || backgroundColor}
+      >
+        <MessageCardList
+          recipient={recipient}
+          recipientId={recipientId}
+          backgroundColor={backgroundColor}
+          backgroundImageURL={backgroundImageURL}
+        />
+      </CardListBackground>
     </>
   );
 };
