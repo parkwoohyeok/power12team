@@ -6,6 +6,7 @@
   align-items: center;
   cursor: auto;
   z-index: 1;
+  padding: 0 2.4rem;
 }
 
 .ModalBox {
