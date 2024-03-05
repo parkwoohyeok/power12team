@@ -2,7 +2,6 @@
 import React from "react";
 
 import CheckImage from "../CheckImage/CheckImage";
-import SkeletonImage from "components/common/SkeletonImage";
 
 import styles from "./MessageToToggleButton.module.css";
 
