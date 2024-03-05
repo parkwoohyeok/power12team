@@ -143,7 +143,18 @@ function RecipientInfoBar({ recipientData }) {
           <div className={styles.RestWrapper}>
             {!!count && (
               <>
-                <TopReactionsModified mapData={emojiListTop3} />
+                {getEmojiPending ? (
+                  <div className={styles.ReactionContainer}>
+                    <div className={styles.ReactionLoading}></div>
+                    <div className={styles.ReactionLoading}></div>
+                    <div className={styles.ReactionLoading}></div>
+                  </div>
+                ) : (
+                  <TopReactionsModified
+                    mapData={emojiListTop3}
+                    emojiLoading={getEmojiPending}
+                  />
+                )}
                 {!!(count - 3) && (
                   <>
                     <button

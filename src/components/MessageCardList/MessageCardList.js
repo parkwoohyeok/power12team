@@ -35,12 +35,12 @@ const MessageCardList = ({
   const loadMessages = async (options) => {
     const RESPONSE = await getMessagesAsync(options);
     if (options.offset === 0) {
-      setList(RESPONSE.results);
+      setList(RESPONSE?.results);
     } else {
-      setList((prevList) => [...prevList, ...RESPONSE.results]);
+      setList((prevList) => [...prevList, ...RESPONSE?.results]);
     }
 
-    const NEXT = RESPONSE.next;
+    const NEXT = RESPONSE?.next;
     if (NEXT) {
       setOffset(NEXT.split("offset=")[1]);
       setHasNext(true);
