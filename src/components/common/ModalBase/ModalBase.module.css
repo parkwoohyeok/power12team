@@ -6,10 +6,10 @@
   align-items: center;
   cursor: auto;
   z-index: 1;
+  padding: 0 2.4rem;
 }
 
-.MessageModalBox {
-  width: 60rem;
+.ModalBox {
   border-radius: 1.6rem;
   background-color: white;
   margin: 0 auto;
