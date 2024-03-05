@@ -20,9 +20,11 @@ const Nav = () => {
           </button>
         </Link>
         {!noButtonRendering.includes(location.pathname) && (
-          <button className={styles.GoToPostPage}>
-            <span>롤링 페이퍼 만들기</span>
-          </button>
+          <Link to="/post">
+            <button className={styles.GoToPostPage}>
+              <span>롤링 페이퍼 만들기</span>
+            </button>
+          </Link>
         )}
       </div>
     </div>
