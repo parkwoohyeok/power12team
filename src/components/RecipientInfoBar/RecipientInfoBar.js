@@ -13,12 +13,14 @@ import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
 import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
 import useAsync from "hooks/useAsync";
+import CopiedToast from "./CopiedToast/CopiedToast";
 
 function RecipientInfoBar({ recipientData }) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
   const [emojiData, setEmojiData] = useState({});
+  const [CopiedToastUp, setCopiedToastUp] = useState(false);
 
   const shareRef = useRef();
   const emojiListRef = useRef();
@@ -116,6 +118,14 @@ function RecipientInfoBar({ recipientData }) {
   const emojiListTop3 = results?.slice(0, 3);
   const emojiListRest = results?.slice(3);
 
+  /* URL 복사 성공 토스트 */
+  let toastUp;
+  const showCopyToast = () => {
+    clearTimeout(toastUp);
+    setCopiedToastUp(true);
+    toastUp = setTimeout(setCopiedToastUp, 5000, false);
+  };
+
   return (
     <div className={styles.RecipientInfoBarWrapper}>
       <div className={styles.RecipientInfoBar}>
@@ -194,14 +204,12 @@ function RecipientInfoBar({ recipientData }) {
                 >
                   카카오톡 공유
                 </button>
-                <CopyToClipboard
-                  text={currentUrl}
-                  onCopy={() => alert("Copied to clipboard!")}
-                >
+                <CopyToClipboard text={currentUrl} onCopy={showCopyToast}>
                   <button className={styles.ShareButton}>URL 공유</button>
                 </CopyToClipboard>
               </div>
             )}
+            {CopiedToastUp && <CopiedToast />}
           </div>
         </div>
       </div>
