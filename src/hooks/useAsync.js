@@ -2,7 +2,7 @@
 const { useState } = require("react");
 
 function useAsync(callback) {
-  const [pending, setPending] = useState(false);
+  const [pending, setPending] = useState(true);
   const [error, setError] = useState(null);
 
   const wrappedFunction = async (...args) => {

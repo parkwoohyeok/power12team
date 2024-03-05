@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import styles from "components/ListCardsTest/ListCards.module.css";
-import MessageSummary from "../MessageSummary/MessageSummary";
+import MessageSummary from "components/MessageSummary/MessageSummary";
 import TopReactions from "components/TopReactions/TopReactions";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
