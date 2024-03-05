@@ -92,7 +92,7 @@ function HotList() {
                 : {}
             }
             key={info.id}
-            className={`${styles["CardContainer"]} ${info.backgroundImageURL ? "" : styles[info.backgroundColor]} ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
+            className={`${info.backgroundImageURL ? styles.SkeletonImage : `${styles["CardContainer"]} ${styles[info.backgroundColor]}`} ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
           >
             <div className={styles["CardInfo"]}>
               <h2>{`To.${info.name}`}</h2>
