@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import axiosInstance from "utils/axiosInstance";
 
 const useGetRecipients = () => {
+  const [isHotLoading, setIsHotLoading] = useState();
+  const [isRecentLoading, setIsRecentLoading] = useState();
   const [hotData, setHotData] = useState([]);
   const [recentData, setRecentData] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [hasNextPage, setHasNextPage] = useState(true);
+  const [hasNextHotPage, setHasNextHotPage] = useState(true);
+  const [hasNextRecentPage, setHasNextRecentPage] = useState(true);
 
   const fetchHotData = async () => {
+    setIsHotLoading(true);
     try {
       const url = `recipients/?limit=4&offset=${offset}&sort=like`;
       const response = await axiosInstance.get(url);
@@ -18,29 +22,42 @@ const useGetRecipients = () => {
       if (response?.data.next !== null) {
         setOffset((prevOffset) => prevOffset + 4);
       } else {
-        setHasNextPage(false);
+        setHasNextHotPage(false);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+    setIsHotLoading(false);
   };
 
   const fetchRecentData = async () => {
+    setIsRecentLoading(true);
     try {
       const url = `recipients/?limit=4&offset=${offset}`;
       const response = await axiosInstance.get(url);
       const newData = response?.data.results;
       setRecentData((prevData) => [...prevData, ...newData]);
-      const hasNextPage = response?.data.next !== null;
-      if (hasNextPage) {
+      if (response?.data.next !== null) {
         setOffset((prevOffset) => prevOffset + 4);
+      } else {
+        setHasNextRecentPage(false);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+    setIsHotLoading(false);
   };
 
-  return { hotData, recentData, fetchHotData, fetchRecentData, hasNextPage };
+  return {
+    isHotLoading,
+    isRecentLoading,
+    hotData,
+    recentData,
+    fetchHotData,
+    fetchRecentData,
+    hasNextHotPage,
+    hasNextRecentPage,
+  };
 };
 
 export default useGetRecipients;

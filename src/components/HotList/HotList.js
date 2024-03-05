@@ -4,34 +4,43 @@ import styles from "./HotList.module.css";
 
 import arrow from "assets/arrow.png";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import ListCards from "components/ListCardsTest/ListCards";
+import ListCards from "components/ListCards/ListCards";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-function HotList({ recipientData, fetchData, hasNextPage }) {
+import { debounce } from "lodash";
+
+import { useInView } from "react-intersection-observer";
+
+
+
+
+
+
+function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [visible, setVisible] = useState(0);
   const [back, setBack] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
+  const [ref, inView] = useInView({ initialInView: false });
+  
 
-  // const updateCardsPerPage = () => {
-  //   if (recipientData?.length > 0)
-  //     if (window.innerWidth <= 949) {
-  //       setCardsPerPage(recipientData?.length);
-  //       // setCurrentPage(1);
-  //     } else {
-  //       setCardsPerPage(4);
-  //     }
-  // };
+
+
 
   const totalPages = Math.ceil(recipientData?.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, recipientData?.length);
+  const endIndex = Math.min(recipientData?.length, startIndex + cardsPerPage)
   const HotCards = recipientData?.slice(startIndex, endIndex);
+  
+
+
+
 
     const boxVariants = {
   entry: (back: boolean) => ({
@@ -52,6 +61,10 @@ function HotList({ recipientData, fetchData, hasNextPage }) {
     transition: { duration: 0.5 }
   })
   };
+
+
+
+
   
 
   const nextPlease = () => {
@@ -69,19 +82,53 @@ function HotList({ recipientData, fetchData, hasNextPage }) {
     setVisible((prevPage) => Math.max(prevPage - 1, 1))
   };
 
-  // useEffect(() => {
-  //   updateCardsPerPage();
-  // }, [recipientData]);
+  const bringData = () => {
+    if (hasNextPage !== false) {
+      fetchData();
+    }
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+  }
 
-  // useEffect(() => {
-  //   window.addEventListener("resize", updateCardsPerPage);
-  //   return () => {
-  //     window.removeEventListener("resize", updateCardsPerPage);
-  //   };
-  // }, []);
+
+
+
+
+  const handleResize = debounce(() => {
+    if (recipientData?.length > 0 && window.innerWidth <= 949) {
+      setIsMobile(true);
+      
+    } else {
+      setIsMobile(false);
+    }
+  }, 200);
+
+
+
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+      useEffect(() => {
+        if (!isLoading && inView) {
+      bringData();
+    }
+      }, [inView])
+  
+  console.log(inView)
+  console.log(cardsPerPage)
+  console.log(isLoading)
+  
+  
+
 
   return (
     <>
+      <div className={styles.listcontainer}>
       <h2 className={styles.CardTitle}>인기 롤링 페이퍼🔥</h2>
         <motion.div className={styles.SlideWrap}>
           <AnimatePresence custom={back}>
@@ -93,12 +140,20 @@ function HotList({ recipientData, fetchData, hasNextPage }) {
             exit="exit"
             key={visible}>
             <div className={styles.Wrapper}>
-        {HotCards?.map((info) => (
-          <ListCards
-            info={info}
-          />
-        ))}
-
+                {HotCards?.map((info, index) => {
+                  return (
+                    <ListCards
+                      info={info}
+                      key={info?.id}
+                      index={index}
+                      isMobile={isMobile}
+                    />)
+                })}
+                <div
+                  className={`${styles.moreData} ${isMobile ? styles["isMobile"] : ""}`}
+                  ref={ref}>
+                  더보기
+          </div>
         <button
           className={`${styles.SlideBtn_R} ${currentPage !== 1 && currentPage === totalPages ? styles.EndOfPage : ""}`}
           onClick={nextPlease}
@@ -114,7 +169,8 @@ function HotList({ recipientData, fetchData, hasNextPage }) {
             </div>
           </motion.div>
           </AnimatePresence>
-          </motion.div>
+        </motion.div>
+        </div>
     </>
   );
 }

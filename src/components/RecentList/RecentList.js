@@ -6,15 +6,13 @@ import arrow from "assets/arrow.png";
 
 import { useState } from "react";
 
-import ListCards from "components/ListCardsTest/ListCards";
+import ListCards from "components/ListCards/ListCards";
 
 import { AnimatePresence, motion } from "framer-motion";
 
 const RecentList = ({ data, hasNextPage, fetchData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
-  const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
-  const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
   const [visible, setVisible] = useState(0);
   const [back, setBack] = useState(false);
 
@@ -77,8 +75,6 @@ const RecentList = ({ data, hasNextPage, fetchData }) => {
         {currentCards?.map((info) => (
           <ListCards
             info={info}
-            cardSlidingToLeft={cardSlidingToLeft}
-            cardSlidingToRight={cardSlidingToRight}
           />
         ))}
         <button
