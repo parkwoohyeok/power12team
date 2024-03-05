@@ -1,7 +1,7 @@
 import { useState } from "react";
 
+import MessageCardModal from "../../MessageCardModal/MessageCardModal";
 import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
-import MessageCardModal from "../MessageCardModal/MessageCardModal";
 
 import CreatedAt from "./CreatedAt/CreatedAt";
 import styles from "./MessageCard.module.css";

@@ -5,7 +5,7 @@ import ListPage from "./pages/ListPage/ListPage";
 import MessagePage from "./pages/MessagePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import PostPage from "./pages/PostPage";
-import RecipientPage from "./pages/RecipientPage";
+import RecipientPage from "./pages/RecipientPage/RecipientPage";
 
 function App() {
   return (

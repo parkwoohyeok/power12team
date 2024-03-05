@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import plusButton from "../../assets/plus.svg";
+import plusButton from "../../../assets/plus.svg";
 import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
 
 import styles from "./AddMessageCard.module.css";
