@@ -8,8 +8,7 @@
   z-index: 1;
 }
 
-.MessageModalBox {
-  width: 60rem;
+.ModalBox {
   border-radius: 1.6rem;
   background-color: white;
   margin: 0 auto;

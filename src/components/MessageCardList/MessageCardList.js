@@ -8,6 +8,7 @@ import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
+import PurpleButton from "components/common/PurpleButton/PurpleButton";
 
 const LIMIT = 6;
 
@@ -104,19 +105,23 @@ const MessageCardList = ({
     <>
       <div className={styles.CardListPadding}>
         {isEditing ? (
-          <button
+          <div
             className={styles.CardListEditButton}
             onClick={handleClickOnSave}
           >
-            저장하기
-          </button>
+            <PurpleButton addClass={styles.CardListEditButtonResponsive}>
+              저장하기
+            </PurpleButton>
+          </div>
         ) : (
-          <button
+          <div
             className={styles.CardListEditButton}
             onClick={handleClickOnEdit}
           >
-            편집하기
-          </button>
+            <PurpleButton addClass={styles.CardListEditButtonResponsive}>
+              편집하기
+            </PurpleButton>
+          </div>
         )}
       </div>
       <div className={styles.CardListContainer}>

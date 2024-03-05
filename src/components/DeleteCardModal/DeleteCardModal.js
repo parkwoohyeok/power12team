@@ -1,4 +1,7 @@
-import ModalBase from "../ModalBase/ModalBase";
+import ModalBase from "../common/ModalBase/ModalBase";
+import PurpleButton from "../common/PurpleButton/PurpleButton";
+
+import styles from "./DeleteCardModal.module.css";
 
 const DeleteCardModal = ({ onClose, onDelete, id }) => {
   const handleDelete = () => {
@@ -7,9 +10,17 @@ const DeleteCardModal = ({ onClose, onDelete, id }) => {
 
   return (
     <ModalBase onClick={onClose}>
-      <div>삭제하시겠습니까?</div>
-      <button onClick={handleDelete}>확인</button>
-      <button>취소</button>
+      <div className={styles.AlignDeleteModal}>
+        <div>삭제하시겠습니까?</div>
+        <div className={styles.AlignButtons}>
+          <div onClick={handleDelete}>
+            <PurpleButton>확인</PurpleButton>
+          </div>
+          <div onClick={onClose}>
+            <PurpleButton>취소</PurpleButton>
+          </div>
+        </div>
+      </div>
     </ModalBase>
   );
 };
