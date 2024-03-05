@@ -1,6 +1,7 @@
 @import url("../../../styles/color.css");
 
 .RelationContainer {
+  margin-top: 1.5rem;
   width: 32rem;
   height: 9.8rem;
   display: flex;
