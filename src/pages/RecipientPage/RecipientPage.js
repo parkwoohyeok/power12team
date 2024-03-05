@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { getRecipient } from "../components/Api/RecipientApi";
-import CardListBackground from "../components/MessageCardList/CardListBackground/CardListBackground";
-import MessageCardList from "../components/MessageCardList/MessageCardList";
-import Nav from "../components/Nav/Nav";
-import RecipientInfoBar from "../components/RecipientInfoBar/RecipientInfoBar";
-import useAsync from "../hooks/useAsync";
+import { getRecipient } from "../../components/Api/RecipientApi";
+import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
+import MessageCardList from "../../components/MessageCardList/MessageCardList";
+import Nav from "../../components/Nav/Nav";
+import RecipientInfoBar from "../../components/RecipientInfoBar/RecipientInfoBar";
+import useAsync from "../../hooks/useAsync";
 
 import styles from "./RecipientPage.module.css";
 

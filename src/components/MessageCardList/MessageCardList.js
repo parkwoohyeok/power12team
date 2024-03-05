@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
-import AddMessageCard from "../AddMessageCard/AddMessageCard";
+import AddMessageCard from "./AddMessageCard/AddMessageCard";
 import { deleteMessage, getMessages } from "../Api/RecipientApi";
-import MessageCard from "../MessageCard/MessageCard";
+import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 
 const LIMIT = 6;

@@ -1,5 +1,5 @@
-import CreatedAt from "../MessageCard/CreatedAt/CreatedAt";
-import SenderInfo from "../MessageCard/SenderInfo/SenderInfo";
+import CreatedAt from "../MessageCardList/MessageCard/CreatedAt/CreatedAt";
+import SenderInfo from "../MessageCardList/MessageCard/SenderInfo/SenderInfo";
 
 import styles from "./MessageCardModal.module.css";
 
