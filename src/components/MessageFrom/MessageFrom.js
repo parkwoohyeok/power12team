@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
+import Button from "../common/Button/Button";
 
 import FontSelect from "./FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
@@ -9,9 +10,6 @@ import NameInput from "./NameInput/NameInput";
 import ProfileSelect from "./ProfileSelect/ProfileSelect";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
 import TextEditor from "./TextEditor/TextEditor";
-
-/* eslint-disable */
-import Button from "components/common/Button/Button";
 
 function MessageFrom() {
   const fonts = [
