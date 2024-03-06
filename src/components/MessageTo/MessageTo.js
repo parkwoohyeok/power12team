@@ -14,8 +14,6 @@ import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton
 
 import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
 
-import "../../styles/color.css";
-
 import usePostPaper from "components/Api/usePostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
