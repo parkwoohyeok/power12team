@@ -22,7 +22,7 @@ const ListCards = ({ info }) => {
         }
         className={`${styles.CardContainer} ${info.backgroundImageURL ? styles.SkeletonImage : styles[info.backgroundColor]}`}
       >
-        <div className={styles.Cardinfo}>
+        <div className={styles.CardInfo}>
           <h2 className={styles.Receiver}>{`To.${info?.name}`}</h2>
           <MessageSummary data={info} />
         </div>

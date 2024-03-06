@@ -6,15 +6,15 @@ import styles from "./MessageSummary.module.css";
 
 function MessageSummary({ data, isPostPage }) {
   const { messageCount, recentMessages } = data || {};
-  const pageStyle = isPostPage ? styles.PostPage : styles.ListPage;
+  const pageStyle = isPostPage ? styles.PostPage : "";
 
   return (
     <div className={`${styles.RecentMessages} ${pageStyle}`}>
-      <div className={messageCount === 0 ? styles["noCount"] : ""}>
+      <div className={messageCount === 0 ? styles.noCount : ""}>
         <div className={styles.ProfileImageWrapper}>
           {recentMessages?.[0] && (
             <img
-              className={styles.ProfileImage}
+              className={`${styles.ProfileImage} ${styles.First}`}
               src={recentMessages[0]?.profileImageURL}
               alt="프로필 이미지"
             />
