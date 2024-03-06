@@ -36,15 +36,6 @@ function ProfileSelect({
               프로필 이미지를 선택해주세요!
             </div>
             <div className={styles.SelectImgs}>
-              {/* {imageUrls.map((imageUrl, index) => (
-                <img
-                  key={index}
-                  src={imageUrl}
-                  alt="프로필 선택"
-                  className={styles.SelectImg}
-                  onClick={() => handleImageSelect(imageUrl)}
-                />
-              ))} */}
               {isLoading ? (
                 <div className={styles.SkeletonImage}></div>
               ) : (
