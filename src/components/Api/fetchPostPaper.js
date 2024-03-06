@@ -1,7 +1,7 @@
 /* eslint-disable */
 import axiosInstance from "utils/axiosInstance";
 
-const usePostPaper = async (recipientData) => {
+const fetchPostPaper = async (recipientData) => {
   try {
     const response = await axiosInstance.post("recipients/", recipientData);
     return response.data;
@@ -10,4 +10,4 @@ const usePostPaper = async (recipientData) => {
   }
 };
 
-export default usePostPaper;
+export default fetchPostPaper;

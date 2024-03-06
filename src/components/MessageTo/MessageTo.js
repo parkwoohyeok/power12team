@@ -14,7 +14,7 @@ import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton
 
 import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
 
-import usePostPaper from "components/Api/usePostPaper";
+import fetchPostPaper from "components/Api/fetchPostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
 
@@ -43,7 +43,7 @@ const MessageTo = () => {
               backgroundImageURL: photos[selectedPhoto],
             };
 
-      usePostPaper(recipientData).then((v) => {
+      fetchPostPaper(recipientData).then((v) => {
         navigate(`${v.id}`);
       });
     } catch (error) {
