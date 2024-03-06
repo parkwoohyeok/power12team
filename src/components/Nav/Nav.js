@@ -9,7 +9,11 @@ const Nav = () => {
   const params = useParams();
   const recipientId = params.recipientId;
 
-  const noButtonRendering = [`/post/${recipientId}/message`, `/post`];
+  const noButtonRendering = [
+    `/post/${recipientId}/message`,
+    `/post/${recipientId}`,
+    `/post`,
+  ];
 
   return (
     <div className={styles.NavBar}>

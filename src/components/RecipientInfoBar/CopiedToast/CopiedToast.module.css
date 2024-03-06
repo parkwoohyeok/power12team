@@ -1,0 +1,47 @@
+@keyframes PopUp {
+  0% {
+    bottom: -8rem;
+  }
+  5% {
+    bottom: 9rem;
+  }
+  95% {
+    bottom: 9rem;
+  }
+  100% {
+    bottom: -8rem;
+  }
+}
+
+.ToastBox {
+  max-width: 52.4rem;
+  width: 85vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2rem 3rem;
+  position: fixed;
+  bottom: -8rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+
+  animation: PopUp 5s ease 0s 1;
+}
+
+.CheckTextWrapper {
+}
+
+.Check {
+  margin-right: 1.2rem;
+  height: 2.4rem;
+}
+
+.ToastText {
+  color: white;
+  font-size: 1.6rem;
+}
+
+.Close {
+  height: 2.4rem;
+}
