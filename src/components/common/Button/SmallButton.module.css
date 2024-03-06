@@ -1,0 +1,15 @@
+.selectedSize {
+  background-color: var(--Purple-60);
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.6rem;
+  font-family: inherit;
+  font-size: 1.6rem;
+
+  &:hover {
+    background-color: var(--Purple-70);
+  }
+  &:active {
+    background-color: var(--Purple-80);
+  }
+}

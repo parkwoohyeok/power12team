@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
-/* eslint-disable */
-import CreateButton from "./CreateButton/CreateButton";
+import Button from "components/common/Button/Button";
 
 import InputPost from "./InputPost/InputPost";
 
@@ -13,6 +15,7 @@ import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton
 import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
 
 import "../../styles/color.css";
+
 import usePostPaper from "components/Api/usePostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
@@ -95,7 +98,13 @@ const MessageTo = () => {
           setIsLoading={setIsLoading}
         />
       </div>
-      <CreateButton name={name} onClick={handleClickCreateButton} />
+      <Button
+        size="Large"
+        type="submit"
+        disabled={!name}
+        onClick={handleClickCreateButton}
+        children={"생성하기"}
+      />
     </div>
   );
 };

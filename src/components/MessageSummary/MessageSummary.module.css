@@ -10,8 +10,9 @@
   align-items: center;
 }
 
-.RrofileImageWrapper {
+.ProfileImageWrapper {
   display: block;
+  margin-top: 0.5rem;
 }
 
 .ProfileImage {
@@ -41,10 +42,21 @@
   padding: 0.6rem;
   z-index: 4;
   left: -4rem;
+  color: black;
+}
+
+.noCount {
+  height: 3.3rem;
 }
 
 @media (max-width: 1199px) {
   .RecentMessages.PostPage {
     display: none;
+  }
+}
+
+@media (max-width: 949px) {
+  .noCount {
+    height: 3.3rem;
   }
 }

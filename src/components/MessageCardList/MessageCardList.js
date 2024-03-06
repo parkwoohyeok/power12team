@@ -1,11 +1,14 @@
 /* eslint-disable */
+
 import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
-import AddMessageCard from "../AddMessageCard/AddMessageCard";
+import AddMessageCard from "./AddMessageCard/AddMessageCard";
 import { deleteMessage, getMessages } from "../Api/RecipientApi";
-import MessageCard from "../MessageCard/MessageCard";
+import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
+import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
+import PurpleButton from "components/common/PurpleButton/PurpleButton";
 
 const LIMIT = 6;
 
@@ -31,13 +34,14 @@ const MessageCardList = ({
 
   const loadMessages = async (options) => {
     const RESPONSE = await getMessagesAsync(options);
+
     if (options.offset === 0) {
-      setList(RESPONSE.results);
+      setList(RESPONSE?.results);
     } else {
-      setList((prevList) => [...prevList, ...RESPONSE.results]);
+      setList((prevList) => [...prevList, ...RESPONSE?.results]);
     }
 
-    const NEXT = RESPONSE.next;
+    const NEXT = RESPONSE?.next;
     if (NEXT) {
       setOffset(NEXT.split("offset=")[1]);
       setHasNext(true);
@@ -59,9 +63,9 @@ const MessageCardList = ({
     setIsEditing(true);
   };
 
-  const handleDelete = (messageId) => {
-    const result = deleteData(messageId);
-    if (result) {
+  const handleDelete = async (messageId) => {
+    const result = await deleteData(messageId);
+    if (result === 204) {
       const newList = list.filter((message) => message.id !== messageId);
       setList(newList);
     }
@@ -75,6 +79,8 @@ const MessageCardList = ({
   useEffect(() => {
     loadMessages({ recipientId, offset, limit: 5 });
   }, []);
+
+  if (getMessagesError) console.log(getMessagesError);
 
   // 무한 스크롤
   useEffect(() => {
@@ -101,26 +107,29 @@ const MessageCardList = ({
   return (
     <>
       <div className={styles.CardListPadding}>
-        {!isEditing && (
-          <button
-            className={styles.CardListEditButton}
-            onClick={handleClickOnEdit}
-          >
-            편집하기
-          </button>
-        )}
-        {isEditing && (
-          <button
+        {isEditing ? (
+          <div
             className={styles.CardListEditButton}
             onClick={handleClickOnSave}
           >
-            저장하기
-          </button>
+            <PurpleButton addClass={styles.CardListEditButtonResponsive}>
+              저장하기
+            </PurpleButton>
+          </div>
+        ) : (
+          <div
+            className={styles.CardListEditButton}
+            onClick={handleClickOnEdit}
+          >
+            <PurpleButton addClass={styles.CardListEditButtonResponsive}>
+              편집하기
+            </PurpleButton>
+          </div>
         )}
       </div>
       <div className={styles.CardListContainer}>
         {isEditing || <AddMessageCard />}
-        {list.map((message) => (
+        {list?.map((message) => (
           <MessageCard
             key={message.id}
             message={message}
@@ -128,6 +137,10 @@ const MessageCardList = ({
             onDelete={handleDelete}
           />
         ))}
+        {getMessagesPending &&
+          Array(6)
+            .fill(0)
+            .map((el, idx) => <MessageCardSkeleton key={idx} />)}
       </div>
       <div
         ref={SENTINEL}

@@ -1,121 +1,148 @@
 /* eslint-disable */
 
-import TopReactions from "components/TopReactions/TopReactions";
-
 import styles from "./HotList.module.css";
 
 import arrow from "assets/arrow.png";
 
-import MessageSummary from "components/MessageSummary/MessageSummary";
+import { useEffect, useRef, useState } from "react";
 
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import useAsync from "hooks/useAsync";
+import ListCards from "components/ListCards/ListCards";
 
-import useGetRecipients from "components/Api/useGetRecipients";
+import { AnimatePresence, motion } from "framer-motion";
 
-function HotList() {
+import { debounce } from "lodash";
+
+import { useInView } from "react-intersection-observer";
+
+function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardSlidingToRight, setCardSlidingToRight] = useState(false);
-  const [cardSlidingToLeft, setCardSlidingToLeft] = useState(false);
-  const [recipientData, setrecipientData] = useState([]);
-  const [getRecipientPending, getRecipientError, getRecipientsAsync] =
-    useAsync(useGetRecipients);
+  const [visible, setVisible] = useState(0);
+  const [back, setBack] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [ref, inView] = useInView({ initialInView: false });
 
-  const recipientGet = async () => {
-    const response = await getRecipientsAsync();
-    setrecipientData(response?.data.results);
-    updateCardsPerPage(response?.data.count);
-  };
-
-  const HotData = recipientData.sort((a, b) => {
-    const CardA = a.reactionCount;
-    const CardB = b.reactionCount;
-    return CardB - CardA;
-  });
-
-  const totalPages = Math.ceil(HotData.length / 4);
+  const totalPages = Math.ceil(recipientData?.length / cardsPerPage);
   const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, HotData.length);
-  const HotCards = HotData.slice(startIndex, endIndex);
+  const endIndex = Math.min(recipientData?.length, startIndex + cardsPerPage);
+  const HotCards = recipientData?.slice(startIndex, endIndex);
 
-  const nextPage = () => {
-    setCardSlidingToRight(true);
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-    setTimeout(() => {
-      setCardSlidingToRight(false);
-    }, 200);
+  const boxVariants = {
+    entry: (back) => ({
+      x: back ? -500 : 500,
+      opacity: 0,
+      scale: 0,
+    }),
+    center: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: { duration: 0.5 },
+    },
+    exit: (back) => ({
+      x: back ? 500 : -500,
+      opacity: 0,
+      scale: 0,
+      transition: { duration: 0.5 },
+    }),
   };
 
-  const prevPage = () => {
-    setCardSlidingToLeft(true);
+  const nextPlease = () => {
+    if (hasNextPage !== false) {
+      fetchData();
+    }
+    setBack(false);
+
+    setCurrentPage((prevPage) => prevPage + 1);
+    setVisible((prevPage) => Math.min(prevPage + 1, totalPages));
+  };
+  const prevPlease = () => {
+    setBack(true);
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    setTimeout(() => {
-      setCardSlidingToLeft(false);
-    }, 200);
+    setVisible((prevPage) => Math.max(prevPage - 1, 1));
   };
 
-  const updateCardsPerPage = () => {
-    if (recipientData && recipientData.length > 0)
-      if (window.innerWidth <= 949) {
-        setCardsPerPage(HotData?.length);
-        setCurrentPage(1);
-      } else {
-        setCardsPerPage(4);
-      }
+  const bringData = () => {
+    if (hasNextPage !== false) {
+      fetchData();
+    }
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
+
+  console.log(hasNextPage);
+
+  const handleResize = debounce(() => {
+    if (window.innerWidth <= 949) {
+      setIsMobile(true);
+      setCardsPerPage(100);
+    } else {
+      setIsMobile(false);
+      setCardsPerPage(4);
+    }
+  }, 200);
 
   useEffect(() => {
-    recipientGet();
-    updateCardsPerPage();
-    window.addEventListener("resize", updateCardsPerPage);
+    handleResize();
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", updateCardsPerPage);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+  useEffect(() => {
+    if (!isLoading && inView) {
+      bringData();
+    }
+  }, [inView]);
+
   return (
     <>
-      <h2 className={styles.CardTitle}>인기 롤링 페이퍼🔥</h2>
-      <div layout className={styles.Wrapper}>
-        {HotCards.map((info) => (
-          <div
-            style={
-              info.backgroundImageURL
-                ? {
-                    backgroundImage: `url(${info.backgroundImageURL})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    color: "white",
-                  }
-                : {}
-            }
-            key={info.id}
-            className={`${styles["CardContainer"]} ${info.backgroundColor ? styles[info.backgroundColor] : ""}  ${cardSlidingToRight ? styles["slide-out-R"] : ""} ${cardSlidingToLeft ? styles["slide-out-L"] : ""}`}
-          >
-            <div className={styles["CardInfo"]}>
-              <h2>{`To.${info.name}`}</h2>
-              <MessageSummary data={info} />
-            </div>
-            <div className={styles.CardFooter}>
-              <div className={styles.HorizonLine}></div>
-              <TopReactions datas={info} />
-            </div>
-          </div>
-        ))}
-        <button
-          className={`${styles.SlideBtn_R} ${currentPage === totalPages ? styles.EndOfPage : ""}`}
-          onClick={nextPage}
-        >
-          <img src={arrow} alt="슬라이드 버튼" />
-        </button>
-        <button
-          className={`${styles.SlideBtn_L} ${currentPage === 1 ? styles.EndOfPage : ""}`}
-          onClick={prevPage}
-        >
-          <img src={arrow} alt="슬라이드 버튼" />
-        </button>
+      <div className={styles.listcontainer}>
+        <h2 className={styles.CardTitle}>인기 롤링 페이퍼🔥</h2>
+        <motion.div className={styles.SlideWrap}>
+          <AnimatePresence custom={back}>
+            <motion.div
+              className={styles.box}
+              custom={back}
+              variants={boxVariants}
+              initial="entry"
+              animate="center"
+              exit="exit"
+              key={visible}
+            >
+              <div className={styles.Wrapper}>
+                {HotCards?.map((info, index) => {
+                  return (
+                    <ListCards
+                      info={info}
+                      key={info?.id}
+                      index={index}
+                      isMobile={isMobile}
+                    />
+                  );
+                })}
+                <div
+                  className={`${styles.moreData} ${!isLoading && isMobile ? styles["isMobile"] : ""}`}
+                  ref={ref}
+                ></div>
+                <button
+                  className={`${styles.SlideBtn_R} ${currentPage !== 1 && hasNextPage === false ? styles.EndOfPage : ""}`}
+                  onClick={nextPlease}
+                >
+                  <img src={arrow} alt="슬라이드 버튼" />
+                </button>
+                <button
+                  className={`${styles.SlideBtn_L} ${currentPage === 1 ? styles.EndOfPage : ""}`}
+                  onClick={prevPlease}
+                >
+                  <img src={arrow} alt="슬라이드 버튼" />
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </>
   );

@@ -71,6 +71,11 @@
   .BigContainer {
     width: 32rem;
   }
+
+  .Bottom {
+    padding-top: 18.2rem;
+  }
+
   .Button {
     width: 32rem;
     margin: 5rem auto 0;

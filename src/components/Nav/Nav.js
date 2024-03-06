@@ -9,7 +9,11 @@ const Nav = () => {
   const params = useParams();
   const recipientId = params.recipientId;
 
-  const noButtonRendering = [`/post/${recipientId}/message`, `/post`];
+  const noButtonRendering = [
+    `/post/${recipientId}/message`,
+    `/post/${recipientId}`,
+    `/post`,
+  ];
 
   return (
     <div className={styles.NavBar}>
@@ -20,9 +24,11 @@ const Nav = () => {
           </button>
         </Link>
         {!noButtonRendering.includes(location.pathname) && (
-          <button className={styles.GoToPostPage}>
-            <span>롤링 페이퍼 만들기</span>
-          </button>
+          <Link to="/post">
+            <button className={styles.GoToPostPage}>
+              <span>롤링 페이퍼 만들기</span>
+            </button>
+          </Link>
         )}
       </div>
     </div>

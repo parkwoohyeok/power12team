@@ -1,11 +1,14 @@
+/* eslint-disable */
 import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 
-import { getRecipient } from "../components/Api/RecipientApi";
-import CardListBackground from "../components/MessageCardList/CardListBackground/CardListBackground";
-import MessageCardList from "../components/MessageCardList/MessageCardList";
-import Nav from "../components/Nav/Nav";
-import RecipientInfoBar from "../components/RecipientInfoBar/RecipientInfoBar";
-import useAsync from "../hooks/useAsync";
+import { getRecipient } from "../../components/Api/RecipientApi";
+import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
+import MessageCardList from "../../components/MessageCardList/MessageCardList";
+import Nav from "../../components/Nav/Nav";
+import RecipientInfoBar from "../../components/RecipientInfoBar/RecipientInfoBar";
+import RecipientInfoBarSkeleton from "components/RecipientInfoBar/RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
+import useAsync from "../../hooks/useAsync";
 
 import styles from "./RecipientPage.module.css";
 
@@ -15,8 +18,6 @@ const RecipientPage = () => {
   const recipientPath = window.location.pathname.split("/post")[1];
   const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
-
-  const { backgroundColor, backgroundImageURL } = recipient;
 
   const [getRecipientPending, getRecipientError, getRecipientAsync] =
     useAsync(getRecipient);
@@ -30,11 +31,22 @@ const RecipientPage = () => {
     loadRecipient(recipientId);
   }, []);
 
+  if (getRecipientError) {
+    console.log(getRecipientError);
+    return <Navigate to="/*" />;
+  }
+
+  const { backgroundColor, backgroundImageURL } = recipient;
+
   return (
     <>
       <div className={styles.FixPosition}>
         <Nav />
-        <RecipientInfoBar recipientData={recipient} />
+        {getRecipientPending ? (
+          <RecipientInfoBarSkeleton />
+        ) : (
+          <RecipientInfoBar recipientData={recipient} />
+        )}
       </div>
       <CardListBackground
         backgroundType={backgroundImageURL || backgroundColor}

@@ -1,0 +1,145 @@
+.CardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Receiver {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.CardContainer {
+  width: 20rem;
+  border: none; /*배경색 프롭스로 설정 할 것*/
+  padding: 2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.RecentCount {
+  font-size: 1rem;
+}
+
+.CardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.HorizonLine {
+  height: 0.1rem;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.beige {
+  border: 0.1rem solid var(--Orange-30);
+  background-color: var(--Orange-20);
+  background-image: url(../../assets/pattern_beige.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
+}
+.purple {
+  border: 0.1rem solid var(--Purple-30);
+  background-color: var(--Purple-20);
+  background-image: url(../../assets/pattern_purple.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
+}
+.blue {
+  border: 0.1rem solid var(--Blue-30);
+  background-color: var(--Blue-20);
+  background-image: url(../../assets/pattern_blue.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
+}
+.green {
+  background-color: var(--Green-20);
+  border: 0.1rem solid var(--Green-30);
+  background-image: url(../../assets/pattern_green.png);
+  background-repeat: no-repeat;
+  background-position: 6rem 6rem;
+}
+
+.CardContainer {
+  transition: transform 0.2s ease;
+}
+
+.slide-out-R {
+  animation: slide-R 0.2s ease forwards;
+  opacity: 0.4;
+}
+
+.slide-out-L {
+  animation: slide-L 0.2s ease forwards;
+  opacity: 0.4;
+}
+
+@keyframes loading {
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+}
+
+.SkeletonImage {
+  position: relative;
+  width: 20rem;
+  border: none; /*배경색 프롭스로 설정 할 것*/
+  padding: 2rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  background-color: var(--Gray-30);
+  animation: loading 1.5s infinite;
+}
+
+@media (max-width: 949px) {
+  .CardContainer {
+    gap: 2rem;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .CardContainer {
+    gap: 1.5rem;
+  }
+
+  .CardInfo {
+    gap: 0.7rem;
+  }
+
+  .CardInfo > h2 {
+    font-size: 1.4rem;
+  }
+
+  .CardInfo > p {
+    font-size: 0.7rem;
+  }
+
+  .CardContainer {
+    gap: 3rem;
+    width: 18rem;
+  }
+
+  .RecentCount {
+    font-size: 0.7rem;
+  }
+
+  .CardFooter {
+    gap: 0.7rem;
+  }
+}
