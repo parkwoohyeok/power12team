@@ -72,7 +72,8 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
       fetchData();
     }
     setBack(false);
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    
+    setCurrentPage((prevPage) => prevPage + 1);
         setVisible((prevPage) => Math.min(prevPage + 1, totalPages)
     );
   };
@@ -88,6 +89,10 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
     }
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   }
+
+
+  console.log(hasNextPage)
+
 
 
 
@@ -122,6 +127,7 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
   
   
   
+  
 
 
   return (
@@ -153,7 +159,7 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
                   ref={ref}>
           </div>
         <button
-          className={`${styles.SlideBtn_R} ${currentPage !== 1 && currentPage === totalPages ? styles.EndOfPage : ""}`}
+          className={`${styles.SlideBtn_R} ${currentPage !== 1 && hasNextPage === false ? styles.EndOfPage : ""}`}
           onClick={nextPlease}
         >
           <img src={arrow} alt="슬라이드 버튼" />

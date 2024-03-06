@@ -53,7 +53,7 @@ const RecentList = ({ data, hasNextPage, fetchData, isLoading }) => {
       fetchData();
     }
     setBack(false);
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    setCurrentPage((prevPage) => prevPage + 1);
         setVisible((prevPage) => Math.min(prevPage + 1, totalPages)
     );
   };
@@ -128,7 +128,7 @@ const RecentList = ({ data, hasNextPage, fetchData, isLoading }) => {
                   더보기
           </div>
         <button
-          className={`${styles.SlideBtn_R} ${currentPage !== 1 && currentPage === totalPages ? styles.EndOfPage : ""}`}
+          className={`${styles.SlideBtn_R} ${currentPage !== 1 && hasNextPage===false ? styles.EndOfPage : ""}`}
           onClick={nextPlease}
         >
           <img src={arrow} alt="슬라이드 버튼" />
