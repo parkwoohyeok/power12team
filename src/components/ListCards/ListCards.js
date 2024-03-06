@@ -4,7 +4,6 @@ import styles from "components/ListCards/ListCards.module.css";
 import MessageSummary from "components/MessageSummary/MessageSummary";
 import TopReactions from "components/TopReactions/TopReactions";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 const ListCards = ({ info }) => {
   return (
