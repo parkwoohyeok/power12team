@@ -2,7 +2,6 @@
 import axiosInstance from "utils/axiosInstance";
 
 const usePostPaper = async (recipientData) => {
-  console.log(recipientData);
   try {
     const response = await axiosInstance.post("recipients/", recipientData);
     return response.data;
