@@ -11,7 +11,7 @@ import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
-import TopReactionsModified from "components/TopReactionsModified/TopReactionsModified";
+import TopReactions from "components/TopReactions/TopReactions";
 import useAsync from "hooks/useAsync";
 import CopiedToast from "./CopiedToast/CopiedToast";
 
@@ -150,8 +150,8 @@ function RecipientInfoBar({ recipientData }) {
                     <div className={styles.ReactionLoading}></div>
                   </div>
                 ) : (
-                  <TopReactionsModified
-                    mapData={emojiListTop3}
+                  <TopReactions
+                    datas={emojiListTop3}
                     emojiLoading={getEmojiPending}
                   />
                 )}
