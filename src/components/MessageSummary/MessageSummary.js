@@ -10,33 +10,35 @@ function MessageSummary({ data, isPostPage }) {
 
   return (
     <div className={`${styles.RecentMessages} ${direction}`}>
-      <div className={styles.ProfileImageWrapper}>
-        {recentMessages?.[0] && (
-          <img
-            className={styles.ProfileImage}
-            src={recentMessages[0]?.profileImageURL}
-            alt="프로필 이미지"
-          />
-        )}
-        {recentMessages?.[1] && (
-          <img
-            className={`${styles.ProfileImage} ${styles.Second}`}
-            src={recentMessages[1]?.profileImageURL}
-            alt="프로필 이미지"
-          />
-        )}
-        {recentMessages?.[2] && (
-          <img
-            className={`${styles.ProfileImage} ${styles.Third}`}
-            src={recentMessages[2]?.profileImageURL}
-            alt="프로필 이미지"
-          />
-        )}
-        {messageCount - 3 > 0 && (
-          <div
-            className={`${styles.ProfileImage} ${styles.ProfileImageLast}`}
-          >{`+${messageCount}`}</div>
-        )}
+      <div className={messageCount === 0 ? styles["noCount"] : ""}>
+        <div className={styles.ProfileImageWrapper}>
+          {recentMessages?.[0] && (
+            <img
+              className={styles.ProfileImage}
+              src={recentMessages[0]?.profileImageURL}
+              alt="프로필 이미지"
+            />
+          )}
+          {recentMessages?.[1] && (
+            <img
+              className={`${styles.ProfileImage} ${styles.Second}`}
+              src={recentMessages[1]?.profileImageURL}
+              alt="프로필 이미지"
+            />
+          )}
+          {recentMessages?.[2] && (
+            <img
+              className={`${styles.ProfileImage} ${styles.Third}`}
+              src={recentMessages[2]?.profileImageURL}
+              alt="프로필 이미지"
+            />
+          )}
+          {messageCount - 3 > 0 && (
+            <div
+              className={`${styles.ProfileImage} ${styles.ProfileImageLast}`}
+            >{`+${messageCount}`}</div>
+          )}
+        </div>
       </div>
       <RecentCount recentCount={messageCount} />
     </div>

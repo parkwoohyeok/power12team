@@ -9,11 +9,20 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ListPage = () => {
-  const { hotData, recentData, fetchHotData, fetchRecentData, hasNextPage } =
-    useGetRecipients();
+  const {
+    isHotLoading,
+    isRecentLoading,
+    hotData,
+    recentData,
+    fetchHotData,
+    fetchRecentData,
+    hasNextHotPage,
+    hasNextRecentPage,
+  } = useGetRecipients();
 
   useEffect(() => {
     fetchHotData(); // 컴포넌트가 마운트될 때 데이터 가져오기
+    fetchRecentData();
   }, []);
 
   return (
@@ -24,15 +33,17 @@ const ListPage = () => {
           <div>
             <HotList
               recipientData={hotData}
-              hasNextPage={hasNextPage}
+              hasNextPage={hasNextHotPage}
               fetchData={fetchHotData}
+              isLoading={isHotLoading}
             />
           </div>
           <div>
             <RecentList
-              data={hotData}
-              hasNextPage={hasNextPage}
+              data={recentData}
+              hasNextPage={hasNextRecentPage}
               fetchData={fetchRecentData}
+              isLoading={isRecentLoading}
             />
           </div>
         </div>
