@@ -46,7 +46,7 @@
 }
 
 .noCount {
-  height: 2.8rem;
+  height: 3.3rem;
 }
 
 @media (max-width: 1199px) {
@@ -57,6 +57,6 @@
 
 @media (max-width: 949px) {
   .noCount {
-    height: 2.8rem;
+    height: 3.3rem;
   }
 }

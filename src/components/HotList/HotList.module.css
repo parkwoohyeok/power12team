@@ -74,6 +74,7 @@
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     padding-right: 2rem;
+    height: 20rem;
   }
 
   .SlideBtn_R {

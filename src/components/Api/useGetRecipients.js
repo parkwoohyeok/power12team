@@ -18,6 +18,7 @@ const useGetRecipients = () => {
     try {
       const url = `recipients/?limit=4&offset=${Hotoffset}&sort=like`;
       const response = await axiosInstance.get(url);
+      console.log(url);
       const newData = response?.data.results;
       setHotData((prevData) => [...prevData, ...newData]);
       if (response?.data.next !== null) {
@@ -48,6 +49,8 @@ const useGetRecipients = () => {
     }
     setIsRecentLoading(false);
   };
+
+  console.log(Hotoffset);
 
   return {
     isHotLoading,

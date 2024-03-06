@@ -5,10 +5,14 @@ import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 
 import FontSelect from "./FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
+// import MessageFromSkeleton from "./MessageFromSkeleton";
 import NameInput from "./NameInput/NameInput";
 import ProfileSelect from "./ProfileSelect/ProfileSelect";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
 import TextEditor from "./TextEditor/TextEditor";
+
+/* eslint-disable */
+import Button from "components/common/Button/Button";
 
 function MessageFrom() {
   const fonts = [
@@ -139,13 +143,12 @@ function MessageFrom() {
           />
         </div>
         <div className={styles.Bottom}>
-          <button
+          <Button
+            size="Large"
             type="submit"
-            className={`${styles.Button} ${!isButtonEnabled ? styles.ButtonDisabled : ""}`}
             disabled={!isButtonEnabled}
-          >
-            생성하기
-          </button>
+            children={"생성하기"}
+          />
         </div>
       </form>
     </>
