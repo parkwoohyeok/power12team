@@ -34,6 +34,7 @@ const MessageCardList = ({
 
   const loadMessages = async (options) => {
     const RESPONSE = await getMessagesAsync(options);
+
     if (options.offset === 0) {
       setList(RESPONSE?.results);
     } else {
@@ -62,9 +63,9 @@ const MessageCardList = ({
     setIsEditing(true);
   };
 
-  const handleDelete = (messageId) => {
-    const result = deleteData(messageId);
-    if (result) {
+  const handleDelete = async (messageId) => {
+    const result = await deleteData(messageId);
+    if (result === 204) {
       const newList = list.filter((message) => message.id !== messageId);
       setList(newList);
     }
@@ -78,6 +79,8 @@ const MessageCardList = ({
   useEffect(() => {
     loadMessages({ recipientId, offset, limit: 5 });
   }, []);
+
+  if (getMessagesError) console.log(getMessagesError);
 
   // 무한 스크롤
   useEffect(() => {
@@ -126,7 +129,7 @@ const MessageCardList = ({
       </div>
       <div className={styles.CardListContainer}>
         {isEditing || <AddMessageCard />}
-        {list.map((message) => (
+        {list?.map((message) => (
           <MessageCard
             key={message.id}
             message={message}
@@ -137,7 +140,7 @@ const MessageCardList = ({
         {getMessagesPending &&
           Array(6)
             .fill(0)
-            .map(() => <MessageCardSkeleton />)}
+            .map((el, idx) => <MessageCardSkeleton key={idx} />)}
       </div>
       <div
         ref={SENTINEL}

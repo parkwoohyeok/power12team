@@ -32,6 +32,7 @@ const RecipientPage = () => {
   }, []);
 
   if (getRecipientError) {
+    console.log(getRecipientError);
     return <Navigate to="/*" />;
   }
 
