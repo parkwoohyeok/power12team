@@ -5,6 +5,7 @@ import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 
 import FontSelect from "./FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
+// import MessageFromSkeleton from "./MessageFromSkeleton";
 import NameInput from "./NameInput/NameInput";
 import ProfileSelect from "./ProfileSelect/ProfileSelect";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
