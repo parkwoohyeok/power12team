@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from "react";
-import styles from "components/Nav/Nav.module.css";
+import styles from "./Nav.module.css";
 import logo from "assets/logo.png";
 import { Link, useLocation, useParams } from "react-router-dom";
 
