@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import BottomButton from "components/common/BottomButton/BottomButton";
+import Button from "components/common/Button/Button";
 
 import InputPost from "./InputPost/InputPost";
 
@@ -20,7 +20,7 @@ import usePostPaper from "components/Api/usePostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
 
-const MessageTo = ({ submit }) => {
+const MessageTo = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [photos, setPhotos] = useState([]);
@@ -98,11 +98,12 @@ const MessageTo = ({ submit }) => {
           setIsLoading={setIsLoading}
         />
       </div>
-      <BottomButton
-        type={submit}
+      <Button
+        size="Large"
+        type="submit"
         disabled={!name}
         onClick={handleClickCreateButton}
-        Children={"생성하기"}
+        children={"생성하기"}
       />
     </div>
   );

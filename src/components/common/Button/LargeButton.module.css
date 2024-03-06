@@ -1,6 +1,6 @@
 @import url("../../../styles/color.css");
 
-.BottomButton {
+.LargeButton {
   display: flex;
   width: 72rem;
   padding: 1.4rem 2.4rem;
@@ -24,13 +24,13 @@
   letter-spacing: -0.018rem;
 }
 
-.BottomButton:disabled {
+.LargeButton:disabled {
   background: var(--Gray-30);
   cursor: default;
 }
 
-@media (min-width: 357px) and (max-width: 767px) {
-  .BottomButton {
+@media (max-width: 767px) {
+  .LargeButton {
     margin-left: 0;
     margin-right: 0;
     width: 32rem;
