@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Frame from "../../../assets/Frame.png";
 
@@ -10,6 +10,14 @@ function ProfileSelect({
   handleImageChange,
   handleImageSelect,
 }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (imageUrls.length > 0) {
+      setIsLoading(false);
+    }
+  }, [imageUrls]);
+
   return (
     <>
       <div className={styles.ProfileContainer}>
@@ -28,7 +36,7 @@ function ProfileSelect({
               프로필 이미지를 선택해주세요!
             </div>
             <div className={styles.SelectImgs}>
-              {imageUrls.map((imageUrl, index) => (
+              {/* {imageUrls.map((imageUrl, index) => (
                 <img
                   key={index}
                   src={imageUrl}
@@ -36,7 +44,20 @@ function ProfileSelect({
                   className={styles.SelectImg}
                   onClick={() => handleImageSelect(imageUrl)}
                 />
-              ))}
+              ))} */}
+              {isLoading ? (
+                <div className={styles.SkeletonImage}></div>
+              ) : (
+                imageUrls.map((imageUrl, index) => (
+                  <img
+                    key={index}
+                    src={imageUrl}
+                    alt="프로필 선택"
+                    className={styles.SelectImg}
+                    onClick={() => handleImageSelect(imageUrl)}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>
