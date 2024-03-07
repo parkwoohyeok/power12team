@@ -14,8 +14,6 @@ const MessageToToggleButton = ({
   setSelectedPhoto,
   select,
   setSelect,
-  isLoading,
-  setIsLoading,
 }) => {
   const handleToggle = () => {
     setSelect(select === "Photo" ? "Color" : "Photo");
