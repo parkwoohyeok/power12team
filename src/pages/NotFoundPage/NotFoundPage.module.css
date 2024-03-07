@@ -1,4 +1,4 @@
-.NotFoungPage {
+.NotFoundPage {
   padding-top: 10rem;
   background-color: white;
   width: 100%;
@@ -7,6 +7,7 @@
 
 .Content {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 6rem;
   width: 100%;
@@ -20,6 +21,7 @@
 
 .Text {
   font-size: 3rem;
+  text-align: left;
 }
 
 .LinkTo {
