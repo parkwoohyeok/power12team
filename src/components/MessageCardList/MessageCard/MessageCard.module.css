@@ -10,5 +10,6 @@
 
 .CardContent {
   height: 10.6rem;
-  overflow: hidden;
+  overflow: auto;
+  scrollbar-width: thin;
 }

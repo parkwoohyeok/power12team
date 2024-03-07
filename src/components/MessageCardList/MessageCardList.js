@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "./AddMessageCard/AddMessageCard";
-import { deleteMessage, getMessages } from "../Api/RecipientApi";
+
+import { deleteMessage, fetchMessages } from "../api/recipientApis";
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
@@ -31,6 +32,10 @@ const MessageCardList = ({
 
   const [getMessagesPending, getMessagesError, getMessagesAsync] =
     useAsync(getMessages);
+
+  if (fetchMessagesError) {
+    alert("메세지를 불러오는데 실패했습니다.", fetchMessagesError);
+  }
 
   const loadMessages = async (options) => {
     const RESPONSE = await getMessagesAsync(options);

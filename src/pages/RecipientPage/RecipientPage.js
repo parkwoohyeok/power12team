@@ -1,8 +1,7 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
-import { getRecipient } from "../../components/Api/RecipientApi";
 import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
 import MessageCardList from "../../components/MessageCardList/MessageCardList";
 import Nav from "../../components/Nav/Nav";
@@ -14,16 +13,13 @@ import styles from "./RecipientPage.module.css";
 
 const RecipientPage = () => {
   const [recipient, setRecipient] = useState({});
+  const { recipientId } = useParams();
 
-  const recipientPath = window.location.pathname.split("/post")[1];
-  const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
-  const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
-
-  const [getRecipientPending, getRecipientError, getRecipientAsync] =
-    useAsync(getRecipient);
+  const [fetchRecipientPending, fetchRecipientError, fetchRecipientAsync] =
+    useAsync(fetchRecipient);
 
   const loadRecipient = async (id) => {
-    const RESPONSE = await getRecipientAsync(id);
+    const RESPONSE = await fetchRecipientAsync(id);
     setRecipient(RESPONSE);
   };
 
@@ -31,8 +27,8 @@ const RecipientPage = () => {
     loadRecipient(recipientId);
   }, []);
 
-  if (getRecipientError) {
-    console.log(getRecipientError);
+  if (fetchRecipientError) {
+    console.log(fetchRecipientError);
     return <Navigate to="/*" />;
   }
 
@@ -42,7 +38,7 @@ const RecipientPage = () => {
     <>
       <div className={styles.FixPosition}>
         <Nav />
-        {getRecipientPending ? (
+        {fetchRecipientPending ? (
           <RecipientInfoBarSkeleton />
         ) : (
           <RecipientInfoBar recipientData={recipient} />
