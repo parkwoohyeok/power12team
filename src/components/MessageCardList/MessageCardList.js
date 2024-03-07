@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "./AddMessageCard/AddMessageCard";
-
 import { deleteMessage, fetchMessages } from "../api/recipientApis";
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
@@ -30,15 +29,15 @@ const MessageCardList = ({
   const [isEditing, setIsEditing] = useState(false);
   const SENTINEL = useRef();
 
-  const [getMessagesPending, getMessagesError, getMessagesAsync] =
-    useAsync(getMessages);
+  const [fetchMessagesPending, fetchMessagesError, fetchMessagesAsync] =
+    useAsync(fetchMessages);
 
   if (fetchMessagesError) {
     alert("메세지를 불러오는데 실패했습니다.", fetchMessagesError);
   }
 
   const loadMessages = async (options) => {
-    const RESPONSE = await getMessagesAsync(options);
+    const RESPONSE = await fetchMessagesAsync(options);
 
     if (options.offset === 0) {
       setList(RESPONSE?.results);
@@ -85,7 +84,7 @@ const MessageCardList = ({
     loadMessages({ recipientId, offset, limit: 5 });
   }, []);
 
-  if (getMessagesError) console.log(getMessagesError);
+  if (fetchMessagesError) console.log(fetchMessagesError);
 
   // 무한 스크롤
   useEffect(() => {
@@ -142,7 +141,7 @@ const MessageCardList = ({
             onDelete={handleDelete}
           />
         ))}
-        {getMessagesPending &&
+        {fetchMessagesPending &&
           Array(6)
             .fill(0)
             .map((el, idx) => <MessageCardSkeleton key={idx} />)}
