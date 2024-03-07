@@ -4,11 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "./AddMessageCard/AddMessageCard";
-<<<<<<< HEAD
 import { deleteMessage, fetchMessages } from "../api/recipientApis";
-=======
-import { deleteMessage, getMessages } from "../api/recipientApis";
->>>>>>> 229be410b42e35039030be3db013881e8858af38
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";

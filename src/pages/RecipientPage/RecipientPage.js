@@ -16,11 +16,11 @@ const RecipientPage = () => {
   const [recipient, setRecipient] = useState({});
   const { recipientId } = useParams();
 
-  const [getRecipientPending, getRecipientError, getRecipientAsync] =
+  const [fetchRecipientPending, fetchRecipientError, fetchRecipientAsync] =
     useAsync(fetchRecipient);
 
   const loadRecipient = async (id) => {
-    const RESPONSE = await getRecipientAsync(id);
+    const RESPONSE = await fetchRecipientAsync(id);
     setRecipient(RESPONSE);
   };
 
@@ -28,8 +28,8 @@ const RecipientPage = () => {
     loadRecipient(recipientId);
   }, []);
 
-  if (getRecipientError) {
-    console.log(getRecipientError);
+  if (fetchRecipientError) {
+    console.log(fetchRecipientError);
     return <Navigate to="/*" />;
   }
 
@@ -39,7 +39,7 @@ const RecipientPage = () => {
     <>
       <div className={styles.FixPosition}>
         <Nav />
-        {getRecipientPending ? (
+        {fetchRecipientPending ? (
           <RecipientInfoBarSkeleton />
         ) : (
           <RecipientInfoBar recipientData={recipient} />
