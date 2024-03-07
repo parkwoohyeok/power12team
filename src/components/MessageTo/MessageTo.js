@@ -47,7 +47,7 @@ const MessageTo = () => {
         navigate(`${v.id}`);
       });
     } catch (error) {
-      throw new Error("Error fetching data:", error);
+      navigate("/error");
     }
   };
 
