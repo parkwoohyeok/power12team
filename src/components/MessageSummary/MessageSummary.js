@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import RecentCount from "components/common/RecentCount/RecentCount";
+import RecentCount from "components/RecentCount/RecentCount";
 
 import styles from "./MessageSummary.module.css";
 

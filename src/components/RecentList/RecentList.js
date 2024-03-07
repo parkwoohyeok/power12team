@@ -1,12 +1,12 @@
 /* eslint-disable */
 
-import styles from "components/List/RecentList/RecentList.module.css";
+import styles from "components/RecentList/RecentList.module.css";
 
 import arrow from "assets/arrow.png";
 
 import { useState, useEffect } from "react";
 
-import ListCards from "components/List/ListCards/ListCards";
+import ListCards from "components/ListCards/ListCards";
 
 import { AnimatePresence, motion } from "framer-motion";
 
