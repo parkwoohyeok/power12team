@@ -1,11 +1,12 @@
 /* eslint-disable */
-import styles from "./TopReactionsModified.module.css";
+
+import styles from "./TopReaction.module.css";
 
 // import data from "mock/mock.json";
 // const mapData = data[0].topReactions
 // 위에만 추가하면 됨
 
-const TopReactionsModified = ({ mapData }) => {
+const TopReactions = ({ mapData }) => {
   return (
     <div className={styles.ReactionContainer}>
       {mapData?.map((reaction) => (
@@ -16,4 +17,4 @@ const TopReactionsModified = ({ mapData }) => {
     </div>
   );
 };
-export default TopReactionsModified;
+export default TopReactions;
