@@ -6,10 +6,10 @@ import styles from "./TopReaction.module.css";
 // const mapData = data[0].topReactions
 // 위에만 추가하면 됨
 
-const TopReactions = ({ mapData }) => {
+const TopReactions = ({ datas }) => {
   return (
     <div className={styles.ReactionContainer}>
-      {mapData?.map((reaction) => (
+      {datas?.map((reaction) => (
         <div key={reaction.id} className={styles.Reaction}>
           {reaction.emoji} {reaction.count}
         </div>
