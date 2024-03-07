@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-import styles from "components/ListCards/ListCards.module.css";
-import MessageSummary from "components/MessageSummary/MessageSummary";
-import TopReactions from "components/TopReactions/TopReactions";
+import styles from "components/List/ListCards/ListCards.module.css";
+import MessageSummary from "components/common/MessageSummary/MessageSummary";
+import TopReactions from "components/common/TopReactions/TopReactions";
 import { Link } from "react-router-dom";
 
 const ListCards = ({ info }) => {

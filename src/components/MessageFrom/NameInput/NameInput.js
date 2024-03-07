@@ -1,11 +1,18 @@
+/* eslint-disable */
 import React from "react";
 
-import styles from "./NameInput.module.css";
+import styles from "components/MessageFrom/NameInput/NameInput.module.css";
 
 function NameInput({ sender, setSender, inputError, setInputError }) {
   const handleNameChange = (e) => {
     setSender(e.target.value);
-    setInputError(e.target.value ? "" : "값을 입력해 주세요.");
+    if (e.target.value) {
+      setInputError("");
+      e.target.style.borderColor = "";
+    } else {
+      setInputError("값을 입력해 주세요.");
+      e.target.style.borderColor = "var(--Error)";
+    }
   };
 
   return (
