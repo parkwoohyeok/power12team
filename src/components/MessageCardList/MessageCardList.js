@@ -32,6 +32,10 @@ const MessageCardList = ({
   const [fetchMessagesPending, fetchMessagesError, fetchMessagesAsync] =
     useAsync(fetchMessages);
 
+  if (fetchMessagesError) {
+    alert("메세지를 불러오는데 실패했습니다.", fetchMessagesError);
+  }
+
   const loadMessages = async (options) => {
     const RESPONSE = await fetchMessagesAsync(options);
 
