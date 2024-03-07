@@ -37,7 +37,7 @@ function MessageFrom() {
   const [profileImageURL, setProfileImageURL] = useState();
   const [inputError, setInputError] = useState(""); // 입력에 대한 에러 메시지 저장
   const [imageUrls, setImageUrls] = useState([]);
-  const [isValidRecipient, setIsValidRecipient] = useState(false);
+  const [isValidRecipient, setIsValidRecipient] = useState(null);
 
   // 생성하기 버튼 활성화 조건 검사 함수
   const isButtonEnabled = sender.trim() !== "" && content.trim() !== "";
@@ -101,13 +101,16 @@ function MessageFrom() {
         if (Number(response.data.id) === Number(recipientId)) {
           setIsValidRecipient(true);
         } else {
-          navigate("/*", { replace: true });
+          setIsValidRecipient(false);
+          // navigate("/*", { replace: true });
         }
       } catch (error) {
         console.error("Error fetching recipient data:", error);
         // 에러 발생 시 recipientId가 유효하지 않은 것으로 간주하고 404 페이지로 리다이렉트
-        navigate("/*", { replace: true });
+        // navigate("/*", { replace: true });
+        setIsValidRecipient(false);
       }
+      console.log(isValidRecipient);
     };
 
     if (recipientId) {
@@ -134,6 +137,10 @@ function MessageFrom() {
   const defaultRelationValue = options?.find(
     (option) => option.value === "지인",
   );
+
+  if (isValidRecipient === false) {
+    return <Navigate to="/*" replace={true} />;
+  }
 
   return (
     <>
