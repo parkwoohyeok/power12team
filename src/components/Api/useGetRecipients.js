@@ -1,11 +1,11 @@
 /* eslint-disable */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axiosInstance from "utils/axiosInstance";
 
 const useGetRecipients = () => {
-  const [isHotLoading, setIsHotLoading] = useState(false);
-  const [isRecentLoading, setIsRecentLoading] = useState(false);
+  const [isHotLoading, setIsHotLoading] = useState();
+  const [isRecentLoading, setIsRecentLoading] = useState();
   const [hotData, setHotData] = useState([]);
   const [recentData, setRecentData] = useState([]);
   const [Hotoffset, setHotOffset] = useState(0);
@@ -18,7 +18,7 @@ const useGetRecipients = () => {
     try {
       const url = `recipients/?limit=4&offset=${Hotoffset}&sort=like`;
       const response = await axiosInstance.get(url);
-
+      console.log(url);
       const newData = response?.data.results;
       setHotData((prevData) => [...prevData, ...newData]);
       if (response?.data.next !== null) {
@@ -49,6 +49,8 @@ const useGetRecipients = () => {
     }
     setIsRecentLoading(false);
   };
+
+  console.log(Hotoffset);
 
   return {
     isHotLoading,
