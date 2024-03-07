@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import useAsync from "hooks/useAsync";
 
 const ListCards = ({ info, isLoading }) => {
+  console.log(info);
   return (
     <>
       <Link to={`/post/${info.id}`}>
@@ -29,7 +30,7 @@ const ListCards = ({ info, isLoading }) => {
           </div>
           <div className={styles.CardFooter}>
             <div className={styles.HorizonLine}></div>
-            <TopReactions datas={info} />
+            <TopReactions datas={info?.topReactions} />
           </div>
         </div>
       </Link>

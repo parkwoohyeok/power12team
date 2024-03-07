@@ -7,6 +7,7 @@ import RecentList from "components/List/RecentList/RecentList";
 import styles from "pages/ListPage/ListPage.module.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Button from "components/List/Button/Button";
 
 const ListPage = () => {
   const {
@@ -49,9 +50,11 @@ const ListPage = () => {
         </div>
         <div className={styles.LinkDiv}>
           <Link to="/post">
-            <button className={styles.LinkBtn}>
-              <h2>나도 만들어보기</h2>
-            </button>
+            <Button
+              size={!window.innerWidth <= 949 ? "Medium" : "Large"}
+              type="submit"
+              children={"나도만들어보기"}
+            />
           </Link>
         </div>
       </div>

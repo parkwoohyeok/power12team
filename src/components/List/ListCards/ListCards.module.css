@@ -96,7 +96,7 @@
   position: relative;
   width: 20rem;
   border: none; /*배경색 프롭스로 설정 할 것*/
-  padding: 2rem;
+  padding: 2.1rem;
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;

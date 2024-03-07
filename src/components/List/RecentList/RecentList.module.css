@@ -115,6 +115,7 @@
 @media (max-width: 767px) {
   .Wrapper {
     gap: 0.8rem;
+    height: 21rem;
   }
 
   .CardTitle {
