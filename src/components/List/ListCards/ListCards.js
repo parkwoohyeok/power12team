@@ -4,8 +4,10 @@ import styles from "components/List/ListCards/ListCards.module.css";
 import MessageSummary from "components/common/MessageSummary/MessageSummary";
 import TopReactions from "components/common/TopReactions/TopReactions";
 import { Link } from "react-router-dom";
+import useAsync from "hooks/useAsync";
 
-const ListCards = ({ info }) => {
+const ListCards = ({ info, isLoading }) => {
+  console.log(info);
   return (
     <>
       <Link to={`/post/${info.id}`}>
