@@ -35,6 +35,11 @@
   opacity: 0.3;
 }
 
+.NoReaction {
+  display: block;
+  height: 0.8rem;
+}
+
 .beige {
   border: 0.1rem solid var(--Orange-30);
   background-color: var(--Orange-20);

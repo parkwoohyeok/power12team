@@ -150,10 +150,7 @@ function RecipientInfoBar({ recipientData }) {
                     <div className={styles.ReactionLoading}></div>
                   </div>
                 ) : (
-                  <TopReactions
-                    datas={emojiListTop3}
-                    emojiLoading={getEmojiPending}
-                  />
+                  <TopReactions datas={emojiListTop3} />
                 )}
                 {!!(count - 3) && (
                   <>
