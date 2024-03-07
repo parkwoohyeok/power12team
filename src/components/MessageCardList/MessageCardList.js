@@ -62,8 +62,6 @@ const MessageCardList = ({
 
   const handleDelete = async (messageId) => {
     const result = await deleteMessageAsync(messageId);
-    console.log(result);
-
     if (result === 204) {
       const newList = list.filter((message) => message.id !== messageId);
       setList(newList);
