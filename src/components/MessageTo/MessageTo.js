@@ -91,8 +91,6 @@ const MessageTo = () => {
           setSelectedPhoto={setSelectedPhoto}
           select={select}
           setSelect={setSelect}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
         />
       </div>
       <Button

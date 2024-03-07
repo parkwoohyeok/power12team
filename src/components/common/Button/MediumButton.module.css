@@ -1,6 +1,6 @@
 @import url("../../../styles/color.css");
 
-.selectedSize {
+.MediumButton {
   margin-left: 0;
   margin-right: 0;
   width: 32rem;
@@ -25,7 +25,7 @@
   letter-spacing: -0.018rem;
 }
 
-.selectedSize:disabled {
+.MediumButton:disabled {
   background: var(--Gray-30);
   cursor: default;
 }
