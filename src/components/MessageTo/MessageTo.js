@@ -14,9 +14,7 @@ import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton
 
 import fetchBackgroundImageUrls from "components/api/fetchBackgroundImageUrls";
 
-import "../../styles/color.css";
-
-import usePostPaper from "components/api/usePostPaper";
+import fetchPostPaper from "components/api/fetchPostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
 
@@ -27,7 +25,6 @@ const MessageTo = () => {
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [select, setSelect] = useState("Color");
-  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,11 +42,11 @@ const MessageTo = () => {
               backgroundImageURL: photos[selectedPhoto],
             };
 
-      usePostPaper(recipientData).then((v) => {
+      fetchPostPaper(recipientData).then((v) => {
         navigate(`${v.id}`);
       });
     } catch (error) {
-      throw new Error("Error in useEffect:", error);
+      navigate("/error");
     }
   };
 
@@ -94,8 +91,6 @@ const MessageTo = () => {
           setSelectedPhoto={setSelectedPhoto}
           select={select}
           setSelect={setSelect}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
         />
       </div>
       <Button

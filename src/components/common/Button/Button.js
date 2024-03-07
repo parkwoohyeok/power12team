@@ -11,7 +11,7 @@ const SIZE = {
   Modal: stylesModal.ModalButton,
 };
 
-const BottomButton = ({ size, type, disabled, onClick, children }) => {
+const Button = ({ size, type, disabled, onClick, children }) => {
   const selectedSize = SIZE[size];
   return (
     <button
@@ -25,4 +25,4 @@ const BottomButton = ({ size, type, disabled, onClick, children }) => {
   );
 };
 
-export default BottomButton;
+export default Button;
