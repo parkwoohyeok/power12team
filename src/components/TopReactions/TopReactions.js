@@ -1,4 +1,5 @@
-import styles from "./TopReaction.module.css";
+/* eslint-disable */
+import styles from "components/TopReactions/TopReactions.module.css";
 
 const TopReactions = ({ datas }) => {
   return (

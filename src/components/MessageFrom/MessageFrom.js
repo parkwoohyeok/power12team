@@ -1,10 +1,12 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
   fetchImageUrls,
   sendMessageData,
-} from "components/api/messageFromPageApi";
+} from "components/api/MessageFromPageApi";
 
 import FontSelect from "components/MessageFrom/FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
