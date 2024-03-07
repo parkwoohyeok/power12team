@@ -22,7 +22,7 @@ export const fetchMessages = async ({ recipientId, limit, offset }) => {
 
 export const deleteMessage = async (id) => {
   const RESPONSE = await axiosInstance
-    .delete(`messages/${id}/`)
+    .delete(`messageds/${id}/`)
     .catch((error) => {
       throw error;
     });
