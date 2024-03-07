@@ -46,9 +46,6 @@
   .BigContainer {
     width: 72rem;
   }
-  .Button {
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 47.9375rem) {
