@@ -1,9 +1,9 @@
 /* eslint-disable */
 
 import useGetRecipients from "components/api/useGetRecipients";
-import HotList from "components/HotList/HotList";
+import HotList from "components/List/HotList/HotList";
 import Nav from "components/common/Nav/Nav";
-import RecentList from "components/RecentList/RecentList";
+import RecentList from "components/List/RecentList/RecentList";
 import styles from "pages/ListPage/ListPage.module.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";

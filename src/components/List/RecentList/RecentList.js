@@ -1,12 +1,12 @@
 /* eslint-disable */
 
-import styles from "components/RecentList/RecentList.module.css";
+import styles from "components/List/RecentList/RecentList.module.css";
 
 import arrow from "assets/arrow.png";
 
 import { useState, useEffect } from "react";
 
-import ListCards from "components/ListCards/ListCards";
+import ListCards from "components/List/ListCards/ListCards";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -108,11 +108,17 @@ const RecentList = ({ data, hasNextPage, fetchData, isLoading }) => {
               exit="exit"
               key={visible}
             >
-              <div className={styles.Wrapper}></div>
-              <div className={styles.Wrapper}>
+              <div
+                className={`${styles.Wrapper} ${!isMobile && isLoading ? styles["loadingPulse"] : ""}`}
+              >
                 {currentCards?.map((info) => {
-                  console.log(info);
-                  return <ListCards info={info} key={info.id} />;
+                  return (
+                    <ListCards
+                      info={info}
+                      key={info.id}
+                      isLoading={isLoading}
+                    />
+                  );
                 })}
                 <div
                   className={`${styles.moreData} ${!isLoading && isMobile ? styles["isMobile"] : ""}`}
@@ -121,13 +127,13 @@ const RecentList = ({ data, hasNextPage, fetchData, isLoading }) => {
                   더보기
                 </div>
                 <button
-                  className={`${styles.SlideBtn_R} ${currentPage !== 1 && hasNextPage === false ? styles.EndOfPage : ""}`}
+                  className={`${styles.SlideBtn_R} ${isLoading || (currentPage !== 1 && hasNextPage === false) ? styles.EndOfPage : ""}`}
                   onClick={nextPlease}
                 >
                   <img src={arrow} alt="슬라이드 버튼" />
                 </button>
                 <button
-                  className={`${styles.SlideBtn_L} ${currentPage === 1 ? styles.EndOfPage : ""}`}
+                  className={`${styles.SlideBtn_L} ${isLoading || currentPage === 1 ? styles.EndOfPage : ""}`}
                   onClick={prevPlease}
                 >
                   <img src={arrow} alt="슬라이드 버튼" />
