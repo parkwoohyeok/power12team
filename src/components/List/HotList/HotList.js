@@ -16,7 +16,13 @@ import { debounce } from "lodash";
 
 import { useInView } from "react-intersection-observer";
 
-function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
+function HotList({
+  recipientData,
+  fetchData,
+  hasNextPage,
+  isLoading,
+  handleSetMobile,
+}) {
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [visible, setVisible] = useState(0);
@@ -71,8 +77,6 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
-  console.log(hasNextPage);
-
   const handleResize = debounce(() => {
     if (window.innerWidth <= 949) {
       setIsMobile(true);
@@ -112,7 +116,9 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
               exit="exit"
               key={visible}
             >
-              <div className={styles.Wrapper}>
+              <div
+                className={`${styles.Wrapper} ${!isMobile && isLoading ? styles["loadingPulse"] : ""}`}
+              >
                 {HotCards?.map((info, index) => {
                   return (
                     <ListCards
@@ -120,6 +126,7 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
                       key={info?.id}
                       index={index}
                       isMobile={isMobile}
+                      isLoading={isLoading}
                     />
                   );
                 })}
@@ -128,13 +135,13 @@ function HotList({ recipientData, fetchData, hasNextPage, isLoading }) {
                   ref={ref}
                 ></div>
                 <button
-                  className={`${styles.SlideBtn_R} ${currentPage !== 1 && hasNextPage === false ? styles.EndOfPage : ""}`}
+                  className={`${styles.SlideBtn_R} ${isLoading || (currentPage !== 1 && hasNextPage === false) ? styles.EndOfPage : ""}`}
                   onClick={nextPlease}
                 >
                   <img src={arrow} alt="슬라이드 버튼" />
                 </button>
                 <button
-                  className={`${styles.SlideBtn_L} ${currentPage === 1 ? styles.EndOfPage : ""}`}
+                  className={`${styles.SlideBtn_L} ${isLoading || currentPage === 1 ? styles.EndOfPage : ""}`}
                   onClick={prevPlease}
                 >
                   <img src={arrow} alt="슬라이드 버튼" />
