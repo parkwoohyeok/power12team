@@ -2,7 +2,7 @@
 
 import useGetRecipients from "components/api/useGetRecipients";
 import HotList from "components/HotList/HotList";
-import Nav from "components/Nav/Nav";
+import Nav from "components/common/Nav/Nav";
 import RecentList from "components/RecentList/RecentList";
 import styles from "pages/ListPage/ListPage.module.css";
 import { useEffect } from "react";
