@@ -1,5 +1,5 @@
 import MessageFrom from "../components/MessageFrom/MessageFrom";
-import Nav from "../components/Nav/Nav";
+import Nav from "../components/common/Nav/Nav";
 
 const MessagePage = () => {
   return (
