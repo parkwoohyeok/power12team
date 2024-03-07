@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
+import { fetchImageUrls, sendMessageData } from "../api/MessageFromPageApi";
 
 import FontSelect from "./FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";

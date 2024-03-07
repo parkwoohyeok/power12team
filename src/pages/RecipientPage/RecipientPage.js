@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
-import { fetchRecipient } from "../../components/Api/recipientApis";
+import { fetchRecipient } from "../../components/api/recipientApis";
 import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
 import MessageCardList from "../../components/MessageCardList/MessageCardList";
 import Nav from "../../components/Nav/Nav";
@@ -14,10 +14,7 @@ import styles from "./RecipientPage.module.css";
 
 const RecipientPage = () => {
   const [recipient, setRecipient] = useState({});
-
-  const recipientPath = window.location.pathname.split("/post")[1];
-  const recipientIdMatch = recipientPath.match(/\d+/); // 숫자 부분만 매칭
-  const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
+  const { recipientId } = useParams();
 
   const [fetchRecipientPending, fetchRecipientError, fetchRecipientAsync] =
     useAsync(fetchRecipient);
