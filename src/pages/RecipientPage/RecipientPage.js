@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
-import { fetchRecipient } from "../../components/api/recipientApis";
+import { getRecipient } from "../../components/Api/RecipientApi";
 import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
 import MessageCardList from "../../components/MessageCardList/MessageCardList";
-import Nav from "../../components/common/Nav/Nav";
+import Nav from "../../components/Nav/Nav";
 import RecipientInfoBar from "../../components/RecipientInfoBar/RecipientInfoBar";
 import RecipientInfoBarSkeleton from "components/RecipientInfoBar/RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
 import useAsync from "../../hooks/useAsync";
@@ -20,7 +20,7 @@ const RecipientPage = () => {
   const recipientId = recipientIdMatch ? parseInt(recipientIdMatch[0], 10) : 0;
 
   const [getRecipientPending, getRecipientError, getRecipientAsync] =
-    useAsync(fetchRecipient);
+    useAsync(getRecipient);
 
   const loadRecipient = async (id) => {
     const RESPONSE = await getRecipientAsync(id);

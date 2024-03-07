@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import ListCards from "components/List/ListCards/ListCards";
+import ListCards from "components/ListCards/ListCards";
 
 import { AnimatePresence, motion } from "framer-motion";
 

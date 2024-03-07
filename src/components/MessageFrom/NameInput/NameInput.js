@@ -1,7 +1,6 @@
-/* eslint-disable */
 import React from "react";
 
-import styles from "components/MessageFrom/NameInput/NameInput.module.css";
+import styles from "./NameInput.module.css";
 
 function NameInput({ sender, setSender, inputError, setInputError }) {
   const handleNameChange = (e) => {

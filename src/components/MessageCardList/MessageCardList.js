@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "./AddMessageCard/AddMessageCard";
-import { deleteMessage, getMessages } from "../api/recipientApis";
+import { deleteMessage, getMessages } from "../Api/RecipientApi";
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
@@ -29,11 +29,11 @@ const MessageCardList = ({
   const [isEditing, setIsEditing] = useState(false);
   const SENTINEL = useRef();
 
-  const [fetchMessagesPending, fetchMessagesError, fetchMessagesAsync] =
-    useAsync(fetchMessages);
+  const [getMessagesPending, getMessagesError, getMessagesAsync] =
+    useAsync(getMessages);
 
   const loadMessages = async (options) => {
-    const RESPONSE = await fetchMessagesAsync(options);
+    const RESPONSE = await getMessagesAsync(options);
 
     if (options.offset === 0) {
       setList(RESPONSE?.results);
@@ -80,7 +80,7 @@ const MessageCardList = ({
     loadMessages({ recipientId, offset, limit: 5 });
   }, []);
 
-  if (fetchMessagesError) console.log(fetchMessagesError);
+  if (getMessagesError) console.log(getMessagesError);
 
   // 무한 스크롤
   useEffect(() => {
@@ -137,7 +137,7 @@ const MessageCardList = ({
             onDelete={handleDelete}
           />
         ))}
-        {fetchMessagesPending &&
+        {getMessagesPending &&
           Array(6)
             .fill(0)
             .map((el, idx) => <MessageCardSkeleton key={idx} />)}
