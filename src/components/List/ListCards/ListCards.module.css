@@ -43,28 +43,28 @@
 .beige {
   border: 0.1rem solid var(--Orange-30);
   background-color: var(--Orange-20);
-  background-image: url(../../assets/pattern_beige.png);
+  background-image: url(../../../assets/pattern_beige.png);
   background-repeat: no-repeat;
   background-position: 6rem 6rem;
 }
 .purple {
   border: 0.1rem solid var(--Purple-30);
   background-color: var(--Purple-20);
-  background-image: url(../../assets/pattern_purple.png);
+  background-image: url(../../../assets/pattern_purple.png);
   background-repeat: no-repeat;
   background-position: 6rem 6rem;
 }
 .blue {
   border: 0.1rem solid var(--Blue-30);
   background-color: var(--Blue-20);
-  background-image: url(../../assets/pattern_blue.png);
+  background-image: url(../../../assets/pattern_blue.png);
   background-repeat: no-repeat;
   background-position: 6rem 6rem;
 }
 .green {
   background-color: var(--Green-20);
   border: 0.1rem solid var(--Green-30);
-  background-image: url(../../assets/pattern_green.png);
+  background-image: url(../../../assets/pattern_green.png);
   background-repeat: no-repeat;
   background-position: 6rem 6rem;
 }
@@ -101,7 +101,7 @@
   position: relative;
   width: 20rem;
   border: none; /*배경색 프롭스로 설정 할 것*/
-  padding: 2rem;
+  padding: 2.1rem;
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;

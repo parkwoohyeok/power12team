@@ -31,6 +31,8 @@ const MessageCardList = ({
 
   const [fetchMessagesPending, fetchMessagesError, fetchMessagesAsync] =
     useAsync(fetchMessages);
+  const [deleteMessagePending, deleteMessageError, deleteMessageAsync] =
+    useAsync(deleteMessage);
 
   if (fetchMessagesError) {
     alert("메세지를 불러오는데 실패했습니다.", fetchMessagesError);
@@ -53,27 +55,27 @@ const MessageCardList = ({
       setHasNext(false);
     }
   };
-  /* eslint-disable */
-  const deleteData = async (messageId) => {
-    try {
-      const RESULT = await deleteMessage(messageId);
-      return RESULT;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleClickOnEdit = () => {
     setIsEditing(true);
   };
 
   const handleDelete = async (messageId) => {
-    const result = await deleteData(messageId);
+    const result = await deleteMessageAsync(messageId);
     if (result === 204) {
       const newList = list.filter((message) => message.id !== messageId);
       setList(newList);
     }
   };
+
+  useEffect(() => {
+    if (deleteMessageError) {
+      alert(
+        "메세지를 삭제하지 못했습니다. Error: " +
+          deleteMessageError.response.status,
+      );
+    }
+  }, [deleteMessageError]);
 
   const handleClickOnSave = () => {
     setIsEditing(false);
