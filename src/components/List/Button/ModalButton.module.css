@@ -1,0 +1,9 @@
+.selectedSize {
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  width: 12rem;
+  background-color: var(--Purple-60);
+  color: white;
+  margin-top: 3rem;
+  font-family: inherit;
+}

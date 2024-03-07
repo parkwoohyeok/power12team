@@ -3,7 +3,7 @@ import styles from "./RecipientInfoBar.module.css";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
-import MessageSummary from "components/MessageSummary/MessageSummary";
+import MessageSummary from "components/common/MessageSummary/MessageSummary";
 import { useState, useRef, useEffect } from "react";
 import useGetEmoji from "components/api/useGetEmoji";
 import usePostEmoji from "components/api/usePostEmoji";
@@ -11,7 +11,7 @@ import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
-import TopReactions from "components/TopReactions/TopReactions";
+import TopReactions from "components/common/TopReactions/TopReactions";
 import useAsync from "hooks/useAsync";
 import CopiedToast from "./CopiedToast/CopiedToast";
 
