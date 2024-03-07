@@ -1,11 +1,11 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { getRecipient } from "../../components/api/recipientApi";
+import { getRecipient } from "components/api/recipientApis";
 import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
 import MessageCardList from "../../components/MessageCardList/MessageCardList";
 import Nav from "../../components/common/Nav/Nav";
-import RecipientInfoBar from "../../components/RecipientInfoBar/RecipientInfoBar";
+import RecipientInfoBar from "components/RecipientInfoBar/RecipientInfoBar";
 import RecipientInfoBarSkeleton from "components/RecipientInfoBar/RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
 import useAsync from "../../hooks/useAsync";
 

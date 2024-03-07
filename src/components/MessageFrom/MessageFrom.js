@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
-import Button from "../common/Button/Button";
+import {
+  fetchImageUrls,
+  sendMessageData,
+} from "components/api/messageFromPageApi";
 
-import FontSelect from "./FontSelect/FontSelect";
+import FontSelect from "components/MessageFrom/FontSelect/FontSelect";
 import styles from "./MessageFrom.module.css";
+// import MessageFromSkeleton from "./MessageFromSkeleton";
 import NameInput from "./NameInput/NameInput";
-import ProfileSelect from "./ProfileSelect/ProfileSelect";
+import ProfileSelect from "components/MessageFrom/ProfileSelect/ProfileSelect";
 import RelationshipSelect from "./RelationshipSelect/RelationshipSelect";
-import TextEditor from "./TextEditor/TextEditor";
+import TextEditor from "components/MessageFrom/TextEditor/TextEditor";
+
+/* eslint-disable */
+import Button from "components/common/Button/Button";
 
 function MessageFrom() {
   const fonts = [
