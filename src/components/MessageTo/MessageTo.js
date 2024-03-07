@@ -25,7 +25,6 @@ const MessageTo = () => {
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [select, setSelect] = useState("Color");
-  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
