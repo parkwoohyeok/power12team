@@ -10,22 +10,35 @@ const LandingPageContent = () => {
       <div className={styles.MainImage}>
         <div className={styles.Description}>
           <div className={styles.Point}>Point 01</div>
-          <div className={styles.TextBig}>
-            누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요
+          <div className={styles.TextBox}>
+            <div className={styles.TextBig}>
+              누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요
+            </div>
+            <div className={styles.TextSmall}>
+              로그인 없이 자유롭게 만들어요
+            </div>
           </div>
-          <div className={styles.TextSmall}>로그인 없이 자유롭게 만들어요</div>
         </div>
-        <img src={landingImage01} className={styles.ImageSource} />
+        <div className={styles.ImageBox}>
+          <img src={landingImage01} className={styles.ImageSource} />
+        </div>
       </div>
       <div className={styles.MainImage}>
         <div className={styles.Description}>
           <div className={styles.Point}>Point 02</div>
-          <div className={styles.TextBig}>
-            서로에게 이모지로 감정을 표현해보세요
+          <div className={styles.TextBox}>
+            <div className={styles.TextBig}>
+              서로에게 이모지로 감정을 표현해보세요
+            </div>
+            <div className={styles.TextSmall}>
+              로그인 없이 자유롭게 만들어요
+            </div>
           </div>
-          <div className={styles.TextSmall}>로그인 없이 자유롭게 만들어요</div>
         </div>
-        <img src={landingImage02} className={styles.ImageSource} />
+
+        <div className={styles.ImageBox}>
+          <img src={landingImage02} className={styles.ImageSource} />
+        </div>
       </div>
       <Link to="/list">
         <div className={styles.LookButton}>구경해보기</div>

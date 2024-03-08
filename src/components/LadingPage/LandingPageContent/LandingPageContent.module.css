@@ -16,7 +16,8 @@
   overflow: hidden;
 }
 .Description {
-  width: 27rem;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
   gap: 1.6rem;
 }
 
@@ -33,6 +34,7 @@
 }
 
 .TextBig {
+  word-break: keep-all;
   font-size: 2.4rem;
   font-weight: 700;
 }
@@ -40,6 +42,7 @@
 .TextSmall {
   font-size: 1.8rem;
   font-weight: 400;
+  color: var(--Gray-50);
 }
 
 .LookButton {
@@ -62,8 +65,6 @@
   }
   .Description {
     width: 100%;
-    margin-left: 4rem;
-    margin-bottom: 4rem;
   }
   .ImageSource {
     width: 100%;
@@ -72,5 +73,37 @@
   }
   .LookButton {
     max-width: none;
+  }
+}
+
+@media (max-width: 727px) {
+  .Description {
+    min-width: 27.2rem;
+  }
+  .TextBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .ImageBox {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .TextBig {
+    word-wrap: break-word;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.018rem;
+  }
+  .TextSmall {
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    letter-spacing: -0.015rem;
+  }
+  .ImageSource {
+    margin-top: 4rem;
+    height: 11.3rem;
+    object-fit: contain;
   }
 }
