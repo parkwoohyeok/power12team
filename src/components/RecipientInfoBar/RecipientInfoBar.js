@@ -21,6 +21,7 @@ function RecipientInfoBar({ recipientData }) {
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
   const [emojiData, setEmojiData] = useState({});
   const [CopiedToastUp, setCopiedToastUp] = useState(false);
+  const [emojiToastup, setEmojiToastUp] = useState(false);
 
   const shareRef = useRef();
   const emojiListRef = useRef();
@@ -34,13 +35,22 @@ function RecipientInfoBar({ recipientData }) {
     useAsync(usePostEmoji);
   const [getEmojiPending, getEmojiError, getEmojiAsync] = useAsync(useGetEmoji);
   /**
+   * 이모지 토스트 실행 함수
+   */
+  let emojiPostToastUp;
+  const emojiToast = () => {
+    clearTimeout(emojiPostToastUp);
+    setEmojiToastUp(true);
+    emojiPostToastUp = setTimeout(setEmojiToastUp, 5000, false);
+  };
+  /**
    * 이모지 입력 시 post 함수
    * @param {string} 입력 이모지
    */
   const emojiPost = async (emoji) => {
     const emojiData = { emoji: `${emoji}`, type: "increase" };
     const result = await postEmojiAsync(id, emojiData);
-    if (result) alert(`${emoji} 전송 성공!`);
+    if (result) emojiToast();
   };
   /**
    * 이모지 정보 로딩함수
@@ -118,12 +128,14 @@ function RecipientInfoBar({ recipientData }) {
   const emojiListTop3 = results?.slice(0, 3);
   const emojiListRest = results?.slice(3);
 
-  /* URL 복사 성공 토스트 */
-  let toastUp;
+  /**
+   * URL 복사 성공 토스트
+   */
+  let copyToastUp;
   const showCopyToast = () => {
-    clearTimeout(toastUp);
+    clearTimeout(copyToastUp);
     setCopiedToastUp(true);
-    toastUp = setTimeout(setCopiedToastUp, 5000, false);
+    copyToastUp = setTimeout(setCopiedToastUp, 5000, false);
   };
 
   return (
@@ -191,6 +203,7 @@ function RecipientInfoBar({ recipientData }) {
                 <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
+            {emojiToastup && <CopiedToast>반응이 추가되었습니다.</CopiedToast>}
             <img src={divider} alt="divider" />
             <button
               className={ShareButton}
@@ -217,7 +230,7 @@ function RecipientInfoBar({ recipientData }) {
                 </CopyToClipboard>
               </div>
             )}
-            {CopiedToastUp && <CopiedToast />}
+            {CopiedToastUp && <CopiedToast>URL이 복사되었습니다.</CopiedToast>}
           </div>
         </div>
       </div>
