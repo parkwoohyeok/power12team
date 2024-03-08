@@ -17,42 +17,29 @@
 
 .Title {
   font-size: 6rem;
+  text-align: left;
 }
 
 .Text {
   font-size: 3rem;
   text-align: left;
+  color: var(--Gray-50);
 }
 
 .LinkTo {
   font-size: 2rem;
 }
 
-.LookButton {
-  margin: auto;
-  margin-top: 2.4rem;
-  padding: 1.4rem 2.4rem;
-  background-color: var(--Purple-60);
-  color: white;
-  border-radius: 1.2rem;
-  font-size: 1.8rem;
-  width: 100%;
-  max-width: 28rem;
-  text-align: center;
-}
 @media (max-width: 1248px) {
   .LookButton {
     max-width: none;
   }
 }
 @media (max-width: 767px) {
-  .Content {
-    text-align: center;
+  .Title {
+    font-size: 4.5rem;
   }
-  .ErrorCode {
-    font-size: 7rem;
-  }
-  .ErrorText {
-    display: none;
+  .Text {
+    font-size: 2.5rem;
   }
 }
