@@ -3,7 +3,7 @@ import styles from "./RecipientInfoBar.module.css";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
-import MessageSummary from "components/common/MessageSummary/MessageSummary";
+import MessageSummary from "../common/MessageSummary/MessageSummary";
 import { useState, useRef, useEffect } from "react";
 import useGetEmoji from "components/api/useGetEmoji";
 import usePostEmoji from "components/api/usePostEmoji";
@@ -119,11 +119,11 @@ function RecipientInfoBar({ recipientData }) {
   const emojiListRest = results?.slice(3);
 
   /* URL 복사 성공 토스트 */
-  let toastUp;
+  const toastUp = useRef();
   const showCopyToast = () => {
-    clearTimeout(toastUp);
+    clearTimeout(toastUp.current);
     setCopiedToastUp(true);
-    toastUp = setTimeout(setCopiedToastUp, 5000, false);
+    toastUp.current = setTimeout(setCopiedToastUp, 5000, false);
   };
 
   return (
