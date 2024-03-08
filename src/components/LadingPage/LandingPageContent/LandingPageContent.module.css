@@ -66,6 +66,9 @@
   .Description {
     width: 100%;
   }
+  .TextBox {
+    margin-bottom: 3.6rem;
+  }
   .ImageSource {
     width: 100%;
     min-width: 64rem;
