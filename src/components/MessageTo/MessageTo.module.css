@@ -17,17 +17,14 @@
 
 .ChooseView {
   color: var(--Gray-90);
-  /* Font/24 Bold */
-  font-family: Pretendard;
   font-size: 2.4rem;
-  font-style: normal;
   font-weight: 700;
-  line-height: 3.6rem; /* 150% */
+  line-height: 3.6rem;
   letter-spacing: -0.024rem;
 }
 
 .ChooseText {
-  width: 30.1rem;
+  width: 100vw;
   height: 6.6rem;
   display: inline-flex;
   align-items: flex-start;
@@ -37,13 +34,8 @@
 
 .ChooseColorImage {
   color: var(--Gray-50);
-
-  /* Font/16 Regular */
-  font-family: Pretendard;
   font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2.6rem; /* 162.5% */
+  line-height: 2.6rem;
   letter-spacing: -0.016rem;
 }
 
@@ -56,7 +48,7 @@
   }
 }
 
-@media (min-width: 357px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .PostPageBody {
     align-items: center;
     width: auto;
