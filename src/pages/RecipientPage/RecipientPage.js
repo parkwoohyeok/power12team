@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
-import { fetchRecipient } from "../../components/api/recipientApis";
+import { fetchRecipient } from "../../components/Api/recipientApis";
 import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
 import MessageCardList from "../../components/MessageCardList/MessageCardList";
 import Nav from "../../components/common/Nav/Nav";
