@@ -12,9 +12,9 @@ import styles from "./MessageTo.module.css";
 
 import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton";
 
-import fetchBackgroundImageUrls from "components/Api/fetchBackgroundImageUrls";
+import fetchBackgroundImageUrls from "components/api/fetchBackgroundImageUrls";
 
-import fetchPostPaper from "components/Api/fetchPostPaper";
+import fetchPostPaper from "components/api/fetchPostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
 
