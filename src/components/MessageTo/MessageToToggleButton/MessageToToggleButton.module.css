@@ -23,12 +23,9 @@
   gap: 1rem;
   border-radius: 0.6rem;
 
-  /* Font/16 Regular */
-  font-family: Pretendard;
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 400;
-  line-height: 2.6rem; /* 162.5% */
+  line-height: 2.6rem;
   letter-spacing: -0.016rem;
 }
 
@@ -46,12 +43,10 @@
   color: var(--Purple-70);
   text-align: center;
 
-  /* Font/16 Bold */
-  font-family: Pretendard;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 2.6rem; /* 162.5% */
+  line-height: 2.6rem;
   letter-spacing: -0.016rem;
 }
 
@@ -121,7 +116,7 @@
   animation: loading 1.5s;
 }
 
-@media (min-width: 357px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .ToggleButton {
     display: flex;
     align-items: flex-start;
