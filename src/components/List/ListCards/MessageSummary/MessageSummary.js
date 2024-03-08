@@ -1,15 +1,11 @@
 /* eslint-disable */
-
-import RecentCount from "components/common/RecentCount/RecentCount";
-
 import styles from "./MessageSummary.module.css";
 
-function MessageSummary({ data, isPostPage }) {
+function MessageSummary({ data }) {
   const { messageCount, recentMessages } = data || {};
-  const pageStyle = isPostPage ? styles.PostPage : "";
 
   return (
-    <div className={`${styles.RecentMessages} ${pageStyle}`}>
+    <div className={styles.RecentMessages}>
       <div className={messageCount === 0 ? styles.noCount : ""}>
         <div className={styles.ProfileImageWrapper}>
           {recentMessages?.[0] && (
@@ -40,7 +36,11 @@ function MessageSummary({ data, isPostPage }) {
           )}
         </div>
       </div>
-      <RecentCount recentCount={messageCount} isPostPage={isPostPage} />
+      {/* <RecentCount recentCount={messageCount} isPostPage={isPostPage} /> */}
+      <div className={styles.RecentCount}>
+        <span className={styles.number}>{messageCount}</span>
+        <span className={styles.text}>명이 작성했어요!</span>
+      </div>
     </div>
   );
 }
