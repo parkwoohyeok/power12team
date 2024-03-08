@@ -27,7 +27,7 @@
 }
 
 .ChooseText {
-  width: 30.1rem;
+  width: 100vw;
   height: 6.6rem;
   display: inline-flex;
   align-items: flex-start;
