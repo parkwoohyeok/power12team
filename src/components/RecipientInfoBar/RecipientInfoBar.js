@@ -13,7 +13,7 @@ import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
 import TopReactions from "components/common/TopReactions/TopReactions";
 import useAsync from "hooks/useAsync";
-import CopiedToast from "./CopiedToast/CopiedToast";
+import Toast from "./Toast/Toast";
 
 function RecipientInfoBar({ recipientData }) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -203,7 +203,7 @@ function RecipientInfoBar({ recipientData }) {
                 <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
-            {emojiToastup && <CopiedToast>반응이 추가되었습니다.</CopiedToast>}
+            {emojiToastup && <Toast>반응이 추가되었습니다.</Toast>}
             <img src={divider} alt="divider" />
             <button
               className={ShareButton}
@@ -230,7 +230,7 @@ function RecipientInfoBar({ recipientData }) {
                 </CopyToClipboard>
               </div>
             )}
-            {CopiedToastUp && <CopiedToast>URL이 복사되었습니다.</CopiedToast>}
+            {CopiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
           </div>
         </div>
       </div>

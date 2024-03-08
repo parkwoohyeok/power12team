@@ -1,9 +1,9 @@
 import closeIcon from "../../../assets/close.svg";
 import checkIcon from "../../../assets/greenCheck.svg";
 
-import styles from "./CopiedToast.module.css";
+import styles from "./Toast.module.css";
 
-const CopiedToast = ({ children }) => {
+const Toast = ({ children }) => {
   return (
     <div className={styles.ToastBox}>
       <div className={styles.CheckTextWrapper}>
@@ -15,4 +15,4 @@ const CopiedToast = ({ children }) => {
   );
 };
 
-export default CopiedToast;
+export default Toast;
