@@ -20,7 +20,7 @@ function RecipientInfoBar({ recipientData }) {
   const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
   const [emojiData, setEmojiData] = useState({});
-  const [CopiedToastUp, setCopiedToastUp] = useState(false);
+  const [copiedToastUp, setCopiedToastUp] = useState(false);
   const [emojiToastup, setEmojiToastUp] = useState(false);
 
   const shareRef = useRef();
@@ -130,10 +130,19 @@ function RecipientInfoBar({ recipientData }) {
 
   /* URL 복사 성공 토스트 */
   const toastUp = useRef();
+
+  useEffect(() => {
+    if (copiedToastUp) {
+      toastUp.current = setTimeout(setCopiedToastUp, 5000, false);
+    }
+
+    return () => {
+      clearTimeout(toastUp.current);
+    };
+  }, [copiedToastUp]);
+
   const showCopyToast = () => {
-    clearTimeout(toastUp.current);
     setCopiedToastUp(true);
-    toastUp.current = setTimeout(setCopiedToastUp, 5000, false);
   };
 
   return (
@@ -228,7 +237,7 @@ function RecipientInfoBar({ recipientData }) {
                 </CopyToClipboard>
               </div>
             )}
-            {CopiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
+            {copiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
           </div>
         </div>
       </div>
