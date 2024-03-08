@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 
 import axiosInstance from "../../utils/axiosInstance";
-import { fetchImageUrls, sendMessageData } from "../api/MessageFromPageApi";
+import { fetchImageUrls, sendMessageData } from "../Api/MessageFromPageApi";
 import Button from "../common/Button/Button";
 
 import FontSelect from "./FontSelect/FontSelect";

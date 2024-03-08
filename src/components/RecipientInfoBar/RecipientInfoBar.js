@@ -5,15 +5,15 @@ import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
 import MessageSummary from "../common/MessageSummary/MessageSummary";
 import { useState, useRef, useEffect } from "react";
-import useGetEmoji from "components/api/useGetEmoji";
-import usePostEmoji from "components/api/usePostEmoji";
+import useGetEmoji from "../api/useGetEmoji";
+import usePostEmoji from "../api/usePostEmoji";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
 import divider from "assets/divider.svg";
 import TopReactions from "components/common/TopReactions/TopReactions";
 import useAsync from "hooks/useAsync";
-import CopiedToast from "./CopiedToast/CopiedToast";
+import Toast from "./Toast/Toast";
 
 function RecipientInfoBar({ recipientData }) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -21,6 +21,7 @@ function RecipientInfoBar({ recipientData }) {
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
   const [emojiData, setEmojiData] = useState({});
   const [CopiedToastUp, setCopiedToastUp] = useState(false);
+  const [emojiToastup, setEmojiToastUp] = useState(false);
 
   const shareRef = useRef();
   const emojiListRef = useRef();
@@ -34,13 +35,22 @@ function RecipientInfoBar({ recipientData }) {
     useAsync(usePostEmoji);
   const [getEmojiPending, getEmojiError, getEmojiAsync] = useAsync(useGetEmoji);
   /**
+   * 이모지 토스트 실행 함수
+   */
+  let emojiPostToastUp;
+  const emojiToast = () => {
+    clearTimeout(emojiPostToastUp);
+    setEmojiToastUp(true);
+    emojiPostToastUp = setTimeout(setEmojiToastUp, 5000, false);
+  };
+  /**
    * 이모지 입력 시 post 함수
    * @param {string} 입력 이모지
    */
   const emojiPost = async (emoji) => {
     const emojiData = { emoji: `${emoji}`, type: "increase" };
     const result = await postEmojiAsync(id, emojiData);
-    if (result) alert(`${emoji} 전송 성공!`);
+    if (result) emojiToast();
   };
   /**
    * 이모지 정보 로딩함수
@@ -191,6 +201,7 @@ function RecipientInfoBar({ recipientData }) {
                 <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
+            {emojiToastup && <Toast>반응이 추가되었습니다.</Toast>}
             <img src={divider} alt="divider" />
             <button
               className={ShareButton}
@@ -217,7 +228,7 @@ function RecipientInfoBar({ recipientData }) {
                 </CopyToClipboard>
               </div>
             )}
-            {CopiedToastUp && <CopiedToast />}
+            {CopiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
           </div>
         </div>
       </div>

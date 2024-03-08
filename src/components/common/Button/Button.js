@@ -1,14 +1,11 @@
 /* eslint-disable */
-import stylesLarge from "./LargeButton.module.css";
-import stylesMedium from "./MediumButton.module.css";
-import stylesSmall from "./SmallButton.module.css";
-import stylesModal from "./ModalButton.module.css";
+import styles from "./Button.module.css";
 
 const SIZE = {
-  Small: stylesSmall.SmallButton,
-  Medium: stylesMedium.MediumButton,
-  Large: stylesLarge.LargeButton,
-  Modal: stylesModal.ModalButton,
+  Small: styles.SmallButton,
+  Medium: styles.MediumButton,
+  Large: styles.LargeButton,
+  Modal: styles.ModalButton,
 };
 
 const Button = ({ size, type, disabled, onClick, children }) => {
