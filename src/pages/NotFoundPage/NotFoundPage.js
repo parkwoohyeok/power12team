@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-import Button from "components/common/Button/Button";
-
+import Button from "../../components/common/Button/Button";
 import Layout from "../../components/common/Layout/Layout";
 
 import styles from "./NotFoundPage.module.css";
