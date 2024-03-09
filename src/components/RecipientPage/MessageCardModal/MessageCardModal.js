@@ -1,7 +1,7 @@
+import BottomButton from "../../common/Button/Button";
+import ModalBase from "../../common/ModalBase/ModalBase";
 import CreatedAt from "../MessageCardList/MessageCard/CreatedAt/CreatedAt";
 import SenderInfo from "../MessageCardList/MessageCard/SenderInfo/SenderInfo";
-import BottomButton from "../common/Button/Button";
-import ModalBase from "../common/ModalBase/ModalBase";
 
 import styles from "./MessageCardModal.module.css";
 

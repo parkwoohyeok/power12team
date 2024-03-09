@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
 import { fetchRecipient } from "../../components/api/recipientApis";
-import CardListBackground from "../../components/MessageCardList/CardListBackground/CardListBackground";
-import MessageCardList from "../../components/MessageCardList/MessageCardList";
+import CardListBackground from "../../components/RecipientPage/MessageCardList/CardListBackground/CardListBackground";
+import MessageCardList from "../../components/RecipientPage/MessageCardList/MessageCardList";
 import Nav from "../../components/common/Nav/Nav";
-import RecipientInfoBar from "../../components/RecipientInfoBar/RecipientInfoBar";
-import RecipientInfoBarSkeleton from "components/RecipientInfoBar/RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
+import RecipientInfoBar from "../../components/RecipientPage/RecipientInfoBar/RecipientInfoBar";
+import RecipientInfoBarSkeleton from "components/RecipientPage/RecipientInfoBar/RecipientInfoBarSkeleton/RecipientInfoBarSkeleton";
 import useAsync from "../../hooks/useAsync";
 
 import styles from "./RecipientPage.module.css";
