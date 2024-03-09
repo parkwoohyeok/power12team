@@ -1,5 +1,5 @@
-import closeIcon from "../../../assets/close.svg";
-import checkIcon from "../../../assets/greenCheck.svg";
+import closeIcon from "../../../../assets/close.svg";
+import checkIcon from "../../../../assets/greenCheck.svg";
 
 import styles from "./Toast.module.css";
 

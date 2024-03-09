@@ -1,5 +1,5 @@
-import Button from "../common/Button/Button";
-import ModalBase from "../common/ModalBase/ModalBase";
+import Button from "../../common/Button/Button";
+import ModalBase from "../../common/ModalBase/ModalBase";
 
 import styles from "./DeleteCardModal.module.css";
 

@@ -3,12 +3,11 @@ import styles from "./RecipientInfoBar.module.css";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
-import MessageSummary from "../common/MessageSummary/MessageSummary";
-import MessageSummaryRecipientPage from "components/RecipientInfoBar/MessageSummaryRecipientPage/MessageSummaryRecipientPage";
+import MessageSummaryRecipientPage from "components/RecipientPage/RecipientInfoBar/MessageSummaryRecipientPage/MessageSummaryRecipientPage";
 
 import { useState, useRef, useEffect } from "react";
-import useGetEmoji from "../api/useGetEmoji";
-import usePostEmoji from "../api/usePostEmoji";
+import useGetEmoji from "../../api/useGetEmoji";
+import usePostEmoji from "../../api/usePostEmoji";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
