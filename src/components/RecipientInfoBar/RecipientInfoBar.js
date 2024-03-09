@@ -3,10 +3,12 @@ import styles from "./RecipientInfoBar.module.css";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
+import MessageSummary from "../common/MessageSummary/MessageSummary";
 import MessageSummaryRecipientPage from "components/RecipientInfoBar/MessageSummaryRecipientPage/MessageSummaryRecipientPage";
+
 import { useState, useRef, useEffect } from "react";
-import useGetEmoji from "components/Api/useGetEmoji";
-import usePostEmoji from "components/Api/usePostEmoji";
+import useGetEmoji from "../api/useGetEmoji";
+import usePostEmoji from "../api/usePostEmoji";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
@@ -20,7 +22,7 @@ function RecipientInfoBar({ recipientData }) {
   const [isEmojiListOpen, setIsEmojiListOpen] = useState(false);
   const [isEmojiAddOpen, setIsEmojiAddOpen] = useState(false);
   const [emojiData, setEmojiData] = useState({});
-  const [CopiedToastUp, setCopiedToastUp] = useState(false);
+  const [copiedToastUp, setCopiedToastUp] = useState(false);
   const [emojiToastup, setEmojiToastUp] = useState(false);
 
   const shareRef = useRef();
@@ -136,14 +138,22 @@ function RecipientInfoBar({ recipientData }) {
     : styles.Button;
   const emojiListTop3 = results?.slice(0, 3);
   const emojiListRest = results?.slice(3);
-  /**
-   * URL 복사 성공 토스트
-   */
-  let copyToastUp;
+
+  /* URL 복사 성공 토스트 */
+  const toastUp = useRef();
+
+  useEffect(() => {
+    if (copiedToastUp) {
+      toastUp.current = setTimeout(setCopiedToastUp, 5000, false);
+    }
+
+    return () => {
+      clearTimeout(toastUp.current);
+    };
+  }, [copiedToastUp]);
+
   const showCopyToast = () => {
-    clearTimeout(copyToastUp);
     setCopiedToastUp(true);
-    copyToastUp = setTimeout(setCopiedToastUp, 5000, false);
   };
 
   return (
@@ -238,7 +248,7 @@ function RecipientInfoBar({ recipientData }) {
                 </CopyToClipboard>
               </div>
             )}
-            {CopiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
+            {copiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
           </div>
         </div>
       </div>

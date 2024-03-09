@@ -1,5 +1,5 @@
+import Button from "../common/Button/Button";
 import ModalBase from "../common/ModalBase/ModalBase";
-import PurpleButton from "../common/PurpleButton/PurpleButton";
 
 import styles from "./DeleteCardModal.module.css";
 
@@ -14,10 +14,10 @@ const DeleteCardModal = ({ onClose, onDelete, id }) => {
         <div>삭제하시겠습니까?</div>
         <div className={styles.AlignButtons}>
           <div onClick={handleDelete}>
-            <PurpleButton>확인</PurpleButton>
+            <Button size="Modal">확인</Button>
           </div>
           <div onClick={onClose}>
-            <PurpleButton>취소</PurpleButton>
+            <Button size="Modal">취소</Button>
           </div>
         </div>
       </div>

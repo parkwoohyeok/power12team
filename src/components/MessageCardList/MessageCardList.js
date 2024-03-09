@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 import useAsync from "../../hooks/useAsync";
 import AddMessageCard from "./AddMessageCard/AddMessageCard";
-import { deleteMessage, fetchMessages } from "../Api/recipientApis";
+import { deleteMessage, fetchMessages } from "../api/recipientApis";
 import MessageCard from "./MessageCard/MessageCard";
 import styles from "./MessageCardList.module.css";
 import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
-import PurpleButton from "components/common/PurpleButton/PurpleButton";
+import Button from "components/common/Button/Button";
 
 const LIMIT = 6;
 
@@ -118,18 +118,14 @@ const MessageCardList = ({
             className={styles.CardListEditButton}
             onClick={handleClickOnSave}
           >
-            <PurpleButton addClass={styles.CardListEditButtonResponsive}>
-              저장하기
-            </PurpleButton>
+            <Button size="Small">저장하기</Button>
           </div>
         ) : (
           <div
             className={styles.CardListEditButton}
             onClick={handleClickOnEdit}
           >
-            <PurpleButton addClass={styles.CardListEditButtonResponsive}>
-              편집하기
-            </PurpleButton>
+            <Button size="Small">편집하기</Button>
           </div>
         )}
       </div>
