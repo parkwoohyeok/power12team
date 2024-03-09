@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Layout from "components/common/Layout/Layout";
-import LandingPageContent from "components/LadingPage/LandingPageContent/LandingPageContent";
+import LandingPageContent from "components/LandingPageContent/LandingPageContent";
 
 const LandingPage = () => {
   return (
