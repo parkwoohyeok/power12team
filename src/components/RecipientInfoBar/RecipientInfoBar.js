@@ -4,6 +4,8 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";
 import emojiListData from "@emoji-mart/data";
 import MessageSummary from "../common/MessageSummary/MessageSummary";
+import MessageSummaryRecipientPage from "components/RecipientInfoBar/MessageSummaryRecipientPage/MessageSummaryRecipientPage";
+
 import { useState, useRef, useEffect } from "react";
 import useGetEmoji from "../api/useGetEmoji";
 import usePostEmoji from "../api/usePostEmoji";
@@ -70,10 +72,19 @@ function RecipientInfoBar({ recipientData }) {
     });
   };
   /**
+   * 메세지 순서 역순 정리 함수
+   */
+  const reverseMessages = () => {
+    recentMessages.reverse();
+    if (recentMessages.length < 2) recentMessages.push(null);
+    if (recentMessages.length < 3) recentMessages.push(null);
+  };
+  /**
    * 이모지 정보 로딩
    */
   useEffect(() => {
     emojiGet();
+    reverseMessages();
   }, [id]);
   /**
    * 모달 외부 클릭 시 모달 창 닫힘
@@ -150,7 +161,7 @@ function RecipientInfoBar({ recipientData }) {
       <div className={styles.RecipientInfoBar}>
         <div className={styles.Name}>To. {name}</div>
         <div className={styles.InfoWrapper}>
-          <MessageSummary
+          <MessageSummaryRecipientPage
             data={{ messageCount, recentMessages }}
             isPostPage={isPostPage}
           />
