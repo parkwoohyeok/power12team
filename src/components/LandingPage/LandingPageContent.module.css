@@ -10,6 +10,7 @@
   width: 100%;
   max-width: 120rem;
   margin: auto;
+  margin-top: 3.6rem;
   background-color: var(--Surface);
   border-radius: 1.6rem;
   border: none;
@@ -43,11 +44,6 @@
   font-size: 1.8rem;
   font-weight: 400;
   color: var(--Gray-50);
-}
-
-.Bottom {
-  display: flex;
-  justify-content: center;
 }
 
 @media (max-width: 1248px) {

@@ -41,7 +41,7 @@ const LandingPageContent = () => {
           <img src={landingImage02} className={styles.ImageSource} />
         </div>
       </div>
-      <Link to="/list" className={styles.Bottom}>
+      <Link to="/list">
         <Button size="LargeReverse" children={"구경해보기"} />
       </Link>
     </>
