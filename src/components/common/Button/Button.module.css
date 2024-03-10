@@ -35,6 +35,28 @@
   }
 }
 
+/*LargeReverseButton*/
+.LargeReverseButton {
+  margin-top: 2.4rem;
+  padding: 1.4rem 2.4rem;
+  background-color: var(--Purple-60);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.8rem;
+  width: 28rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.8rem;
+  letter-spacing: -0.018rem;
+}
+
+@media (max-width: 1248px) {
+  .LargeReverseButton {
+    width: 100%;
+  }
+}
+
 /*MediumButton*/
 .MediumButton {
   margin-left: 0;

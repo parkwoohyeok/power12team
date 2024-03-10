@@ -45,17 +45,9 @@
   color: var(--Gray-50);
 }
 
-.LookButton {
-  margin: auto;
-  margin-top: 2.4rem;
-  padding: 1.4rem 2.4rem;
-  background-color: var(--Purple-60);
-  color: white;
-  border-radius: 12px;
-  font-size: 1.8rem;
-  width: 100%;
-  max-width: 28rem;
-  text-align: center;
+.Bottom {
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 1248px) {
@@ -73,9 +65,6 @@
     width: 100%;
     min-width: 64rem;
     margin: auto;
-  }
-  .LookButton {
-    max-width: none;
   }
 }
 

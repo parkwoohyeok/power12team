@@ -6,6 +6,7 @@ const SIZE = {
   Medium: styles.MediumButton,
   Large: styles.LargeButton,
   Modal: styles.ModalButton,
+  LargeReverse: styles.LargeReverseButton,
 };
 
 const Button = ({ size, type, disabled, onClick, children }) => {
