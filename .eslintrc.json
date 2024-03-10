@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "root": true,
+  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "airbnb-base",
+    "prettier"
+  ],
+  "rules": {
+    "plugin": ["import/errors", "import/warnings"],
+    "no-unused-vars": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto", "useTabs": false }],
+    "arrow-body-style": "off",
+    "import/no-unresolved": "off"
+  }
+}
