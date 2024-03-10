@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import useGetRecipients from "components/api/useGetRecipients";
+import useGetRecipients from "components/Api/useGetRecipients";
 import HotList from "components/List/HotList/HotList";
 import Nav from "components/common/Nav/Nav";
 import RecentList from "components/List/RecentList/RecentList";
@@ -53,7 +53,7 @@ const ListPage = () => {
             <Button
               size={!window.innerWidth <= 949 ? "Medium" : "Large"}
               type="submit"
-              children={"나도만들어보기"}
+              children={"나도 만들어보기"}
             />
           </Link>
         </div>
