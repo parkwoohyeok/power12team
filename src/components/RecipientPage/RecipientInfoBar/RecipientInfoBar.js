@@ -220,7 +220,9 @@ function RecipientInfoBar({ recipientData }) {
                 <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
-            {emojiToastup && <Toast>반응이 추가되었습니다.</Toast>}
+            {emojiToastup && (
+              <Toast setState={setEmojiToastUp}>반응이 추가되었습니다.</Toast>
+            )}
             <img src={divider} alt="divider" />
             <button
               className={ShareButton}
@@ -247,7 +249,9 @@ function RecipientInfoBar({ recipientData }) {
                 </CopyToClipboard>
               </div>
             )}
-            {copiedToastUp && <Toast>URL이 복사되었습니다.</Toast>}
+            {copiedToastUp && (
+              <Toast setState={setCopiedToastUp}>URL이 복사되었습니다.</Toast>
+            )}
           </div>
         </div>
       </div>
