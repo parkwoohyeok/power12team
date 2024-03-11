@@ -85,8 +85,6 @@ const MessageCardList = ({
     loadMessages({ recipientId, offset, limit: 5 });
   }, []);
 
-  if (fetchMessagesError) console.log(fetchMessagesError);
-
   // 무한 스크롤
   useEffect(() => {
     const handleIntersection = (entries) => {

@@ -1,8 +1,6 @@
 import styles from "./MessageSummaryRecipientPage.module.css";
 
 function MessageSummaryRecipientPage({ messageCount, recentMessages }) {
-  console.log(messageCount, recentMessages);
-
   return (
     <div className={styles.RecentMessages}>
       <div className={styles.ProfileImageWrapper}>

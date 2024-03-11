@@ -8,8 +8,7 @@ export const fetchImageUrls = async () => {
     const response = await axios.get(`${API_BASE_URL}/profile-images/`);
     return response.data.imageUrls;
   } catch (error) {
-    console.error("Error fetching image urls:", error);
-    throw error;
+    throw new Error("Error fetching image urls:", error);
   }
 };
 
@@ -28,7 +27,6 @@ export const sendMessageData = async (recipientId, messageData) => {
 
     return response.data;
   } catch (error) {
-    console.error("API Error", error);
-    throw error;
+    throw new Error("API Error", error);
   }
 };
