@@ -35,7 +35,9 @@ function RelationshipSelect({ relationship, handleRelationshipChange }) {
   return (
     <>
       <div className={styles.RelationContainer}>
-        <div className={styles.Title}>상대와의 관계</div>
+        <div className={styles.Title}>
+          <span>상대와의 관계</span>
+        </div>
         <Select
           options={options}
           className={styles.SelectBox}
