@@ -29,13 +29,15 @@ function MessageSummaryRecipientPage({ messageCount, recentMessages }) {
           />
         )}
         {messageCount - 3 > 0 && (
-          <div
-            className={`${styles.ProfileImage} ${styles.ProfileImageLast}`}
-          >{`+${messageCount}`}</div>
+          <div className={`${styles.ProfileImage} ${styles.ProfileImageLast}`}>
+            {messageCount - 3 >= 99 ? "+99" : `+${messageCount - 3}`}
+          </div>
         )}
       </div>
       <div className={styles.RecentCount}>
-        <span className={styles.number}>{messageCount}</span>
+        <span className={styles.number}>
+          {messageCount > 999 ? "+999" : messageCount}
+        </span>
         <span className={styles.text}>명이 작성했어요!</span>
       </div>
     </div>

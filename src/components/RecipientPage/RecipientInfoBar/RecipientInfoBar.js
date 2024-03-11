@@ -196,7 +196,8 @@ function RecipientInfoBar({ recipientData }) {
                       <div className={styles.EmojiListModal} ref={emojiListRef}>
                         {emojiListRest?.map((reaction) => (
                           <div key={reaction.id} className={styles.Reaction}>
-                            {reaction.emoji} {reaction.count}
+                            {reaction.emoji}{" "}
+                            {reaction.count > 99 ? "+99" : reaction.count}
                           </div>
                         ))}
                       </div>
