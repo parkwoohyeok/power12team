@@ -1,13 +1,13 @@
-/* eslint-disable */
-import React from "react";
 import styles from "components/common/Nav/Nav.module.css";
-import logo from "assets/logo.png";
+import React from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+
+import logo from "assets/logo.png";
 
 const Nav = () => {
   const location = useLocation();
   const params = useParams();
-  const recipientId = params.recipientId;
+  const { recipientId } = params;
 
   const noButtonRendering = [
     `/post/${recipientId}/message`,

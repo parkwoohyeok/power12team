@@ -1,18 +1,10 @@
 import styles from "./HotList.module.css";
-
-import arrow from "assets/arrow.png";
-
-import { useEffect, useRef, useState } from "react";
-
-import { Link } from "react-router-dom";
-
-import ListCards from "components/List/ListCards/ListCards";
-
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { debounce } from "lodash";
-
 import { useInView } from "react-intersection-observer";
+import ListCards from "components/List/ListCards/ListCards";
+import arrow from "assets/arrow.png";
 
 function HotList({
   recipientData,

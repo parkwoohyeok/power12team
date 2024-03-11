@@ -1,7 +1,7 @@
+import styles from "./DeleteCardModal.module.css";
+
 import Button from "../../common/Button/Button";
 import ModalBase from "../../common/ModalBase/ModalBase";
-
-import styles from "./DeleteCardModal.module.css";
 
 const DeleteCardModal = ({ onClose, onDelete, id }) => {
   const handleDelete = () => {
