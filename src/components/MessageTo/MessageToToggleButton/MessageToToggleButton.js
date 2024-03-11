@@ -1,7 +1,5 @@
 import React from "react";
-
 import CheckImage from "../CheckImage/CheckImage";
-
 import styles from "./MessageToToggleButton.module.css";
 
 const MessageToToggleButton = ({

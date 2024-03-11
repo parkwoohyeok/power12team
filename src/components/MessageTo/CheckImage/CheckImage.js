@@ -1,8 +1,6 @@
 import React from "react";
-
-import checkImage from "assets/check.png";
-
 import styles from "./CheckImage.module.css";
+import checkImage from "assets/check.png";
 
 const CheckImage = ({ select, photo }) => {
   return (

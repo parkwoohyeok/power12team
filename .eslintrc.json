@@ -13,7 +13,7 @@
     }
   },
   "root": true,
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "import"],
   "extends": [
     "eslint:recommended",
     "plugin:import/warnings",
@@ -22,7 +22,6 @@
     "prettier"
   ],
   "rules": {
-    "plugin": ["import/errors", "import/warnings"],
     "react/prop-types": 0,
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
