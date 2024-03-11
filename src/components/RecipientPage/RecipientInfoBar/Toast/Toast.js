@@ -1,7 +1,7 @@
+import styles from "./Toast.module.css";
+
 import closeIcon from "../../../../assets/close.svg";
 import checkIcon from "../../../../assets/greenCheck.svg";
-
-import styles from "./Toast.module.css";
 
 const Toast = ({ setState, children }) => {
   return (
