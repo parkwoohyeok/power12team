@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import landingImage01 from "assets/landingImage_01.svg";
+import landingImage01 from "assets/landingImage_01.png";
 import landingImage02 from "assets/landingImage_02.png";
 import Button from "components/common/Button/Button";
 import styles from "./LandingPageContent.module.css";

@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import styles from "./AddMessageCard.module.css";
 
-import plusButton from "../../../../assets/plus.svg";
+import { Link } from "react-router-dom";
 import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
 
-import styles from "./AddMessageCard.module.css";
+import plusButton from "../../../../assets/plus.svg";
 
 const AddMessageCard = () => {
   return (

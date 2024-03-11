@@ -33,7 +33,9 @@ function FontSelect({ value, handleFontChange }) {
   return (
     <>
       <div className={styles.FontContainer}>
-        <div className={styles.Title}>폰트 선택</div>
+        <div className={styles.Title}>
+          <span>폰트 선택</span>
+        </div>
         <Select
           options={fonts}
           className={styles.FontSelectBox}

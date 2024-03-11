@@ -1,14 +1,13 @@
-/* eslint-disable */
+import styles from "./MessageCardList.module.css";
 
 import { useEffect, useRef, useState } from "react";
-
-import useAsync from "../../../hooks/useAsync";
-import AddMessageCard from "./AddMessageCard/AddMessageCard";
 import { deleteMessage, fetchMessages } from "../../api/recipientApis";
+import AddMessageCard from "./AddMessageCard/AddMessageCard";
 import MessageCard from "./MessageCard/MessageCard";
-import styles from "./MessageCardList.module.css";
 import MessageCardSkeleton from "./MessageCardSkeleton/MessageCardSkeleton";
 import Button from "components/common/Button/Button";
+
+import useAsync from "../../../hooks/useAsync";
 
 const LIMIT = 6;
 
@@ -71,8 +70,8 @@ const MessageCardList = ({
   useEffect(() => {
     if (deleteMessageError) {
       alert(
-        "메세지를 삭제하지 못했습니다. Error: " +
-          deleteMessageError.response.status,
+        "메세지를 삭제하지 못했습니다. Error:",
+        deleteMessageError.response.status,
       );
     }
   }, [deleteMessageError]);

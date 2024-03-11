@@ -1,8 +1,7 @@
 import styles from "components/List/ListCards/ListCards.module.css";
+import { Link } from "react-router-dom";
 import MessageSummary from "components/List/ListCards/MessageSummary/MessageSummary";
 import TopReactions from "components/common/TopReactions/TopReactions";
-import { Link } from "react-router-dom";
-import useAsync from "hooks/useAsync";
 
 const ListCards = ({ info, isLoading }) => {
   return (
