@@ -1,0 +1,32 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  margin: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.CardList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 4rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 949px) {
+  .Wrapper {
+    align-items: flex-start;
+    padding: 0 2rem;
+  }
+
+  .LinkDiv {
+    width: 100%;
+  }
+  .LinkBtn {
+    width: 100%;
+  }
+}

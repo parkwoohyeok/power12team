@@ -1,0 +1,35 @@
+.RelationshipFamily {
+  background-color: var(--Green-10);
+  color: var(--Green-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
+.RelationshipColleague {
+  background-color: var(--Purple-10);
+  color: var(--Purple-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
+.RelationshipFriend {
+  background-color: var(--Blue-10);
+  color: var(--Blue-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}
+
+.RelationshipAcquaintance {
+  background-color: var(--Orange-10);
+  color: var(--Orange-50);
+  height: 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  padding: 0 0.8rem;
+}

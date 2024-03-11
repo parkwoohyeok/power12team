@@ -1,0 +1,11 @@
+.DeleteIcon {
+  background:
+    no-repeat center/65% url("../../../../../assets/deleteIcon.svg"),
+    white;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--Gray-30);
+  position: absolute;
+  right: 0;
+}

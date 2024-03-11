@@ -1,0 +1,57 @@
+.BigContainer {
+  width: 72rem;
+  height: 97.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin: 0 auto;
+}
+
+.SelectBox {
+  width: 32rem;
+  height: 5rem;
+  border-radius: 0.8rem;
+}
+
+.SelectBox:focus {
+  border-color: var(--Gray-20);
+}
+
+.FontContainer {
+  width: 32rem;
+  height: 9.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.Bottom {
+  width: 100%;
+  height: 10.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15rem auto;
+}
+
+.InputError {
+  font-size: 1.4rem;
+  color: var(--Error);
+  margin-left: 1.6rem;
+}
+
+@media (max-width: 74.9375rem) {
+  .BigContainer {
+    width: 72rem;
+  }
+}
+
+@media (max-width: 47.9375rem) {
+  .BigContainer {
+    width: 32rem;
+  }
+
+  .Bottom {
+    padding-top: 12rem;
+  }
+}

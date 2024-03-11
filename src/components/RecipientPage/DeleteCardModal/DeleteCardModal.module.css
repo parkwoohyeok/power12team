@@ -1,0 +1,16 @@
+.AlignDeleteModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.AlignButtons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  & > div {
+    flex-grow: 1;
+  }
+}

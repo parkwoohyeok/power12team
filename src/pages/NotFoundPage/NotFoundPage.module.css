@@ -1,0 +1,45 @@
+.NotFoundPage {
+  padding-top: 10rem;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.Content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6rem;
+  width: 100%;
+  max-width: 75rem;
+  margin: auto;
+}
+
+.Title {
+  font-size: 6rem;
+  text-align: left;
+}
+
+.Text {
+  font-size: 3rem;
+  text-align: left;
+  color: var(--Gray-50);
+}
+
+.LinkTo {
+  font-size: 2rem;
+}
+
+@media (max-width: 1248px) {
+  .LookButton {
+    max-width: none;
+  }
+}
+@media (max-width: 767px) {
+  .Title {
+    font-size: 4.5rem;
+  }
+  .Text {
+    font-size: 2.5rem;
+  }
+}

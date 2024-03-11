@@ -1,0 +1,40 @@
+.MessageModalSender {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    font-size: 1.4rem;
+  }
+}
+
+.DividingLine {
+  width: 100%;
+  border-top: 1px solid var(--Gray-20);
+  margin: 1.6rem 0;
+}
+
+.CardContent {
+  width: 52rem;
+  height: 24rem;
+  overflow: auto;
+
+  @media (max-width: 767px) {
+    width: auto;
+  }
+}
+
+.AlignButton {
+  display: flex;
+  justify-content: center;
+}
+
+.ModalCloseButton {
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  width: 12rem;
+  background-color: var(--Purple-60);
+  color: white;
+  margin-top: 3rem;
+  font-family: inherit;
+}
