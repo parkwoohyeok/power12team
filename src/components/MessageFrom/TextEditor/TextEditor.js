@@ -8,7 +8,9 @@ function TextEditor({ content, handleTextChange }) {
   return (
     <>
       <div className={styles.ContentContainer}>
-        <div className={styles.Title}>내용을 입력해 주세요</div>
+        <div className={styles.Title}>
+          <span>내용을 입력해 주세요</span>
+        </div>
         <Editor
           value={content}
           onTextChange={handleTextChange}

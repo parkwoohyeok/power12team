@@ -16,7 +16,9 @@ function NameInput({ sender, setSender, inputError, setInputError }) {
 
   return (
     <div className={styles.NameContainer}>
-      <div className={styles.Title}>From.</div>
+      <div className={styles.Title}>
+        <span>From.</span>
+      </div>
       <input
         className={styles.NameInput}
         placeholder="이름을 입력해 주세요."

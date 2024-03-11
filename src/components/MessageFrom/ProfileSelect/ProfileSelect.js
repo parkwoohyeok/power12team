@@ -21,7 +21,9 @@ function ProfileSelect({
   return (
     <>
       <div className={styles.ProfileContainer}>
-        <div className={styles.Title}>프로필 이미지</div>
+        <div className={styles.Title}>
+          <span>프로필 이미지</span>
+        </div>
         <div className={styles.Content}>
           <img
             className={styles.DefaultProfile}
@@ -33,7 +35,7 @@ function ProfileSelect({
           />
           <div className={styles.SelectProfile}>
             <div className={styles.SelectExplain}>
-              프로필 이미지를 선택해주세요!
+              <span>프로필 이미지를 선택해주세요!</span>
             </div>
             <div className={styles.SelectImgs}>
               {isLoading ? (

@@ -17,11 +17,6 @@
     "no-unused-vars": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto", "useTabs": false }],
     "arrow-body-style": "off",
-    "import/no-unresolved": "off",
-    "import/order": "off",
-    "no-unsafe-optional-chaining": "off",
-    "no-shadow": "off",
-    "dot-notation": "off",
-    "object-shorthand": "off"
+    "import/no-unresolved": "off"
   }
 }
