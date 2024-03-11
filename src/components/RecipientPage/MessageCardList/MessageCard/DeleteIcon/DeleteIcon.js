@@ -1,8 +1,7 @@
-import { useState } from "react";
-
-import DeleteCardModal from "../../../DeleteCardModal/DeleteCardModal";
-
 import styles from "./DeleteIcon.module.css";
+
+import { useState } from "react";
+import DeleteCardModal from "../../../DeleteCardModal/DeleteCardModal";
 
 const DeleteIcon = ({ id, onDelete }) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);

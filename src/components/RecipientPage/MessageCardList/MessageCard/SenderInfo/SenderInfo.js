@@ -1,7 +1,7 @@
+import styles from "./SenderInfo.module.css";
+
 import RelationshipTag from "../../RelationshipTag/RelationshipTag";
 import DeleteIcon from "../DeleteIcon/DeleteIcon";
-
-import styles from "./SenderInfo.module.css";
 
 const SenderInfo = ({ message, isEditing, onDelete }) => {
   return (

@@ -1,5 +1,5 @@
-import styles from "./RecipientInfoBarSkeleton.module.css";
 import divider from "assets/divider.svg";
+import styles from "./RecipientInfoBarSkeleton.module.css";
 
 function RecipientInfoBarSkeleton() {
   return (
