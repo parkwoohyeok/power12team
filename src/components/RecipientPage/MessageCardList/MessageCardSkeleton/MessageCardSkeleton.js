@@ -1,6 +1,6 @@
-import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
-
 import styles from "./MessageCardSkeleton.module.css";
+
+import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
 
 const MessageCardSkeleton = () => {
   return (

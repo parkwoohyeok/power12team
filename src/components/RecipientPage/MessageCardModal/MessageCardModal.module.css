@@ -18,6 +18,10 @@
   width: 52rem;
   height: 24rem;
   overflow: auto;
+
+  @media (max-width: 767px) {
+    width: auto;
+  }
 }
 
 .AlignButton {

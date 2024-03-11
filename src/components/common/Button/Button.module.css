@@ -157,4 +157,8 @@
   &:active {
     background-color: var(--Purple-80);
   }
+
+  @media (max-width: 767px) {
+    width: 25vw;
+  }
 }
