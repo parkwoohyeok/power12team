@@ -110,7 +110,6 @@ function MessageFrom() {
         // navigate("/*", { replace: true });
         setIsValidRecipient(false);
       }
-      console.log(isValidRecipient);
     };
 
     if (recipientId) {
