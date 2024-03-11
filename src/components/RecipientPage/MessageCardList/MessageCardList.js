@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import styles from "./MessageCardList.module.css";
 
 import { useEffect, useRef, useState } from "react";
