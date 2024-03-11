@@ -1,6 +1,5 @@
-/* eslint-disable */
-import styles from "./Layout.module.css";
 import Nav from "components/common/Nav/Nav";
+import styles from "./Layout.module.css";
 
 const Layout = ({ children }) => {
   return (
