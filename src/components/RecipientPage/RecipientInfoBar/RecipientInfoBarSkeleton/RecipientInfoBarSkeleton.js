@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styles from "./RecipientInfoBarSkeleton.module.css";
 import divider from "assets/divider.svg";
 
