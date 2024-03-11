@@ -1,4 +1,3 @@
-/* eslint-disable */
 import axios from "axios";
 
 const API_BASE_URL = "https://rolling-api.vercel.app/";

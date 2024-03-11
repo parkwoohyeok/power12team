@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styles from "components/List/ListCards/ListCards.module.css";
 import MessageSummary from "components/List/ListCards/MessageSummary/MessageSummary";
 import TopReactions from "components/common/TopReactions/TopReactions";

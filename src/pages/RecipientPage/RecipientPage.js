@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 

@@ -1,6 +1,5 @@
 import React from "react";
 
-/* eslint-disable */
 import checkImage from "assets/check.png";
 
 import styles from "./CheckImage.module.css";
