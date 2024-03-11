@@ -24,11 +24,7 @@
     align-items: flex-start;
     padding: 0 2rem;
   }
-
   .LinkDiv {
-    width: 100%;
-  }
-  .LinkBtn {
-    width: 100%;
+    align-items: center;
   }
 }

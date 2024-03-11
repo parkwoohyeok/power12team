@@ -52,6 +52,14 @@
   }
 }
 
+@media (max-width: 410px) {
+  .IsListPage {
+    width: 88vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 @media (max-width: 767px) {
   .LargeButton {
     margin-left: 0;
