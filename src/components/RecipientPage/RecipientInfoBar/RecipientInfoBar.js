@@ -161,7 +161,8 @@ function RecipientInfoBar({ recipientData }) {
         <div className={styles.Name}>To. {name}</div>
         <div className={styles.InfoWrapper}>
           <MessageSummaryRecipientPage
-            data={{ messageCount, recentMessages }}
+            messageCount={messageCount}
+            recentMessages={recentMessages}
             isPostPage={isPostPage}
           />
           <img

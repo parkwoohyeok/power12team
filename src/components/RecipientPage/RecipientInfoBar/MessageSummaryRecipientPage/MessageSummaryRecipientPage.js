@@ -1,27 +1,27 @@
 /* eslint-disable */
 import styles from "./MessageSummaryRecipientPage.module.css";
 
-function MessageSummaryRecipientPage({ data }) {
-  const { messageCount, recentMessages } = data || {};
+function MessageSummaryRecipientPage({ messageCount, recentMessages }) {
+  console.log(messageCount, recentMessages);
 
   return (
     <div className={styles.RecentMessages}>
       <div className={styles.ProfileImageWrapper}>
-        {recentMessages[2] !== null && (
+        {messageCount >= 3 && (
           <img
             className={`${styles.ProfileImage} ${styles.First}`}
             src={recentMessages[2]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
-        {recentMessages[1] !== null && (
+        {messageCount >= 2 && (
           <img
             className={`${styles.ProfileImage} ${styles.Second}`}
             src={recentMessages[1]?.profileImageURL}
             alt="프로필 이미지"
           />
         )}
-        {recentMessages[0] !== null && (
+        {messageCount >= 1 && (
           <img
             className={`${styles.ProfileImage} ${styles.Third}`}
             src={recentMessages[0]?.profileImageURL}
