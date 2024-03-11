@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import useGetRecipients from "components/api/useGetRecipients";
 import HotList from "components/List/HotList/HotList";
 import Nav from "components/common/Nav/Nav";

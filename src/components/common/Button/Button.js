@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styles from "./Button.module.css";
 
 const SIZE = {

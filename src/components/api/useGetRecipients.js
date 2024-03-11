@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "utils/axiosInstance";
 
@@ -30,7 +28,6 @@ const useGetRecipients = () => {
         setHasNextHotPage(false);
       }
     } catch (error) {
-      //console.error("Error fetching data:", error);
       navigate("/error");
     }
     setIsHotLoading(false);

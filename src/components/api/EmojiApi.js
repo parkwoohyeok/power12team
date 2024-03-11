@@ -1,4 +1,3 @@
-/* eslint-disable */
 import ROLLING_URL from "./constants";
 
 export const postEmoji = async (data) => {

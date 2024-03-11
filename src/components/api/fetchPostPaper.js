@@ -1,4 +1,3 @@
-/* eslint-disable */
 import axiosInstance from "utils/axiosInstance";
 
 const fetchPostPaper = async (recipientData) => {

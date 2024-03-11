@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styles from "./MessageSummary.module.css";
 
 function MessageSummary({ data }) {

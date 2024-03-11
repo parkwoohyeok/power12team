@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styles from "components/List/RecentList/RecentList.module.css";
 
 import arrow from "assets/arrow.png";
