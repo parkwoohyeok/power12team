@@ -1,4 +1,3 @@
-/* eslint-disable */
 const { useState } = require("react");
 
 function useAsync(callback) {

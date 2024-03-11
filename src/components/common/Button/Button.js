@@ -8,11 +8,11 @@ const SIZE = {
   LargeReverse: styles.LargeReverseButton,
 };
 
-const Button = ({ size, type, disabled, onClick, children }) => {
+const Button = ({ size, type, disabled, onClick, children, isListPage }) => {
   const selectedSize = SIZE[size];
   return (
     <button
-      className={selectedSize}
+      className={`${!isListPage ? selectedSize : styles["IsListPage"]} `}
       type={type}
       disabled={disabled}
       onClick={onClick}
