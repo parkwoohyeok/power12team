@@ -4,7 +4,7 @@
     "node": true
   },
   "root": true,
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "import"],
   "extends": [
     "eslint:recommended",
     "plugin:import/warnings",
@@ -22,6 +22,7 @@
     "no-unsafe-optional-chaining": "off",
     "no-shadow": "off",
     "dot-notation": "off",
-    "object-shorthand": "off"
+    "object-shorthand": "off",
+    "import/errors": 0
   }
 }
