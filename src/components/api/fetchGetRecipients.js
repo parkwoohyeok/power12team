@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "utils/axiosInstance";
 
-const useGetRecipients = () => {
+const fetchGetRecipients = () => {
   const [isHotLoading, setIsHotLoading] = useState();
   const [isRecentLoading, setIsRecentLoading] = useState();
   const [hotData, setHotData] = useState([]);
@@ -45,7 +45,7 @@ const useGetRecipients = () => {
         setHasNextRecentPage(false);
       }
     } catch (error) {
-      throw new Error();
+      throw new Error("Error fetching data:", error);
     }
     setIsRecentLoading(false);
   };
@@ -63,4 +63,4 @@ const useGetRecipients = () => {
   };
 };
 
-export default useGetRecipients;
+export default fetchGetRecipients;
