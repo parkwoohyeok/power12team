@@ -46,6 +46,14 @@
 
 @media (max-width: 949px) {
   .IsListPage {
+    width: 95vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .IsListPage {
     width: 90vw;
     margin-left: 0;
     margin-right: 0;
