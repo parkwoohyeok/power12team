@@ -5,8 +5,8 @@ import emojiListData from "@emoji-mart/data";
 import MessageSummaryRecipientPage from "components/RecipientPage/RecipientInfoBar/MessageSummaryRecipientPage/MessageSummaryRecipientPage";
 
 import { useState, useRef, useEffect } from "react";
-import useGetEmoji from "../../api/useGetEmoji";
-import usePostEmoji from "../../api/usePostEmoji";
+import fetchGetEmoji from "../../api/fetchGetEmoji";
+import fetchPostEmoji from "../../api/fetchPostEmoji";
 import arrowDown from "assets/arrow_down.png";
 import addEmoji from "assets/add-emoji.svg";
 import shareIcon from "assets/share.svg";
@@ -32,8 +32,9 @@ function RecipientInfoBar({ recipientData }) {
   const isPostPage = true;
 
   const [postEmojiPending, postEmojiError, postEmojiAsync] =
-    useAsync(usePostEmoji);
-  const [getEmojiPending, getEmojiError, getEmojiAsync] = useAsync(useGetEmoji);
+    useAsync(fetchPostEmoji);
+  const [getEmojiPending, getEmojiError, getEmojiAsync] =
+    useAsync(fetchGetEmoji);
   /**
    * 이모지 토스트 실행 함수
    */

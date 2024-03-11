@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "utils/axiosInstance";
 
-const useGetRecipients = () => {
+const fetchGetRecipients = () => {
   const [isHotLoading, setIsHotLoading] = useState();
   const [isRecentLoading, setIsRecentLoading] = useState();
   const [hotData, setHotData] = useState([]);
@@ -66,4 +66,4 @@ const useGetRecipients = () => {
   };
 };
 
-export default useGetRecipients;
+export default fetchGetRecipients;
