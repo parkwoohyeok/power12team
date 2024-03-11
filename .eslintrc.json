@@ -36,6 +36,7 @@
     "no-unsafe-optional-chaining": "off",
     "no-shadow": "off",
     "dot-notation": "off",
-    "object-shorthand": "off"
+    "object-shorthand": "off",
+    "consistent-return": "off"
   }
 }
