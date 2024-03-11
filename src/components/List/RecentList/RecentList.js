@@ -1,16 +1,10 @@
 import styles from "components/List/RecentList/RecentList.module.css";
-
-import arrow from "assets/arrow.png";
-
-import { useState, useEffect } from "react";
-
-import ListCards from "components/List/ListCards/ListCards";
-
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
 import { debounce } from "lodash";
-
 import { useInView } from "react-intersection-observer";
+import ListCards from "components/List/ListCards/ListCards";
+import arrow from "assets/arrow.png";
 
 const RecentList = ({ data, hasNextPage, fetchData, isLoading }) => {
   const [currentPage, setCurrentPage] = useState(1);
