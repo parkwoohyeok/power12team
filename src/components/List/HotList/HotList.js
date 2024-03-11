@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styles from "./HotList.module.css";
 
 import arrow from "assets/arrow.png";

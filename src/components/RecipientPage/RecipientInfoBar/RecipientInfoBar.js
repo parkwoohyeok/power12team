@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styles from "./RecipientInfoBar.module.css";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Picker from "@emoji-mart/react";

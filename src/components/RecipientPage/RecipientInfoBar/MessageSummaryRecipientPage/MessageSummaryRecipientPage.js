@@ -1,4 +1,3 @@
-/* eslint-disable */
 import styles from "./MessageSummaryRecipientPage.module.css";
 
 function MessageSummaryRecipientPage({ messageCount, recentMessages }) {

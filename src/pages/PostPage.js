@@ -1,4 +1,3 @@
-/* eslint-disable */
 import MessageTo from "components/MessageTo/MessageTo";
 import Nav from "components/common/Nav/Nav";
 

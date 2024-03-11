@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Layout from "components/common/Layout/Layout";
 import LandingPageContent from "../components/LandingPage/LandingPageContent";
 
