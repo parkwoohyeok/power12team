@@ -22,4 +22,7 @@
     align-items: flex-start;
     padding: 0 2rem;
   }
+  .LinkDiv {
+    align-items: center;
+  }
 }
