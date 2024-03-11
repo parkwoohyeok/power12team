@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 
@@ -16,6 +18,8 @@ function MessageFrom() {
   const fonts = [
     { value: "Noto Sans", label: "Noto Sans" },
     { value: "Pretendard", label: "Pretendard" },
+    { value: "나눔명조", label: "나눔명조" },
+    { value: "나눔손글씨 손편지체", label: "나눔손글씨 손편지체" },
   ];
 
   const options = [
