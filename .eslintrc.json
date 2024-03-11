@@ -13,7 +13,6 @@
     "prettier"
   ],
   "rules": {
-    "plugin": ["import/errors", "import/warnings"],
     "no-unused-vars": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto", "useTabs": false }],
     "arrow-body-style": "off",
@@ -22,7 +21,6 @@
     "no-unsafe-optional-chaining": "off",
     "no-shadow": "off",
     "dot-notation": "off",
-    "object-shorthand": "off",
-    "import/errors": 0
+    "object-shorthand": "off"
   }
 }
