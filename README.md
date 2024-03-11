@@ -1,6 +1,6 @@
-## 'Rolling' 프로젝트 (24.02.24 ~ 24.03.12)
+## 'power12team' 프로젝트 Rolling
 <div align="center">
-<img width="50%" alt="power12team 로고" src="https://github.com/parkwoohyeok/power12team/assets/144193370/dcbec70e-b874-4c16-bc0c-12322ccea8c7">
+<img src="https://github.com/parkwoohyeok/power12team/assets/144193370/aaa647dc-89fd-4f06-826f-6bf44a8149c3" width="50%" alt="12팀 로고" />  
 </div>
 
 ## power12team 팀원 소개
@@ -54,18 +54,3 @@
 </table>
 
 </div>
-
-</div>
-
-## 기술스택
-<div align="left">
-  React / React-router-dom / ESLint / Prettier / CSS Module / Git & GitHub
-</div>
-
-## 라이브러리
-<div align="left">
-Axios / quill / react-select / emoji-mart / copy-to-clipboard / intersetction-observer / framer-motion
-</div>
-
-## Userflow
-<img width="100%" alt="12팀 Rolling 페이지 Userflow" src="https://github.com/parkwoohyeok/power12team/assets/144193370/4c9c34cb-83fd-4c94-be4d-72f3e619f58c">
