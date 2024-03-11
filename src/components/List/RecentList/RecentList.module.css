@@ -47,6 +47,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 20rem;
+  overflow: hidden;
 }
 
 .moreData {
@@ -90,6 +91,7 @@
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     height: 20rem;
+    overflow: hidden;
   }
 
   .loadingPulse {
