@@ -21,6 +21,7 @@
     "import/order": "off",
     "no-unsafe-optional-chaining": "off",
     "no-shadow": "off",
-    "dot-notation": "off"
+    "dot-notation": "off",
+    "object-shorthand": "off"
   }
 }
