@@ -83,12 +83,11 @@ function MessageFrom() {
       profileImageURL,
     };
     try {
-      const responseData = await sendMessageData(recipientId, messageData);
-      console.log("Server response:", responseData);
+      await sendMessageData(recipientId, messageData);
       navigate(`/post/${recipientId}`);
     } catch (error) {
-      console.error("Error:", error);
       alert("데이터 전송에 실패했습니다.");
+      throw new Error("Error:", error);
     }
   };
 
@@ -105,12 +104,11 @@ function MessageFrom() {
           // navigate("/*", { replace: true });
         }
       } catch (error) {
-        console.error("Error fetching recipient data:", error);
+        setIsValidRecipient(false);
+        // throw new Error("Error fetching recipient data:", error);
         // 에러 발생 시 recipientId가 유효하지 않은 것으로 간주하고 404 페이지로 리다이렉트
         // navigate("/*", { replace: true });
-        setIsValidRecipient(false);
       }
-      console.log(isValidRecipient);
     };
 
     if (recipientId) {
@@ -127,7 +125,7 @@ function MessageFrom() {
           setProfileImageURL(urls[0]);
         }
       } catch (error) {
-        console.log("Failed to load image:", error);
+        throw new Error("Failed to load image:", error);
       }
     };
     loadImageUrls();

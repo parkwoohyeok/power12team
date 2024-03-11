@@ -19,7 +19,6 @@ const fetchGetRecipients = () => {
     try {
       const url = `recipients/?limit=4&offset=${Hotoffset}&sort=like`;
       const response = await axiosInstance.get(url);
-      console.log(url);
       const newData = response?.data.results;
       setHotData((prevData) => [...prevData, ...newData]);
       if (response?.data.next !== null) {
@@ -46,12 +45,10 @@ const fetchGetRecipients = () => {
         setHasNextRecentPage(false);
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      throw new Error("Error fetching data:", error);
     }
     setIsRecentLoading(false);
   };
-
-  console.log(Hotoffset);
 
   return {
     isHotLoading,

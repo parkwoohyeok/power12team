@@ -28,7 +28,6 @@ const RecipientPage = () => {
   }, []);
 
   if (fetchRecipientError) {
-    console.log(fetchRecipientError);
     return <Navigate to="/*" />;
   }
 
