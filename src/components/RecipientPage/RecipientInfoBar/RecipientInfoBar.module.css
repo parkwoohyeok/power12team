@@ -27,6 +27,13 @@
   gap: 1.3rem;
   position: relative;
   align-items: center;
+  flex-direction: row;
+}
+
+.EmojiRelateWrapper {
+  display: flex;
+  gap: 1.3rem;
+  flex-direction: row;
 }
 
 .ReactionContainer {
@@ -79,6 +86,13 @@
     background-color: rgba(165, 165, 165, 0.1);
   }
 }
+
+.ButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1.3rem;
+}
+
 .Button {
   display: flex;
   align-items: center;
@@ -138,7 +152,8 @@
 
 .EmojiPicker {
   position: absolute;
-  top: 3rem;
+  top: 4rem;
+  right: 8rem;
   z-index: 1;
 }
 
@@ -146,10 +161,19 @@
   background-color: white;
 }
 
+@media (max-width: 427px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 @media (max-width: 767px) {
   .RecipientInfoBar {
     flex-direction: column;
     align-items: first baseline;
+  }
+  .EmojiPicker {
+    left: 1rem;
   }
 }
 
