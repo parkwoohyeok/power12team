@@ -1,0 +1,67 @@
+.CardListPadding {
+  max-width: 120rem;
+  height: 11rem;
+  margin: 0 auto;
+  position: relative;
+
+  @media (max-width: 1199px) {
+    max-width: 80rem;
+    height: 9rem;
+  }
+
+  @media (max-width: 767px) {
+    height: 3.2rem;
+  }
+}
+
+.CardListEditButton {
+  position: absolute;
+  bottom: 1rem;
+  right: 0.3rem;
+}
+
+button.CardListEditButtonResponsive {
+  @media (max-width: 1199px) {
+    padding: 1.4rem;
+    position: fixed;
+    inset: auto 2.4rem 2.4rem 2.4rem;
+    z-index: 1;
+    font-weight: 700;
+  }
+}
+
+.CardListContainer {
+  max-width: 120rem;
+
+  @media (max-width: 1199px) {
+    max-width: 80rem;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 40rem;
+  }
+
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 2.8rem 2.4rem;
+}
+
+.LoadMore {
+  background-color: transparent;
+  height: 10rem;
+}
+
+.blue {
+  background-color: var(--Blue-20);
+}
+.purple {
+  background-color: var(--Purple-20);
+}
+.green {
+  background-color: var(--Green-20);
+}
+.beige {
+  background-color: var(--Orange-20);
+}

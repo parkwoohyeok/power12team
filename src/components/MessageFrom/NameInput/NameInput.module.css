@@ -1,0 +1,38 @@
+.NameContainer {
+  margin-top: 5rem;
+  width: 72rem;
+  height: 9.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.Title {
+  height: 3.6rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-family: Pretendard;
+}
+
+.NameInput {
+  width: 72rem;
+  height: 5rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--Gray-30);
+  padding: 1.2rem 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--Gray-50);
+}
+
+.InputError {
+  font-size: 1.4rem;
+  color: var(--Error);
+  margin-left: 1.6rem;
+}
+
+@media (max-width: 47.9375rem) {
+  .NameInput {
+    width: 32rem;
+  }
+}

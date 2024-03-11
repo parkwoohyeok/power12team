@@ -1,0 +1,19 @@
+.ModalBackground {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: auto;
+  z-index: 1;
+  padding: 0 2.4rem;
+}
+
+.ModalBox {
+  border-radius: 1.6rem;
+  background-color: white;
+  margin: 0 auto;
+  padding: 4rem;
+  cursor: auto;
+}
