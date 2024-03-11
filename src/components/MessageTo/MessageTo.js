@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-import { useNavigate } from "react-router-dom";
-
-import Button from "components/common/Button/Button";
-
-import InputPost from "./InputPost/InputPost";
-
 import styles from "./MessageTo.module.css";
-
+import { useNavigate } from "react-router-dom";
+import Button from "components/common/Button/Button";
+import InputPost from "./InputPost/InputPost";
 import MessageToToggleButton from "./MessageToToggleButton/MessageToToggleButton";
-
 import fetchBackgroundImageUrls from "components/api/fetchBackgroundImageUrls";
-
 import fetchPostPaper from "components/api/fetchPostPaper";
 
 const COLORS = ["beige", "purple", "blue", "green"];
