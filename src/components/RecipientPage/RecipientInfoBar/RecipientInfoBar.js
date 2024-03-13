@@ -172,7 +172,7 @@ function RecipientInfoBar({ recipientData }) {
           />
           <div className={styles.RestWrapper}>
             {!!count && (
-              <>
+              <div className={styles.EmojiRelateWrapper}>
                 {getEmojiPending ? (
                   <div className={styles.ReactionContainer}>
                     <div className={styles.ReactionLoading}></div>
@@ -204,56 +204,61 @@ function RecipientInfoBar({ recipientData }) {
                     )}
                   </>
                 )}
-              </>
-            )}
-            <button
-              className={EmojiButton}
-              onClick={() => setIsEmojiAddOpen(true)}
-            >
-              <img
-                src={addEmoji}
-                alt="add reaction"
-                className={styles.ButtonIcon}
-              />
-              추가
-            </button>
-            {isEmojiAddOpen && (
-              <div className={styles.EmojiPicker} ref={emojiAddRef}>
-                <Picker data={emojiListData} onEmojiSelect={handleEmojiClick} />
               </div>
             )}
-            {emojiToastup && (
-              <Toast setState={setEmojiToastUp}>반응이 추가되었습니다.</Toast>
-            )}
-            <img src={divider} alt="divider" />
-            <button
-              className={ShareButton}
-              onClick={() => {
-                setIsShareModalOpen(true);
-              }}
-            >
-              <img
-                src={shareIcon}
-                alt="share icon"
-                className={styles.ButtonIcon}
-              />
-            </button>
-            {isShareModalOpen && (
-              <div className={styles.ShareModal} ref={shareRef}>
-                <button
-                  className={styles.ShareButton}
-                  onClick={handleKakaoClick}
-                >
-                  카카오톡 공유
-                </button>
-                <CopyToClipboard text={currentUrl} onCopy={showCopyToast}>
-                  <button className={styles.ShareButton}>URL 공유</button>
-                </CopyToClipboard>
-              </div>
-            )}
-            {copiedToastUp && (
-              <Toast setState={setCopiedToastUp}>URL이 복사되었습니다.</Toast>
-            )}
+            <div className={styles.ButtonWrapper}>
+              <button
+                className={EmojiButton}
+                onClick={() => setIsEmojiAddOpen(true)}
+              >
+                <img
+                  src={addEmoji}
+                  alt="add reaction"
+                  className={styles.ButtonIcon}
+                />
+                추가
+              </button>
+              {isEmojiAddOpen && (
+                <div className={styles.EmojiPicker} ref={emojiAddRef}>
+                  <Picker
+                    data={emojiListData}
+                    onEmojiSelect={handleEmojiClick}
+                  />
+                </div>
+              )}
+              {emojiToastup && (
+                <Toast setState={setEmojiToastUp}>반응이 추가되었습니다.</Toast>
+              )}
+              <img src={divider} alt="divider" />
+              <button
+                className={ShareButton}
+                onClick={() => {
+                  setIsShareModalOpen(true);
+                }}
+              >
+                <img
+                  src={shareIcon}
+                  alt="share icon"
+                  className={styles.ButtonIcon}
+                />
+              </button>
+              {isShareModalOpen && (
+                <div className={styles.ShareModal} ref={shareRef}>
+                  <button
+                    className={styles.ShareButton}
+                    onClick={handleKakaoClick}
+                  >
+                    카카오톡 공유
+                  </button>
+                  <CopyToClipboard text={currentUrl} onCopy={showCopyToast}>
+                    <button className={styles.ShareButton}>URL 공유</button>
+                  </CopyToClipboard>
+                </div>
+              )}
+              {copiedToastUp && (
+                <Toast setState={setCopiedToastUp}>URL이 복사되었습니다.</Toast>
+              )}
+            </div>
           </div>
         </div>
       </div>
