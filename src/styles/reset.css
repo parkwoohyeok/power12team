@@ -1,6 +1,19 @@
 /* reset */
 @import url("https://fonts.googleapis.com/css2?family=Dongle&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&family=Sunflower:wght@300&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+/* font-family: "Noto Sans", sans-serif; */
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+@import url("https://hangeul.pstatic.net/hangeul_static/css/nanum-myeongjo.css");
+/* font-family: 'NanumMyeongjo';
+font-family: 'NanumMyeongjoBold';
+font-family: 'NanumMyeongjoExtraBold'; */
+
+@import url("https://hangeul.pstatic.net/hangeul_static/css/NanumSonPyeonJiCe.css");
+/* font-family: "NanumSonPyeonJiCe"; */
+
 * {
   margin: initial;
   padding: initial;
