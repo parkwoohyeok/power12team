@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosInstance from "utils/axiosInstance";
 
 const API_BASE_URL = "https://rolling-api.vercel.app";
 
@@ -15,16 +16,10 @@ export const fetchImageUrls = async () => {
 // 폼 데이터 전송 api (POST)
 export const sendMessageData = async (recipientId, messageData) => {
   try {
-    const response = await axios.post(
-      `${API_BASE_URL}/4-12/recipients/${recipientId}/messages/`,
+    const response = await axiosInstance.post(
+      `recipients/${recipientId}/messages/`,
       messageData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
     );
-
     return response.data;
   } catch (error) {
     throw new Error("API Error", error);
