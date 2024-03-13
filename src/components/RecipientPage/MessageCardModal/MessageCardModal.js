@@ -4,6 +4,7 @@ import BottomButton from "../../common/Button/Button";
 import ModalBase from "../../common/ModalBase/ModalBase";
 import CreatedAt from "../MessageCardList/MessageCard/CreatedAt/CreatedAt";
 import SenderInfo from "../MessageCardList/MessageCard/SenderInfo/SenderInfo";
+import MessageCardContent from "../MessageCardList/MessageCard/MessageCardContent/MessageCardContent";
 
 const MessageCardModal = ({ message, setMessageCardModalOpen }) => {
   const handleClick = (e) => {
@@ -21,10 +22,7 @@ const MessageCardModal = ({ message, setMessageCardModalOpen }) => {
         <CreatedAt createdAt={message?.createdAt} />
       </div>
       <div className={styles.DividingLine}></div>
-      <div
-        className={styles.CardContent}
-        dangerouslySetInnerHTML={{ __html: message.content }}
-      ></div>
+      <MessageCardContent message={message} />
       <div className={styles.AlignButton}>
         <BottomButton size="Modal" onClick={handleClick}>
           확인

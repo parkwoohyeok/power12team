@@ -13,23 +13,3 @@
   overflow: auto;
   scrollbar-width: thin;
 }
-
-.NotoSans,
-.NotoSans * {
-  font-family: "Noto Sans", sans-serif;
-}
-
-.Pretendard,
-.Pretendard * {
-  font-family: "Pretendard", sans-serif;
-}
-
-.나눔명조,
-.나눔명조 * {
-  font-family: "NanumMyeongjo";
-}
-
-.나눔손글씨손편지체,
-.나눔손글씨손편지체 * {
-  font-family: "NanumSonPyeonJiCe";
-}
