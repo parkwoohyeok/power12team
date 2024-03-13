@@ -18,10 +18,13 @@ const MessageCardModal = ({ message, setMessageCardModalOpen }) => {
     >
       <div className={styles.MessageModalSender}>
         <SenderInfo message={message} />
-        <CreatedAt createdAt={message.createdAt} />
+        <CreatedAt createdAt={message?.createdAt} />
       </div>
       <div className={styles.DividingLine}></div>
-      <div className={styles.CardContent}>{message.content}</div>
+      <div
+        className={styles.CardContent}
+        dangerouslySetInnerHTML={{ __html: message.content }}
+      ></div>
       <div className={styles.AlignButton}>
         <BottomButton size="Modal" onClick={handleClick}>
           확인

@@ -61,10 +61,8 @@ function MessageFrom() {
   };
 
   const handleTextChange = (e) => {
-    const textWithoutHtml = e.htmlValue
-      ? e.htmlValue.replace(/<[^>]*>?/gm, "")
-      : "";
-    setContent(textWithoutHtml);
+    const textValue = e.htmlValue || "";
+    setContent(textValue); // HTML 형태의 값 저장
   };
 
   const handleImageSelect = (imageUrl) => {
@@ -86,6 +84,7 @@ function MessageFrom() {
     };
     try {
       await sendMessageData(recipientId, messageData);
+      console.log(messageData);
       navigate(`/post/${recipientId}`);
     } catch (error) {
       alert("데이터 전송에 실패했습니다.");

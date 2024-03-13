@@ -19,7 +19,10 @@ const MessageCard = ({ message, isEditing, onDelete }) => {
     <MessageCardContainer onClick={handleClick}>
       <SenderInfo message={message} isEditing={isEditing} onDelete={onDelete} />
       <div className={styles.DividingLine}></div>
-      <div className={styles.CardContent}>{message.content}</div>
+      <div
+        className={styles.CardContent}
+        dangerouslySetInnerHTML={{ __html: message.content }}
+      />
       <CreatedAt createdAt={message.createdAt} />
       {messageCardModalOpen && (
         <MessageCardModal
