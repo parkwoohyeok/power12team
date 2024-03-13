@@ -4,6 +4,8 @@ import MessageSummary from "components/List/ListCards/MessageSummary/MessageSumm
 import TopReactions from "components/common/TopReactions/TopReactions";
 
 const ListCards = ({ info, isLoading }) => {
+  const name =
+    info?.name.length > 8 ? `${info?.name.slice(0, 8)}...` : info?.name;
   return (
     <>
       <Link to={`/post/${info.id}`}>
@@ -21,7 +23,7 @@ const ListCards = ({ info, isLoading }) => {
           className={`${styles["CardContainer"]} ${info.backgroundImageURL ? styles.SkeletonImage : styles[info.backgroundColor]}`}
         >
           <div className={styles["Cardinfo"]}>
-            <h2 className={styles.Receiver}>{`To.${info?.name}`}</h2>
+            <h2 className={styles.Receiver}>{`To.${name}`}</h2>
             <MessageSummary data={info} />
           </div>
           <div className={styles.CardFooter}>
