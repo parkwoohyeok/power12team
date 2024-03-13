@@ -1,3 +1,9 @@
+.CardContent {
+  height: 10.6rem;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
 .NotoSans,
 .NotoSans * {
   font-family: "Noto Sans", sans-serif;

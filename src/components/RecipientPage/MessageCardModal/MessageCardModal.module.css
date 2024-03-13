@@ -16,8 +16,11 @@
 
 .CardContent {
   width: 52rem;
-  height: 24rem;
   overflow: auto;
+
+  & > div {
+    height: 24rem;
+  }
 
   @media (max-width: 767px) {
     width: auto;

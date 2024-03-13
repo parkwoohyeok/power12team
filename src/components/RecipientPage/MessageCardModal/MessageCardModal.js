@@ -22,7 +22,9 @@ const MessageCardModal = ({ message, setMessageCardModalOpen }) => {
         <CreatedAt createdAt={message?.createdAt} />
       </div>
       <div className={styles.DividingLine}></div>
-      <MessageCardContent message={message} />
+      <div className={styles.CardContent}>
+        <MessageCardContent message={message} />
+      </div>
       <div className={styles.AlignButton}>
         <BottomButton size="Modal" onClick={handleClick}>
           확인
