@@ -86,6 +86,7 @@ function MessageFrom() {
     };
     try {
       await sendMessageData(recipientId, messageData);
+      // eslint-disable-next-line
       console.log(messageData);
       navigate(`/post/${recipientId}`);
     } catch (error) {

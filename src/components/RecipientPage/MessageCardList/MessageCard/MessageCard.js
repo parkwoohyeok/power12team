@@ -1,10 +1,11 @@
 import styles from "./MessageCard.module.css";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MessageCardModal from "../../MessageCardModal/MessageCardModal";
 import MessageCardContainer from "../MessageCardContainer/MessageCardContainer";
 import CreatedAt from "./CreatedAt/CreatedAt";
 import SenderInfo from "./SenderInfo/SenderInfo";
+import MessageCardContent from "./MessageCardContent/MessageCardContent";
 
 const MessageCard = ({ message, isEditing, onDelete }) => {
   const [messageCardModalOpen, setMessageCardModalOpen] = useState(false);
@@ -19,10 +20,7 @@ const MessageCard = ({ message, isEditing, onDelete }) => {
     <MessageCardContainer onClick={handleClick}>
       <SenderInfo message={message} isEditing={isEditing} onDelete={onDelete} />
       <div className={styles.DividingLine}></div>
-      <div
-        className={styles.CardContent}
-        dangerouslySetInnerHTML={{ __html: message.content }}
-      />
+      <MessageCardContent message={message} />
       <CreatedAt createdAt={message.createdAt} />
       {messageCardModalOpen && (
         <MessageCardModal
